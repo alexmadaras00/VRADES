@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "126635378366",
+    "firebase_url": "https://vrades-d5b47-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "vrades-d5b47",
+    "storage_bucket": "vrades-d5b47.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126635378366:android:b197af446708b1625980ef",
+        "android_client_info": {
+          "package_name": "com.example.vrades"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126635378366-curdd79im04i321q1r5pnb288m1gn1i6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnHiUWSi_clVr9k71cg2hk2Zy3HS7LYU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126635378366-curdd79im04i321q1r5pnb288m1gn1i6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
