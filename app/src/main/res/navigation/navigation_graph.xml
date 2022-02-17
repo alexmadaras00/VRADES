@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/nav_login"
-        android:name="com.example.vrades.LoginFragment"
+        android:name="com.example.vrades.fragments.LoginFragment"
         android:label="login_fragment"
-        tools:layout="@layout/login_fragment" >
+        tools:layout="@layout/login_fragment">
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/nav_home" />
@@ -17,21 +17,9 @@
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/nav_register" />
     </fragment>
-    <activity
-        android:id="@+id/splashScreen"
-        android:name="com.example.vrades.SplashScreen"
-        android:label="activity_splash_screen"
-        tools:layout="@layout/activity_splash_screen" >
-        <action
-            android:id="@+id/action_splashScreen_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_splashScreen_to_nav_login"
-            app:destination="@id/nav_login" />
-    </activity>
     <fragment
         android:id="@+id/nav_register"
-        android:name="com.example.vrades.RegisterFragment"
+        android:name="com.example.vrades.fragments.RegisterFragment"
         android:label="register_fragment"
         tools:layout="@layout/register_fragment" >
         <action
@@ -40,7 +28,11 @@
     </fragment>
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.vrades.HomeFragment"
+        android:name="com.example.vrades.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <activity
+        android:id="@+id/splashScreenActivity"
+        android:name="com.example.vrades.activities.SplashScreenActivity"
+        android:label="SplashScreenActivity" />
 </navigation>

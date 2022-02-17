@@ -1,11 +1,13 @@
-package com.example.vrades
+package com.example.vrades.fragments
 
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.vrades.R
+import com.example.vrades.viewmodels.RegisterViewModel
 
 class RegisterFragment : Fragment() {
 

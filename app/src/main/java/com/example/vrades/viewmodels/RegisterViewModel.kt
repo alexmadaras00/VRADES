@@ -1,6 +1,6 @@
-package com.example.vrades
+package com.example.vrades.viewmodels
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 
 class RegisterViewModel : ViewModel() {
     // TODO: Implement the ViewModel
