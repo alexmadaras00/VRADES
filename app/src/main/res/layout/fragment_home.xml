@@ -5,4 +5,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_menu"
-    tools:context=".fragments.HomeFragment" />
+    tools:context=".ui.fragments.HomeFragment" />

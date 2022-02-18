@@ -1,4 +1,4 @@
-package com.example.vrades.fragments
+package com.example.vrades.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -2,4 +2,17 @@
     <string name="app_name">VRADES</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Password</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="enter_your_e_mail">Enter your e-mail</string>
+    <string name="log_in">Log In</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="enter_your_name">Enter your full name</string>
+    <string name="re_enter_your_password">Re-enter your password</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="full_name">Full name</string>
+    <string name="register">Register</string>
+    <string name="already_having_an_account">Already having an account?</string>
 </resources>

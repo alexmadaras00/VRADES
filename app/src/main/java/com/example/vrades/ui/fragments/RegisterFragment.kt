@@ -1,4 +1,4 @@
-package com.example.vrades.fragments
+package com.example.vrades.ui.fragments
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle

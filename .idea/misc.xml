@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/button_background.xml" value="0.142" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/activity_main.xml" value="0.12760416666666666" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/container_auth_layout.xml" value="0.12760416666666666" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/face_detection_fragment.xml" value="0.1" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_home.xml" value="0.1" />
-        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/login_fragment.xml" value="0.1" />
-        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/register_fragment.xml" value="0.1" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/login_fragment.xml" value="0.22" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/register_fragment.xml" value="0.10666666666666667" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>

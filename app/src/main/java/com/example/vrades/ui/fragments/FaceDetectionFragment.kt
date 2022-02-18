@@ -1,4 +1,4 @@
-package com.example.vrades.fragments
+package com.example.vrades.ui.fragments
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,29 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.vrades.R
-import com.example.vrades.viewmodels.LoginViewModel
+import com.example.vrades.viewmodels.FaceDetectionViewModel
 
-class LoginFragment : Fragment() {
+class FaceDetectionFragment : Fragment() {
 
     companion object {
-        fun newInstance() = LoginFragment()
+        fun newInstance() = FaceDetectionFragment()
     }
 
-    private lateinit var viewModel: LoginViewModel
+    private lateinit var viewModel: FaceDetectionViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.login_fragment, container, false)
+        return inflater.inflate(R.layout.face_detection_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        ).get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(FaceDetectionViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

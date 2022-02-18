@@ -1,4 +1,4 @@
-package com.example.vrades.activities
+package com.example.vrades.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
