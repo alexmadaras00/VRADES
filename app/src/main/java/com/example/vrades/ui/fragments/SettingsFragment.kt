@@ -7,29 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.vrades.R
-import com.example.vrades.viewmodels.RegisterViewModel
+import com.example.vrades.viewmodels.SettingsViewModel
 
-class RegisterFragment : Fragment(R.layout.register_fragment) {
+class SettingsFragment : Fragment() {
 
     companion object {
-        fun newInstance() = RegisterFragment()
+        fun newInstance() = SettingsFragment()
     }
 
-    private lateinit var viewModel: RegisterViewModel
+    private lateinit var viewModel: SettingsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.register_fragment, container, false)
+        return inflater.inflate(R.layout.settings_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        ).get(RegisterViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(SettingsViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

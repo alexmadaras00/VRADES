@@ -1,14 +1,20 @@
 package com.example.vrades.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.findNavController
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.NavHostFragment
 import com.example.vrades.R
 
+
 class MainActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        findNavController(this.taskId).navigate(R.id.nav_login)
+
+
     }
 }

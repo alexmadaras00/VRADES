@@ -10,10 +10,11 @@ android {
     buildToolsVersion "30.0.3"
     buildFeatures {
         dataBinding true
+        viewBinding true
     }
     defaultConfig {
         applicationId "com.example.vrades"
-        minSdkVersion 19
+        minSdkVersion 22
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
@@ -44,14 +45,27 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     //noinspection GradleCompatible
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //Lifecycle
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    //Navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.0-alpha02'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.0-alpha02'
     implementation 'androidx.fragment:fragment-ktx:1.4.1'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation('android.arch.navigation:navigation-fragment-ktx:1.0.0')
+    implementation('android.arch.navigation:navigation-common-ktx:1.0.0')
+    //Jetpack
+    implementation 'androidx.preference:preference-ktx:1.2.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.preference:preference:1.2.0'
+
+
     testImplementation 'junit:junit:'
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     //Firebase
@@ -59,4 +73,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     //Migrate AndroidX
     implementation 'androidx.multidex:multidex:2.0.1'
+    //Material
+    implementation('androidx.compose.material:material:1.1.0')
+    implementation('androidx.compose.material:material-icons-core:1.1.0')
 }

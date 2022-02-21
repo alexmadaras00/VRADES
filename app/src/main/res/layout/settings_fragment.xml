@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.vrades.viewmodels.SettingsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clSettings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_app"
+        android:paddingStart="20dp"
+        android:paddingTop="80dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="80dp"
+        tools:context=".ui.fragments.SettingsFragment">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/container_auth_layout"
+            android:paddingHorizontal="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </include>
+
+
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            style="@style/Icons"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_baseline_arrow_back_24"
+            android:contentDescription="@string/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/include" />
+
+        <ImageView
+            android:id="@+id/ivLineTop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="176dp"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/line"
+            android:src="@drawable/line_section_container"
+            app:layout_constraintEnd_toEndOf="@+id/include"
+            app:layout_constraintStart_toStartOf="@+id/include"
+            app:layout_constraintTop_toTopOf="@+id/include" />
+
+        <TextView
+            android:id="@+id/tvVolume"
+            style="@style/TextViews"
+            android:text="@string/volume"
+            app:layout_constraintStart_toStartOf="@+id/ivLineTop"
+            app:layout_constraintTop_toBottomOf="@+id/ivLineTop" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/swVolume"
+            style="@style/MaterialSwitch"
+            app:layout_constraintBottom_toBottomOf="@+id/tvVolume"
+            app:layout_constraintEnd_toEndOf="@+id/ivLineTop"
+            app:layout_constraintTop_toTopOf="@+id/tvVolume" />
+
+        <TextView
+            android:id="@+id/tvNotifications"
+            style="@style/TextViews"
+            android:text="@string/notifications"
+            app:layout_constraintStart_toStartOf="@+id/ivLineTop"
+            app:layout_constraintTop_toBottomOf="@+id/tvVolume" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/swNotifications"
+            style="@style/MaterialSwitch"
+            app:layout_constraintBottom_toBottomOf="@+id/tvNotifications"
+            app:layout_constraintEnd_toEndOf="@+id/ivLineTop"
+            app:layout_constraintTop_toTopOf="@+id/tvNotifications" />
+
+        <TextView
+            android:id="@+id/tvDisplaySuggestions"
+            style="@style/TextViews"
+            android:text="@string/display_suggestions"
+            app:layout_constraintStart_toStartOf="@+id/ivLineTop"
+            app:layout_constraintTop_toBottomOf="@+id/tvNotifications" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/swDisplaySugggestions"
+            style="@style/MaterialSwitch"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDisplaySuggestions"
+            app:layout_constraintEnd_toEndOf="@+id/ivLineTop"
+            app:layout_constraintTop_toTopOf="@+id/tvDisplaySuggestions" />
+
+        <TextView
+            android:id="@+id/tvTutorial"
+            style="@style/TextViews"
+            android:text="@string/tutorial"
+            app:layout_constraintStart_toStartOf="@+id/ivLineTop"
+            app:layout_constraintTop_toBottomOf="@+id/tvDisplaySuggestions" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/swTutorial"
+            style="@style/MaterialSwitch"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTutorial"
+            app:layout_constraintEnd_toEndOf="@+id/ivLineTop"
+            app:layout_constraintTop_toTopOf="@+id/tvTutorial" />
+
+        <ImageView
+            android:id="@+id/ivLineBottom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="48dp"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/line"
+            android:src="@drawable/line_section_container"
+            app:layout_constraintEnd_toEndOf="@+id/include"
+            app:layout_constraintStart_toStartOf="@+id/include"
+            app:layout_constraintTop_toBottomOf="@+id/tvTutorial" />
+
+        <TextView
+            android:id="@+id/tvLogOut"
+            style="@style/TextViews"
+            android:text="@string/log_out"
+            app:layout_constraintStart_toStartOf="@+id/ivLineTop"
+            app:layout_constraintTop_toBottomOf="@+id/ivLineBottom" />
+
+        <ImageView
+            android:id="@+id/ivLogOut"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvLogOut"
+            app:layout_constraintEnd_toEndOf="@+id/ivLineTop"
+            app:layout_constraintTop_toTopOf="@+id/tvLogOut"
+            app:srcCompat="@drawable/logout_black_24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

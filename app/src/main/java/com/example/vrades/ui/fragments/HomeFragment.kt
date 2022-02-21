@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.vrades.R
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

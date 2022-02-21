@@ -14,7 +14,7 @@
             type="java.lang.Integer"
             />
         <variable
-            name="this"
+            name="here"
             type="View" />
     </data>
 
@@ -134,7 +134,7 @@
         <TextView
             android:id="@+id/tvNoAccount"
             android:layout_width="wrap_content"
-            android:onClick="@{()->viewModel.navigateTo(this,destination)"
+
             android:layout_height="wrap_content"
             android:fontFamily="@font/ibm_plex_sans_light"
             android:text="@string/don_t_have_an_account"

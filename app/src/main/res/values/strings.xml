@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">VRADES</string>
+    <string name="app_name" translatable="false">VRADES</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="e_mail">E-mail</string>
-    <string name="password">Password</string>
-    <string name="enter_your_password">Enter your password</string>
-    <string name="enter_your_e_mail">Enter your e-mail</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="e_mail" translatable="false">E-mail</string>
+    <string name="password" translatable="false">Password</string>
+    <string name="enter_your_password" translatable="false">Enter your password</string>
+    <string name="enter_your_e_mail" translatable="false">Enter your e-mail</string>
     <string name="log_in">Log In</string>
     <string name="forgot_password">Forgot password?</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
@@ -15,4 +15,33 @@
     <string name="full_name">Full name</string>
     <string name="register">Register</string>
     <string name="already_having_an_account">Already having an account?</string>
+    <string name="settings_button">\"Settings button\"</string>
+    <string name="about">About</string>
+    <string name="detect_it">Detect it!</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="my_profile">My Profile</string>
+    <string name="logo">Logo</string>
+    <string name="back">Back</string>
+    <string name="line">Line</string>
+    <string name="volume">Volume</string>
+    <string name="notifications">Notifications</string>
+    <string name="display_suggestions">Display Suggestions</string>
+
+    <string name="log_out">Log Out</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="vrades_about_description">VRADES is a project that started as my bachelor thesis. The title is an abbreviation from the thesis title: &quot; Validation of the recognition of automatically detected emotional states &quot;.\n The application is inspired from other emotion detection apps, by combining several emotional test types with new features such as being able to receive advice based on test results and keeping track of your tests.</string>
+    <string name="follow_on_insta">Follow us on \n Instagram</string>
 </resources>
