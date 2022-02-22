@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.example.vrades.R
 import com.example.vrades.viewmodels.RegisterViewModel
 
-class RegisterFragment : Fragment(R.layout.register_fragment) {
+class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     companion object {
         fun newInstance() = RegisterFragment()
@@ -21,7 +21,7 @@ class RegisterFragment : Fragment(R.layout.register_fragment) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.register_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_register, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

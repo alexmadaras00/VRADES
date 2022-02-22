@@ -36,5 +36,9 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+    }
+
 
 }

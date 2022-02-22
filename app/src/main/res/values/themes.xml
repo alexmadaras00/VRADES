@@ -56,7 +56,7 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="MaterialSwitch" >
+    <style name="MaterialSwitch">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginEnd">4dp</item>
@@ -67,6 +67,15 @@
         <item name="track">@drawable/switch_disabled</item>
 
     </style>
+
+    <style name="Theme.VRADES.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.VRADES.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.VRADES.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

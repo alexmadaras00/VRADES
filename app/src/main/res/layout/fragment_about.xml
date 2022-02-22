@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <import type="android.view.View" />
     </data>
 
@@ -44,8 +43,6 @@
             app:layout_constraintStart_toStartOf="@+id/include"
             app:layout_constraintTop_toTopOf="@+id/include" />
 
-
-
         <ImageView
             android:id="@+id/ivAboutLogo"
             android:layout_width="wrap_content"
@@ -75,11 +72,11 @@
         <TextView
             android:id="@+id/tvDisplaySuggestions"
             android:layout_width="0dp"
-            android:layout_marginHorizontal="5dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
             android:layout_marginStart="2dp"
-            android:layout_marginTop="48dp"
-            android:fontFamily="@font/ibm_plex_sans"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/ibm_plex_sans_bold"
             android:text='@string/vrades_about_description'
             android:textAlignment="center"
             android:textSize="18sp"
@@ -107,12 +104,22 @@
             style="@style/TextViews"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:text="@string/follow_on_insta"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/ivLineBottomAbout"
             app:layout_constraintStart_toStartOf="@+id/ivLineBottomAbout"
             app:layout_constraintTop_toBottomOf="@+id/ivLineBottomAbout" />
+
+        <ImageView
+            android:id="@+id/ivInstagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/tvFollow"
+            app:layout_constraintStart_toStartOf="@+id/tvFollow"
+            app:layout_constraintTop_toBottomOf="@+id/tvFollow"
+            app:srcCompat="@drawable/instagram" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
