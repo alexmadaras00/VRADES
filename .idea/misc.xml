@@ -7,6 +7,7 @@
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.142" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/background_menu.xml" value="0.1" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/button_background.xml" value="0.142" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.142" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/ic_launcher_background.xml" value="0.142" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/ic_slideshow_black_24dp.xml" value="0.142" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/side_nav_bar.xml" value="0.142" />
@@ -14,6 +15,7 @@
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/activity_tutorial.xml" value="0.12" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/app_bar_tutorial.xml" value="0.1" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/card_question.xml" value="0.1" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/container_auth_layout.xml" value="0.12760416666666666" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/content_tutorial.xml" value="0.1" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/face_detection_fragment.xml" value="0.1" />
@@ -21,8 +23,17 @@
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_item_list_dialog_list_dialog.xml" value="0.1" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_item_list_dialog_list_dialog_item.xml" value="0.1" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_register.xml" value="0.1" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial.xml" value="0.1" />
-        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_home.xml" value="0.1" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_audio.xml" value="0.12" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_face_deteciton.xml" value="0.1" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_face_detection.xml" value="0.1" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_finished.xml" value="0.10666666666666667" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_home.xml" value="0.13333333333333333" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_parent.xml" value="0.12" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_personal_questions.xml" value="0.13333333333333333" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_writing.xml" value="0.1" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/item_question.xml" value="0.13333333333333333" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/login_fragment.xml" value="0.12" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/prefereneces.xml" value="0.1" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/register_fragment.xml" value="0.10666666666666667" />

@@ -73,6 +73,17 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="Tutorial" parent="Theme.AppCompat">
+        <item name="background">@drawable/tutorial_background</item>
+    </style>
+    <style name="FloatingButton" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
+        <item name="colorPrimary">@color/menu_button</item>
+        <item name="colorSecondary">@color/menu_button</item>
+        <item name="background">@color/menu_button</item>
+        <item name="tint">@color/white</item>
+        <item name="iconTint">@color/white</item>
+    </style>
+
     <style name="Theme.VRADES.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.VRADES.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

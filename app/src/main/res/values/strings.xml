@@ -69,4 +69,24 @@
     </string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="skip_tutorial">Skip Tutorial</string>
+    <string name="complete_the_tutorial_to_get_used_with_our_technologies">Complete the tutorial to get used with our technologies!</string>
+    <string name="start">Start</string>
+    <string name="press_camera">Press on the \"camera\" button to take a picture</string>
+    <string name="camera" />
+    <string name="press_gallery">Now press on the \" gallery \" button to detect an emotion from your device's gallery</string>
+    <string name="tutorial_finished">Now you can proceed to the next step!</string>
+    <string name="next">Next</string>
+    <string name="start_recording_audio">Press on the down button to start recording your voice</string>
+    <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularized in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus Page Maker including versions of Lorem Ipsum.</string>
+    <string name="tap_to_start">Tap to start</string>
+    <string name="writing_info">Now write a short text about what do you expect to gain after using this application (20–80 words)</string>
+    <string name="audio_completed">Great job! You are beginning to master it.</string>
+    <string name="hint">hint</string>
+    <string name="writing_completed">Now you can proceed to the last part of the tutorial!</string>
+    <string name="congrats_writing">Congratulations, you wrote 70 words!</string>
+    <string name="answer_personal_questions">Answer the personal question and then send it by pressing on the following button</string>
+    <string name="question_text_item">Q. What kind of activities make you happy most usually?</string>
+    <string name="submit_your_answers">Send your answers</string>
+    <string name="done">Done!</string>
 </resources>

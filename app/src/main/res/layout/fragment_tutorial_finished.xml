@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.vrades.viewmodels.TutorialViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clTutorialFinished"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/tutorial_background"
+        tools:context=".ui.fragments.tutorial.TutorialFinishedFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNextTutorial"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="64dp"
+            android:fontFamily="@font/ibm_plex_sans_bold"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/next"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/ic_baseline_arrow_forward_24"
+            app:iconGravity="end"
+            app:iconTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCompletedTutorial" />
+
+        <TextView
+            android:id="@+id/tvCompletedTutorial"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="48dp"
+            android:layout_marginTop="84dp"
+            android:fontFamily="@font/ibm_plex_sans_bold"
+            android:text="@string/tutorial_finished"
+            android:textColor="@color/menu_text_color"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivCompletedTutorial" />
+
+        <ImageView
+            android:id="@+id/ivCompletedTutorial"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="272dp"
+            android:contentDescription="@string/next"
+            android:src="@drawable/completed_tutorial"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvDone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="48dp"
+            android:fontFamily="@font/ibm_plex_sans_bold"
+            android:text="@string/done"
+            android:textAlignment="center"
+            android:textColor="@color/background"
+            android:textSize="24sp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivCompletedTutorial" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

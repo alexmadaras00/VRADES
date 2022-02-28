@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.vrades.viewmodels.TutorialViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clTutorialFaceDetection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/tutorial_background"
+        tools:context=".ui.fragments.tutorial.TutorialFaceDetectionFragment"
+
+        >
+
+
+        <ImageView
+            android:id="@+id/ivArrowTutorial2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/fbtnGallery"
+            app:layout_constraintHorizontal_bias="0.478"
+            app:layout_constraintStart_toStartOf="@+id/fbtnGallery"
+            app:layout_constraintTop_toBottomOf="@+id/fbtnCamera"
+            app:srcCompat="@drawable/arrow_tutorial" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fbtnGallery"
+            style="@style/FloatingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="64dp"
+            android:background="@color/menu_button"
+            android:clickable="true"
+            android:contentDescription="@string/camera"
+            android:focusable="true"
+            app:backgroundTint="@color/menu_button"
+            app:layout_constraintEnd_toEndOf="@+id/flCameraPreviewLayout"
+            app:layout_constraintTop_toBottomOf="@+id/flCameraPreviewLayout"
+            app:srcCompat="@drawable/ic_baseline_collections_24" />
+
+        <FrameLayout
+            android:id="@+id/flCameraPreviewLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/camera_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPressOnCamera">
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvPressOnCamera"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="140dp"
+            android:fontFamily="@font/ibm_plex_sans"
+            android:text="@string/press_camera"
+            android:textColor="@color/menu_text_color"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPressOnGallery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginTop="140dp"
+            android:fontFamily="@font/ibm_plex_sans"
+            android:text="@string/press_gallery"
+            android:textColor="@color/menu_text_color"
+            android:textSize="24sp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fbtnCamera"
+            style="@style/FloatingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/menu_button"
+            android:clickable="true"
+            android:contentDescription="@string/camera"
+            android:focusable="true"
+            app:backgroundTint="@color/menu_button"
+            app:fabSize="normal"
+            app:layout_constraintStart_toStartOf="@+id/flCameraPreviewLayout"
+            app:layout_constraintTop_toBottomOf="@+id/flCameraPreviewLayout"
+            app:srcCompat="@drawable/ic_baseline_photo_camera_24_outline" />
+
+        <ImageView
+            android:id="@+id/ivArrowTutorial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/fbtnCamera"
+            app:layout_constraintHorizontal_bias="0.478"
+            app:layout_constraintStart_toStartOf="@+id/fbtnCamera"
+            app:layout_constraintTop_toBottomOf="@+id/fbtnCamera"
+            app:srcCompat="@drawable/arrow_tutorial" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
