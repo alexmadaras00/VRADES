@@ -48,7 +48,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="116dp"
+            android:layout_marginTop="106dp"
             android:fontFamily="@font/ibm_plex_sans"
             android:text="@string/answer_personal_questions"
             android:textColor="@color/menu_text_color"

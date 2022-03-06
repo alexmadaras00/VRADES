@@ -9,28 +9,34 @@
 
         <variable
             name="viewModel"
-            type="com.example.vrades.viewmodels.TutorialViewModel" />
+            type="com.example.vrades.viewmodels.FaceDetectionViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clTutorialFaceDetection"
+        android:id="@+id/clFaceDetection"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/tutorial_background"
-        tools:context=".ui.fragments.tutorial.TutorialFaceDetectionFragment">
+        android:background="@drawable/background_custom"
+        tools:context=".ui.fragments.FaceDetectionFragment">
 
-
-        <ImageView
-            android:id="@+id/ivArrowTutorial2"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/lLTextContainer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="@+id/fbtnGallery"
-            app:layout_constraintHorizontal_bias="0.478"
-            app:layout_constraintStart_toStartOf="@+id/fbtnGallery"
-            app:layout_constraintTop_toBottomOf="@+id/fbtnCamera"
-            app:srcCompat="@drawable/arrow_tutorial" />
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivLogoFaceDetection">
+
+            <TextView
+                android:id="@+id/tvInfoFaceDetection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/ibm_plex_sans_bold"
+                android:text="@string/face_inside_camera" />
+        </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fbtnGallery"
@@ -46,50 +52,39 @@
             app:backgroundTint="@color/menu_button"
             app:layout_constraintEnd_toEndOf="@+id/flCameraPreviewLayout"
             app:layout_constraintTop_toBottomOf="@+id/flCameraPreviewLayout"
-            app:srcCompat="@drawable/ic_baseline_collections_24" />
+            app:srcCompat="@drawable/ic_baseline_collections_24"
+            tools:ignore="SpeakableTextPresentCheck" />
+
 
         <FrameLayout
             android:id="@+id/flCameraPreviewLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/camera_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.333"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPressOnCamera">
+            app:layout_constraintTop_toBottomOf="@+id/lLTextContainer">
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnChangeCamera"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="bottom|right"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/cameraswitch_black_48dp"
+                android:foregroundGravity="bottom"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="10dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="10dp"
+                app:backgroundTint="#000000"
+                app:iconPadding="24dp" />
         </FrameLayout>
-
-        <TextView
-            android:id="@+id/tvPressOnCamera"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="40dp"
-            android:layout_marginTop="140dp"
-            android:fontFamily="@font/ibm_plex_sans"
-            android:text="@string/press_camera"
-            android:textColor="@color/menu_text_color"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvPressOnGallery"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="40dp"
-            android:layout_marginTop="140dp"
-            android:fontFamily="@font/ibm_plex_sans"
-            android:text="@string/press_gallery"
-            android:textColor="@color/menu_text_color"
-            android:textSize="24sp"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fbtnCamera"
@@ -109,15 +104,14 @@
             app:srcCompat="@drawable/ic_baseline_photo_camera_24_outline" />
 
         <ImageView
-            android:id="@+id/ivArrowTutorial"
+            android:id="@+id/ivLogoFaceDetection"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/fbtnCamera"
-            app:layout_constraintHorizontal_bias="0.478"
-            app:layout_constraintStart_toStartOf="@+id/fbtnCamera"
-            app:layout_constraintTop_toBottomOf="@+id/fbtnCamera"
-            app:srcCompat="@drawable/arrow_tutorial" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

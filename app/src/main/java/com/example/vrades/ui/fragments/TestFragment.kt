@@ -7,27 +7,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.vrades.R
-import com.example.vrades.viewmodels.FaceDetectionViewModel
+import com.example.vrades.viewmodels.TestViewModel
 
-class FaceDetectionFragment : Fragment() {
+class TestFragment : Fragment() {
 
     companion object {
-        fun newInstance() = FaceDetectionFragment()
+        fun newInstance() = TestFragment()
     }
 
-    private lateinit var viewModel: FaceDetectionViewModel
+    private lateinit var viewModel: TestViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_face_detection, container, false)
+        return inflater.inflate(R.layout.fragment_test, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(FaceDetectionViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel = ViewModelProvider(this)[TestViewModel::class.java]
+
     }
 
 }

@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name" translatable="false">VRADES</string>
+    <string name="app_name" translatable="true">VRADES</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="e_mail" translatable="false">E-mail</string>
-    <string name="password" translatable="false">Password</string>
-    <string name="enter_your_password" translatable="false">Enter your password</string>
-    <string name="enter_your_e_mail" translatable="false">Enter your e-mail</string>
+    <string name="hello_blank_fragment" translatable="true">Hello blank fragment</string>
+    <string name="e_mail" translatable="true">E-mail</string>
+    <string name="password" translatable="true">Password</string>
+    <string name="enter_your_password" translatable="true">Enter your password</string>
+    <string name="enter_your_e_mail" translatable="true">Enter your e-mail</string>
     <string name="log_in">Log In</string>
     <string name="forgot_password">Forgot password?</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
@@ -15,7 +15,7 @@
     <string name="full_name">Full name</string>
     <string name="register">Register</string>
     <string name="already_having_an_account">Already having an account?</string>
-    <string name="settings_button">\"Settings button\"</string>
+    <string name="settings_button">Settings button</string>
     <string name="about">About</string>
     <string name="detect_it">Detect it!</string>
     <string name="tutorial">Tutorial</string>
@@ -48,7 +48,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -89,4 +88,5 @@
     <string name="question_text_item">Q. What kind of activities make you happy most usually?</string>
     <string name="submit_your_answers">Send your answers</string>
     <string name="done">Done!</string>
+    <string name="face_inside_camera">Put your face inside the camera\'s area in order to detect any emotions from your face.</string>
 </resources>
