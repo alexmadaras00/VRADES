@@ -25,7 +25,7 @@ class TutorialPersonalQuestionsFragment : Fragment(R.layout.fragment_tutorial_pe
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         bindings= FragmentTutorialPersonalQuestionsBinding.inflate(inflater)
         bindings.viewModel =  viewModel

@@ -8,7 +8,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/clAbout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_app"
@@ -76,7 +76,7 @@
             android:layout_marginHorizontal="5dp"
             android:layout_marginStart="2dp"
             android:layout_marginTop="36dp"
-            android:fontFamily="@font/ibm_plex_sans_bold"
+            android:fontFamily="@font/ibm_plex_sans_light"
             android:text='@string/vrades_about_description'
             android:textAlignment="center"
             android:textSize="18sp"
@@ -120,6 +120,28 @@
             app:layout_constraintStart_toStartOf="@+id/tvFollow"
             app:layout_constraintTop_toBottomOf="@+id/tvFollow"
             app:srcCompat="@drawable/instagram" />
+
+        <ImageButton
+            android:id="@+id/btnBackAbout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:background="@drawable/ic_baseline_arrow_back_24"
+
+            android:contentDescription="@string/about"
+            android:fontFamily="@font/ibm_plex_sans"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text=""
+            app:backgroundTint="@color/white"
+            app:elevation="0dp"
+            app:iconPadding="0dp"
+            app:iconTint="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/include"
+            app:strokeColor="@color/transparent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -10,7 +10,7 @@ import com.example.vrades.R
 import com.example.vrades.databinding.LoginFragmentBinding
 import com.example.vrades.viewmodels.LoginViewModel
 
-class LoginFragment : Fragment(R.layout.login_fragment) {
+class LoginFragment : Fragment() {
 
     companion object {
         fun newInstance() = LoginFragment()
