@@ -67,6 +67,10 @@
         <item name="track">@drawable/switch_disabled</item>
 
     </style>
+    <style name="Profile">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 
     <style name="Theme.VRADES.NoActionBar">
         <item name="windowActionBar">false</item>

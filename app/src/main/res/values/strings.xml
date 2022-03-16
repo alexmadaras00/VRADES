@@ -91,4 +91,6 @@
     <string name="next">Next</string>
     <string name="restart">Restart</string>
     <string name="proceed">Proceed</string>
+    <string name="profile">Picture Profile</string>
+    <string name="my_diary_analysis"><![CDATA[My Diary & Analysis]]></string>
 </resources>
