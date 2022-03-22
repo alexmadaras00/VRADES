@@ -93,4 +93,10 @@
     <string name="proceed">Proceed</string>
     <string name="profile">Picture Profile</string>
     <string name="my_diary_analysis"><![CDATA[My Diary & Analysis]]></string>
+    <string name="test_results">Test Results</string>
+    <string name="test">Test -</string>
+    <string name="confession">Confession:</string>
+    <string name="occupation">Occupation:</string>
+    <string name="country">Country:</string>
+    <string name="age">Age:</string>
 </resources>

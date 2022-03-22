@@ -78,4 +78,6 @@ dependencies {
     implementation('androidx.compose.material:material-icons-core:1.1.0')
     //View Pager Dots
     implementation 'com.tbuonomo:dotsindicator:4.2'
+    //Charts
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
 }

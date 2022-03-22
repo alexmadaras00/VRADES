@@ -6,6 +6,9 @@
     <data>
 
         <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.example.vrades.viewmodels.MyProfileViewModel" />
 
     </data>
 
@@ -21,7 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="60dp"
+            android:paddingBottom="12dp"
+            android:layout_marginVertical="50dp"
             android:background="@drawable/container_form"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,8 +64,8 @@
                 android:contentDescription="@string/profile"
                 android:elevation="5dp"
                 android:focusable="true"
-                android:maxWidth="128dp"
-                android:maxHeight="128dp"
+                android:maxWidth="100dp"
+                android:maxHeight="100dp"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
@@ -75,7 +79,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:background="@color/white"
                 android:backgroundTint="@color/white"
                 android:contentDescription="@string/line"
@@ -83,14 +87,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ivProfilePicture" />
+                app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
             <TextView
                 android:id="@+id/tvAge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="TextView"
+                android:textSize="18sp"
+                android:text="@string/age"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 app:layout_constraintStart_toStartOf="@+id/ivLineTopProfile"
                 app:layout_constraintTop_toBottomOf="@+id/ivLineTopProfile" />
 
@@ -98,7 +104,9 @@
                 android:id="@+id/tvCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="@string/country"
+                android:textSize="18sp"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tvAge"
                 app:layout_constraintStart_toStartOf="@+id/gdlMiddle"
                 app:layout_constraintTop_toTopOf="@+id/tvAge" />
@@ -108,7 +116,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="TextView"
+                android:text="@string/occupation"
+                android:textSize="18sp"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 app:layout_constraintStart_toStartOf="@+id/tvAge"
                 app:layout_constraintTop_toBottomOf="@+id/tvAge" />
 
@@ -116,7 +126,9 @@
                 android:id="@+id/tvRelligion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="@string/confession"
+                android:textSize="18sp"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tvOccupation"
                 app:layout_constraintStart_toStartOf="@+id/gdlMiddle"
                 app:layout_constraintTop_toTopOf="@+id/tvOccupation" />
@@ -132,9 +144,9 @@
                 android:id="@+id/tvTestResults"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="36dp"
                 android:fontFamily="@font/ibm_plex_sans_bold"
-                android:text="Text Results"
+                android:text="@string/test_results"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -146,6 +158,10 @@
                 android:layout_marginHorizontal="12dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                android:background="@drawable/recycler_view_profile_background"
+                tools:listitem="@layout/item_test"
+                tools:itemCount="3"
+                android:paddingBottom="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTestResults" >
@@ -175,6 +191,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rvTestResults"
                 tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/ibm_plex_sans_bold"
+                android:text="Alex Madaras"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivProfilePicture" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
