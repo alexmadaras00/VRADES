@@ -5,19 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.anychart.AnyChart
 import com.example.vrades.R
+import com.example.vrades.databinding.FragmentDetailsBinding
 import com.example.vrades.databinding.FragmentResultsBinding
-import com.example.vrades.databinding.FragmentSettingsBinding
+import com.example.vrades.viewmodels.DetailsViewModel
 import com.example.vrades.viewmodels.ResultsViewModel
-import com.example.vrades.viewmodels.SettingsViewModel
 
 
-class ResultsFragment : Fragment() {
+class DetailsFragment : Fragment() {
 
-    private lateinit var viewModel: ResultsViewModel
-    private val _binding: FragmentResultsBinding? = null
+    private val _binding: FragmentDetailsBinding? = null
     var binding = _binding!!
-
+    private lateinit var viewModel: DetailsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,13 +27,19 @@ class ResultsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentResultsBinding.inflate(inflater)
+    ): View {
+        binding = FragmentDetailsBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root
     }
 
+    override fun onStart() {
+        super.onStart()
+        val pie = AnyChart.pie()
+        val chart = viewModel.getPieChart()
+        binding.Chart.setChart(chart)
+    }
 
 }

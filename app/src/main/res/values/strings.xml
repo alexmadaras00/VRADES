@@ -99,4 +99,13 @@
     <string name="occupation">Occupation:</string>
     <string name="country">Country:</string>
     <string name="age">Age:</string>
+    <string name="face_detection">Face Detection</string>
+    <string name="joy">JOY</string>
+    <string name="the_boss">Alex Madaras</string>
+    <string name="results">Results</string>
+    <string name="final_result">Final Result</string>
+    <string name="writing_test">Writing Test</string>
+    <string name="see_the_details">See the details!</string>
+    <string name="chart_results">Chart Results</string>
+    <string name="dominant_emotion">Dominant Emotion:</string>
 </resources>

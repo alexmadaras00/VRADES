@@ -8,9 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentAboutBinding
-import com.example.vrades.databinding.FragmentAboutBindingImpl
+
 import com.example.vrades.databinding.FragmentSettingsBinding
-import com.example.vrades.databinding.FragmentSettingsBindingImpl
 import com.example.vrades.viewmodels.SettingsViewModel
 
 class SettingsFragment : Fragment() {
@@ -26,7 +25,7 @@ class SettingsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSettingsBindingImpl.inflate(inflater)
+        binding = FragmentSettingsBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.executePendingBindings()
         return binding.root
