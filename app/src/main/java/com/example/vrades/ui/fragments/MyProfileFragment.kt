@@ -8,10 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentMyProfileBinding
-import com.example.vrades.databinding.LoginFragmentBinding
+import com.example.vrades.interfaces.IOnClickListener
+
 import com.example.vrades.ui.adapters.AdapterTestHistory
 import com.example.vrades.viewmodels.LoginViewModel
 import com.example.vrades.viewmodels.MyProfileViewModel
@@ -21,6 +23,7 @@ class MyProfileFragment : Fragment() {
     companion object {
         fun newInstance() = MyProfileFragment()
     }
+
     private val _bindings: FragmentMyProfileBinding? = null
     private var bindings = _bindings!!
     private lateinit var viewModel: MyProfileViewModel
@@ -50,11 +53,17 @@ class MyProfileFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         val recyclerViewTestHistory = bindings.rvTestResults
-        val adapterTestHistory = AdapterTestHistory()
+        val onClickListener = object : IOnClickListener {
+            override fun onItemClick(position: Int) {
+                findNavController().navigate(R.id.nav_solutions)
+            }
+
+        }
+        val adapterTestHistory = AdapterTestHistory(onClickListener)
         val tests = viewModel.getTests()
         adapterTestHistory.setDataSource(tests)
         recyclerViewTestHistory.adapter = adapterTestHistory
-        recyclerViewTestHistory.layoutManager= LinearLayoutManager(context)
+        recyclerViewTestHistory.layoutManager = LinearLayoutManager(context)
 
     }
 

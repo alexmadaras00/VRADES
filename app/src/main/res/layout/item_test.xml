@@ -12,14 +12,20 @@
             name="item"
             type="com.example.vrades.models.Test" />
     </data>
-
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="24dp"
+    android:layout_marginHorizontal="12dp"
+    android:elevation="0dp"
+    app:cardCornerRadius="10dp"
+    android:background="@drawable/item_test_background">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clItemTest"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginHorizontal="12dp"
-        android:background="@drawable/item_test_background">
+        android:layout_height="match_parent"
+        android:background="@drawable/item_test_background"
+      >
 
         <TextView
             android:id="@+id/tvDate"
@@ -75,4 +81,5 @@
             app:layout_constraintTop_toBottomOf="@+id/tvDate"
             app:srcCompat="@drawable/ic_baseline_library_books_24" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
 </layout>

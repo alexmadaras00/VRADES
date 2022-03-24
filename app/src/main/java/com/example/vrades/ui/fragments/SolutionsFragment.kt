@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentDetailsBinding
 import com.example.vrades.databinding.FragmentSolutionsBinding
+import com.example.vrades.ui.adapters.AdapterLifeHacks
 import com.example.vrades.viewmodels.SolutionsViewModel
 
 class SolutionsFragment : Fragment() {
@@ -21,7 +23,7 @@ class SolutionsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSolutionsBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
@@ -31,8 +33,21 @@ class SolutionsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SolutionsViewModel::class.java)
+        viewModel = ViewModelProvider(this)[SolutionsViewModel::class.java]
         // TODO: Use the ViewModel
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val recyclerViewLifeHacks = binding.rvLifeHacks
+        val adapterLifeHacks = AdapterLifeHacks()
+        val lifeHacks = viewModel.getLifeHacks()
+        if (lifeHacks != null) {
+            adapterLifeHacks.setDataSource(lifeHacks)
+        }
+        recyclerViewLifeHacks.adapter = adapterLifeHacks
+        recyclerViewLifeHacks.layoutManager = LinearLayoutManager(context)
+
     }
 
 }

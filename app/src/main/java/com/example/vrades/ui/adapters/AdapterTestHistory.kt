@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vrades.R
 import com.example.vrades.databinding.ItemTestBinding
 import com.example.vrades.enums.TestState
+import com.example.vrades.interfaces.IOnClickListener
 import com.example.vrades.models.Test
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-class AdapterTestHistory() : RecyclerView.Adapter<AdapterTestHistory.ViewHolder>() {
+class AdapterTestHistory(private val onClickListener: IOnClickListener) : RecyclerView.Adapter<AdapterTestHistory.ViewHolder>() {
     private var test = ArrayList<Test>()
 
     @SuppressLint("WeekBasedYear")
@@ -25,6 +25,7 @@ class AdapterTestHistory() : RecyclerView.Adapter<AdapterTestHistory.ViewHolder>
         return dtf.format(time)
     }
 
+    
     inner class ViewHolder(private val binding: ItemTestBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @RequiresApi(Build.VERSION_CODES.O)
@@ -44,6 +45,7 @@ class AdapterTestHistory() : RecyclerView.Adapter<AdapterTestHistory.ViewHolder>
                     binding.ivWriting.setColorFilter(R.color.white)
                 }
             }
+
             binding.executePendingBindings()
         }
     }
@@ -62,10 +64,14 @@ class AdapterTestHistory() : RecyclerView.Adapter<AdapterTestHistory.ViewHolder>
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: AdapterTestHistory.ViewHolder, position: Int) {
         holder.bind(test[position])
+        holder.itemView.setOnClickListener{
+            onClickListener.onItemClick(position)
+        }
     }
 
     override fun getItemCount(): Int {
         return test.size
     }
+
 
 }

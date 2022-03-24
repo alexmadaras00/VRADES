@@ -79,8 +79,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                app:flow_firstHorizontalBias="0.5"
+                app:flow_horizontalAlign="center"
+                app:flow_horizontalBias="0.5"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintGuide_begin="186dp"
+                app:layout_constraintGuide_percent="0.5"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -127,8 +130,8 @@
                 android:id="@+id/Chart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:displayChart="@{viewModel.pieChart}"
                 android:layout_marginTop="20dp"
+                android:displayChart="@{viewModel.pieChart}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"

@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.anychart.AnyChart
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentDetailsBinding
 import com.example.vrades.databinding.FragmentResultsBinding
 import com.example.vrades.viewmodels.DetailsViewModel
 import com.example.vrades.viewmodels.ResultsViewModel
+import com.example.vrades.viewmodels.SolutionsViewModel
 
 
 class DetailsFragment : Fragment() {
@@ -33,6 +35,11 @@ class DetailsFragment : Fragment() {
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root
+    }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel = ViewModelProvider(this)[DetailsViewModel::class.java]
+        // TODO: Use the ViewModel
     }
 
     override fun onStart() {

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.example.vrades.models.LifeHack" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clLifeHackItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/background_item_lifehack"
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/tvLifeHackName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ibm_plex_sans_bold"
+            android:text="@string/meditate"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivLifeHackIcon"
+            app:layout_constraintTop_toTopOf="@+id/ivLifeHackIcon" />
+
+        <ImageView
+            android:id="@+id/ivLifeHackIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/meditation_icon_138394" />
+
+        <TextView
+            android:id="@+id/tvLifeHackDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ibm_plex_sans"
+            android:text="@string/_20_min_day"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvLifeHackName"
+            app:layout_constraintStart_toStartOf="@+id/tvLifeHackName"
+            app:layout_constraintTop_toBottomOf="@+id/tvLifeHackName" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

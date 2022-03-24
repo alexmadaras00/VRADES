@@ -39,4 +39,24 @@
         android:id="@+id/nav_face"
         android:name="com.example.vrades.ui.fragments.FaceDetectionFragment"
         android:label="FaceDetectionFragment" />
+    <fragment
+        android:id="@+id/nav_solutions"
+        android:name="com.example.vrades.ui.fragments.SolutionsFragment"
+        android:label="SolutionsFragment" />
+    <fragment
+        android:id="@+id/nav_details"
+        android:name="com.example.vrades.ui.fragments.DetailsFragment"
+        android:label="DetailsFragment" />
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.vrades.ui.fragments.MyProfileFragment"
+        android:label="MyProfileFragment" />
+    <fragment
+        android:id="@+id/nav_results"
+        android:name="com.example.vrades.ui.fragments.ResultsFragment"
+        android:label="ResultsFragment" />
+    <fragment
+        android:id="@+id/nav_test"
+        android:name="com.example.vrades.ui.fragments.TestFragment"
+        android:label="TestFragment" />
 </navigation>

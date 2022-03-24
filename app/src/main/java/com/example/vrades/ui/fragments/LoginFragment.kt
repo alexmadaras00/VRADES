@@ -6,8 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.vrades.R
-import com.example.vrades.databinding.LoginFragmentBinding
+import com.example.vrades.databinding.FragmentLoginBinding
 import com.example.vrades.viewmodels.LoginViewModel
 
 class LoginFragment : Fragment() {
@@ -16,7 +15,7 @@ class LoginFragment : Fragment() {
         fun newInstance() = LoginFragment()
     }
 
-    private val _bindings: LoginFragmentBinding? = null
+    private val _bindings: FragmentLoginBinding? = null
     private var bindings = _bindings!!
     private lateinit var viewModel: LoginViewModel
 
@@ -28,7 +27,7 @@ class LoginFragment : Fragment() {
             this,
             ViewModelProvider.NewInstanceFactory()
         )[LoginViewModel::class.java]
-        bindings = LoginFragmentBinding.inflate(inflater)
+        bindings = FragmentLoginBinding.inflate(inflater)
         bindings.lifecycleOwner = this
         bindings.viewModel = viewModel
         bindings.executePendingBindings()

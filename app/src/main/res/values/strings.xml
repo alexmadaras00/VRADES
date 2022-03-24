@@ -108,4 +108,14 @@
     <string name="see_the_details">See the details!</string>
     <string name="chart_results">Chart Results</string>
     <string name="dominant_emotion">Dominant Emotion:</string>
+    <string name="meditate">Meditate</string>
+    <string name="_20_min_day">20 min/day</string>
+    <string name="review">Review</string>
+    <string name="latest_result_content">Latest Result: CONTENT</string>
+    <string name="audio_test">Audio Test</string>
+    <string name="do_you_agree_to_receive_lifestyle_feedback_generated_by_the_test_completion">Do you agree to receive lifestyle feedback generated after completing the test?</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="enter_your_e_mail_and_you_will_receive_a_recovery_code">Enter your e-mail and you will receive a recovery code.</string>
+    <string name="submit">Submit</string>
 </resources>

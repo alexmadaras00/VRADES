@@ -8,7 +8,7 @@ import com.example.vrades.ui.fragments.LoginFragment
 
 class LoginViewModel : ViewModel() {
     // TODO: Implement the ViewModel
-    fun navigateTo(view: View, destination: Int){
+    fun navigateTo(view: View, destination: Int) {
         val action = LoginFragment::class.java
         Navigation.findNavController(view).navigate(destination)
     }
