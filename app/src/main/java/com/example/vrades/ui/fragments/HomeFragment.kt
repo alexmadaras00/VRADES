@@ -1,15 +1,12 @@
 package com.example.vrades.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.vrades.R
-import com.example.vrades.databinding.FragmentFaceDetectionBinding
 import com.example.vrades.databinding.FragmentHomeBinding
-import com.example.vrades.databinding.LoginFragmentBinding
-import com.example.vrades.viewmodels.TestViewModel
 
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -29,7 +26,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         // Inflate the layout for this fragment
         bindings = FragmentHomeBinding.inflate(inflater)
         bindings.lifecycleOwner = this
-
         bindings.executePendingBindings()
         return bindings.root
     }

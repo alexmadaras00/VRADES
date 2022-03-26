@@ -1,16 +1,14 @@
 package com.example.vrades.ui.fragments.tutorial
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentTutorialPersonalQuestionsBinding
-import com.example.vrades.databinding.LoginFragmentBinding
 import com.example.vrades.ui.adapters.AdapterQuestions
-import com.example.vrades.viewmodels.LoginViewModel
 import com.example.vrades.viewmodels.TutorialViewModel
 
 
@@ -29,6 +27,7 @@ class TutorialPersonalQuestionsFragment : Fragment(R.layout.fragment_tutorial_pe
         // Inflate the layout for this fragment
         bindings= FragmentTutorialPersonalQuestionsBinding.inflate(inflater)
         bindings.viewModel =  viewModel
+        bindings.lifecycleOwner = this
         bindings.executePendingBindings()
         return bindings.root
     }

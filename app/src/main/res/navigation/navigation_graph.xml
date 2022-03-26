@@ -8,13 +8,12 @@
     <fragment
         android:id="@+id/nav_login"
         android:name="com.example.vrades.ui.fragments.LoginFragment"
-        android:label="login_fragment"
-        tools:layout="@layout/fragment_login">
-    </fragment>
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login"></fragment>
     <fragment
         android:id="@+id/nav_register"
         android:name="com.example.vrades.ui.fragments.RegisterFragment"
-        android:label="register_fragment"
+        android:label="fragment_register"
         tools:layout="@layout/fragment_register">
 
     </fragment>
