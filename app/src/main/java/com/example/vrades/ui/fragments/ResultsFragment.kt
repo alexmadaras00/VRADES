@@ -18,7 +18,7 @@ import com.example.vrades.viewmodels.SettingsViewModel
 class ResultsFragment : DialogFragment() {
 
     private lateinit var viewModel: ResultsViewModel
-    private val _binding: FragmentResultsBinding? = null
+    private var _binding: FragmentResultsBinding? = null
     var binding = _binding!!
 
 
@@ -45,6 +45,10 @@ class ResultsFragment : DialogFragment() {
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         return dialog
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 

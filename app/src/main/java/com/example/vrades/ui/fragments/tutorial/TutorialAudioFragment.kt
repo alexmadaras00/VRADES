@@ -16,7 +16,7 @@ import com.example.vrades.viewmodels.TutorialViewModel
 class TutorialAudioFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var viewModel: TutorialViewModel
-    private val _binding: FragmentTutorialAudioBinding? = null
+    private var _binding: FragmentTutorialAudioBinding? = null
     var binding = _binding!!
 
     override fun onCreateView(
@@ -28,6 +28,10 @@ class TutorialAudioFragment : Fragment() {
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

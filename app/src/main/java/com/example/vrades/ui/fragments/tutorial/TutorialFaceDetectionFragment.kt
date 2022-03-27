@@ -14,7 +14,7 @@ import com.example.vrades.viewmodels.TutorialViewModel
 class TutorialFaceDetectionFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var viewModel: TutorialViewModel
-    private val _binding: FragmentTutorialFaceDetectionBinding? = null
+    private var _binding: FragmentTutorialFaceDetectionBinding? = null
     var binding = _binding!!
 
     override fun onCreateView(
@@ -27,6 +27,8 @@ class TutorialFaceDetectionFragment : Fragment() {
         binding.executePendingBindings()
         return binding.root
     }
-
-
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

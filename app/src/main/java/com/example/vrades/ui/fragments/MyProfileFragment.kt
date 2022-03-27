@@ -24,7 +24,7 @@ class MyProfileFragment : Fragment() {
         fun newInstance() = MyProfileFragment()
     }
 
-    private val _bindings: FragmentMyProfileBinding? = null
+    private var _bindings: FragmentMyProfileBinding? = null
     private var bindings = _bindings!!
     private lateinit var viewModel: MyProfileViewModel
 
@@ -65,6 +65,10 @@ class MyProfileFragment : Fragment() {
         recyclerViewTestHistory.adapter = adapterTestHistory
         recyclerViewTestHistory.layoutManager = LinearLayoutManager(context)
 
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        _bindings = null
     }
 
 }

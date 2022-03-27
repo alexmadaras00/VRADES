@@ -14,7 +14,7 @@ import com.example.vrades.viewmodels.TestViewModel
 
 class WritingTestFragment : Fragment() {
 
-    private val _bindings: FragmentWritingTestBinding? = null
+    private var _bindings: FragmentWritingTestBinding? = null
     private var bindings = _bindings!!
     private lateinit var viewModel: TestViewModel
 
@@ -31,6 +31,10 @@ class WritingTestFragment : Fragment() {
         bindings.lifecycleOwner = this
         bindings.executePendingBindings()
         return bindings.root
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        _bindings = null
     }
 
 }

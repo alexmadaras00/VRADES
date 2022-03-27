@@ -14,7 +14,7 @@ import com.example.vrades.viewmodels.TutorialViewModel
 class TutorialFinishedFragment : Fragment() {
 
     private lateinit var viewModel: TutorialViewModel
-    private val _binding: FragmentTutorialFinishedBinding? = null
+    private var _binding: FragmentTutorialFinishedBinding? = null
     var binding = _binding!!
 
     override fun onCreateView(
@@ -26,6 +26,10 @@ class TutorialFinishedFragment : Fragment() {
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

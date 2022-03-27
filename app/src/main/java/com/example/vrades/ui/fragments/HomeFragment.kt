@@ -11,7 +11,7 @@ import com.example.vrades.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
-    private val _bindings: FragmentHomeBinding? = null
+    private var _bindings: FragmentHomeBinding? = null
     private var bindings = _bindings!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +28,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         bindings.lifecycleOwner = this
         bindings.executePendingBindings()
         return bindings.root
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        _bindings = null
     }
 
 }

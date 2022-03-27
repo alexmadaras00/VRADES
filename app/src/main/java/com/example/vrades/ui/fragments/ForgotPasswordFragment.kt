@@ -34,4 +34,8 @@ class ForgotPasswordFragment : Fragment() {
     override fun onStart() {
         super.onStart()
     }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

@@ -17,7 +17,7 @@ class SolutionsFragment : Fragment() {
 
 
     private lateinit var viewModel: SolutionsViewModel
-    private val _binding: FragmentSolutionsBinding? = null
+    private var _binding: FragmentSolutionsBinding? = null
     var binding = _binding!!
 
     override fun onCreateView(
@@ -48,6 +48,10 @@ class SolutionsFragment : Fragment() {
         recyclerViewLifeHacks.adapter = adapterLifeHacks
         recyclerViewLifeHacks.layoutManager = LinearLayoutManager(context)
 
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

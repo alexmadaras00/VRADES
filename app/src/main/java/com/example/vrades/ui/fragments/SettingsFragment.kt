@@ -18,7 +18,7 @@ class SettingsFragment : Fragment() {
         fun newInstance() = SettingsFragment()
     }
     private lateinit var viewModel: SettingsViewModel
-    private val _binding: FragmentSettingsBinding? = null
+    private var _binding: FragmentSettingsBinding? = null
     var binding = _binding!!
 
     override fun onCreateView(
@@ -29,6 +29,10 @@ class SettingsFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.executePendingBindings()
         return binding.root
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 

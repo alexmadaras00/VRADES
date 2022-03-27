@@ -15,7 +15,7 @@ class LoginFragment : Fragment() {
         fun newInstance() = LoginFragment()
     }
 
-    private val _bindings: FragmentLoginBinding? = null
+    private var _bindings: FragmentLoginBinding? = null
     private var bindings = _bindings!!
     private lateinit var viewModel: LoginViewModel
 
@@ -37,6 +37,10 @@ class LoginFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        _bindings = null
     }
 
 
