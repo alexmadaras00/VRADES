@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.vrades.databinding.FragmentLoginBinding
 import com.example.vrades.viewmodels.LoginViewModel
+import com.example.vrades.viewmodels.SolutionsViewModel
 
 class LoginFragment : Fragment() {
 
@@ -15,32 +16,34 @@ class LoginFragment : Fragment() {
         fun newInstance() = LoginFragment()
     }
 
-    private var _bindings: FragmentLoginBinding? = null
-    private var bindings = _bindings!!
+    private var _binding: FragmentLoginBinding? = null
+    private val binding get() = _binding!!
     private lateinit var viewModel: LoginViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        )[LoginViewModel::class.java]
-        bindings = FragmentLoginBinding.inflate(inflater)
-        bindings.lifecycleOwner = this
-        bindings.viewModel = viewModel
-        bindings.executePendingBindings()
-        return bindings.root
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+        _binding = FragmentLoginBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+        binding.executePendingBindings()
+        return binding.root
 
     }
 
     override fun onStart() {
         super.onStart()
+        val loginButton = binding.btnLogIn
+        loginButton.setOnClickListener {
+            find
+        }
     }
+
     override fun onDestroy() {
         super.onDestroy()
-        _bindings = null
+        _binding = null
     }
 
 

@@ -26,7 +26,7 @@
         android:paddingStart="20dp"
         android:paddingTop="80dp"
         android:paddingEnd="20dp"
-        android:paddingBottom="120dp"
+        android:paddingBottom="80dp"
         tools:context=".ui.fragments.LoginFragment">
 
         <include
@@ -46,7 +46,7 @@
             android:id="@+id/tvEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="180dp"
+            android:layout_marginTop="150dp"
             android:fontFamily="@font/ibm_plex_sans_light"
             android:text="@string/e_mail"
             android:textColor="@color/white"

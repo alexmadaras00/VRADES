@@ -9,7 +9,11 @@
         android:id="@+id/nav_login"
         android:name="com.example.vrades.ui.fragments.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login"></fragment>
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_nav_login_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
     <fragment
         android:id="@+id/nav_register"
         android:name="com.example.vrades.ui.fragments.RegisterFragment"
@@ -35,10 +39,6 @@
         android:name="com.example.vrades.ui.fragments.SettingsFragment"
         android:label="SettingsFragment" />
     <fragment
-        android:id="@+id/nav_face"
-        android:name="com.example.vrades.ui.fragments.FaceDetectionFragment"
-        android:label="FaceDetectionFragment" />
-    <fragment
         android:id="@+id/nav_solutions"
         android:name="com.example.vrades.ui.fragments.SolutionsFragment"
         android:label="SolutionsFragment" />
@@ -58,4 +58,20 @@
         android:id="@+id/nav_test"
         android:name="com.example.vrades.ui.fragments.TestFragment"
         android:label="TestFragment" />
+    <navigation
+        android:id="@+id/nav_graph_test"
+        app:startDestination="@id/nav_writing">
+        <fragment
+            android:id="@+id/nav_writing"
+            android:name="com.example.vrades.ui.fragments.WritingTestFragment"
+            android:label="WritingTestFragment" />
+        <fragment
+            android:id="@+id/nav_face"
+            android:name="com.example.vrades.ui.fragments.FaceDetectionFragment"
+            android:label="FaceDetectionFragment" />
+        <fragment
+            android:id="@+id/nav_audio"
+            android:name="com.example.vrades.ui.fragments.AudioTestFragment"
+            android:label="AudioTestFragment" />
+    </navigation>
 </navigation>

@@ -17,22 +17,16 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
 
     lateinit var job: Job
-    private lateinit var _binding: ActivityMainBinding
-    var binding = _binding
+    private lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         job = lifecycleScope.launch(Dispatchers.Main) {
             }
         binding = ActivityMainBinding.inflate(layoutInflater)
-        binding.lifecycleOwner = this
-        binding.executePendingBindings()
         val view = binding.root
         setContentView(view)
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(binding.navHostFragment.id) as NavHostFragment
-        val navController = navHostFragment.navController
-        navController.navigate(R.id.nav_login)
 
     }
 
