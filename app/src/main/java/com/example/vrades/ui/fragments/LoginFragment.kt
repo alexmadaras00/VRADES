@@ -1,14 +1,14 @@
 package com.example.vrades.ui.fragments
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.vrades.databinding.FragmentLoginBinding
 import com.example.vrades.viewmodels.LoginViewModel
-import com.example.vrades.viewmodels.SolutionsViewModel
 
 class LoginFragment : Fragment() {
 
@@ -36,9 +36,21 @@ class LoginFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         val loginButton = binding.btnLogIn
+        val forgotPasswordTextView = binding.tvForgotPassword
+        val noAccountTextView = binding.tvNoAccount
+        val actionHome = LoginFragmentDirections.actionNavLoginToNavHome()
+        val actionForgot = LoginFragmentDirections.actionNavLoginToNavForgot()
+        val actionRegister = LoginFragmentDirections.actionNavLoginToNavRegister()
         loginButton.setOnClickListener {
-            find
+            findNavController().navigate(actionHome)
         }
+        forgotPasswordTextView.setOnClickListener {
+            findNavController().navigate(actionForgot)
+        }
+        noAccountTextView.setOnClickListener {
+            findNavController().navigate(actionRegister)
+        }
+
     }
 
     override fun onDestroy() {

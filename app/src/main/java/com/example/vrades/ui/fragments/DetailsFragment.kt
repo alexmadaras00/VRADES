@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.anychart.AnyChart
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentDetailsBinding
 import com.example.vrades.databinding.FragmentResultsBinding
+import com.example.vrades.enums.TestState
 import com.example.vrades.viewmodels.DetailsViewModel
 import com.example.vrades.viewmodels.ResultsViewModel
 import com.example.vrades.viewmodels.SolutionsViewModel
@@ -30,15 +32,17 @@ class DetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        viewModel = ViewModelProvider(this)[DetailsViewModel::class.java]
         binding = FragmentDetailsBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[DetailsViewModel::class.java]
+
         // TODO: Use the ViewModel
     }
 
@@ -46,7 +50,19 @@ class DetailsFragment : Fragment() {
         super.onStart()
         val pie = AnyChart.pie()
         val chart = viewModel.getPieChart()
-        binding.Chart.setChart(chart)
+        val state = viewModel.getState()
+        binding.apply {
+            val imageChart = Chart
+            val buttonBack = btnBackDetails
+            imageChart.setChart(chart)
+            buttonBack.setOnClickListener {
+                if (state == TestState.WRITING_DETECTION_COMPLETED) {
+                    findNavController().navigate(DetailsFragmentDirections.actionNavDetailsToNavHome())
+                } else findNavController().navigate(DetailsFragmentDirections.actionNavDetailsToNavResults())
+            }
+
+        }
+
     }
 
 }

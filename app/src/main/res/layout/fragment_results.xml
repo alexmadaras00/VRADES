@@ -153,13 +153,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:flow_firstHorizontalBias="0.5"
+                    app:flow_firstHorizontalBias="0.2"
                     app:flow_horizontalAlign="center"
-                    app:flow_horizontalBias="0.5"
+                    app:flow_horizontalBias="0.2"
 
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintGuide_percent="0.5"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_bias="0.2"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView

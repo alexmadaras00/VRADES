@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="android.view.View" />
     </data>
 
@@ -12,17 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_app"
-        android:paddingStart="20dp"
-        android:paddingTop="80dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="80dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="48dp"
         tools:context=".ui.fragments.AboutFragment">
 
         <include
             android:id="@+id/include"
             layout="@layout/container_auth_layout"
-            android:paddingHorizontal="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:paddingHorizontal="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -47,13 +45,12 @@
             android:id="@+id/ivAboutLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/info_white_48dp"
-            app:layout_constraintEnd_toEndOf="@+id/ivLineTopAbout"
             android:layout_marginTop="24dp"
-            app:layout_constraintHorizontal_bias="0.22"
-            app:layout_constraintStart_toStartOf="@+id/ivLineTopAbout"
-            app:layout_constraintTop_toBottomOf="@+id/ivLineTopAbout"
-            android:contentDescription="@string/about" />
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/about"
+            android:src="@drawable/info_white_48dp"
+            app:layout_constraintEnd_toStartOf="@+id/tvAboutTitle"
+            app:layout_constraintTop_toBottomOf="@+id/ivLineTopAbout" />
 
         <TextView
             android:id="@+id/tvAboutTitle"
@@ -62,12 +59,12 @@
             android:layout_marginStart="32dp"
             android:fontFamily="@font/ibm_plex_sans_bold"
             android:text="@string/about"
-            android:textSize="24sp"
             android:textColor="@color/white"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/ivAboutLogo"
-            app:layout_constraintStart_toEndOf="@+id/ivAboutLogo"
-            app:layout_constraintTop_toTopOf="@+id/ivAboutLogo"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivAboutLogo" />
 
         <TextView
             android:id="@+id/tvDisplaySuggestions"
@@ -75,8 +72,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
             android:layout_marginStart="2dp"
-            android:layout_marginTop="36dp"
-            android:fontFamily="@font/ibm_plex_sans_light"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/ibm_plex_sans"
             android:text='@string/vrades_about_description'
             android:textAlignment="center"
             android:textSize="18sp"
@@ -106,6 +103,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/follow_on_insta"
+            android:fontFamily="@font/pacifico"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/ivLineBottomAbout"
             app:layout_constraintStart_toStartOf="@+id/ivLineBottomAbout"
@@ -127,7 +125,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="24dp"
             android:background="@drawable/ic_baseline_arrow_back_24"
-
             android:contentDescription="@string/about"
             android:fontFamily="@font/ibm_plex_sans"
             android:insetRight="0dp"

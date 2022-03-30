@@ -10,6 +10,7 @@
         <variable
             name="viewModel"
             type="com.example.vrades.viewmodels.DetailsViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

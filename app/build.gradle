@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'com.google.gms.google-services'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 
 }
 
@@ -53,11 +54,12 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
     //Navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation 'androidx.fragment:fragment-ktx:1.4.1'
     implementation('android.arch.navigation:navigation-fragment-ktx:1.0.0')
     implementation('android.arch.navigation:navigation-common-ktx:1.0.0')
+
     //Jetpack
     implementation 'androidx.preference:preference-ktx:1.2.0'
     implementation 'com.google.android.material:material:1.4.0'
@@ -81,4 +83,7 @@ dependencies {
     implementation 'com.tbuonomo:dotsindicator:4.2'
     //Charts
     implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.13.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
 }

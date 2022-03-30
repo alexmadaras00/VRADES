@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.vrades.viewmodels.FaceDetectionViewModel" />
+            type="com.example.vrades.viewmodels.TestViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,30 +18,35 @@
         android:layout_height="match_parent"
         tools:context=".ui.fragments.TestFragment">
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_test"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@+id/bnNavigationTest"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/test_navigation" />
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bnNavigationTest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:animateLayoutChanges="true"
             android:animationCache="true"
-            android:background="@drawable/bottom_nav_back"
+            android:background="@drawable/bottom_nav_back_2"
+            android:paddingTop="10dp"
             app:itemHorizontalTranslationEnabled="true"
             app:itemIconTint="@color/black"
+            app:itemRippleColor="@color/white"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.08"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/bottom_nav_test_menu" />
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/nav_host_test"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="409dp"
-            android:layout_height="787dp"
-            app:defaultNavHost="true"
-            app:layout_constraintBottom_toTopOf="@+id/bnNavigationTest"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navGraph="@navigation/mobile_navigation" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -6,7 +6,9 @@
     <data>
 
         <import type="android.view.View" />
-
+        <variable
+            name="viewModel"
+            type="com.example.vrades.viewmodels.TestViewModel" />
 
     </data>
 

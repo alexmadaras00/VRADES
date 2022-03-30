@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/nav_login">
+    app:startDestination="@id/nav_home">
 
     <fragment
         android:id="@+id/nav_login"
@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_nav_login_to_nav_home"
             app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_nav_login_to_nav_register"
+            app:destination="@id/nav_register" />
+        <action
+            android:id="@+id/action_nav_login_to_nav_forgot"
+            app:destination="@id/nav_forgot" />
     </fragment>
     <fragment
         android:id="@+id/nav_register"
@@ -20,58 +26,113 @@
         android:label="fragment_register"
         tools:layout="@layout/fragment_register">
 
+        <action
+            android:id="@+id/action_nav_register_to_nav_login"
+            app:destination="@id/nav_login" />
     </fragment>
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.vrades.ui.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
-    <activity
-        android:id="@+id/splashScreenActivity"
-        android:name="com.example.vrades.ui.activities.SplashScreenActivity"
-        android:label="SplashScreenActivity" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_home_to_nav_profile"
+            app:destination="@id/nav_profile" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_settings"
+            app:destination="@id/nav_settings" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_about"
+            app:destination="@id/nav_about" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_test"
+            app:destination="@+id/nav_test" />
+        <action
+            android:id="@+id/action_nav_home_to_mobile_navigation"
+            app:destination="@+id/mobile_navigation" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_login"
+            app:destination="@id/nav_login" />
+    </fragment>
+
     <fragment
         android:id="@+id/nav_about"
         android:name="com.example.vrades.ui.fragments.AboutFragment"
-        android:label="AboutFragment" />
+        android:label="AboutFragment" >
+        <action
+            android:id="@+id/action_nav_about_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
     <fragment
         android:id="@+id/nav_settings"
         android:name="com.example.vrades.ui.fragments.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_nav_settings_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
     <fragment
         android:id="@+id/nav_solutions"
         android:name="com.example.vrades.ui.fragments.SolutionsFragment"
-        android:label="SolutionsFragment" />
+        android:label="SolutionsFragment" >
+        <action
+            android:id="@+id/action_nav_solutions_to_nav_profile"
+            app:destination="@id/nav_profile" />
+    </fragment>
     <fragment
         android:id="@+id/nav_details"
         android:name="com.example.vrades.ui.fragments.DetailsFragment"
-        android:label="DetailsFragment" />
+        android:label="DetailsFragment" >
+        <action
+            android:id="@+id/action_nav_details_to_nav_results"
+            app:destination="@id/nav_results" />
+        <action
+            android:id="@+id/action_nav_details_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
     <fragment
         android:id="@+id/nav_profile"
         android:name="com.example.vrades.ui.fragments.MyProfileFragment"
-        android:label="MyProfileFragment" />
+        android:label="MyProfileFragment" >
+        <action
+            android:id="@+id/action_nav_profile_to_nav_solutions"
+            app:destination="@id/nav_solutions" />
+        <action
+            android:id="@+id/action_nav_profile_to_nav_results"
+            app:destination="@id/nav_results" />
+    </fragment>
     <fragment
         android:id="@+id/nav_results"
         android:name="com.example.vrades.ui.fragments.ResultsFragment"
-        android:label="ResultsFragment" />
+        android:label="ResultsFragment" >
+        <action
+            android:id="@+id/action_nav_results_to_nav_profile"
+            app:destination="@id/nav_profile" />
+        <action
+            android:id="@+id/action_nav_results_to_nav_details"
+            app:destination="@id/nav_details" />
+    </fragment>
     <fragment
         android:id="@+id/nav_test"
         android:name="com.example.vrades.ui.fragments.TestFragment"
-        android:label="TestFragment" />
-    <navigation
-        android:id="@+id/nav_graph_test"
-        app:startDestination="@id/nav_writing">
-        <fragment
-            android:id="@+id/nav_writing"
-            android:name="com.example.vrades.ui.fragments.WritingTestFragment"
-            android:label="WritingTestFragment" />
-        <fragment
-            android:id="@+id/nav_face"
-            android:name="com.example.vrades.ui.fragments.FaceDetectionFragment"
-            android:label="FaceDetectionFragment" />
-        <fragment
-            android:id="@+id/nav_audio"
-            android:name="com.example.vrades.ui.fragments.AudioTestFragment"
-            android:label="AudioTestFragment" />
-    </navigation>
+        android:label="TestFragment" >
+        <action
+            android:id="@+id/action_nav_test_to_nav_home"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_nav_test_to_nav_details"
+            app:destination="@id/nav_details" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_forgot"
+        android:name="com.example.vrades.ui.fragments.ForgotPasswordFragment"
+        android:label="ForgotPasswordFragment">
+        <action
+            android:id="@+id/action_nav_forgot_to_nav_login"
+            app:destination="@id/nav_login" />
+    </fragment>
+    <activity
+        android:id="@+id/splashScreenActivity"
+        android:name="com.example.vrades.ui.activities.StartActivity"
+        android:label="SplashScreenActivity" />
 </navigation>

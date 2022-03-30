@@ -15,7 +15,6 @@ import com.example.vrades.databinding.FragmentMyProfileBinding
 import com.example.vrades.interfaces.IOnClickListener
 
 import com.example.vrades.ui.adapters.AdapterTestHistory
-import com.example.vrades.viewmodels.LoginViewModel
 import com.example.vrades.viewmodels.MyProfileViewModel
 
 class MyProfileFragment : Fragment() {
@@ -24,35 +23,30 @@ class MyProfileFragment : Fragment() {
         fun newInstance() = MyProfileFragment()
     }
 
-    private var _bindings: FragmentMyProfileBinding? = null
-    private var bindings = _bindings!!
+    private var _binding: FragmentMyProfileBinding? = null
+    private val binding get() = _binding!!
     private lateinit var viewModel: MyProfileViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         viewModel = ViewModelProvider(
             this,
             ViewModelProvider.NewInstanceFactory()
         )[MyProfileViewModel::class.java]
-        bindings = FragmentMyProfileBinding.inflate(inflater)
-        bindings.lifecycleOwner = this
-        bindings.viewModel = viewModel
-        bindings.executePendingBindings()
-        return bindings.root
+        _binding = FragmentMyProfileBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+        binding.executePendingBindings()
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MyProfileViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onStart() {
         super.onStart()
-        val recyclerViewTestHistory = bindings.rvTestResults
+        val recyclerViewTestHistory = binding.rvTestResults
         val onClickListener = object : IOnClickListener {
             override fun onItemClick(position: Int) {
                 findNavController().navigate(R.id.nav_solutions)
@@ -66,9 +60,10 @@ class MyProfileFragment : Fragment() {
         recyclerViewTestHistory.layoutManager = LinearLayoutManager(context)
 
     }
+
     override fun onDestroy() {
         super.onDestroy()
-        _bindings = null
+        _binding = null
     }
 
 }

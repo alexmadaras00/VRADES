@@ -59,7 +59,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="24dp"
                 android:adjustViewBounds="true"
-                android:background="@android:color/transparent"
+
                 android:clickable="true"
                 android:contentDescription="@string/profile"
                 android:elevation="5dp"

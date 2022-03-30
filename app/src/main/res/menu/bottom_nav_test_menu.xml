@@ -2,27 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-
-        android:id="@+id/miPersonalQuestions"
-        android:icon="@drawable/quiz_black_48dp"
-        android:visible="true"
-        android:title="" />
-    <item
-
-        android:id="@+id/miWritingDetection"
-        android:icon="@drawable/library_books_black_48dp"
-        android:visible="true"
-        android:title="" />
-    <item
-
-        android:id="@+id/miAudioDetection"
-        android:icon="@drawable/settings_voice_black_48dp"
-        android:visible="true"
-        android:title="" />
-    <item
-
-        android:id="@+id/miFaceDetection"
+        android:id="@+id/nav_face"
         android:icon="@drawable/face_black_48dp"
-        android:visible="true"
-        android:title="" />
+        android:title=""
+        android:visible="true" />
+    <item
+        android:id="@+id/nav_audio"
+        android:icon="@drawable/settings_voice_black_48dp"
+        android:title=""
+        android:visible="true" />
+
+    <item
+        android:id="@+id/nav_writing"
+        android:icon="@drawable/library_books_black_48dp"
+        android:title=""
+        android:visible="true" />
 </menu>

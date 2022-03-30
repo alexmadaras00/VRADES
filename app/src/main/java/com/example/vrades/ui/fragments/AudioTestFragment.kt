@@ -5,18 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.vrades.R
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.vrades.databinding.FragmentAudioTestBinding
-import com.example.vrades.databinding.FragmentFaceDetectionBinding
-import com.example.vrades.databinding.FragmentHomeBinding
+import com.example.vrades.enums.TestState
+import com.example.vrades.viewmodels.LoginViewModel
 import com.example.vrades.viewmodels.TestViewModel
 
 
 class AudioTestFragment : Fragment() {
 
 
-    private val _bindings: FragmentAudioTestBinding? = null
-    private var bindings = _bindings!!
+    private var _binding: FragmentAudioTestBinding? = null
+    private val binding get() = _binding!!
     private lateinit var viewModel: TestViewModel
 
     companion object {
@@ -28,10 +29,34 @@ class AudioTestFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        bindings = FragmentAudioTestBinding.inflate(inflater)
-        bindings.lifecycleOwner = this
-        bindings.executePendingBindings()
-        return bindings.root
+        viewModel = ViewModelProvider(this)[TestViewModel::class.java]
+        _binding = FragmentAudioTestBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+        binding.executePendingBindings()
+        return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val state = viewModel.getState()
+        binding.apply {
+            if (state == TestState.AUDIO_DETECTION_COMPLETED) {
+                val buttonNext = btnNext
+                val buttonRestart = btnRestart
+                buttonNext.setOnClickListener {
+                    findNavController().navigate(AudioTestFragmentDirections.actionAudioTestFragmentToWritingTestFragment())
+                }
+                buttonRestart.setOnClickListener {
+                    findNavController().navigate(AudioTestFragmentDirections.actionAudioTestFragmentSelf())
+                }
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 

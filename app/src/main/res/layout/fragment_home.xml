@@ -15,62 +15,63 @@
         android:background="@drawable/background_app"
         tools:context=".ui.fragments.HomeFragment">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent="0.95" />
+
         <ImageButton
             android:id="@+id/btnSettings"
             style="@style/Icons"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginTop="24dp"
-            android:background="@drawable/settings_white_36dp"
+            android:background="@drawable/ic_settings_white_36dp"
             android:contentDescription="@string/settings_button"
-            app:icon="@drawable/settings_white_36dp"
+            app:icon="@drawable/ic_settings_white_36dp"
             app:iconSize="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/btnShare"
-            style="@style/Icons"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/share_white_36dp"
-            android:contentDescription="@string/settings_button"
-            app:icon="@drawable/share_white_36dp"
-            app:iconSize="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/btnSettings"
-            app:layout_constraintEnd_toStartOf="@+id/btnSettings"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/gdlRight"
+            app:layout_constraintHeight_percent="0.045"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.1"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <ImageView
             android:id="@+id/ivLogoMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
             android:contentDescription="@string/logo"
             android:scaleType="centerInside"
             android:src="@drawable/logo"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.58"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.050000012" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAbout"
             style="@style/MenuButton"
             android:text="@string/about"
+            android:textAlignment="center"
             app:icon="@drawable/info_white_48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivLogoMenu" />
+            app:layout_constraintEnd_toStartOf="@+id/gdlRight"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@+id/gdlLeft"
+            app:layout_constraintTop_toTopOf="@+id/gdGuideline1" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDetect"
             style="@style/MenuButton"
             android:text="@string/detect_it"
             app:icon="@drawable/detect_icon"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/gdlRight"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/gdlLeft"
             app:layout_constraintTop_toBottomOf="@+id/btnAbout" />
 
         <com.google.android.material.button.MaterialButton
@@ -78,9 +79,9 @@
             style="@style/MenuButton"
             android:text="@string/tutorial"
             app:icon="@drawable/tutorial_icon"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btnDetect"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/btnDetect"
             app:layout_constraintTop_toBottomOf="@+id/btnDetect" />
 
         <com.google.android.material.button.MaterialButton
@@ -88,10 +89,26 @@
             style="@style/MenuButton"
             android:text="@string/my_profile"
             app:icon="@drawable/profile_icon"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btnTutorial"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/btnDetect"
             app:layout_constraintTop_toBottomOf="@+id/btnTutorial" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdGuideline1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="0dp"
+            app:layout_constraintGuide_percent="0.28" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent="0.05" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

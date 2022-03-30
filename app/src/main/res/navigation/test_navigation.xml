@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/test_navigation"
+    app:startDestination="@id/nav_face">
+
+    <fragment
+        android:id="@+id/nav_audio"
+        android:name="com.example.vrades.ui.fragments.AudioTestFragment"
+        android:label="AudioTestFragment" >
+        <action
+            android:id="@+id/action_audioTestFragment_to_writingTestFragment"
+            app:destination="@id/nav_writing" />
+        <action
+            android:id="@+id/action_audioTestFragment_self"
+            app:destination="@id/nav_audio" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_face"
+        android:name="com.example.vrades.ui.fragments.FaceDetectionFragment"
+        android:label="FaceDetectionFragment" >
+        <action
+            android:id="@+id/action_faceDetectionFragment_to_audioTestFragment"
+            app:destination="@id/nav_audio" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_writing"
+        android:name="com.example.vrades.ui.fragments.WritingTestFragment"
+        android:label="WritingTestFragment" >
+        <action
+            android:id="@+id/action_nav_writing_self"
+            app:destination="@id/nav_writing" />
+    </fragment>
+</navigation>

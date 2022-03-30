@@ -18,24 +18,20 @@ class SolutionsFragment : Fragment() {
 
     private lateinit var viewModel: SolutionsViewModel
     private var _binding: FragmentSolutionsBinding? = null
-    var binding = _binding!!
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSolutionsBinding.inflate(inflater)
+        viewModel = ViewModelProvider(this)[SolutionsViewModel::class.java]
+        _binding = FragmentSolutionsBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[SolutionsViewModel::class.java]
-        // TODO: Use the ViewModel
-    }
 
     override fun onStart() {
         super.onStart()
@@ -49,6 +45,7 @@ class SolutionsFragment : Fragment() {
         recyclerViewLifeHacks.layoutManager = LinearLayoutManager(context)
 
     }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

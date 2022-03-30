@@ -43,7 +43,7 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="vrades_about_description">VRADES is a project that started as my bachelor thesis. The title is an abbreviation from the thesis title: &quot; Validation of the recognition of automatically detected emotional states &quot;.\n The application is inspired from other emotion detection apps, by combining several emotional test types with new features such as being able to receive advice based on test results and keeping track of your tests.</string>
-    <string name="follow_on_insta">Follow us on\n Instagram</string>
+    <string name="follow_on_insta">Instagram</string>
     <string name="title_activity_tutorial">TutorialActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

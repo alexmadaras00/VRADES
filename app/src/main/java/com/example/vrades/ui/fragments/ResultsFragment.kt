@@ -8,11 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentResultsBinding
 import com.example.vrades.databinding.FragmentSettingsBinding
 import com.example.vrades.viewmodels.ResultsViewModel
 import com.example.vrades.viewmodels.SettingsViewModel
+import com.example.vrades.viewmodels.SolutionsViewModel
 
 
 class ResultsFragment : DialogFragment() {
@@ -30,13 +32,15 @@ class ResultsFragment : DialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        viewModel = ViewModelProvider(this)[ResultsViewModel::class.java]
         binding = FragmentResultsBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root
     }
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // The only reason you might override this method when using onCreateView() is
         // to modify any dialog characteristics. For example, the dialog includes a
@@ -46,11 +50,11 @@ class ResultsFragment : DialogFragment() {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         return dialog
     }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-
 
 
 }
