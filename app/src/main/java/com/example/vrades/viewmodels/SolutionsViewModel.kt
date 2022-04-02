@@ -11,10 +11,13 @@ class SolutionsViewModel : ViewModel() {
     private val lifeHacks: LiveData<ArrayList<LifeHack>> get() = _lifeHacks
     private val dataSet = lifeHacks.value
 
-    fun addLifeHacks() {
+    private fun addLifeHacks() {
         dataSet?.add(LifeHack("Meditation", R.drawable.meditation_icon_138394, "20min/day"))
         dataSet?.add(LifeHack("Jogging", R.drawable.ic_baseline_directions_run_24, "15min/day"))
     }
 
-    fun getLifeHacks() = dataSet
+    fun getLifeHacks(): ArrayList<LifeHack>? {
+        addLifeHacks()
+        return dataSet
+    }
 }

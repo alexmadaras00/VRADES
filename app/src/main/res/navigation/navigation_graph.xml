@@ -100,6 +100,9 @@
         <action
             android:id="@+id/action_nav_profile_to_nav_results"
             app:destination="@id/nav_results" />
+        <action
+            android:id="@+id/action_nav_profile_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
     <fragment
         android:id="@+id/nav_results"

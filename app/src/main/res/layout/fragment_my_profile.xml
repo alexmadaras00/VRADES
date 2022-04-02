@@ -19,23 +19,44 @@
         android:background="@drawable/background_app"
         tools:context=".ui.fragments.MyProfileFragment">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlTopProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_begin="44dp"
+            app:layout_constraintGuide_percent="0.05"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlBottomProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent="0.95"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clProfileContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_marginHorizontal="20dp"
-            android:paddingBottom="12dp"
-            android:layout_marginVertical="50dp"
             android:background="@drawable/container_form"
+            android:paddingBottom="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/gdlBottomProfile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="@+id/gdlTopProfile">
 
             <ImageButton
                 android:id="@+id/btnBackProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="24dp"
+                android:layout_marginStart="24dp"
                 android:background="@drawable/ic_baseline_arrow_back_24"
                 android:contentDescription="@string/about"
                 android:fontFamily="@font/ibm_plex_sans"
@@ -49,30 +70,22 @@
                 app:iconPadding="0dp"
                 app:iconTint="#FFFFFF"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/civProfilePicture"
                 app:strokeColor="@color/transparent" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/ivProfilePicture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civProfilePicture"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginTop="24dp"
-                android:adjustViewBounds="true"
-
-                android:clickable="true"
-                android:contentDescription="@string/profile"
-                android:elevation="5dp"
-                android:focusable="true"
-                android:maxWidth="100dp"
-                android:maxHeight="100dp"
-                android:scaleType="fitXY"
+                android:src="@drawable/me"
+                app:civ_border_width="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintHeight_percent="0.13"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/Profile"
-                app:srcCompat="@drawable/me" />
+                app:layout_constraintWidth_percent="0.26" />
 
             <ImageView
                 android:id="@+id/ivLineTopProfile"
@@ -94,9 +107,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:textSize="18sp"
-                android:text="@string/age"
                 android:fontFamily="@font/ibm_plex_sans_bold"
+                android:text="@string/age"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@+id/ivLineTopProfile"
                 app:layout_constraintTop_toBottomOf="@+id/ivLineTopProfile" />
 
@@ -104,34 +117,12 @@
                 android:id="@+id/tvCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/ibm_plex_sans_bold"
                 android:text="@string/country"
                 android:textSize="18sp"
-                android:fontFamily="@font/ibm_plex_sans_bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tvAge"
                 app:layout_constraintStart_toStartOf="@+id/gdlMiddle"
                 app:layout_constraintTop_toTopOf="@+id/tvAge" />
-
-            <TextView
-                android:id="@+id/tvOccupation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/occupation"
-                android:textSize="18sp"
-                android:fontFamily="@font/ibm_plex_sans_bold"
-                app:layout_constraintStart_toStartOf="@+id/tvAge"
-                app:layout_constraintTop_toBottomOf="@+id/tvAge" />
-
-            <TextView
-                android:id="@+id/tvRelligion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/confession"
-                android:textSize="18sp"
-                android:fontFamily="@font/ibm_plex_sans_bold"
-                app:layout_constraintBottom_toBottomOf="@+id/tvOccupation"
-                app:layout_constraintStart_toStartOf="@+id/gdlMiddle"
-                app:layout_constraintTop_toTopOf="@+id/tvOccupation" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gdlMiddle"
@@ -144,36 +135,38 @@
                 android:id="@+id/tvTestResults"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="24dp"
                 android:fontFamily="@font/ibm_plex_sans_bold"
                 android:text="@string/test_results"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvOccupation" />
+                app:layout_constraintTop_toBottomOf="@+id/tvCountry" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTestResults"
                 android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginHorizontal="12dp"
-                android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/recycler_view_profile_background"
-                tools:listitem="@layout/item_test"
-                tools:itemCount="3"
+                android:nestedScrollingEnabled="true"
                 android:paddingBottom="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.4"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTestResults" >
+                app:layout_constraintTop_toBottomOf="@+id/tvTestResults"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_test">
 
             </androidx.recyclerview.widget.RecyclerView>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDiary"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_height="0dp"
                 android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="36dp"
                 android:fontFamily="@font/ibm_plex_sans_bold"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
@@ -187,7 +180,8 @@
                 app:iconGravity="start"
                 app:iconTint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHeight_percent="0.07"
+                app:layout_constraintHorizontal_bias="0.666"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rvTestResults"
                 tools:visibility="visible" />
@@ -196,14 +190,24 @@
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:fontFamily="@font/ibm_plex_sans_bold"
                 android:text="Alex Madaras"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ivProfilePicture" />
+                app:layout_constraintTop_toBottomOf="@+id/civProfilePicture" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gdlnProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintGuide_percent="0.03"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.39" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

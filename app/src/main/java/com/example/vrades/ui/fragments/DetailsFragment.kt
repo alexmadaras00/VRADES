@@ -19,31 +19,21 @@ import com.example.vrades.viewmodels.SolutionsViewModel
 
 class DetailsFragment : Fragment() {
 
-    private val _binding: FragmentDetailsBinding? = null
-    var binding = _binding!!
+    private var _binding: FragmentDetailsBinding? = null
+    private val binding get() = _binding!!
     private lateinit var viewModel: DetailsViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         viewModel = ViewModelProvider(this)[DetailsViewModel::class.java]
-        binding = FragmentDetailsBinding.inflate(inflater)
+        _binding = FragmentDetailsBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        // TODO: Use the ViewModel
     }
 
     override fun onStart() {
@@ -64,5 +54,10 @@ class DetailsFragment : Fragment() {
         }
 
     }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
 
 }

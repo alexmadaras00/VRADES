@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentResultsBinding
 import com.example.vrades.databinding.FragmentSettingsBinding
@@ -21,26 +22,34 @@ class ResultsFragment : DialogFragment() {
 
     private lateinit var viewModel: ResultsViewModel
     private var _binding: FragmentResultsBinding? = null
-    var binding = _binding!!
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         viewModel = ViewModelProvider(this)[ResultsViewModel::class.java]
-        binding = FragmentResultsBinding.inflate(inflater)
+        _binding = FragmentResultsBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root
     }
 
+    override fun onStart() {
+        super.onStart()
+        binding.apply{
+            val buttonBack = btnBackResults
+            val buttonDetails = btnDetailedInfo
+            val navController = findNavController()
+            buttonDetails.setOnClickListener{
+                navController.navigate(ResultsFragmentDirections.actionNavResultsToNavDetails())
+            }
+            buttonBack.setOnClickListener {
+                navController.navigate(ResultsFragmentDirections.actionNavResultsToNavProfile())
+            }
+        }
+    }
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // The only reason you might override this method when using onCreateView() is
         // to modify any dialog characteristics. For example, the dialog includes a

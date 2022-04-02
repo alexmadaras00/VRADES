@@ -14,16 +14,17 @@ class DetailsViewModel : ViewModel() {
 
     var chartData = ArrayList<DataEntry>()
     var emotions = ArrayList<String>()
-    val pie = AnyChart.pie()
+    private val pie: Pie = AnyChart.pie()
     private val state = MutableLiveData<TestState>()
 
 
     fun getState(): TestState? {
         return state.value
     }
-    private fun addData() {
 
-        chartData.add(ValueDataEntry("JOY", 45))
+    private fun addData() {
+        emotions.add("ANGER")
+        emotions.add("CHILL")
         emotions.add("SADNESS")
         emotions.add("HAPPINESS")
         emotions.add("ANXIETY")
@@ -33,17 +34,15 @@ class DetailsViewModel : ViewModel() {
         emotions.add("STRESS")
         emotions.add("CONTENT")
         for (el in emotions)
-            chartData.add(ValueDataEntry(el, 45))
-
-
+            chartData.add(ValueDataEntry(el, 10))
     }
 
-    fun getData(): ArrayList<DataEntry> {
+    private fun getData(): ArrayList<DataEntry> {
         addData()
         return chartData
     }
 
-    fun configPie() {
+    private fun configPie() {
         val data = getData()
         pie.data(data)
     }

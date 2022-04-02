@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.core.view.ViewCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vrades.R
@@ -46,19 +47,33 @@ class MyProfileFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onStart() {
         super.onStart()
-        val recyclerViewTestHistory = binding.rvTestResults
-        val onClickListener = object : IOnClickListener {
-            override fun onItemClick(position: Int) {
-                findNavController().navigate(R.id.nav_solutions)
+        binding.apply {
+            val recyclerViewTestHistory = rvTestResults
+            val buttonAnalysis = btnDiary
+            val buttonBack = btnBackProfile
+            val navController = findNavController()
+            val onClickListener = object : IOnClickListener {
+                override fun onItemClick(position: Int) {
+                    navController.navigate(MyProfileFragmentDirections.actionNavProfileToNavSolutions())
+                }
+
+            }
+            val adapterTestHistory = AdapterTestHistory(onClickListener)
+            val tests = viewModel!!.getTests()
+            adapterTestHistory.setDataSource(tests)
+            recyclerViewTestHistory.adapter = adapterTestHistory
+            recyclerViewTestHistory.layoutManager = LinearLayoutManager(context)
+            recyclerViewTestHistory.setHasFixedSize(true)
+            recyclerViewTestHistory.isScrollContainer = true
+            recyclerViewTestHistory.hasNestedScrollingParent()
+            buttonAnalysis.setOnClickListener{
+                navController.navigate(MyProfileFragmentDirections.actionNavProfileToNavResults())
+            }
+            buttonBack.setOnClickListener{
+                navController.navigate(MyProfileFragmentDirections.actionNavProfileToNavHome())
             }
 
         }
-        val adapterTestHistory = AdapterTestHistory(onClickListener)
-        val tests = viewModel.getTests()
-        adapterTestHistory.setDataSource(tests)
-        recyclerViewTestHistory.adapter = adapterTestHistory
-        recyclerViewTestHistory.layoutManager = LinearLayoutManager(context)
-
     }
 
     override fun onDestroy() {

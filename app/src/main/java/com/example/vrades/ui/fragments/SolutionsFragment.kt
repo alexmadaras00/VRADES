@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentDetailsBinding
@@ -35,14 +36,24 @@ class SolutionsFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        val recyclerViewLifeHacks = binding.rvLifeHacks
-        val adapterLifeHacks = AdapterLifeHacks()
         val lifeHacks = viewModel.getLifeHacks()
-        if (lifeHacks != null) {
-            adapterLifeHacks.setDataSource(lifeHacks)
+        binding.apply {
+            val recyclerViewLifeHacks = rvLifeHacks
+            val buttonBack = btnBackSolutions
+            val adapterLifeHacks = AdapterLifeHacks()
+
+            if (lifeHacks != null) {
+                adapterLifeHacks.setDataSource(lifeHacks)
+            }
+            recyclerViewLifeHacks.adapter = adapterLifeHacks
+            recyclerViewLifeHacks.layoutManager = LinearLayoutManager(context)
+            recyclerViewLifeHacks.setHasFixedSize(true)
+            recyclerViewLifeHacks.hasNestedScrollingParent()
+            buttonBack.setOnClickListener{
+                findNavController().navigate(SolutionsFragmentDirections.actionNavSolutionsToNavProfile())
+            }
+
         }
-        recyclerViewLifeHacks.adapter = adapterLifeHacks
-        recyclerViewLifeHacks.layoutManager = LinearLayoutManager(context)
 
     }
 

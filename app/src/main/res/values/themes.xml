@@ -69,10 +69,7 @@
 
     </style>
     <style name="Profile">
-        <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
-        <item name="background">@color/transparent</item>
-        <item name="backgroundColor">@color/transparent</item>
     </style>
 
     <style name="Theme.VRADES.NoActionBar">

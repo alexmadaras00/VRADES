@@ -16,8 +16,10 @@
         android:id="@+id/clFaceDetection"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="0dp"
         android:background="@drawable/background_custom"
         tools:context=".ui.fragments.FaceDetectionFragment">
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNextFace"
@@ -54,32 +56,16 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fbtnGallery"
-            style="@style/FloatingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="64dp"
-            android:background="@color/menu_button"
-            android:clickable="true"
-            android:contentDescription="@string/camera"
-            android:focusable="true"
-            app:backgroundTint="@color/menu_button"
-            app:layout_constraintEnd_toEndOf="@+id/flCameraPreviewLayout"
-            app:layout_constraintTop_toBottomOf="@+id/flCameraPreviewLayout"
-            app:srcCompat="@drawable/ic_baseline_collections_24"
-            tools:ignore="SpeakableTextPresentCheck" />
-
 
         <FrameLayout
             android:id="@+id/flCameraPreviewLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="24dp"
             android:background="@drawable/camera_layout"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lLTextContainer">
 
@@ -87,7 +73,7 @@
                 android:id="@+id/btnChangeCamera"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_gravity="bottom|right"
+                android:layout_gravity="bottom|end"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="24dp"
@@ -103,10 +89,30 @@
         </FrameLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fbtnGallery"
+            style="@style/FloatingButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="64dp"
+            android:background="@color/menu_button"
+            android:clickable="true"
+            android:contentDescription="@string/camera"
+            android:focusable="true"
+            app:backgroundTint="@color/menu_button"
+            app:layout_constraintEnd_toEndOf="@+id/flCameraPreviewLayout"
+            app:layout_constraintHeight_percent="0.06"
+            app:layout_constraintTop_toBottomOf="@+id/flCameraPreviewLayout"
+            app:layout_constraintWidth_percent="0.13"
+            app:maxImageSize="24dp"
+            app:srcCompat="@drawable/ic_baseline_collections_24"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fbtnCamera"
             style="@style/FloatingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="64dp"
             android:layout_marginTop="24dp"
             android:background="@color/menu_button"
@@ -115,19 +121,23 @@
             android:focusable="true"
             app:backgroundTint="@color/menu_button"
             app:fabSize="normal"
+            app:layout_constraintHeight_percent="0.06"
             app:layout_constraintStart_toStartOf="@+id/flCameraPreviewLayout"
             app:layout_constraintTop_toBottomOf="@+id/flCameraPreviewLayout"
+            app:layout_constraintWidth_percent="0.13"
+            app:maxImageSize="24dp"
             app:srcCompat="@drawable/ic_baseline_photo_camera_24_outline" />
 
         <ImageView
             android:id="@+id/ivLogoFaceDetection"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5"
             app:srcCompat="@drawable/logo" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

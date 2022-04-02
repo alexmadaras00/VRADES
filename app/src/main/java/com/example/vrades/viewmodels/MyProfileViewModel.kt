@@ -15,6 +15,9 @@ class MyProfileViewModel : ViewModel() {
     fun addTests(){
 
         tests.add(Test(LocalDate.of(2022,1,22),TestState.AUDIO_DETECTION_COMPLETED))
+        tests.add(Test(LocalDate.of(2022,2,10),TestState.TEST_STARTED))
+        tests.add(Test(LocalDate.of(2022,2,10),TestState.TEST_STARTED))
+        tests.add(Test(LocalDate.of(2022,2,10),TestState.TEST_STARTED))
     }
     @RequiresApi(Build.VERSION_CODES.O)
     fun getTests(): ArrayList<Test>{
