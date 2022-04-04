@@ -1,54 +1,77 @@
 package com.example.vrades.viewmodels
 
-import androidx.lifecycle.LiveData
+import android.graphics.Color
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.anychart.AnyChart
-import com.anychart.AnyChartView
-import com.anychart.chart.common.dataentry.DataEntry
-import com.anychart.chart.common.dataentry.ValueDataEntry
-import com.anychart.charts.Pie
+import com.example.vrades.R
 import com.example.vrades.enums.TestState
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
 
 class DetailsViewModel : ViewModel() {
 
-    var chartData = ArrayList<DataEntry>()
-    var emotions = ArrayList<String>()
-    private val pie: Pie = AnyChart.pie()
+    private var chartData = ArrayList<PieEntry>()
+    private val emotionsPercentage = HashMap<String, Float>()
+    private val colors = ArrayList<Int>()
     private val state = MutableLiveData<TestState>()
-
+    private val label = "Percentage of Emotions"
+    private lateinit var pieDataSet: PieDataSet
+    private lateinit var pieData: PieData
 
     fun getState(): TestState? {
         return state.value
     }
 
     private fun addData() {
-        emotions.add("ANGER")
-        emotions.add("CHILL")
-        emotions.add("SADNESS")
-        emotions.add("HAPPINESS")
-        emotions.add("ANXIETY")
-        emotions.add("FEAR")
-        emotions.add("EXCITEMENT")
-        emotions.add("WORRY")
-        emotions.add("STRESS")
-        emotions.add("CONTENT")
-        for (el in emotions)
-            chartData.add(ValueDataEntry(el, 10))
+        emotionsPercentage["ANGER"] = 0.6f
+        emotionsPercentage["CHILL"] = 0.1f
+        emotionsPercentage["SADNESS"] = 0.2f
+        emotionsPercentage["HAPPINESS"] = 0.1f
+//        emotionsPercentage["ANXIETY"] = 10
+//        emotionsPercentage["FEAR"] = 10
+//        emotionsPercentage["EXCITEMENT"] = 10
+//        emotionsPercentage["WORRY"] = 10
+//        emotionsPercentage["STRESS"] = 10
+//        emotionsPercentage["CONTENT"] = 10
+        for (el in emotionsPercentage.keys)
+            if (emotionsPercentage.keys.isNotEmpty()) {
+                chartData.add(PieEntry(emotionsPercentage[el]!!.toFloat(), el))
+            }
+        colors.add(Color.parseColor("#04C3CB"))
+        colors.add(R.color.black)
+        colors.add(Color.parseColor("#FFBB86FC"))
+        colors.add(Color.parseColor("#FF6200EE"))
+//        colors.add(R.color.purple_700)
+//        colors.add(Color.parseColor("#FF5733"))
+//        colors.add(Color.parseColor("#7982C1"))
+//        colors.add(Color.parseColor("#4E5151"))
+//        colors.add(Color.parseColor("#347F6C"))
+//        colors.add(Color.parseColor("#F80029"))
+        println(chartData)
     }
 
-    private fun getData(): ArrayList<DataEntry> {
+    private fun setupPieData() {
         addData()
-        return chartData
+        pieDataSet = PieDataSet(chartData, label)
+        pieDataSet.valueTextSize = 18f
+        pieDataSet.colors = colors
+        pieData = PieData(pieDataSet)
+        pieData.setDrawValues(true)
+        pieData.setValueTextColor(Color.parseColor("#FFFFFFFF"))
+
     }
 
-    private fun configPie() {
-        val data = getData()
-        pie.data(data)
+    fun getData(): PieData {
+
+        setupPieData()
+        return pieData
     }
 
-    fun getPieChart(): Pie {
-        configPie()
-        return pie
+    fun getMax(): String {
+        addData()
+        return emotionsPercentage.maxByOrNull { it.value }!!.key
     }
+
+
 }

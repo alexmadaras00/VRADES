@@ -32,18 +32,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civProfilePictureDetails"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/me"
+                app:civ_border_width="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.13"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.26" />
+
             <TextView
                 android:id="@+id/tvReview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="116dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/ibm_plex_sans_bold"
                 android:text="@string/review"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ivProfilePictureSolutions" />
+                app:layout_constraintTop_toBottomOf="@+id/ivTopLineSolutions" />
 
             <TextView
                 android:id="@+id/tvResultSolutions"
@@ -57,28 +71,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvNameSolutions" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/ivProfilePictureSolutions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="24dp"
-                android:adjustViewBounds="true"
-                android:background="@android:color/transparent"
-                android:clickable="true"
-                android:contentDescription="@string/profile"
-                android:elevation="5dp"
-                android:focusable="true"
-                android:maxWidth="100dp"
-                android:maxHeight="100dp"
-                android:scaleType="fitXY"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/Profile"
-                app:srcCompat="@drawable/me" />
 
             <ImageView
                 android:id="@+id/ivTopLineSolutions"
@@ -125,7 +117,7 @@
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ivProfilePictureSolutions" />
+                app:layout_constraintTop_toBottomOf="@+id/civProfilePictureDetails" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clReviewTextContainer"

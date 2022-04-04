@@ -21,12 +21,28 @@
         android:paddingVertical="50dp"
         tools:context=".ui.fragments.RegisterFragment">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlRight2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent="0.98" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlLeft2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent="0.02" />
+
         <include
             android:id="@+id/include3"
             layout="@layout/container_auth_layout"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/gdlRight2"
+            app:layout_constraintStart_toStartOf="@id/gdlLeft2"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView

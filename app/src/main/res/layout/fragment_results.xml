@@ -29,7 +29,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintGuide_begin="0dp"
-                app:layout_constraintGuide_percent="0.95"
+                app:layout_constraintGuide_percent="0.97"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,17 +44,31 @@
                 app:layout_constraintGuide_percent="0.05"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gdlRight2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="0dp"
+                app:layout_constraintGuide_percent="0.98" />
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gdlLeft2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="0dp"
+                app:layout_constraintGuide_percent="0.02" />
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clResultsContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginHorizontal="20dp"
                 android:background="@drawable/container_form"
                 android:paddingBottom="24dp"
                 app:layout_constraintBottom_toTopOf="@+id/gdlBottomResults"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/gdlRight2"
+                app:layout_constraintStart_toStartOf="@id/gdlLeft2"
                 app:layout_constraintTop_toBottomOf="@+id/gdlTopResults">
 
                 <androidx.constraintlayout.widget.Guideline
@@ -335,7 +349,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="24dp"
                     android:background="@drawable/test_result_card_background"
                     android:paddingBottom="8dp"
                     app:layout_constraintEnd_toStartOf="@+id/gdlMiddle"

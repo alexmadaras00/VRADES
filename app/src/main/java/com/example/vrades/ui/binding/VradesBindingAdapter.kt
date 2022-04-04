@@ -3,15 +3,14 @@ package com.example.vrades.ui.binding
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.anychart.AnyChartView
-import com.anychart.charts.Pie
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.PieData
 
-@BindingAdapter("android:displayChart")
-fun setChart(chart: AnyChartView, pie: Pie) {
-    chart.setChart(pie)
-
+@BindingAdapter("android:setData")
+fun setData(chart: PieChart, pieData: PieData) {
+    chart.data = pieData
 }
 @BindingAdapter("imageUrl")
 fun setImageUrl(imageView: ImageView, url: String?) {
