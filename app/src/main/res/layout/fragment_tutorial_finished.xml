@@ -10,6 +10,19 @@
         <variable
             name="viewModel"
             type="com.example.vrades.viewmodels.TutorialViewModel" />
+
+        <variable
+            name="tutorialState"
+            type="com.example.vrades.enums.TutorialState" />
+
+        <variable
+            name="currentState"
+            type="java.lang.Integer" />
+
+        <variable
+            name="stateTutorial"
+            type="java.lang.Integer"
+            android:value="@{tutorialState.FINAL_PAGE.position}" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,6 +44,7 @@
             android:fontFamily="@font/ibm_plex_sans_bold"
             android:insetTop="0dp"
             android:insetBottom="0dp"
+            android:onClick="@{()-> viewModel.currentStateData &lt; 6 ? viewModel.onNextPageClicked(): viewModel.onNavigateToHomeScreenClicked()}"
             android:text="@string/next"
             android:textAllCaps="false"
             android:textColor="@color/white"
@@ -64,7 +78,7 @@
             android:layout_height="160dp"
             android:layout_marginTop="272dp"
             android:contentDescription="@string/next"
-            android:src="@drawable/completed_tutorial"
+            android:src="@drawable/ic_check"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

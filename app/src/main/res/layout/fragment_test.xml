@@ -19,14 +19,13 @@
         tools:context=".ui.fragments.TestFragment">
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/nav_host_test"
+            android:id="@+id/nav_host_tutorial"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:defaultNavHost="true"
             app:layout_constraintBottom_toTopOf="@+id/bnNavigationTest"
             app:layout_constraintEnd_toEndOf="parent"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/test_navigation" />
@@ -39,10 +38,10 @@
             android:animationCache="true"
             android:background="@drawable/bottom_nav_back_2"
             android:paddingTop="10dp"
+            style="@style/BottomNav"
+            app:itemBackground="@drawable/ripple_form"
             app:itemHorizontalTranslationEnabled="true"
             app:itemIconTint="@color/black"
-            app:itemRippleColor="@color/white"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.08"

@@ -36,10 +36,10 @@ class TutorialPersonalQuestionsFragment : Fragment(R.layout.fragment_tutorial_pe
         super.onStart()
         val recyclerViewQuestions = bindings.rvQuestions
         val adaperQuestions = AdapterQuestions()
-        val questions = viewModel.getQuestions()
-        adaperQuestions.setDataSource(questions)
-        recyclerViewQuestions.adapter = adaperQuestions
-        recyclerViewQuestions.layoutManager = LinearLayoutManager(context)
+//        val questions = viewModel.getQuestions()
+//        adaperQuestions.setDataSource(questions)
+//        recyclerViewQuestions.adapter = adaperQuestions
+//        recyclerViewQuestions.layoutManager = LinearLayoutManager(context)
 
     }
 

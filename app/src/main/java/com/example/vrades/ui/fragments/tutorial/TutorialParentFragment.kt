@@ -1,31 +1,86 @@
 package com.example.vrades.ui.fragments.tutorial
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.vrades.R
-import com.example.vrades.databinding.FragmentTutorialAudioBinding
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.vrades.databinding.FragmentTutorialParentBinding
+import com.example.vrades.ui.adapters.AdapterViewPagerTutorial
+import com.example.vrades.ui.fragments.VradesBaseFragment
 import com.example.vrades.viewmodels.TutorialViewModel
+import com.zhpan.indicator.enums.IndicatorSlideMode
+import com.zhpan.indicator.enums.IndicatorStyle
 
-class TutorialParentFragment : Fragment() {
+class TutorialParentFragment : VradesBaseFragment() {
 
-    private lateinit var viewModel: TutorialViewModel
+    private val viewModel: TutorialViewModel by activityViewModels()
     private var _binding: FragmentTutorialParentBinding? = null
-    var binding = _binding!!
+    private lateinit var adapterViewPagerTutorial: AdapterViewPagerTutorial
+    private var currentPosition: Int = 0
+    val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentTutorialParentBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+
+        _binding = FragmentTutorialParentBinding.inflate(inflater)
         binding.viewModel = viewModel
+        binding.lifecycleOwner = this
         binding.executePendingBindings()
         return binding.root
     }
+
+    override fun onStart() {
+        super.onStart()
+        binding.apply {
+            adapterViewPagerTutorial = AdapterViewPagerTutorial(parentFragmentManager, lifecycle)
+            vpTutorial.adapter = adapterViewPagerTutorial
+            vpTutorial.isUserInputEnabled = false
+            sdTutorialndicators.apply {
+                setSliderWidth(30f)
+                setSliderHeight(30f)
+                setSlideMode(IndicatorSlideMode.SMOOTH)
+                setIndicatorStyle(IndicatorStyle.CIRCLE)
+                setupWithViewPager(vpTutorial)
+            }
+        }
+    }
+
+    private val onNextPage = Observer<Void> {
+            binding.vpTutorial.currentItem += 1
+    }
+    private val onNavigateToHomeScreen = Observer<Void> {
+        val navController = findNavController()
+        navController.navigate(TutorialParentFragmentDirections.actionNavTutorialToNavHome())
+    }
+
+    override fun connectViewModelEvents() {
+
+        viewModel.onNextPage.observe(this, onNextPage)
+        viewModel.onNavigateToHome.observe(this, onNavigateToHomeScreen)
+    }
+
+    override fun disconnectViewModelEvents() {
+        viewModel.onNextPage.removeObserver(onNextPage)
+        viewModel.onNavigateToHome.removeObserver(onNavigateToHomeScreen)
+        viewModelStore.clear()
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        disconnectViewModelEvents()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        connectViewModelEvents()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

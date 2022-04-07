@@ -6,16 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentTestBinding
-import com.example.vrades.viewmodels.LoginViewModel
 import com.example.vrades.viewmodels.TestViewModel
 
 class TestFragment : Fragment() {
@@ -45,7 +39,7 @@ class TestFragment : Fragment() {
 
         binding.apply {
             val bottomNavigationView = bnNavigationTest
-            val navController = Navigation.findNavController(requireActivity(),R.id.nav_host_test)
+            val navController = Navigation.findNavController(requireActivity(),R.id.nav_host_tutorial)
             bottomNavigationView.setupWithNavController(navController)
         }
     }

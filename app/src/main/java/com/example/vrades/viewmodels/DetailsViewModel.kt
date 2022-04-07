@@ -23,7 +23,7 @@ class DetailsViewModel : ViewModel() {
         return state.value
     }
 
-    private fun addData() {
+    private fun configPieData() {
         emotionsPercentage["ANGER"] = 0.6f
         emotionsPercentage["CHILL"] = 0.1f
         emotionsPercentage["SADNESS"] = 0.2f
@@ -48,30 +48,24 @@ class DetailsViewModel : ViewModel() {
 //        colors.add(Color.parseColor("#4E5151"))
 //        colors.add(Color.parseColor("#347F6C"))
 //        colors.add(Color.parseColor("#F80029"))
-        println(chartData)
-    }
-
-    private fun setupPieData() {
-        addData()
         pieDataSet = PieDataSet(chartData, label)
         pieDataSet.valueTextSize = 18f
         pieDataSet.colors = colors
         pieData = PieData(pieDataSet)
         pieData.setDrawValues(true)
         pieData.setValueTextColor(Color.parseColor("#FFFFFFFF"))
-
     }
 
-    fun getData(): PieData {
 
-        setupPieData()
+    fun getData(): PieData {
+        configPieData()
         return pieData
     }
 
     fun getMax(): String {
-        addData()
         return emotionsPercentage.maxByOrNull { it.value }!!.key
     }
+
 
 
 }

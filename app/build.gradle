@@ -51,8 +51,6 @@ dependencies {
     //Lifecycle
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
     //Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
@@ -81,6 +79,7 @@ dependencies {
     implementation('androidx.compose.material:material-icons-core:1.1.0')
     //View Pager Dots
     implementation 'com.tbuonomo:dotsindicator:4.2'
+    implementation 'com.github.zhpanvip:viewpagerindicator:1.2.0'
     //Charts
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     //Glide

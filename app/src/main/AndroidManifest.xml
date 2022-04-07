@@ -19,7 +19,7 @@
         android:theme="@style/Theme.VRADES">
 
         <activity
-            android:name=".ui.activities.TutorialActivity"
+            android:name=".ui.fragments.tutorial.TutorialFragment"
             android:exported="false"
             android:label="@string/title_activity_tutorial"
             android:resizeableActivity="true"

@@ -22,7 +22,6 @@ class FaceDetectionFragment : Fragment() {
         fun newInstance() = FaceDetectionFragment()
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

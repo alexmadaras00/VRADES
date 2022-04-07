@@ -5,27 +5,43 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentTutorialAudioBinding
 import com.example.vrades.databinding.FragmentTutorialFaceDetectionBinding
+import com.example.vrades.databinding.FragmentTutorialHomeBinding
+import com.example.vrades.ui.fragments.VradesBaseFragment
 import com.example.vrades.viewmodels.TutorialViewModel
 
 
-class TutorialFaceDetectionFragment : Fragment() {
+class TutorialFaceDetectionFragment : VradesBaseFragment() {
     // TODO: Rename and change types of parameters
-    private lateinit var viewModel: TutorialViewModel
+    private val viewModel: TutorialViewModel by activityViewModels()
     private var _binding: FragmentTutorialFaceDetectionBinding? = null
-    var binding = _binding!!
+    val binding get() = _binding!!
+    override fun connectViewModelEvents() {
+
+    }
+
+    override fun disconnectViewModelEvents() {
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentTutorialFaceDetectionBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+        _binding = FragmentTutorialFaceDetectionBinding.inflate(inflater)
         binding.viewModel = viewModel
+        binding.lifecycleOwner = this
         binding.executePendingBindings()
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+
     }
     override fun onDestroy() {
         super.onDestroy()

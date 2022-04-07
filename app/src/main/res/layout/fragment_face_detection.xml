@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="0dp"
-        android:background="@drawable/background_custom"
+        android:background="@drawable/background_test"
         tools:context=".ui.fragments.FaceDetectionFragment">
 
 
@@ -65,7 +65,7 @@
             android:layout_marginTop="24dp"
             android:background="@drawable/camera_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintHeight_percent="0.55"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lLTextContainer">
 

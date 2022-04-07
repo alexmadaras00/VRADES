@@ -1,20 +1,48 @@
 package com.example.vrades.viewmodels
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.vrades.models.Question
 
-class TutorialViewModel: ViewModel() {
+class TutorialViewModel : ViewModel() {
 
-    private var questions = ArrayList<Question>()
+    private val _currentState = MutableLiveData<Int>()
+    val currentState: LiveData<Int>
+        get() = _currentState
 
-    fun addQuestions(){
-        questions.add(Question("How was your day?",null,false))
-        questions.add(Question("How was your day today?",null,false))
-        questions.add(Question("How was your day?",null,false))
+    private val _onNextPage = SingleLiveEvent<Void>()
+    val onNextPage: LiveData<Void>
+        get() = _onNextPage
+
+    private val _onNavigateToHome = SingleLiveEvent<Void>()
+    val onNavigateToHome: LiveData<Void>
+        get() = _onNavigateToHome
+
+    init {
+        _currentState.value = 0
     }
 
-    fun getQuestions(): ArrayList<Question>{
-        addQuestions()
-        return questions
+    fun onNavigateToHomeScreenClicked() {
+        _onNavigateToHome.call()
     }
+
+    fun onNextPageClicked() {
+        _onNextPage.call()
+        _currentState.value = _currentState.value!! + 1
+    }
+
+    fun getCurrentStateData(): Int {
+        return _currentState.value!!
+    }
+
+    fun setCurrentStateData(data: Int) {
+        _currentState.value = data
+    }
+
+    override fun onCleared() {
+        _currentState.value = 0
+    }
+
+
 }
+

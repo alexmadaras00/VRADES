@@ -1,33 +1,55 @@
 package com.example.vrades.ui.fragments.tutorial
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.vrades.R
-import com.example.vrades.databinding.FragmentTutorialAudioBinding
+import androidx.fragment.app.activityViewModels
 import com.example.vrades.databinding.FragmentTutorialHomeBinding
+import com.example.vrades.enums.TutorialState
+import com.example.vrades.ui.fragments.VradesBaseFragment
 import com.example.vrades.viewmodels.TutorialViewModel
 
-class TutorialHomeFragment : Fragment() {
+class TutorialHomeFragment : VradesBaseFragment() {
 
 
-    private lateinit var viewModel: TutorialViewModel
-    private val _binding: FragmentTutorialHomeBinding? = null
-    var binding = _binding!!
+    private val viewModel: TutorialViewModel by activityViewModels()
+    private var _binding: FragmentTutorialHomeBinding? = null
+    val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentTutorialHomeBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+
+        _binding = FragmentTutorialHomeBinding.inflate(inflater)
         binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+        binding.stateTutorial = TutorialState.START_PAGE.position
         binding.executePendingBindings()
         return binding.root
     }
 
+    override fun onStart() {
+        super.onStart()
+        viewModel.setCurrentStateData(0)
+        binding.apply { }
+
+    }
+
+    override fun connectViewModelEvents() {
+        TODO("Not yet implemented")
+    }
+
+    override fun disconnectViewModelEvents() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 
 
 }

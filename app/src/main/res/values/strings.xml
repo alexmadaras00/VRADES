@@ -81,7 +81,7 @@
     <string name="audio_completed">Great job! You are beginning to master it.</string>
     <string name="hint">hint</string>
     <string name="writing_completed">Now you can proceed to the last part of the tutorial!</string>
-    <string name="congrats_writing">Congratulations, you wrote 70 words!</string>
+    <string name="congrats_writing">Congratulations, you wrote 40 words!</string>
     <string name="answer_personal_questions">Answer the personal question and then send it by pressing on the following button</string>
     <string name="question_text_item">Q. What kind of activities make you happy most usually?</string>
     <string name="submit_your_answers">Send your answers</string>
@@ -119,4 +119,7 @@
     <string name="enter_your_e_mail_and_you_will_receive_a_recovery_code">Enter your e-mail and you will receive a recovery code.</string>
     <string name="submit">Submit</string>
     <string name="start_audio">Start Recording!</string>
+    <string name="arrow">arrow</string>
+    <string name="_70_words">70 words</string>
+    <string name="write_text">Write your text!</string>
 </resources>

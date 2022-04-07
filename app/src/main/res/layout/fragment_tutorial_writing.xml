@@ -10,6 +10,7 @@
         <variable
             name="viewModel"
             type="com.example.vrades.viewmodels.TutorialViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,20 +22,29 @@
 
         <!-- TODO: Update blank fragment layout -->
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlWritingTutorial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.15"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tvWritingCongrats"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="156dp"
             android:fontFamily="@font/ibm_plex_sans_bold"
             android:text="@string/congrats_writing"
             android:textSize="24sp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.1"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/gdlWritingTutorial" />
 
         <TextView
             android:id="@+id/tvWritingCompleted"
@@ -52,7 +62,7 @@
             app:layout_constraintTop_toBottomOf="@+id/etWritingLayout" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnNextTutorial3"
+            android:id="@+id/btnNextTutorialWriting"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
@@ -65,8 +75,10 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:visibility="invisible"
+            android:visibility="visible"
+            android:enabled="false"
             app:cornerRadius="10dp"
+            android:onClick="@{()->viewModel.onNextPageClicked()}"
             app:icon="@drawable/ic_baseline_arrow_forward_24"
             app:iconGravity="end"
             app:iconTint="@color/white"
@@ -78,35 +90,88 @@
         <TextView
             android:id="@+id/tvWritingInfo"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="156dp"
             android:fontFamily="@font/ibm_plex_sans"
+
             android:text="@string/writing_info"
             android:textColor="@color/menu_text_color"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.115"
+
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/gdlWritingTutorial" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etWritingLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.45"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="24dp"
             android:background="@drawable/audio_back"
+            app:counterEnabled="true"
+            app:endIconMode="clear_text"
+            app:helperTextEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvWritingInfo">
+            app:layout_constraintTop_toBottomOf="@+id/tvWritingInfo"
+           >
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etWriting"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:maxLength="400"
+                android:maxEms="20"
                 android:background="@drawable/audio_back"
-                android:hint="@string/hint" />
+                android:fontFamily="@font/ibm_plex_sans_bold"
+                android:gravity="top|start"
+                android:hint="@string/congrats_writing"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
         </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/ivCheckedWords"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/done"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCheckedWords"
+            app:layout_constraintEnd_toStartOf="@+id/tvCheckedWords"
+            app:srcCompat="@drawable/ic_check" />
+
+        <TextView
+            android:id="@+id/tvCheckedWords"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/ibm_plex_sans_bold"
+            android:text="@string/_70_words"
+            android:textColor="@color/background"
+            android:textSize="16sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/etWritingLayout"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintHeight_percent="0.03"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_begin="397dp"
+            app:layout_constraintGuide_percent="0.95"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

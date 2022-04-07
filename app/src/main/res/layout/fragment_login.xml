@@ -49,7 +49,6 @@
             android:paddingHorizontal="24dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:layout_width="ma"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/gdlRight2"
             app:layout_constraintStart_toEndOf="@id/gdlLeft2"

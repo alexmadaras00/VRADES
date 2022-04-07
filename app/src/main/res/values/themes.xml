@@ -8,7 +8,10 @@
         <!-- Customize your theme here. -->
     </style>
 
-
+    <style name="BottomNav" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemBackground">@drawable/ripple_form</item>
+        <item name="itemSpacing">20dp</item>
+    </style>
     <style name="Icons" parent="Widget.AppCompat.ImageButton">
         <item name="colorPrimary">@color/white</item>
         <item name="color">@color/white</item>

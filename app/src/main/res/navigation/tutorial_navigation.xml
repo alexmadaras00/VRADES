@@ -3,68 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tutorial_navigation"
-    app:startDestination="@id/nav_tutorial_home">
-    <fragment
-        android:id="@+id/nav_tutorial_audio"
-        android:name="com.example.vrades.ui.fragments.tutorial.TutorialAudioFragment"
-        android:label="TutorialAudioFragment" >
-        <action
-            android:id="@+id/action_nav_tutorial_audio_to_nav_tutorial_writing"
-            app:destination="@id/nav_tutorial_writing" />
-        <action
-            android:id="@+id/action_nav_tutorial_audio_to_nav_tutorial_finished"
-            app:destination="@id/nav_tutorial_finished" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_tutorial_writing"
-        android:name="com.example.vrades.ui.fragments.tutorial.TutorialWritingFragment"
-        android:label="TutorialWritingFragment" >
-        <action
-            android:id="@+id/action_nav_tutorial_writing_to_nav_tutorial_finished"
-            app:destination="@id/nav_tutorial_finished" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_tutorial_face"
-        android:name="com.example.vrades.ui.fragments.tutorial.TutorialFaceDetectionFragment"
-        android:label="TutorialFaceDetectionFragment" >
-        <action
-            android:id="@+id/action_nav_tutorial_face_to_nav_tutorial_audio"
-            app:destination="@id/nav_tutorial_audio" />
-        <action
-            android:id="@+id/action_nav_tutorial_face_to_nav_tutorial_finished"
-            app:destination="@id/nav_tutorial_finished" />
-        <action
-            android:id="@+id/action_nav_tutorial_face_to_nav_tutorial_finished2"
-            app:destination="@id/nav_tutorial_finished" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_tutorial_home"
-        android:name="com.example.vrades.ui.fragments.tutorial.TutorialHomeFragment"
-        android:label="TutorialHomeFragment" >
-        <action
-            android:id="@+id/action_nav_tutorial_home_to_nav_tutorial_face"
-            app:destination="@id/nav_tutorial_face" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_tutorial_finished"
-        android:name="com.example.vrades.ui.fragments.tutorial.TutorialFinishedFragment"
-        android:label="TutorialFinishedFragment" >
-        <action
-            android:id="@+id/action_nav_tutorial_finished_to_nav_tutorial_face"
-            app:destination="@id/nav_tutorial_face" />
-        <action
-            android:id="@+id/action_nav_tutorial_finished_to_nav_tutorial_audio"
-            app:destination="@id/nav_tutorial_audio" />
-        <action
-            android:id="@+id/action_nav_tutorial_finished_to_nav_tutorial_writing"
-            app:destination="@id/nav_tutorial_writing" />
-        <action
-            android:id="@+id/action_nav_tutorial_finished_to_navigation_graph"
-            app:destination="@id/navigation_graph" />
-    </fragment>
+    app:startDestination="@id/tutorialParentFragment">
     <fragment
         android:id="@+id/tutorialParentFragment"
         android:name="com.example.vrades.ui.fragments.tutorial.TutorialParentFragment"
-        android:label="TutorialParentFragment" />
+        android:label="TutorialParentFragment" >
+        <action
+            android:id="@+id/action_tutorialParentFragment_to_navigation_graph"
+            app:destination="@id/navigation_graph" />
+    </fragment>
     <include app:graph="@navigation/navigation_graph" />
 </navigation>

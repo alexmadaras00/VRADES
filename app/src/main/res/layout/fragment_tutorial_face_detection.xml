@@ -10,6 +10,14 @@
         <variable
             name="viewModel"
             type="com.example.vrades.viewmodels.TutorialViewModel" />
+        <variable
+            name="currentState2"
+            type="com.example.vrades.enums.TutorialState" />
+
+        <variable
+            name="stateTutorial2"
+            type="java.lang.Integer"
+            android:value="@{currentState2.FACE_TEST_PAGE.position}" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,14 +31,16 @@
         <ImageView
             android:id="@+id/ivArrowTutorial2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.12"
             android:layout_marginTop="8dp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="@+id/fbtnGallery"
             app:layout_constraintHorizontal_bias="0.478"
             app:layout_constraintStart_toStartOf="@+id/fbtnGallery"
             app:layout_constraintTop_toBottomOf="@+id/fbtnCamera"
-            app:srcCompat="@drawable/arrow_tutorial" />
+            app:srcCompat="@drawable/arrow_tutorial"
+            android:contentDescription="@string/arrow" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fbtnGallery"
@@ -102,6 +112,7 @@
             android:clickable="true"
             android:contentDescription="@string/camera"
             android:focusable="true"
+            android:onClick="@{() -> viewModel.onNextPageClicked()}"
             app:backgroundTint="@color/menu_button"
             app:fabSize="normal"
             app:layout_constraintStart_toStartOf="@+id/flCameraPreviewLayout"
@@ -111,13 +122,15 @@
         <ImageView
             android:id="@+id/ivArrowTutorial"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.12"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="@+id/fbtnCamera"
             app:layout_constraintHorizontal_bias="0.478"
             app:layout_constraintStart_toStartOf="@+id/fbtnCamera"
             app:layout_constraintTop_toBottomOf="@+id/fbtnCamera"
-            app:srcCompat="@drawable/arrow_tutorial" />
+            app:srcCompat="@drawable/arrow_tutorial"
+            android:contentDescription="@string/arrow" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

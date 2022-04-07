@@ -38,7 +38,6 @@ class DetailsFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
         val state = viewModel.getState()
         val pieData = viewModel.getData()
         val maxValueEmotion = viewModel.getMax()
@@ -47,8 +46,8 @@ class DetailsFragment : Fragment() {
             val buttonBack = btnBackDetails
             val dominantEmotion = tvFinalResultDetails2
             pieData.setValueFormatter(PercentFormatter(pieChart))
-            pieChart.data = pieData
             pieChart.invalidate()
+            pieChart.data = pieData
             initPieChart(pieChart)
             buttonBack.setOnClickListener {
                 if (state == TestState.WRITING_DETECTION_COMPLETED) {
@@ -66,19 +65,21 @@ class DetailsFragment : Fragment() {
     }
 
     private fun initPieChart(pieChart: PieChart) {
-        pieChart.setUsePercentValues(true)
-        pieChart.setUsePercentValues(true)
-        pieChart.description.isEnabled = false
-        pieChart.isRotationEnabled = true
-        pieChart.dragDecelerationFrictionCoef = 0.9f
-        pieChart.holeRadius = 1f
-        pieChart.isDrawHoleEnabled = true
-        pieChart.legend.form = Legend.LegendForm.NONE
-        pieChart.isHighlightPerTapEnabled = true
-        pieChart.animateX(1400, Easing.EaseInOutCirc)
-        pieChart.setHoleColor(R.color.background_gradient_end)
-        pieChart.legend.isEnabled = false
-        pieChart.transparentCircleRadius = 1f
+        pieChart.apply {
+            setUsePercentValues(true)
+            description.isEnabled = false
+            isRotationEnabled = true
+            dragDecelerationFrictionCoef = 0.9f
+            holeRadius = 1f
+            isDrawHoleEnabled = true
+            legend.form = Legend.LegendForm.NONE
+            isHighlightPerTapEnabled = true
+            animateX(1400, Easing.EaseInOutCirc)
+            setHoleColor(R.color.background_gradient_end)
+            legend.isEnabled = false
+            transparentCircleRadius = 1f
+            maxAngle = 360f
+        }
     }
 
 

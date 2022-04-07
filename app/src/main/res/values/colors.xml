@@ -21,4 +21,5 @@
     <color name="menu_text_color">#BFDFE2</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="button_tutorial">#1704C3CB</color>
+    <color name="skip_tutorial_button_color">#1704C3CB</color>
 </resources>

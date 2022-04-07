@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_nav_register_to_nav_login"
             app:destination="@id/nav_login" />
+        <action
+            android:id="@+id/action_nav_register_to_nav_tutorial"
+            app:destination="@id/nav_tutorial" />
     </fragment>
     <fragment
         android:id="@+id/nav_home"
@@ -53,6 +56,9 @@
         <action
             android:id="@+id/action_nav_home_to_nav_login"
             app:destination="@id/nav_login" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_tutorial"
+            app:destination="@id/nav_tutorial" />
     </fragment>
 
     <fragment
@@ -138,4 +144,13 @@
         android:id="@+id/splashScreenActivity"
         android:name="com.example.vrades.ui.activities.StartActivity"
         android:label="SplashScreenActivity" />
+    <fragment
+        android:id="@+id/nav_tutorial"
+        android:name="com.example.vrades.ui.fragments.tutorial.TutorialParentFragment"
+        android:label="TutorialParentFragment" >
+        <action
+            android:id="@+id/action_nav_tutorial_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+
 </navigation>

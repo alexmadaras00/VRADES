@@ -49,7 +49,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavSettings())
             }
             tutorialButton.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionNavHomeToMobileNavigation())
+                findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavTutorial())
             }
             profileButton.setOnClickListener {
                 findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavProfile())

@@ -16,7 +16,7 @@
         android:id="@+id/clAudioTest"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_app"
+        android:background="@drawable/background_test"
         tools:context=".ui.fragments.tutorial.TutorialAudioFragment">
 
         <ImageView
@@ -111,7 +111,7 @@
             android:background="@drawable/audio_back"
             android:padding="0dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintHeight_percent="0.55"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/gdlAudioTest">
 

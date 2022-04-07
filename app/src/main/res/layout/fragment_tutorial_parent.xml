@@ -19,37 +19,56 @@
         android:background="@drawable/tutorial_background"
         tools:context=".ui.fragments.tutorial.TutorialParentFragment">
 
-        <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlTutorialParent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.06"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlTutorialParent2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.zhpan.indicator.IndicatorView
             android:id="@+id/sdTutorialndicators"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
-            android:backgroundTint="@color/background_gradient_end"
-            app:dotsColor="@color/background_gradient_end"
-            app:dotsCornerRadius="8dp"
-            app:dotsSize="16dp"
-            app:dotsSpacing="4dp"
-            app:dotsStrokeColor="@color/teal_700"
-            app:dotsWidthFactor="0"
+            android:elevation="1dp"
+            app:vpi_slider_normal_color="@color/transparent"
+            app:vpi_slider_checked_color="@color/background_gradient_end"
             app:layout_constraintBottom_toBottomOf="@+id/btnSkipTutorial"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btnSkipTutorial"
-            app:progressMode="true" />
+            />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSkipTutorial"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="100dp"
-            android:backgroundTint="#1704C3CB"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/skip_tutorial_button_color"
             android:fontFamily="@font/ibm_plex_sans"
             android:text="@string/skip_tutorial"
-
             android:textAllCaps="false"
             android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:onClick="@{()->viewModel.onNavigateToHomeScreenClicked()}"
+            app:layout_constraintHeight_percent="0.06"
+            app:layout_constraintStart_toStartOf="@+id/gdlTutorialParent2"
+            app:layout_constraintTop_toTopOf="@+id/gdlTutorialParent"
+            app:layout_constraintWidth_percent="0.33"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vpTutorial"
@@ -57,8 +76,10 @@
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,17 +16,19 @@
         android:id="@+id/clWritingTest"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_app"
+        android:background="@drawable/background_test"
         tools:context=".ui.fragments.WritingTestFragment">
 
 
         <ImageView
             android:id="@+id/ivLogoWritingTest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5"
             app:srcCompat="@drawable/logo" />
 
         <LinearLayout
@@ -57,11 +59,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etWritingInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="48dp"
             android:background="@drawable/audio_back"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lLTextContainer">
 
@@ -83,7 +86,7 @@
             android:text="@string/proceed"
             android:visibility="visible"
             app:cornerRadius="10dp"
-            app:icon="@drawable/ic_baseline_navigate_next_24"
+            app:icon="@drawable/ic_baseline_play_arrow_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etWritingInputLayout" />

@@ -19,21 +19,30 @@
         android:background="@drawable/tutorial_background"
         tools:context=".ui.fragments.tutorial.TutorialAudioFragment">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlAudioTutorial2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.15"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnNextTutorial2"
+            android:id="@+id/btnNextTutorialAudio"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="64dp"
+            android:enabled="false"
             android:fontFamily="@font/ibm_plex_sans_bold"
             android:insetTop="0dp"
             android:insetBottom="0dp"
+            android:onClick="@{()->viewModel.onNextPageClicked()}"
             android:text="@string/next"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="28sp"
-            android:visibility="invisible"
             app:cornerRadius="10dp"
             app:icon="@drawable/ic_baseline_arrow_forward_24"
             app:iconGravity="end"
@@ -41,57 +50,44 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvAudioCompleted" />
+            app:layout_constraintTop_toTopOf="@+id/gdlAudioTutorial" />
 
         <ImageView
             android:id="@+id/ivArrowTutorialAudio"
-            android:layout_width="wrap_content"
-            android:layout_height="64dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/fbtnVoiceRecord"
-            app:layout_constraintHorizontal_bias="0.521"
-            app:layout_constraintStart_toStartOf="@+id/fbtnVoiceRecord"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="18dp"
+            android:rotation="90"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTapToStart"
+            app:layout_constraintEnd_toStartOf="@+id/tvTapToStart"
+            app:layout_constraintHeight_percent="0.08"
             app:layout_constraintTop_toBottomOf="@+id/fbtnVoiceRecord"
+            app:layout_constraintWidth_percent="0.12"
             app:srcCompat="@drawable/arrow_tutorial" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fbtnVoiceRecord"
-            style="@style/FloatingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/menu_button"
-            android:clickable="true"
-            android:contentDescription="@string/camera"
-            android:focusable="true"
-            app:backgroundTint="@color/menu_button"
-            app:layout_constraintEnd_toEndOf="@+id/tvTapToStart"
-            app:layout_constraintStart_toStartOf="@+id/tvTapToStart"
-            app:layout_constraintTop_toBottomOf="@+id/tvTapToStart"
-            app:srcCompat="@drawable/ic_baseline_keyboard_voice_24" />
 
         <TextView
             android:id="@+id/tvPressAudio"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="156dp"
             android:fontFamily="@font/ibm_plex_sans"
             android:text="@string/start_recording_audio"
             android:textColor="@color/menu_text_color"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.08"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/gdlAudioTutorial2" />
 
         <FrameLayout
             android:id="@+id/flAudioTextContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="24dp"
             android:background="@drawable/audio_back"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.49"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvPressAudio">
 
@@ -111,28 +107,56 @@
             android:id="@+id/tvTapToStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:fontFamily="@font/ibm_plex_sans_bold"
             android:text="@string/tap_to_start"
             app:layout_constraintEnd_toEndOf="@+id/flAudioTextContainer"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="@+id/flAudioTextContainer"
-            app:layout_constraintTop_toBottomOf="@+id/flAudioTextContainer" />
+            app:layout_constraintTop_toBottomOf="@+id/fbtnVoiceRecord" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fbtnVoiceRecord"
+            style="@style/FloatingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/menu_button"
+            android:clickable="true"
+            android:contentDescription="@string/camera"
+            android:focusable="true"
+
+            app:backgroundTint="@color/menu_button"
+            app:layout_constraintBottom_toBottomOf="@+id/flAudioTextContainer"
+            app:layout_constraintEnd_toEndOf="@+id/tvTapToStart"
+
+            app:layout_constraintStart_toStartOf="@+id/tvTapToStart"
+            app:layout_constraintTop_toBottomOf="@+id/flAudioTextContainer"
+            app:srcCompat="@drawable/ic_baseline_keyboard_voice_24" />
 
         <TextView
             android:id="@+id/tvAudioCompleted"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="20dp"
             android:fontFamily="@font/ibm_plex_sans_bold"
             android:text="@string/audio_completed"
             android:textColor="@color/menu_text_color"
             android:textSize="24sp"
             android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/gdlAudioTutorial"
             app:layout_constraintEnd_toEndOf="@+id/flAudioTextContainer"
+            app:layout_constraintHeight_percent="0.08"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/flAudioTextContainer"
-            app:layout_constraintTop_toTopOf="@+id/tvTapToStart" />
+            app:layout_constraintStart_toStartOf="@+id/flAudioTextContainer" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlAudioTutorial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_begin="704dp"
+            app:layout_constraintGuide_percent="0.88"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
