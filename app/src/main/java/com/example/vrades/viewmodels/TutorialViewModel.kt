@@ -3,12 +3,15 @@ package com.example.vrades.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.vrades.enums.TutorialState
 
 class TutorialViewModel : ViewModel() {
+    private val states = TutorialState.values()
 
-    private val _currentState = MutableLiveData<Int>()
-    val currentState: LiveData<Int>
-        get() = _currentState
+
+    private val _currentStateCount = MutableLiveData<Int>()
+    private val currentStateCount: LiveData<Int>
+        get() = _currentStateCount
 
     private val _onNextPage = SingleLiveEvent<Void>()
     val onNextPage: LiveData<Void>
@@ -19,7 +22,7 @@ class TutorialViewModel : ViewModel() {
         get() = _onNavigateToHome
 
     init {
-        _currentState.value = 0
+        _currentStateCount.value = 0
     }
 
     fun onNavigateToHomeScreenClicked() {
@@ -28,19 +31,23 @@ class TutorialViewModel : ViewModel() {
 
     fun onNextPageClicked() {
         _onNextPage.call()
-        _currentState.value = _currentState.value!! + 1
+        _currentStateCount.value = _currentStateCount.value!! + 1
     }
 
     fun getCurrentStateData(): Int {
-        return _currentState.value!!
+        return _currentStateCount.value!!
     }
 
     fun setCurrentStateData(data: Int) {
-        _currentState.value = data
+        _currentStateCount.value = data
+    }
+
+    fun getCurrentState(): TutorialState {
+        return states[_currentStateCount.value!!]
     }
 
     override fun onCleared() {
-        _currentState.value = 0
+        _currentStateCount.value = 0
     }
 
 

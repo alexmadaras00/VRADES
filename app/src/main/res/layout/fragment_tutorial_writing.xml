@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintGuide_percent="0.15"
+            app:layout_constraintGuide_percent="0.145"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -64,28 +64,27 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNextTutorialWriting"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
+            android:layout_height="0dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="64dp"
+            android:enabled="false"
             android:fontFamily="@font/ibm_plex_sans_bold"
             android:insetTop="0dp"
             android:insetBottom="0dp"
+            android:onClick="@{()->viewModel.onNextPageClicked()}"
             android:text="@string/next"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="28sp"
             android:visibility="visible"
-            android:enabled="false"
             app:cornerRadius="10dp"
-            android:onClick="@{()->viewModel.onNextPageClicked()}"
             app:icon="@drawable/ic_baseline_arrow_forward_24"
             app:iconGravity="end"
             app:iconTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHeight_percent="0.065"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvWritingCompleted" />
+            app:layout_constraintTop_toBottomOf="@+id/tvWritingCompleted"
+            app:layout_constraintWidth_percent="0.6" />
 
         <TextView
             android:id="@+id/tvWritingInfo"
@@ -98,17 +97,15 @@
             android:textColor="@color/menu_text_color"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.115"
-
+            app:layout_constraintHeight_percent="0.123"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/gdlWritingTutorial" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etWritingLayout"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.45"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="24dp"
             android:background="@drawable/audio_back"
@@ -116,21 +113,21 @@
             app:endIconMode="clear_text"
             app:helperTextEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.45"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvWritingInfo"
-           >
+            app:layout_constraintTop_toBottomOf="@+id/tvWritingInfo">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etWriting"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="text"
-                android:maxLength="400"
-                android:maxEms="20"
                 android:background="@drawable/audio_back"
                 android:fontFamily="@font/ibm_plex_sans_bold"
                 android:gravity="top|start"
                 android:hint="@string/congrats_writing"
+                android:inputType="text"
+                android:maxEms="20"
+                android:maxLength="400"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 

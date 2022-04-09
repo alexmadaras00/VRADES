@@ -17,15 +17,7 @@
         android:hardwareAccelerated="false"
         android:largeHeap="true"
         android:theme="@style/Theme.VRADES">
-
-        <activity
-            android:name=".ui.fragments.tutorial.TutorialFragment"
-            android:exported="false"
-            android:label="@string/title_activity_tutorial"
-            android:resizeableActivity="true"
-            android:screenOrientation="fullSensor"
-            android:theme="@style/Theme.VRADES.NoActionBar"
-            tools:targetApi="24" />
+        
 
         <activity
             android:name=".ui.activities.StartActivity"
@@ -39,6 +31,7 @@
 
         <activity
             android:name=".ui.activities.MainActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

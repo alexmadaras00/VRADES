@@ -68,10 +68,8 @@ class TutorialWritingFragment : Fragment() {
                     textViewInfo.visibility = View.INVISIBLE
                 }
             }
-
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

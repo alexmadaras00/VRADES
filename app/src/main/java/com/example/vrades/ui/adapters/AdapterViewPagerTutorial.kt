@@ -15,9 +15,8 @@ class AdapterViewPagerTutorial(fragment: FragmentManager, lifecycle: Lifecycle) 
     private val tutorialWritingFragment = TutorialWritingFragment()
     private val tutorialFinishedFragment = TutorialFinishedFragment()
     private val tutorialFinishedFragment2 = TutorialFinishedFragment()
-    private val tutorialFinishedFragment3 = TutorialFinishedFragment()
 
-    override fun getItemCount(): Int = 7
+    override fun getItemCount(): Int = 6
 
     override fun createFragment(position: Int): Fragment {
         when (position) {
@@ -33,14 +32,11 @@ class AdapterViewPagerTutorial(fragment: FragmentManager, lifecycle: Lifecycle) 
             TutorialState.AUDIO_TEST_PAGE.ordinal -> {
                 return tutorialAudioFragment
             }
-            TutorialState.AUDIO_TEST_PAGE_DONE.ordinal -> {
-                return tutorialFinishedFragment2
-            }
             TutorialState.WRITING_TEST_PAGE.ordinal -> {
                 return tutorialWritingFragment
             }
             TutorialState.FINAL_PAGE.ordinal -> {
-                return tutorialFinishedFragment3
+                return tutorialFinishedFragment2
             }
             else -> {
                 return tutorialHomeFragment

@@ -33,7 +33,7 @@ class TutorialHomeFragment : VradesBaseFragment() {
 
     override fun onStart() {
         super.onStart()
-        viewModel.setCurrentStateData(0)
+
         binding.apply { }
 
     }

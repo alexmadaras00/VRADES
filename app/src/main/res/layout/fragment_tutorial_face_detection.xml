@@ -28,19 +28,40 @@
         tools:context=".ui.fragments.tutorial.TutorialFaceDetectionFragment">
 
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlTutorialParent4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlTutorialParent5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/ivArrowTutorial2"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.12"
-            android:layout_marginTop="8dp"
+            android:contentDescription="@string/arrow"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="@+id/fbtnGallery"
+            app:layout_constraintHeight_percent="0.12"
             app:layout_constraintHorizontal_bias="0.478"
             app:layout_constraintStart_toStartOf="@+id/fbtnGallery"
-            app:layout_constraintTop_toBottomOf="@+id/fbtnCamera"
-            app:srcCompat="@drawable/arrow_tutorial"
-            android:contentDescription="@string/arrow" />
+            app:layout_constraintTop_toBottomOf="@+id/fbtnGallery"
+            app:srcCompat="@drawable/arrow_tutorial" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fbtnGallery"
@@ -48,28 +69,45 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="64dp"
             android:background="@color/menu_button"
             android:clickable="true"
-            android:contentDescription="@string/camera"
+            android:contentDescription="@string/press_gallery"
             android:focusable="true"
             app:backgroundTint="@color/menu_button"
-            app:layout_constraintEnd_toEndOf="@+id/flCameraPreviewLayout"
+            app:layout_constraintEnd_toStartOf="@+id/gdlTutorialParent5"
+            app:layout_constraintStart_toStartOf="@+id/gdlMiddleTutorial"
             app:layout_constraintTop_toBottomOf="@+id/flCameraPreviewLayout"
             app:srcCompat="@drawable/ic_baseline_collections_24" />
 
         <FrameLayout
             android:id="@+id/flCameraPreviewLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.55"
             android:layout_marginTop="32dp"
             android:background="@drawable/camera_layout"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/gdlTutorialParent5"
             app:layout_constraintHorizontal_bias="0.333"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/gdlTutorialParent4"
             app:layout_constraintTop_toBottomOf="@+id/tvPressOnCamera">
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnChangeCameraTutorial"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/cameraswitch_black_48dp"
+                android:foregroundGravity="bottom"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="10dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="10dp"
+                app:backgroundTint="#000000"
+                app:iconPadding="24dp" />
         </FrameLayout>
 
         <TextView
@@ -90,15 +128,22 @@
             android:id="@+id/tvPressOnGallery"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="40dp"
-            android:layout_marginTop="140dp"
             android:fontFamily="@font/ibm_plex_sans"
             android:text="@string/press_gallery"
             android:textColor="@color/menu_text_color"
             android:textSize="24sp"
             android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/gdlTutorialParent5"
+            app:layout_constraintStart_toStartOf="@+id/gdlTutorialParent4"
+            app:layout_constraintTop_toTopOf="@+id/gdlWritingTutorial2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlWritingTutorial2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.145"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -106,31 +151,43 @@
             style="@style/FloatingButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
             android:layout_marginTop="24dp"
             android:background="@color/menu_button"
             android:clickable="true"
-            android:contentDescription="@string/camera"
+            android:contentDescription="@string/press_camera"
             android:focusable="true"
             android:onClick="@{() -> viewModel.onNextPageClicked()}"
             app:backgroundTint="@color/menu_button"
             app:fabSize="normal"
-            app:layout_constraintStart_toStartOf="@+id/flCameraPreviewLayout"
+            app:layout_constraintEnd_toStartOf="@+id/gdlMiddleTutorial"
+            app:layout_constraintStart_toStartOf="@+id/gdlTutorialParent4"
             app:layout_constraintTop_toBottomOf="@+id/flCameraPreviewLayout"
             app:srcCompat="@drawable/ic_baseline_photo_camera_24_outline" />
 
         <ImageView
             android:id="@+id/ivArrowTutorial"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.12"
             android:layout_marginTop="8dp"
+            android:contentDescription="@string/arrow"
+            android:stateListAnimator="@anim/arrow_animation"
             app:layout_constraintEnd_toEndOf="@+id/fbtnCamera"
+            app:layout_constraintHeight_percent="0.06"
             app:layout_constraintHorizontal_bias="0.478"
             app:layout_constraintStart_toStartOf="@+id/fbtnCamera"
             app:layout_constraintTop_toBottomOf="@+id/fbtnCamera"
-            app:srcCompat="@drawable/arrow_tutorial"
-            android:contentDescription="@string/arrow" />
+            app:layout_constraintWidth_percent="0.16"
+            app:srcCompat="@drawable/arrow_tutorial" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlMiddleTutorial"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent="0.5"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

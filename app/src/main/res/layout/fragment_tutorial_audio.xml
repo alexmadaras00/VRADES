@@ -31,9 +31,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNextTutorialAudio"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginEnd="64dp"
+            android:layout_height="0dp"
             android:enabled="false"
             android:fontFamily="@font/ibm_plex_sans_bold"
             android:insetTop="0dp"
@@ -48,21 +46,23 @@
             app:iconGravity="end"
             app:iconTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHeight_percent="0.065"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/gdlAudioTutorial" />
+            app:layout_constraintTop_toTopOf="@+id/gdlAudioTutorial"
+            app:layout_constraintWidth_percent="0.6" />
 
         <ImageView
             android:id="@+id/ivArrowTutorialAudio"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginEnd="18dp"
+            android:layout_marginEnd="22dp"
             android:rotation="90"
+            android:stateListAnimator="@anim/arrow_anim_horizontal"
             app:layout_constraintBottom_toBottomOf="@+id/tvTapToStart"
             app:layout_constraintEnd_toStartOf="@+id/tvTapToStart"
-            app:layout_constraintHeight_percent="0.08"
+            app:layout_constraintHeight_percent="0.06"
             app:layout_constraintTop_toBottomOf="@+id/fbtnVoiceRecord"
-            app:layout_constraintWidth_percent="0.12"
+            app:layout_constraintWidth_percent="0.16"
             app:srcCompat="@drawable/arrow_tutorial" />
 
         <TextView

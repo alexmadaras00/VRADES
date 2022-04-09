@@ -41,12 +41,14 @@ class TutorialParentFragment : VradesBaseFragment() {
             vpTutorial.adapter = adapterViewPagerTutorial
             vpTutorial.isUserInputEnabled = false
             sdTutorialndicators.apply {
-                setSliderWidth(30f)
-                setSliderHeight(30f)
+                setSliderWidth(40f)
+                setSliderHeight(40f)
                 setSlideMode(IndicatorSlideMode.SMOOTH)
+                setHasTransientState(true)
                 setIndicatorStyle(IndicatorStyle.CIRCLE)
                 setupWithViewPager(vpTutorial)
             }
+            vpTutorial.setPageTransformer(DepthPageTransformer())
         }
     }
 

@@ -45,12 +45,12 @@
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_solutions.xml" value="0.1" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_test.xml" value="0.14666666666666667" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial.xml" value="0.10666666666666667" />
-        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_audio.xml" value="0.13333333333333333" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_audio.xml" value="0.14666666666666667" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_face_deteciton.xml" value="0.1" />
-        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_face_detection.xml" value="0.1" />
-        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_finished.xml" value="0.10666666666666667" />
-        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_home.xml" value="0.13333333333333333" />
-        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_parent.xml" value="0.1" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_face_detection.xml" value="0.13333333333333333" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_finished.xml" value="0.1" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_home.xml" value="0.12" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_parent.xml" value="0.14666666666666667" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_personal_questions.xml" value="0.13333333333333333" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_tutorial_writing.xml" value="0.1" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_writing_test.xml" value="0.12" />
@@ -80,7 +80,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.12" />
+        <option name="scale" value="0.1" />
       </ProjectState>
     </option>
   </component>
