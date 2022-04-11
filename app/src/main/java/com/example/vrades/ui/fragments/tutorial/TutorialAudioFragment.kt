@@ -47,6 +47,7 @@ class TutorialAudioFragment : Fragment() {
                 buttonRecordAudio.visibility = View.INVISIBLE
                 textViewTap.visibility = View.INVISIBLE
                 imageViewArrow.visibility = View.INVISIBLE
+                stopAnimate(imageViewArrow)
                 textViewPressAudio.visibility = View.INVISIBLE
             }
         }
@@ -58,6 +59,10 @@ class TutorialAudioFragment : Fragment() {
             R.anim.arrow_anim_horizontal
         );
         imageViewArrow.startAnimation(animUpDown);
+    }
+    private fun stopAnimate(imageViewArrow: ImageView) {
+        imageViewArrow.animation.cancel()
+        imageViewArrow.clearAnimation()
     }
 
     override fun onDestroy() {
