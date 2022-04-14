@@ -59,6 +59,7 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_begin="0dp"
                 app:layout_constraintGuide_percent="0.02" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clResultsContainer"
                 android:layout_width="0dp"
@@ -69,7 +70,77 @@
                 app:layout_constraintBottom_toTopOf="@+id/gdlBottomResults"
                 app:layout_constraintEnd_toEndOf="@id/gdlRight2"
                 app:layout_constraintStart_toStartOf="@id/gdlLeft2"
-                app:layout_constraintTop_toBottomOf="@+id/gdlTopResults">
+                app:layout_constraintTop_toBottomOf="@+id/gdlTopResults"
+                app:layout_constraintWidth_percent="0.9">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gdlMiddle4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintGuide_percent="0.97"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gdlnResults7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.23"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gdlnResults6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.27"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gdlnResults26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.89"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gdlnResults25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.85"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gdlnResults5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.83"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gdlnResults2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.57"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/gdlnResults"
@@ -80,6 +151,35 @@
                     app:layout_constraintGuide_percent="0.03"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.39" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gdlnResults3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.34"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gdlnResults8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.34"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gdlnResults4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.6"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/civProfilePictureResults"
@@ -99,7 +199,6 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginHorizontal="36dp"
-                    android:layout_marginTop="24dp"
                     android:background="@drawable/button_background"
                     android:fontFamily="@font/ibm_plex_sans_bold"
                     android:insetTop="0dp"
@@ -114,21 +213,20 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHeight_percent="0.07"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ivLineTopResults3" />
+                    app:layout_constraintTop_toTopOf="@+id/gdlnResults26" />
 
                 <ImageView
                     android:id="@+id/ivLineTopResults3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="24dp"
-                    android:layout_marginTop="20dp"
                     android:background="@color/white"
                     android:backgroundTint="@color/white"
                     android:contentDescription="@string/line"
                     android:src="@drawable/line_section_container"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/clFinalResult" />
+                    app:layout_constraintTop_toTopOf="@+id/gdlnResults25" />
 
                 <ImageView
                     android:id="@+id/ivLineTopResults2"
@@ -165,20 +263,6 @@
                     app:layout_constraintTop_toTopOf="@+id/gdlnResults"
                     app:strokeColor="@color/transparent" />
 
-                <ImageView
-                    android:id="@+id/ivLineTopResults"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="24dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/white"
-                    android:backgroundTint="@color/white"
-                    android:contentDescription="@string/line"
-                    android:src="@drawable/line_section_container"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvNameResults" />
-
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/gdlMiddle"
                     android:layout_width="wrap_content"
@@ -190,20 +274,29 @@
 
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintGuide_percent="0.5"
-                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gdlMiddle3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintGuide_percent="0.03"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/tvTestResults"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:fontFamily="@font/ibm_plex_sans_bold"
                     android:text="@string/results"
+                    android:textColor="@color/white"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ivLineTopResults" />
+                    app:layout_constraintTop_toTopOf="@+id/gdlnResults6" />
 
                 <TextView
                     android:id="@+id/tvNameResults"
@@ -211,6 +304,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/ibm_plex_sans_bold"
                     android:text="@string/the_boss"
+                    android:textColor="@color/white"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -219,28 +313,65 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clFaceResult"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="0dp"
                     android:background="@drawable/test_result_card_background"
                     android:paddingBottom="8dp"
                     app:flow_horizontalAlign="start"
+                    app:layout_constraintBottom_toTopOf="@+id/gdlnResults2"
                     app:layout_constraintEnd_toStartOf="@+id/gdlMiddle"
-                    app:layout_constraintHeight_percent="0.2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvTestResults"
+                    app:layout_constraintStart_toStartOf="@+id/gdlMiddle3"
+                    app:layout_constraintTop_toTopOf="@+id/gdlnResults3"
                     app:layout_constraintWidth_percent="0.4">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdlnResults22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.09"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdlnResults11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.65"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.39" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdlnResults9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.38"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.39" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdlnResults12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.76"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.39" />
 
                     <ImageView
                         android:id="@+id/ivFaceImage"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_margin="16dp"
+                        android:layout_margin="0dp"
                         android:contentDescription="@string/test_results"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_percent="0.25"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/gdlnResults22"
                         app:layout_constraintWidth_percent="0.35"
                         app:srcCompat="@drawable/face_image_card" />
 
@@ -248,63 +379,99 @@
                         android:id="@+id/tvFaceText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:fontFamily="@font/ibm_plex_sans_bold"
                         android:text="@string/face_detection"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ivFaceImage" />
+                        app:layout_constraintTop_toTopOf="@+id/gdlnResults9" />
 
                     <ImageView
                         android:id="@+id/ivLineCard"
                         android:layout_width="0dp"
                         android:layout_height="8dp"
-                        android:layout_marginTop="16dp"
                         android:contentDescription="@string/line"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvFaceText"
+                        app:layout_constraintTop_toTopOf="@+id/gdlnResults11"
                         app:srcCompat="@drawable/line_card" />
 
                     <TextView
                         android:id="@+id/tvFaceResult"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
+                        android:layout_margin="0dp"
                         android:fontFamily="@font/ibm_plex_sans"
                         android:text="@string/joy"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/ivLineCard" />
+                        app:layout_constraintTop_toTopOf="@+id/gdlnResults12" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clAudioResult"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="0dp"
                     android:background="@drawable/test_result_card_background"
                     android:paddingBottom="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.2"
+                    app:layout_constraintBottom_toTopOf="@+id/gdlnResults2"
+                    app:layout_constraintEnd_toStartOf="@+id/gdlMiddle4"
                     app:layout_constraintStart_toStartOf="@+id/gdlMiddle"
-                    app:layout_constraintTop_toBottomOf="@+id/tvTestResults"
+                    app:layout_constraintTop_toTopOf="@+id/gdlnResults3"
                     app:layout_constraintWidth_percent="0.4">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdlnResults23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.09"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdlnResults13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.65"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.39" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdlnResults14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.76"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.39" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdlnResults10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.38"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.39" />
 
                     <ImageView
                         android:id="@+id/ivAudioImage"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_margin="16dp"
+                        android:layout_margin="0dp"
                         android:contentDescription="@string/test_results"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_percent="0.25"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/gdlnResults23"
                         app:layout_constraintWidth_percent="0.35"
                         app:srcCompat="@drawable/audio_result" />
 
@@ -312,62 +479,98 @@
                         android:id="@+id/tvAudioTest"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:fontFamily="@font/ibm_plex_sans_bold"
                         android:text="@string/audio_test"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ivAudioImage" />
+                        app:layout_constraintTop_toTopOf="@+id/gdlnResults10" />
 
                     <ImageView
                         android:id="@+id/ivLineCard2"
                         android:layout_width="0dp"
                         android:layout_height="8dp"
-                        android:layout_marginTop="16dp"
                         android:contentDescription="@string/line"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvAudioTest"
+                        app:layout_constraintTop_toTopOf="@+id/gdlnResults13"
                         app:srcCompat="@drawable/line_card" />
 
                     <TextView
                         android:id="@+id/tvAudioResult"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
+                        android:layout_margin="0dp"
                         android:fontFamily="@font/ibm_plex_sans"
                         android:text="@string/joy"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/ivLineCard2" />
+                        app:layout_constraintTop_toTopOf="@+id/gdlnResults14" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clWritingResult"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="24dp"
                     android:background="@drawable/test_result_card_background"
                     android:paddingBottom="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/gdlnResults5"
                     app:layout_constraintEnd_toStartOf="@+id/gdlMiddle"
-                    app:layout_constraintHeight_percent="0.2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/clFaceResult"
+                    app:layout_constraintStart_toStartOf="@+id/gdlMiddle3"
+                    app:layout_constraintTop_toTopOf="@+id/gdlnResults4"
                     app:layout_constraintWidth_percent="0.4">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdlnResults21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.09"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdlnResults17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.38"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.39" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdlnResults15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.65"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.39" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdlnResults16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.76"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.39" />
 
                     <ImageView
                         android:id="@+id/ivWritingImage"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_margin="16dp"
+                        android:layout_margin="0dp"
                         android:contentDescription="@string/test_results"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_percent="0.25"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/gdlnResults21"
                         app:layout_constraintWidth_percent="0.35"
                         app:srcCompat="@drawable/writing_result" />
 
@@ -375,62 +578,97 @@
                         android:id="@+id/tvWritingTest"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:fontFamily="@font/ibm_plex_sans_bold"
                         android:text="@string/writing_test"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ivWritingImage" />
+                        app:layout_constraintTop_toTopOf="@+id/gdlnResults17" />
 
                     <ImageView
                         android:id="@+id/ivLineCard3"
                         android:layout_width="0dp"
                         android:layout_height="8dp"
-                        android:layout_marginTop="16dp"
                         android:contentDescription="@string/line"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvWritingTest"
+                        app:layout_constraintTop_toTopOf="@+id/gdlnResults15"
                         app:srcCompat="@drawable/line_card" />
 
                     <TextView
                         android:id="@+id/tvWritingResult"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
+                        android:layout_margin="0dp"
                         android:fontFamily="@font/ibm_plex_sans"
                         android:text="@string/joy"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/ivLineCard3" />
+                        app:layout_constraintTop_toTopOf="@+id/gdlnResults16" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clFinalResult"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_height="0dp"
                     android:background="@drawable/test_result_card_background"
                     android:paddingBottom="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/clWritingResult"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.2"
+                    app:layout_constraintEnd_toStartOf="@+id/gdlMiddle4"
                     app:layout_constraintStart_toStartOf="@+id/gdlMiddle"
                     app:layout_constraintTop_toTopOf="@+id/clWritingResult"
                     app:layout_constraintWidth_percent="0.4">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdlnResults24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.09"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdlnResults19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.65"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.39" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdlnResults20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.76"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.39" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/gdlnResults18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.38"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.39" />
 
                     <ImageView
                         android:id="@+id/ivFinalImage"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_margin="16dp"
+                        android:layout_margin="0dp"
                         android:contentDescription="@string/test_results"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHeight_percent="0.25"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/gdlnResults24"
                         app:layout_constraintWidth_percent="0.35"
                         app:srcCompat="@drawable/ic_baseline_content_paste_24" />
 
@@ -438,38 +676,36 @@
                         android:id="@+id/tvFinalTest"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:fontFamily="@font/ibm_plex_sans_bold"
                         android:text="@string/final_result"
                         android:textColor="@color/white"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ivFinalImage" />
+                        app:layout_constraintTop_toTopOf="@+id/gdlnResults18" />
 
                     <ImageView
                         android:id="@+id/ivLineCard4"
                         android:layout_width="0dp"
                         android:layout_height="8dp"
-                        android:layout_marginTop="16dp"
                         android:contentDescription="@string/line"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvFinalTest"
+                        app:layout_constraintTop_toTopOf="@+id/gdlnResults19"
                         app:srcCompat="@drawable/line_card" />
 
                     <TextView
                         android:id="@+id/tvFinalResult"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
+                        android:layout_margin="0dp"
                         android:fontFamily="@font/ibm_plex_sans_bold"
                         android:text="@string/joy"
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/ivLineCard4" />
+                        app:layout_constraintTop_toTopOf="@+id/gdlnResults20" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

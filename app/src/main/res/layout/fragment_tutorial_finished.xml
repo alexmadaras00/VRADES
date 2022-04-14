@@ -35,6 +35,24 @@
         <!-- TODO: Update blank fragment layout -->
 
         <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlTutorialFinTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.32"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlTutorialFinMiddle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.6"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdlTutorialFinished"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -54,7 +72,8 @@
             android:text="@string/next"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="28sp"
+            android:textSize="26sp"
+            android:gravity="center"
             app:cornerRadius="10dp"
             app:icon="@drawable/ic_baseline_arrow_forward_24"
             app:iconGravity="end"
@@ -70,7 +89,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="48dp"
-            android:layout_marginTop="84dp"
             android:fontFamily="@font/ibm_plex_sans_bold"
             android:text="@string/tutorial_finished"
             android:textAlignment="center"
@@ -78,19 +96,19 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/gdlTutorialFinished"
             app:layout_constraintStart_toStartOf="@+id/gdlTutorialFinished"
-            app:layout_constraintTop_toBottomOf="@+id/ivCompletedTutorial"
+            app:layout_constraintTop_toTopOf="@+id/gdlTutorialFinMiddle"
             app:layout_constraintWidth_percent="0.7" />
 
         <ImageView
             android:id="@+id/ivCompletedTutorial"
             android:layout_width="0dp"
-            android:layout_height="160dp"
-            android:layout_marginTop="272dp"
+            android:layout_height="0dp"
             android:contentDescription="@string/next"
             android:src="@drawable/ic_check"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/gdlTutorialFinTop" />
 
         <TextView
             android:id="@+id/tvDone"

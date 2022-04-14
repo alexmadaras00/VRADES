@@ -41,30 +41,88 @@
 
         </include>
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlAbout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.34"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.39" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlAbout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.03"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.39" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlAbout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.23"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.39" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlAbout4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.27"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.39" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlAbout5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.82"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.39" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlAbout6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.9"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.39" />
+
         <ImageView
             android:id="@+id/ivLineTopAbout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="176dp"
             android:background="@color/white"
             android:backgroundTint="@color/white"
             android:contentDescription="@string/line"
             android:src="@drawable/line_section_container"
             app:layout_constraintEnd_toEndOf="@+id/include"
             app:layout_constraintStart_toStartOf="@+id/include"
-            app:layout_constraintTop_toTopOf="@+id/include" />
+            app:layout_constraintTop_toTopOf="@+id/gdlAbout2" />
 
         <ImageView
             android:id="@+id/ivAboutLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="12dp"
             android:contentDescription="@string/about"
             android:src="@drawable/info_white_48dp"
             app:layout_constraintEnd_toStartOf="@+id/tvAboutTitle"
-            app:layout_constraintTop_toBottomOf="@+id/ivLineTopAbout" />
+            app:layout_constraintTop_toTopOf="@+id/gdlAbout4" />
 
         <TextView
             android:id="@+id/tvAboutTitle"
@@ -80,22 +138,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/ivAboutLogo" />
 
-        <TextView
-            android:id="@+id/tvDisplaySuggestions"
-            android:layout_width="0dp"
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="5dp"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/ibm_plex_sans"
-            android:text='@string/vrades_about_description'
-            android:textAlignment="center"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.39"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/include"
-            app:layout_constraintTop_toBottomOf="@+id/ivAboutLogo" />
+            android:fillViewport="false"
+            app:layout_constraintEnd_toStartOf="@+id/gdlRight2"
+            app:layout_constraintHeight_percent="0.4"
+            app:layout_constraintStart_toStartOf="@+id/gdlLeft2"
+            app:layout_constraintTop_toTopOf="@+id/gdlAbout3">
+
+            <TextView
+                android:id="@+id/tvDisplaySuggestions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginStart="2dp"
+                android:fontFamily="@font/ibm_plex_sans"
+                android:text='@string/vrades_about_description'
+                android:textAlignment="center"
+                android:textSize="18sp"
+                app:layout_constraintHeight_percent="0.39" />
+        </androidx.core.widget.NestedScrollView>
 
         <ImageView
             android:id="@+id/ivLineBottomAbout"
@@ -117,27 +180,25 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/pacifico"
             android:text="@string/follow_on_insta"
-            android:layout_marginTop="24dp"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/ivLineBottomAbout"
             app:layout_constraintStart_toStartOf="@+id/ivLineBottomAbout"
-            app:layout_constraintTop_toBottomOf="@+id/ivLineBottomAbout" />
+            app:layout_constraintTop_toTopOf="@+id/gdlAbout5" />
 
         <ImageView
             android:id="@+id/ivInstagram"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="@+id/tvFollow"
             app:layout_constraintStart_toStartOf="@+id/tvFollow"
-            app:layout_constraintTop_toBottomOf="@+id/tvFollow"
+            app:layout_constraintTop_toTopOf="@+id/gdlAbout6"
             app:srcCompat="@drawable/instagram" />
 
         <ImageButton
             android:id="@+id/btnBackAbout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="24dp"
+            android:layout_marginStart="24dp"
             android:background="@drawable/ic_baseline_arrow_back_24"
             android:contentDescription="@string/about"
             android:fontFamily="@font/ibm_plex_sans"
@@ -151,7 +212,7 @@
             app:iconPadding="0dp"
             app:iconTint="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/include"
+            app:layout_constraintTop_toTopOf="@+id/gdlAbout"
             app:strokeColor="@color/transparent" />
 
         <androidx.constraintlayout.widget.Guideline

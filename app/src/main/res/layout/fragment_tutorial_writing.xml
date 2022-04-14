@@ -23,6 +23,33 @@
         <!-- TODO: Update blank fragment layout -->
 
         <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlWritingTutorial4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.765"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlWritingTutorial5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.87"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlWritingTutorial3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdlWritingTutorial"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,23 +76,22 @@
         <TextView
             android:id="@+id/tvWritingCompleted"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_height="0dp"
+            android:textSize="20sp"
             android:fontFamily="@font/ibm_plex_sans_bold"
             android:text="@string/writing_completed"
-            android:textSize="24sp"
+            app:layout_constraintHeight_percent="0.08"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="@+id/etWritingLayout"
             app:layout_constraintHorizontal_bias="0.0"
 
             app:layout_constraintStart_toStartOf="@+id/etWritingLayout"
-            app:layout_constraintTop_toBottomOf="@+id/etWritingLayout" />
+            app:layout_constraintTop_toTopOf="@+id/gdlWritingTutorial4" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNextTutorialWriting"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
             android:enabled="false"
             android:fontFamily="@font/ibm_plex_sans_bold"
             android:insetTop="0dp"
@@ -74,7 +100,8 @@
             android:text="@string/next"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="28sp"
+            android:textSize="26sp"
+            android:gravity="center"
             android:visibility="visible"
             app:cornerRadius="10dp"
             app:icon="@drawable/ic_baseline_arrow_forward_24"
@@ -83,21 +110,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.065"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvWritingCompleted"
+            app:layout_constraintTop_toTopOf="@+id/gdlWritingTutorial5"
             app:layout_constraintWidth_percent="0.6" />
 
         <TextView
             android:id="@+id/tvWritingInfo"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="14dp"
             android:fontFamily="@font/ibm_plex_sans"
-
             android:text="@string/writing_info"
             android:textColor="@color/menu_text_color"
-            android:textSize="24sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.123"
+            app:layout_constraintHeight_percent="0.13"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/gdlWritingTutorial" />
@@ -107,7 +133,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="24dp"
             android:background="@drawable/audio_back"
             app:counterEnabled="true"
             app:endIconMode="clear_text"
@@ -115,7 +140,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.45"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvWritingInfo">
+            app:layout_constraintTop_toTopOf="@+id/gdlWritingTutorial3">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etWriting"

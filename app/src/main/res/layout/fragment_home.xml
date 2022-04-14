@@ -13,7 +13,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_app"
+        android:tag="layout/fragment_home"
         tools:context=".ui.fragments.HomeFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdGuideline5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="0dp"
+            app:layout_constraintGuide_percent="0.8" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdGuideline3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.65" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdlRight"
@@ -26,15 +42,14 @@
         <ImageButton
             android:id="@+id/btnSettings"
             style="@style/Icons"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:background="@drawable/ic_settings_white_36dp"
             android:contentDescription="@string/settings_button"
             app:icon="@drawable/ic_settings_white_36dp"
-            app:iconSize="24dp"
             app:layout_constraintEnd_toStartOf="@+id/gdlRight"
-            app:layout_constraintHeight_percent="0.045"
+            app:layout_constraintHeight_percent="0.05"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.1"
             tools:ignore="TouchTargetSizeCheck" />
@@ -60,9 +75,8 @@
             android:textAlignment="center"
             app:icon="@drawable/info_white_48dp"
             app:layout_constraintEnd_toStartOf="@+id/gdlRight"
-            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="@+id/gdlLeft"
-            app:layout_constraintTop_toTopOf="@+id/gdGuideline1" />
+            app:layout_constraintTop_toTopOf="@+id/gdGuideline" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDetect"
@@ -72,7 +86,7 @@
             app:layout_constraintEnd_toStartOf="@+id/gdlRight"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="@+id/gdlLeft"
-            app:layout_constraintTop_toBottomOf="@+id/btnAbout" />
+            app:layout_constraintTop_toTopOf="@+id/gdGuideline4" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnTutorial"
@@ -82,7 +96,7 @@
             app:layout_constraintEnd_toEndOf="@+id/btnDetect"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="@+id/btnDetect"
-            app:layout_constraintTop_toBottomOf="@+id/btnDetect" />
+            app:layout_constraintTop_toTopOf="@+id/gdGuideline3" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnProfile"
@@ -92,15 +106,23 @@
             app:layout_constraintEnd_toEndOf="@+id/btnTutorial"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="@+id/btnDetect"
-            app:layout_constraintTop_toBottomOf="@+id/btnTutorial" />
+            app:layout_constraintTop_toTopOf="@+id/gdGuideline5" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gdGuideline1"
+            android:id="@+id/gdGuideline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_end="0dp"
-            app:layout_constraintGuide_percent="0.28" />
+            app:layout_constraintGuide_percent="0.35" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdGuideline4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.5"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdlLeft"

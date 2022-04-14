@@ -37,7 +37,7 @@ class TutorialParentFragment : VradesBaseFragment() {
     override fun onStart() {
         super.onStart()
         binding.apply {
-            adapterViewPagerTutorial = AdapterViewPagerTutorial(parentFragmentManager, lifecycle)
+            adapterViewPagerTutorial = AdapterViewPagerTutorial(childFragmentManager, lifecycle)
             vpTutorial.adapter = adapterViewPagerTutorial
             vpTutorial.isUserInputEnabled = false
             sdTutorialndicators.apply {

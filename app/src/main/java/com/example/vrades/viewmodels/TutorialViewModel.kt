@@ -8,7 +8,6 @@ import com.example.vrades.enums.TutorialState
 class TutorialViewModel : ViewModel() {
     private val states = TutorialState.values()
 
-
     private val _currentStateCount = MutableLiveData<Int>()
     private val currentStateCount: LiveData<Int>
         get() = _currentStateCount

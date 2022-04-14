@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.vrades.databinding.FragmentTutorialWritingBinding
+import com.example.vrades.utils.UIUtils
 import com.example.vrades.viewmodels.TutorialViewModel
 
 
@@ -68,6 +71,12 @@ class TutorialWritingFragment : Fragment() {
                     textViewInfo.visibility = View.INVISIBLE
                 }
             }
+            editTextWriting.setOnEditorActionListener(TextView.OnEditorActionListener { _, p1, _ ->
+                if (p1 == EditorInfo.IME_ACTION_DONE) {
+                    UIUtils.dismissKeyboard(requireActivity())
+                }
+                return@OnEditorActionListener false
+            })
         }
     }
 

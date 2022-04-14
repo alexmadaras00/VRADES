@@ -27,7 +27,7 @@
     <string name="notifications">Notifications</string>
     <string name="display_suggestions">Display Suggestions</string>
 
-    <string name="log_out">Log Out</string>
+    <string name="log_out">Log out</string>
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
@@ -92,7 +92,7 @@
     <string name="restart">Restart</string>
     <string name="proceed">Proceed</string>
     <string name="profile">Picture Profile</string>
-    <string name="my_diary_analysis"><![CDATA[My Diary & Analysis]]></string>
+    <string name="analysis"><![CDATA[Analysis]]></string>
     <string name="test_results">Test Results</string>
     <string name="test">Test -</string>
     <string name="confession">Confession:</string>
@@ -105,7 +105,7 @@
     <string name="results">Results</string>
     <string name="final_result">Final Result</string>
     <string name="writing_test">Writing Test</string>
-    <string name="see_the_details">See the details!</string>
+    <string name="see_the_details">Details</string>
     <string name="chart_results">Chart Results</string>
     <string name="dominant_emotion">Dominant Emotion:</string>
     <string name="meditate">Meditate</string>
@@ -123,4 +123,6 @@
     <string name="_70_words">70 words</string>
     <string name="write_text">Write your text!</string>
     <string name="good_to_go">Now you can start using VRADES!</string>
+    <string name="alex_madaras">Alex Madaras</string>
+    <string name="you_seem_to_be_satisfied_with_your_own_life_so_you_are_less_tempted_to_change_its_way_yet_by_analyzing_each_of_the_results_we_found_a_lack_of_stability_as_you_tend_to_change_your_mind_easily">You seem to be satisfied with your own life, so you are less tempted to change its way. Yet, by analyzing each of the results, we found a lack of stability, as you tend to change your mind easily.</string>
 </resources>

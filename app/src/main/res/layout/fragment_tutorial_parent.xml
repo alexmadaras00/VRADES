@@ -59,9 +59,9 @@
             android:elevation="1dp"
             app:layout_constraintBottom_toBottomOf="@+id/btnSkipTutorial"
             app:layout_constraintEnd_toStartOf="@+id/gdlTutorialParent3"
-            app:layout_constraintHeight_percent="0.02"
+            app:layout_constraintHeight_percent="0.03"
             app:layout_constraintTop_toTopOf="@+id/btnSkipTutorial"
-            app:layout_constraintWidth_percent="0.28"
+            app:layout_constraintWidth_percent="0.34"
             app:vpi_slider_checked_color="@color/background_gradient_end"
             app:vpi_slider_normal_color="@color/form_gradient_start" />
 
@@ -71,14 +71,16 @@
             android:layout_height="0dp"
             android:backgroundTint="@color/skip_tutorial_button_color"
             android:fontFamily="@font/ibm_plex_sans"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:onClick="@{()->viewModel.onNavigateToHomeScreenClicked()}"
             android:text="@string/skip_tutorial"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:onClick="@{()->viewModel.onNavigateToHomeScreenClicked()}"
-            app:layout_constraintHeight_percent="0.06"
+            app:layout_constraintHeight_percent="0.055"
             app:layout_constraintStart_toStartOf="@+id/gdlTutorialParent2"
             app:layout_constraintTop_toTopOf="@+id/gdlTutorialParent"
-            app:layout_constraintWidth_percent="0.33"
+            app:layout_constraintWidth_percent="0.4"
             tools:ignore="TouchTargetSizeCheck" />
 
         <androidx.viewpager2.widget.ViewPager2

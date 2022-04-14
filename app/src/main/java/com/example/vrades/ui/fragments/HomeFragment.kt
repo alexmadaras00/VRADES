@@ -24,7 +24,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
+
         _binding = FragmentHomeBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.executePendingBindings()

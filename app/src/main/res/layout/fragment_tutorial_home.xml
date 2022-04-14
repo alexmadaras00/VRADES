@@ -28,16 +28,32 @@
         android:background="@drawable/tutorial_background"
         tools:context=".ui.fragments.tutorial.TutorialHomeFragment">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlTutorialMiddle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.54"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlTutorialHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.17"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageView
             android:id="@+id/ivLogoTutorial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/logo"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.23000002"
+            app:layout_constraintTop_toTopOf="@+id/gdlTutorialHome"
             app:srcCompat="@drawable/logo" />
 
         <TextView
@@ -45,15 +61,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="64dp"
-            android:layout_marginTop="100dp"
             android:fontFamily="@font/ibm_plex_sans_bold"
             android:text="@string/complete_the_tutorial_to_get_used_with_our_technologies"
             android:textAlignment="center"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.406"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivLogoTutorial" />
+            app:layout_constraintTop_toTopOf="@+id/gdlTutorialMiddle"
+            app:layout_constraintWidth_max="280dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnStartTutorial"
@@ -61,12 +76,14 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:fontFamily="@font/ibm_plex_sans_bold"
+            android:foregroundGravity="center"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:text="@string/start"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="28sp"
+            android:textSize="26sp"
+            android:gravity="center"
             app:cornerRadius="10dp"
             app:icon="@drawable/ic_baseline_arrow_forward_24"
             app:iconGravity="end"

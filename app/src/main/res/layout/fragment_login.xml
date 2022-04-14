@@ -23,44 +23,85 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_custom"
-        android:paddingStart="20dp"
-        android:paddingTop="80dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="80dp"
         tools:context=".ui.fragments.LoginFragment">
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gdlRight2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="0dp"
-            app:layout_constraintGuide_percent="0.98" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gdlLeft2"
+            android:id="@+id/gdlBottomLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent="0.88"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlTopLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent="0.05"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlMiddleLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="0dp"
-            app:layout_constraintGuide_percent="0.02" />
+            app:layout_constraintGuide_percent="0.5" />
+
         <include
             android:id="@+id/include"
             layout="@layout/container_auth_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:paddingHorizontal="24dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/gdlRight2"
-            app:layout_constraintStart_toEndOf="@id/gdlLeft2"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintBottom_toTopOf="@+id/gdlBottomLogin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gdlTopLogin"
+            app:layout_constraintWidth_percent="0.9">
 
         </include>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlnProfileTitle4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.57"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlnProfileTitle3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.22"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlnProfileTitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.39"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
             android:fontFamily="@font/ibm_plex_sans_light"
             android:text="@string/e_mail"
             android:textColor="@color/white"
@@ -68,14 +109,14 @@
             app:layout_constraintEnd_toEndOf="@+id/include"
             app:layout_constraintHorizontal_bias="0.16"
             app:layout_constraintStart_toStartOf="@+id/include"
-            app:layout_constraintTop_toTopOf="@+id/include" />
+            app:layout_constraintTop_toTopOf="@+id/gdlnProfileTitle3" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="6dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="32dp"
             android:autofillHints=""
             android:ems="10"
             android:fontFamily="@font/ibm_plex_sans"
@@ -84,15 +125,16 @@
             android:minHeight="48dp"
             android:selectAllOnFocus="false"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.065"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tvEmail"
-            app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+            app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+            app:layout_constraintWidth_percent="0.8" />
 
         <TextView
             android:id="@+id/tvPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
             android:fontFamily="@font/ibm_plex_sans_light"
             android:text="@string/password"
             android:textColor="@color/white"
@@ -100,39 +142,40 @@
             app:layout_constraintEnd_toEndOf="@+id/include"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tvEmail"
-            app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+            app:layout_constraintTop_toTopOf="@+id/gdlnProfileTitle2" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPassword"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="6dp"
-            android:layout_marginEnd="24dp"
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/enter_your_password"
             android:inputType="textPassword"
             android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/etEmail"
+            app:layout_constraintHeight_percent="0.065"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tvPassword"
-            app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/tvPassword"
+            app:layout_constraintWidth_percent="0.8" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogIn"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="48dp"
-            android:layout_marginTop="64dp"
+            android:layout_height="0dp"
             android:background="@drawable/button_background"
             android:fontFamily="@font/ibm_plex_sans_bold"
             android:text="@string/log_in"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+            app:layout_constraintEnd_toStartOf="@+id/gdlMiddleLogin"
+            app:layout_constraintHeight_percent="0.075"
+            app:layout_constraintStart_toStartOf="@+id/gdlMiddleLogin"
+            app:layout_constraintTop_toTopOf="@+id/gdlnProfileTitle4"
+            app:layout_constraintWidth_percent="0.7" />
 
         <TextView
             android:id="@+id/tvForgotPassword"
@@ -151,9 +194,9 @@
             android:id="@+id/tvNoAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
             android:fontFamily="@font/ibm_plex_sans_light"
             android:text="@string/don_t_have_an_account"
-            android:layout_marginTop="0dp"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/btnLogIn"

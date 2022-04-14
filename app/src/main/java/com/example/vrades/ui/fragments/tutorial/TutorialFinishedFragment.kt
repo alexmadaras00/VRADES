@@ -43,7 +43,7 @@ class TutorialFinishedFragment : Fragment() {
             val currentStateCount = viewModel.getCurrentStateData()
             val currentState = viewModel.getCurrentState()
             println(currentState)
-            if (currentStateCount == 5) {
+            if (currentStateCount == 4) {
                 textViewCompletedTutorial.text = getString(R.string.good_to_go)
                 textViewDone.visibility = View.VISIBLE
                 buttonNext.setOnClickListener {

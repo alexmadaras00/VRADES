@@ -17,9 +17,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_custom"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="50dp"
         tools:context=".ui.fragments.RegisterFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlMiddleRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent="0.5" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdlRight2"
@@ -40,9 +46,31 @@
         <include
             android:id="@+id/include3"
             layout="@layout/container_auth_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.87"
+            app:layout_constraintWidth_percent="0.9"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/gdlRight2"
             app:layout_constraintStart_toStartOf="@id/gdlLeft2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlnProfileTitle6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.73"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlnProfileTitle5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.27"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -50,7 +78,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="180dp"
             android:fontFamily="@font/ibm_plex_sans_light"
             android:text="@string/full_name"
             android:textColor="@color/white"
@@ -58,7 +85,7 @@
             app:layout_constraintEnd_toEndOf="@+id/include3"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/include3"
-            app:layout_constraintTop_toTopOf="@+id/include3" />
+            app:layout_constraintTop_toTopOf="@+id/gdlnProfileTitle5" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etFullname"
@@ -161,18 +188,18 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnRegister"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="48dp"
-            android:layout_marginTop="40dp"
+            android:layout_height="0dp"
             android:background="@drawable/button_background"
             android:fontFamily="@font/ibm_plex_sans"
             android:text="@string/register"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etConfirmPassword" />
+            app:layout_constraintEnd_toStartOf="@+id/gdlMiddleRegister"
+            app:layout_constraintHeight_percent="0.075"
+            app:layout_constraintStart_toStartOf="@+id/gdlMiddleRegister"
+            app:layout_constraintTop_toTopOf="@+id/gdlnProfileTitle6"
+            app:layout_constraintWidth_percent="0.7" />
 
         <TextView
             android:id="@+id/tvAlreadyAccount"

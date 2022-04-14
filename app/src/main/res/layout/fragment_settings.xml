@@ -18,22 +18,52 @@
         android:layout_height="match_parent"
         android:background="@drawable/background_app"
         android:paddingStart="20dp"
-        android:paddingTop="80dp"
         android:paddingEnd="20dp"
-        android:paddingBottom="80dp"
         tools:context=".ui.fragments.SettingsFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlMiddleSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:flow_firstHorizontalBias="0.2"
+            app:flow_horizontalAlign="center"
+            app:flow_horizontalBias="0.2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_begin="178dp"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlTopSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.05"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlBottomSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.95"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <include
             android:id="@+id/include"
             layout="@layout/container_auth_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:paddingHorizontal="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/gdlBottomSettings"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="@+id/gdlTopSettings">
 
         </include>
-
 
 
         <ImageButton
@@ -41,31 +71,32 @@
             style="@style/Icons"
             android:layout_width="48dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:background="@drawable/ic_baseline_arrow_back_24"
             android:contentDescription="@string/back"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/include" />
+            app:layout_constraintTop_toTopOf="@+id/gdlnProfile3" />
 
         <ImageView
             android:id="@+id/ivLineTop"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="176dp"
             android:background="@color/white"
             android:backgroundTint="@color/white"
             android:contentDescription="@string/line"
             android:src="@drawable/line_section_container"
             app:layout_constraintEnd_toEndOf="@+id/include"
             app:layout_constraintStart_toStartOf="@+id/include"
-            app:layout_constraintTop_toTopOf="@+id/include" />
+            app:layout_constraintTop_toTopOf="@+id/gdlnProfile4" />
 
         <TextView
             android:id="@+id/tvVolume"
             style="@style/TextViews"
+            android:layout_marginTop="0dp"
             android:text="@string/volume"
             app:layout_constraintStart_toStartOf="@+id/ivLineTop"
-            app:layout_constraintTop_toBottomOf="@+id/ivLineTop" />
+            app:layout_constraintTop_toTopOf="@+id/gdlSettingsItem1" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/swVolume"
@@ -79,7 +110,7 @@
             style="@style/TextViews"
             android:text="@string/notifications"
             app:layout_constraintStart_toStartOf="@+id/ivLineTop"
-            app:layout_constraintTop_toBottomOf="@+id/tvVolume" />
+            app:layout_constraintTop_toTopOf="@+id/gdlSettingsItem2" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/swNotifications"
@@ -93,7 +124,7 @@
             style="@style/TextViews"
             android:text="@string/display_suggestions"
             app:layout_constraintStart_toStartOf="@+id/ivLineTop"
-            app:layout_constraintTop_toBottomOf="@+id/tvNotifications" />
+            app:layout_constraintTop_toTopOf="@+id/gdlSettingsItem3" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/swDisplaySugggestions"
@@ -107,7 +138,7 @@
             style="@style/TextViews"
             android:text="@string/tutorial"
             app:layout_constraintStart_toStartOf="@+id/ivLineTop"
-            app:layout_constraintTop_toBottomOf="@+id/tvDisplaySuggestions" />
+            app:layout_constraintTop_toTopOf="@+id/gdlSettingsItem4" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/swTutorial"
@@ -130,21 +161,99 @@
             app:layout_constraintStart_toStartOf="@+id/include"
             app:layout_constraintTop_toBottomOf="@+id/tvTutorial" />
 
-        <TextView
-            android:id="@+id/tvLogOut"
-            style="@style/TextViews"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogOut"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/button_background"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
             android:text="@string/log_out"
-            app:layout_constraintStart_toStartOf="@+id/ivLineTop"
-            app:layout_constraintTop_toBottomOf="@+id/ivLineBottom" />
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:icon="@drawable/logout_black_24dp"
+            app:iconGravity="start"
+            app:iconTint="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/gdlBottomResults2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.07"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="0.7" />
 
-        <ImageView
-            android:id="@+id/ivLogOut"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tvLogOut"
-            app:layout_constraintEnd_toEndOf="@+id/ivLineTop"
-            app:layout_constraintTop_toTopOf="@+id/tvLogOut"
-            app:srcCompat="@drawable/logout_black_24dp" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlnProfile3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.08"
+            app:layout_constraintTop_toTopOf="@id/include" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlBottomResults2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlSettingsItem1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.32"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlSettingsItem2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.42"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gdlSettingsItem1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlSettingsItem3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.52"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gdlSettingsItem1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlSettingsItem4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.62"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gdlSettingsItem1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlnProfile4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.28"
+            app:layout_constraintTop_toTopOf="@id/include" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
