@@ -37,9 +37,9 @@ class TutorialWritingFragment : Fragment() {
             val editTextWriting = etWriting
             val textViewInfo = tvWritingInfo
             val textViewWords = tvCheckedWords
+            val imageViewWords = ivCheckedWords
             val textViewDone = tvWritingCompleted
             val textViewCongrats = tvWritingCongrats
-            val imageViewWords = ivCheckedWords
             val buttonNext = btnNextTutorialWriting
             editTextWriting.doOnTextChanged { text, _, _, _ ->
                 val wordsText = text.toString().split(" ")

@@ -6,6 +6,39 @@
     app:startDestination="@id/nav_home">
 
     <fragment
+        android:id="@+id/nav_face"
+        android:name="com.example.vrades.ui.fragments.FaceDetectionFragment"
+        android:label="FaceDetectionFragment">
+        <action
+            android:id="@+id/action_faceDetectionFragment_to_audioTestFragment"
+            app:destination="@id/nav_audio" />
+        <action
+            android:id="@+id/action_nav_face_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_audio"
+        android:name="com.example.vrades.ui.fragments.AudioTestFragment"
+        android:label="AudioTestFragment">
+        <action
+            android:id="@+id/action_audioTestFragment_to_writingTestFragment"
+            app:destination="@id/nav_writing" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_writing"
+        android:name="com.example.vrades.ui.fragments.WritingTestFragment"
+        android:label="WritingTestFragment">
+        <action
+            android:id="@+id/action_writingTestFragment_to_faceDetectionFragment"
+            app:destination="@id/nav_face" />
+        <action
+            android:id="@+id/action_nav_writing_to_navigation_graph"
+            app:destination="@id/navigation_graph" />
+        <action
+            android:id="@+id/action_nav_writing_to_nav_details"
+            app:destination="@id/nav_details" />
+    </fragment>
+    <fragment
         android:id="@+id/nav_login"
         android:name="com.example.vrades.ui.fragments.LoginFragment"
         android:label="fragment_login"
@@ -48,9 +81,6 @@
             android:id="@+id/action_nav_home_to_nav_about"
             app:destination="@id/nav_about" />
         <action
-            android:id="@+id/action_nav_home_to_nav_test"
-            app:destination="@+id/nav_test" />
-        <action
             android:id="@+id/action_nav_home_to_mobile_navigation"
             app:destination="@+id/mobile_navigation" />
         <action
@@ -59,6 +89,9 @@
         <action
             android:id="@+id/action_nav_home_to_nav_tutorial"
             app:destination="@id/nav_tutorial" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_face"
+            app:destination="@id/nav_face" />
     </fragment>
 
     <fragment
@@ -119,17 +152,6 @@
             app:destination="@id/nav_profile" />
         <action
             android:id="@+id/action_nav_results_to_nav_details"
-            app:destination="@id/nav_details" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_test"
-        android:name="com.example.vrades.ui.fragments.TestFragment"
-        android:label="TestFragment" >
-        <action
-            android:id="@+id/action_nav_test_to_nav_home"
-            app:destination="@id/nav_home" />
-        <action
-            android:id="@+id/action_nav_test_to_nav_details"
             app:destination="@id/nav_details" />
     </fragment>
     <fragment

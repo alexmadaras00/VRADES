@@ -10,17 +10,42 @@
         <import type="android.view.View" />
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/flMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bnNavigationTest"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:animateLayoutChanges="true"
+            android:animationCache="true"
+            android:background="@drawable/bottom_nav_back_2"
+            android:clickable="false"
+            android:clipChildren="false"
+            android:longClickable="false"
+            app:itemBackground="@drawable/bottom_nav_tab_back"
+            app:itemHorizontalTranslationEnabled="true"
+            app:itemIconTint="@color/black"
+            app:itemRippleColor="@color/form_gradient_start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.08"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_test_menu" />
+
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/nav_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:defaultNavHost="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.92"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/navigation_graph" />
-    </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

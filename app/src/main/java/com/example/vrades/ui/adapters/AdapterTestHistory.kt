@@ -37,7 +37,7 @@ class AdapterTestHistory(private val onClickListener: IOnClickListener) : Recycl
                     binding.ivFace.setColorFilter(R.color.background)
                 TestState.AUDIO_DETECTION_COMPLETED ->
                     binding.ivAudio.setColorFilter(R.color.background)
-                TestState.WRITING_DETECTION_COMPLETED ->
+                TestState.TEST_COMPLETED ->
                     binding.ivWriting.setColorFilter(R.color.background)
                 else -> {
                     binding.ivFace.setColorFilter(R.color.white)

@@ -85,8 +85,8 @@
 
             <ImageButton
                 android:id="@+id/btnBackDetails"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 app:layout_constraintWidth_percent="0.13"
                 app:layout_constraintHeight_percent="0.06"
                 android:layout_marginStart="24dp"

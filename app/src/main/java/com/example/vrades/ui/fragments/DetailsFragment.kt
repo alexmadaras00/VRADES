@@ -50,7 +50,7 @@ class DetailsFragment : Fragment() {
             pieChart.data = pieData
             initPieChart(pieChart)
             buttonBack.setOnClickListener {
-                if (state == TestState.WRITING_DETECTION_COMPLETED) {
+                if (state == TestState.TEST_COMPLETED) {
                     findNavController().navigate(DetailsFragmentDirections.actionNavDetailsToNavHome())
                 } else findNavController().navigate(DetailsFragmentDirections.actionNavDetailsToNavResults())
             }

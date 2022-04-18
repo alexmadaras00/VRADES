@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentHomeBinding
 
@@ -43,7 +46,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavAbout())
             }
             testButton.setOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavTest())
+
+                findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavFace())
             }
             settingsButton.setOnClickListener {
                 findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavSettings())

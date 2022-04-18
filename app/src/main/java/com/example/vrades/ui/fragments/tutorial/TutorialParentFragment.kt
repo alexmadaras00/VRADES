@@ -19,7 +19,6 @@ class TutorialParentFragment : VradesBaseFragment() {
     private val viewModel: TutorialViewModel by activityViewModels()
     private var _binding: FragmentTutorialParentBinding? = null
     private lateinit var adapterViewPagerTutorial: AdapterViewPagerTutorial
-    private var currentPosition: Int = 0
     val binding get() = _binding!!
 
     override fun onCreateView(
@@ -37,9 +36,10 @@ class TutorialParentFragment : VradesBaseFragment() {
     override fun onStart() {
         super.onStart()
         binding.apply {
+            val viewPagerTutorial = vpTutorial
             adapterViewPagerTutorial = AdapterViewPagerTutorial(childFragmentManager, lifecycle)
-            vpTutorial.adapter = adapterViewPagerTutorial
-            vpTutorial.isUserInputEnabled = false
+            viewPagerTutorial.adapter = adapterViewPagerTutorial
+            viewPagerTutorial.isUserInputEnabled = false
             sdTutorialndicators.apply {
                 setSliderWidth(40f)
                 setSliderHeight(40f)
@@ -61,7 +61,6 @@ class TutorialParentFragment : VradesBaseFragment() {
     }
 
     override fun connectViewModelEvents() {
-
         viewModel.onNextPage.observe(this, onNextPage)
         viewModel.onNavigateToHome.observe(this, onNavigateToHomeScreen)
     }

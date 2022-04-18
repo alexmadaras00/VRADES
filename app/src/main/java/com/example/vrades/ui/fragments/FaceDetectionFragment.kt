@@ -55,16 +55,19 @@ class FaceDetectionFragment : Fragment() {
         viewModel = ViewModelProvider(this)[TestViewModel::class.java]
         _binding = FragmentFaceDetectionBinding.inflate(inflater)
         binding.lifecycleOwner = this
-        binding.viewModel = viewModel
+        binding.viewModelTest = viewModel
         binding.executePendingBindings()
         return binding.root
     }
 
     override fun onStart() {
         super.onStart()
-        val state = viewModel.getState()
+        val state = viewModel.getCurrentState()
+        val navController = findNavController()
         binding.apply {
             val buttonCamera = fbtnCamera
+            val buttonGallery = fbtnGallery
+            val buttonNext = btnNextFace
             val cameraView = vfCameraPreview
             if (allPermissionsGranted())
                 startCamera()
@@ -75,15 +78,16 @@ class FaceDetectionFragment : Fragment() {
             )
             buttonCamera.setOnClickListener {
                 takePhoto()
+                buttonCamera.visibility = View.INVISIBLE
+                buttonGallery.visibility = View.INVISIBLE
+                buttonNext.visibility = View.VISIBLE
+
+            }
+            buttonNext.setOnClickListener {
+                    navController.navigate(FaceDetectionFragmentDirections.actionFaceDetectionFragmentToAudioTestFragment())
             }
             outputDirectory = getOutputDirectory()
             cameraExecutor = Executors.newSingleThreadExecutor()
-            if (state == TestState.FACE_DETECTION_COMPLETED) {
-                val buttonNext = btnNextFace
-                buttonNext.setOnClickListener {
-                    findNavController().navigate(FaceDetectionFragmentDirections.actionFaceDetectionFragmentToAudioTestFragment())
-                }
-            }
         }
     }
 

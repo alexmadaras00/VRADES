@@ -19,27 +19,27 @@ class AdapterViewPagerTutorial(fragment: FragmentManager, lifecycle: Lifecycle) 
     override fun getItemCount(): Int = 6
 
     override fun createFragment(position: Int): Fragment {
-        when (position) {
+        return when (position) {
             TutorialState.START_PAGE.ordinal -> {
-                return tutorialHomeFragment
+                tutorialHomeFragment
             }
             TutorialState.FACE_TEST_PAGE.ordinal -> {
-                return tutorialFaceDetectionFragment
+                tutorialFaceDetectionFragment
             }
             TutorialState.FACE_TEST_PAGE_DONE.ordinal -> {
-                return tutorialFinishedFragment
+                tutorialFinishedFragment
             }
             TutorialState.AUDIO_TEST_PAGE.ordinal -> {
-                return tutorialAudioFragment
+                tutorialAudioFragment
             }
             TutorialState.WRITING_TEST_PAGE.ordinal -> {
-                return tutorialWritingFragment
+                tutorialWritingFragment
             }
             TutorialState.FINAL_PAGE.ordinal -> {
-                return tutorialFinishedFragment2
+                tutorialFinishedFragment2
             }
             else -> {
-                return tutorialHomeFragment
+                tutorialHomeFragment
             }
         }
 
