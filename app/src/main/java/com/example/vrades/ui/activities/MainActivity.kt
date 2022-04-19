@@ -72,4 +72,10 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         job.cancel()
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        }
+
 }

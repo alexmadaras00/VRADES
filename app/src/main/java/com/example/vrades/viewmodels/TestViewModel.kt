@@ -14,15 +14,15 @@ class TestViewModel : ViewModel() {
     private val writingStates = WritingState.values()
 
     private val _currentStateCount = MutableLiveData<Int>()
-    private val currentStateCount: LiveData<Int>
+    val currentStateCount: LiveData<Int>
         get() = _currentStateCount
 
     private val _currentAudioStateCount = MutableLiveData<Int>()
-    private val currentAudioStateCount: LiveData<Int>
+     val currentAudioStateCount: LiveData<Int>
         get() = _currentAudioStateCount
 
     private val _currentWritingStateCount = MutableLiveData<Int>()
-    private val currentWritingStateCount: LiveData<Int>
+     val currentWritingStateCount: LiveData<Int>
         get() = _currentWritingStateCount
 
     private val _onNextPage = SingleLiveEvent<Void>()

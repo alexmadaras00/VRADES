@@ -13,6 +13,7 @@
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/camera_back.xml" value="0.14" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/container_form.xml" value="0.142" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.142" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/ic_baseline_cancel_24.xml" value="0.128" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/ic_baseline_directions_run_24.xml" value="0.1395" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/ic_check.xml" value="0.14" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/ic_launcher_background.xml" value="0.142" />
@@ -47,7 +48,7 @@
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_my_profile.xml" value="0.14666666666666667" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_personal_questions.xml" value="0.1" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_register.xml" value="0.10666666666666667" />
-        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_results.xml" value="0.14666666666666667" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_results.xml" value="0.1" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_settings.xml" value="0.13333333333333333" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_solutions.xml" value="0.12" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_test.xml" value="0.16666666666666666" />

@@ -25,18 +25,37 @@
             style="@style/MenuButton"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="0dp"
             android:padding="4dp"
             android:text="@string/next"
             android:visibility="invisible"
             app:cornerRadius="10dp"
             app:icon="@drawable/ic_baseline_play_arrow_24"
             app:iconSize="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.07"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/fbtnVoiceRecord"
+            app:layout_constraintTop_toBottomOf="@+id/flAudioTextContainer"
             app:layout_constraintWidth_percent="0.7" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fbtnStopRecording"
+            style="@style/FloatingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/dark_green"
+            android:clickable="true"
+            android:contentDescription="@string/start_recording_audio"
+            android:focusable="true"
+            android:visibility="invisible"
+            app:backgroundTint="@color/form_gradient_end"
+            app:layout_constraintBottom_toBottomOf="@+id/fbtnVoiceRecord"
+            app:layout_constraintEnd_toEndOf="@+id/flAudioTextContainer"
+            app:layout_constraintStart_toEndOf="@+id/fbtnVoiceRecord"
+            app:layout_constraintTop_toBottomOf="@+id/flAudioTextContainer"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_baseline_stop_24" />
 
         <ImageView
             android:id="@+id/ivLogoAudioTest"
@@ -90,9 +109,32 @@
             app:layout_constraintTop_toBottomOf="@+id/flAudioTextContainer"
             app:srcCompat="@drawable/ic_baseline_keyboard_voice_24" />
 
+        <com.serveroverload.recorder.customview.RecorderVisualizerView
+            android:id="@+id/visualizer"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/background_dark" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fbtnRestartRecording"
+            style="@style/FloatingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/menu_text_color"
+            android:clickable="true"
+            android:contentDescription="@string/start_recording_audio"
+            android:focusable="true"
+            android:visibility="invisible"
+            app:backgroundTint="@color/form_gradient_end"
+            app:layout_constraintBottom_toBottomOf="@+id/fbtnStopRecording"
+            app:layout_constraintEnd_toStartOf="@+id/fbtnVoiceRecord"
+            app:layout_constraintStart_toStartOf="@+id/flAudioTextContainer"
+            app:layout_constraintTop_toTopOf="@+id/fbtnStopRecording"
+            app:srcCompat="@drawable/ic_baseline_refresh_24" />
+
         <FrameLayout
             android:id="@+id/flAudioTextContainer"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginHorizontal="24dp"
             android:background="@drawable/audio_back"
@@ -100,7 +142,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.55"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/gdlAudioTest">
+            app:layout_constraintTop_toTopOf="@+id/gdlAudioTest"
+            app:layout_constraintWidth_percent="0.9">
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"

@@ -19,35 +19,6 @@
         android:background="@drawable/background_test"
         tools:context=".ui.fragments.WritingTestFragment">
 
-
-        <TextView
-            android:id="@+id/tvCheckedWords2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/ibm_plex_sans_bold"
-            android:text="@string/_70_words"
-            android:textColor="@color/background"
-            android:textSize="16sp"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@+id/etWritingInputLayout"
-            app:layout_constraintEnd_toStartOf="@+id/guideline6"
-            app:layout_constraintHeight_percent="0.03"
-            app:layout_constraintWidth_percent="0.2" />
-
-        <ImageView
-            android:id="@+id/ivCheckedWords2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:contentDescription="@string/done"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@+id/tvCheckedWords2"
-            app:layout_constraintEnd_toStartOf="@+id/tvCheckedWords2"
-            app:layout_constraintTop_toTopOf="@+id/tvCheckedWords2"
-            app:srcCompat="@drawable/ic_check" />
-
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline7"
             android:layout_width="0dp"
@@ -127,6 +98,63 @@
             app:srcCompat="@drawable/logo"
             android:contentDescription="@string/logo" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etWritingInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/audio_back"
+            android:fontFamily="@font/ibm_plex_sans_bold"
+            android:gravity="top|start"
+            app:counterEnabled="true"
+            app:endIconMode="clear_text"
+            app:helperTextEnabled="false"
+            app:layout_constraintEnd_toEndOf="@id/guideline6"
+            app:layout_constraintHeight_percent="0.48"
+            app:layout_constraintStart_toStartOf="@+id/guideline7"
+            app:layout_constraintTop_toBottomOf="@+id/lLTextContainer">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etWritingText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/audio_back"
+                android:hint="@string/congrats_writing"
+                android:inputType="text"
+                android:maxEms="20"
+                android:maxLength="400"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvCheckedWords2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/ibm_plex_sans_bold"
+            android:text="@string/_70_words"
+            android:textColor="@color/background"
+            android:textSize="16sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/etWritingInputLayout"
+            app:layout_constraintEnd_toStartOf="@+id/guideline6"
+            app:layout_constraintHeight_percent="0.03"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <ImageView
+            android:id="@+id/ivCheckedWords2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/done"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCheckedWords2"
+            app:layout_constraintEnd_toStartOf="@+id/tvCheckedWords2"
+            app:layout_constraintTop_toTopOf="@+id/tvCheckedWords2"
+            app:srcCompat="@drawable/ic_check" />
+
         <LinearLayout
             android:id="@+id/lLTextContainer"
             android:layout_width="match_parent"
@@ -154,35 +182,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etWritingInputLayout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/ibm_plex_sans_bold"
-            android:gravity="top|start"
-            app:counterEnabled="true"
-            app:endIconMode="clear_text"
-            app:helperTextEnabled="false"
-            android:background="@drawable/audio_back"
-            app:layout_constraintEnd_toEndOf="@id/guideline6"
-            app:layout_constraintHeight_percent="0.48"
-            app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintTop_toBottomOf="@+id/lLTextContainer">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etWritingText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/audio_back"
-                android:maxEms="20"
-                android:maxLength="400"
-                android:hint="@string/congrats_writing"
-                android:inputType="text"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-        </com.google.android.material.textfield.TextInputLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

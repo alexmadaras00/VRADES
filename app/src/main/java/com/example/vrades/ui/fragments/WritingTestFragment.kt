@@ -36,11 +36,9 @@ class WritingTestFragment : Fragment() {
         return binding.root
     }
 
-    override fun onStart() {
-        super.onStart()
-        val stateWriting = viewModel.getCurrentWritingState()
+    override fun onResume() {
+        super.onResume()
         val navController = requireView().findNavController()
-        val navControllerNested = findNavController()
         binding.apply {
             val textViewWords = tvCheckedWords2
             val imageViewWords = ivCheckedWords2
@@ -58,6 +56,8 @@ class WritingTestFragment : Fragment() {
                     textViewWords.text = finalString
                     buttonProceed.isVisible = true
                     buttonRestart.isVisible = true
+                    viewModelTest!!.setStateCount(3)
+                    viewModelTest!!.setWritingStateCount(3)
                 }
             }
             editTextWriting.doAfterTextChanged {
@@ -81,8 +81,12 @@ class WritingTestFragment : Fragment() {
                 }
                 return@OnEditorActionListener false
             })
-            buttonProceed.setOnClickListener { navController.navigate(WritingTestFragmentDirections.actionNavWritingToNavDetails()) }
-            buttonRestart.setOnClickListener { navController.navigate(WritingTestFragmentDirections.actionWritingTestFragmentToFaceDetectionFragment())
+            buttonProceed.setOnClickListener {
+                navController.navigate(WritingTestFragmentDirections.actionNavWritingToNavDetails())
+                viewModelTest!!.setStateCount(3)
+            }
+            buttonRestart.setOnClickListener {
+                navController.navigate(WritingTestFragmentDirections.actionWritingTestFragmentToFaceDetectionFragment())
                 viewModelTest!!.setStateCount(0)
             }
         }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -55,6 +56,9 @@ class DetailsFragment : Fragment() {
                 } else findNavController().navigate(DetailsFragmentDirections.actionNavDetailsToNavResults())
             }
             dominantEmotion.text = maxValueEmotion
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+
         }
 
     }

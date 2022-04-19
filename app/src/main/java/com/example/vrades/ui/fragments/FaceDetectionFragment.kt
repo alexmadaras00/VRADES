@@ -24,7 +24,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentFaceDetectionBinding
-import com.example.vrades.enums.TestState
 import com.example.vrades.viewmodels.TestViewModel
 import java.io.File
 import java.text.SimpleDateFormat
@@ -81,7 +80,7 @@ class FaceDetectionFragment : Fragment() {
                 buttonCamera.visibility = View.INVISIBLE
                 buttonGallery.visibility = View.INVISIBLE
                 buttonNext.visibility = View.VISIBLE
-
+                viewModel.setStateCount(1)
             }
             buttonNext.setOnClickListener {
                     navController.navigate(FaceDetectionFragmentDirections.actionFaceDetectionFragmentToAudioTestFragment())
@@ -110,7 +109,6 @@ class FaceDetectionFragment : Fragment() {
     private fun startCamera() {
 
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
-
         cameraProviderFuture.addListener({
             // Used to bind the lifecycle of cameras to the lifecycle owner
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
@@ -129,7 +127,6 @@ class FaceDetectionFragment : Fragment() {
             try {
                 // Unbind use cases before rebinding
                 cameraProvider.unbindAll()
-
                 // Bind use cases to camera
                 cameraProvider.bindToLifecycle(
                     this, cameraSelector, preview, imageCapture
@@ -222,6 +219,4 @@ class FaceDetectionFragment : Fragment() {
                 }
             }.toTypedArray()
     }
-
-
 }
