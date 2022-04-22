@@ -64,8 +64,8 @@
 
             <ImageButton
                 android:id="@+id/btnBackProfile"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:background="@drawable/ic_baseline_arrow_back_24"
                 android:contentDescription="@string/about"
@@ -79,10 +79,8 @@
                 app:elevation="0dp"
                 app:iconPadding="0dp"
                 app:iconTint="#FFFFFF"
-                app:layout_constraintHeight_percent="0.06"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/civProfilePicture"
-                app:layout_constraintWidth_percent="0.13"
                 app:strokeColor="@color/transparent" />
 
             <de.hdodenhof.circleimageview.CircleImageView

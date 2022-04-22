@@ -63,7 +63,7 @@ class WritingTestFragment : Fragment() {
             editTextWriting.doAfterTextChanged {
                 val text = it.toString().split(" ")
                 val length = text.size
-                val words = "words"
+                val words: String = if (length == 1) "word" else "words"
                 val finalString = length.toString() + words
                 if (length >= MINIMUM_WORDS) {
                     textViewWords.visibility = View.VISIBLE

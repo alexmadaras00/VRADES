@@ -41,10 +41,7 @@ class SolutionsFragment : Fragment() {
             val recyclerViewLifeHacks = rvLifeHacks
             val buttonBack = btnBackSolutions
             val adapterLifeHacks = AdapterLifeHacks()
-
-            if (lifeHacks != null) {
-                adapterLifeHacks.setDataSource(lifeHacks)
-            }
+            adapterLifeHacks.setDataSource(lifeHacks!!)
             recyclerViewLifeHacks.adapter = adapterLifeHacks
             recyclerViewLifeHacks.layoutManager = LinearLayoutManager(context)
             recyclerViewLifeHacks.setHasFixedSize(true)

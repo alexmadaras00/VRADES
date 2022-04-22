@@ -53,7 +53,7 @@ class DetailsFragment : Fragment() {
             buttonBack.setOnClickListener {
                 if (state == TestState.TEST_COMPLETED) {
                     findNavController().navigate(DetailsFragmentDirections.actionNavDetailsToNavHome())
-                } else findNavController().navigate(DetailsFragmentDirections.actionNavDetailsToNavResults())
+                } else findNavController().navigate(DetailsFragmentDirections.actionNavDetailsToNavProfile())
             }
             dominantEmotion.text = maxValueEmotion
         }

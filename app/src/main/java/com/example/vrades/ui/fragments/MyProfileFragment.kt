@@ -1,21 +1,19 @@
 package com.example.vrades.ui.fragments
 
 import android.os.Build
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.core.view.ViewCompat
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.vrades.R
 import com.example.vrades.databinding.FragmentMyProfileBinding
 import com.example.vrades.interfaces.IOnClickListener
-
 import com.example.vrades.ui.adapters.AdapterTestHistory
+import com.example.vrades.ui.dialogs.FeedbackRequestDialog
 import com.example.vrades.viewmodels.MyProfileViewModel
 
 class MyProfileFragment : Fragment() {
@@ -67,7 +65,7 @@ class MyProfileFragment : Fragment() {
             recyclerViewTestHistory.isScrollContainer = true
             recyclerViewTestHistory.hasNestedScrollingParent()
             buttonAnalysis.setOnClickListener{
-                navController.navigate(MyProfileFragmentDirections.actionNavProfileToNavResults())
+                navController.navigate(MyProfileFragmentDirections.actionNavProfileToNavDialog())
             }
             buttonBack.setOnClickListener{
                 navController.navigate(MyProfileFragmentDirections.actionNavProfileToNavHome())
@@ -76,6 +74,10 @@ class MyProfileFragment : Fragment() {
         }
     }
 
+    private fun showDialog(){
+        val dialog = FeedbackRequestDialog()
+        dialog.show(requireActivity().supportFragmentManager,"customDialog")
+    }
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

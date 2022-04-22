@@ -128,6 +128,9 @@
         <action
             android:id="@+id/action_nav_details_to_nav_home"
             app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_nav_details_to_nav_profile"
+            app:destination="@id/nav_profile" />
     </fragment>
     <fragment
         android:id="@+id/nav_profile"
@@ -142,6 +145,9 @@
         <action
             android:id="@+id/action_nav_profile_to_nav_home"
             app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_nav_profile_to_nav_dialog"
+            app:destination="@id/nav_dialog" />
     </fragment>
     <fragment
         android:id="@+id/nav_results"
@@ -174,5 +180,13 @@
             android:id="@+id/action_nav_tutorial_to_nav_home"
             app:destination="@id/nav_home" />
     </fragment>
+    <dialog
+        android:id="@+id/nav_dialog"
+        android:name="com.example.vrades.ui.dialogs.FeedbackRequestDialog"
+        android:label="SolutionsDialog" >
+        <action
+            android:id="@+id/action_nav_dialog_to_nav_solutions"
+            app:destination="@id/nav_solutions" />
+    </dialog>
 
 </navigation>

@@ -35,7 +35,7 @@ class TestViewModel : ViewModel() {
 
     init {
         _currentStateCount.value = TestState.TEST_STARTED.position
-        _currentAudioStateCount.value = AudioState.START_RECORDING.ordinal
+        _currentAudioStateCount.value = AudioState.IDLE.ordinal
         _currentWritingStateCount.value = WritingState.WRITING.ordinal
     }
 

@@ -20,6 +20,15 @@
         android:background="@drawable/background_test"
         tools:context=".ui.fragments.tutorial.TutorialAudioFragment">
 
+        <com.example.vrades.widgets.WaveFormView
+            android:id="@+id/wave_from_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/gdlAudioTest3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gdlAudioTest2" />
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnProceed"
             style="@style/MenuButton"
@@ -43,7 +52,6 @@
             style="@style/FloatingButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:background="@color/dark_green"
             android:clickable="true"
             android:contentDescription="@string/start_recording_audio"
@@ -53,8 +61,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/fbtnVoiceRecord"
             app:layout_constraintEnd_toEndOf="@+id/flAudioTextContainer"
             app:layout_constraintStart_toEndOf="@+id/fbtnVoiceRecord"
-            app:layout_constraintTop_toBottomOf="@+id/flAudioTextContainer"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintTop_toTopOf="@+id/fbtnVoiceRecord"
             app:srcCompat="@drawable/ic_baseline_stop_24" />
 
         <ImageView
@@ -98,7 +105,6 @@
             style="@style/FloatingButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:background="@color/menu_button"
             android:clickable="true"
             android:contentDescription="@string/start_recording_audio"
@@ -106,15 +112,9 @@
             app:backgroundTint="@color/menu_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flAudioTextContainer"
+            app:layout_constraintTop_toTopOf="@+id/gdlAudioTest3"
             app:srcCompat="@drawable/ic_baseline_keyboard_voice_24" />
 
-        <com.serveroverload.recorder.customview.RecorderVisualizerView
-            android:id="@+id/visualizer"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_centerHorizontal="true"
-            android:background="@android:color/background_dark" />
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fbtnRestartRecording"
             style="@style/FloatingButton"
@@ -140,7 +140,7 @@
             android:background="@drawable/audio_back"
             android:padding="0dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.55"
+            app:layout_constraintHeight_percent="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/gdlAudioTest"
             app:layout_constraintWidth_percent="0.9">
@@ -170,7 +170,25 @@
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintGuide_begin="0dp"
-            app:layout_constraintGuide_percent="0.33"
+            app:layout_constraintGuide_percent="0.3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlAudioTest2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.82"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlAudioTest3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.89"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
