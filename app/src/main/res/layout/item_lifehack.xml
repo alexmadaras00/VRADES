@@ -9,7 +9,7 @@
 
         <variable
             name="item"
-            type="com.example.vrades.models.LifeHack" />
+            type="com.example.vrades.model.LifeHack" />
 
     </data>
 

@@ -7,13 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.vrades.R
 import com.example.vrades.databinding.FragmentTutorialParentBinding
 import com.example.vrades.ui.adapters.AdapterViewPagerTutorial
 import com.example.vrades.ui.fragments.VradesBaseFragment
 import com.example.vrades.viewmodels.TutorialViewModel
 import com.zhpan.indicator.enums.IndicatorSlideMode
 import com.zhpan.indicator.enums.IndicatorStyle
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TutorialParentFragment : VradesBaseFragment() {
 
     private val viewModel: TutorialViewModel by activityViewModels()
@@ -28,7 +31,7 @@ class TutorialParentFragment : VradesBaseFragment() {
 
         _binding = FragmentTutorialParentBinding.inflate(inflater)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+
         binding.executePendingBindings()
         return binding.root
     }
@@ -57,7 +60,7 @@ class TutorialParentFragment : VradesBaseFragment() {
     }
     private val onNavigateToHomeScreen = Observer<Void> {
         val navController = findNavController()
-        navController.navigate(TutorialParentFragmentDirections.actionNavTutorialToNavHome())
+        navController.navigate(R.id.nav_home)
     }
 
     override fun connectViewModelEvents() {

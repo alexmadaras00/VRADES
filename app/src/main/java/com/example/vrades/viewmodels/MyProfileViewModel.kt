@@ -4,7 +4,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import com.example.vrades.enums.TestState
-import com.example.vrades.models.Test
+import com.example.vrades.model.Test
 import java.time.LocalDate
 import kotlin.collections.ArrayList
 

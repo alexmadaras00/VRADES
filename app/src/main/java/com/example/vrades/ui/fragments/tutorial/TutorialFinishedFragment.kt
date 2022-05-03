@@ -9,8 +9,9 @@ import androidx.fragment.app.activityViewModels
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentTutorialFinishedBinding
 import com.example.vrades.viewmodels.TutorialViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class TutorialFinishedFragment : Fragment() {
 
     private val viewModel: TutorialViewModel by activityViewModels()
@@ -23,7 +24,7 @@ class TutorialFinishedFragment : Fragment() {
     ): View {
 
         _binding = FragmentTutorialFinishedBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root

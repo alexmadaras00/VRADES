@@ -25,13 +25,14 @@ import androidx.navigation.fragment.findNavController
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentFaceDetectionBinding
 import com.example.vrades.viewmodels.TestViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-
+@AndroidEntryPoint
 class FaceDetectionFragment : Fragment() {
 
     private var _binding: FragmentFaceDetectionBinding? = null
@@ -53,7 +54,7 @@ class FaceDetectionFragment : Fragment() {
     ): View {
         viewModel = ViewModelProvider(this)[TestViewModel::class.java]
         _binding = FragmentFaceDetectionBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+
         binding.viewModelTest = viewModel
         binding.executePendingBindings()
         return binding.root

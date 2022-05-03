@@ -17,8 +17,9 @@ import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.formatter.PercentFormatter
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class DetailsFragment : Fragment() {
 
     private var _binding: FragmentDetailsBinding? = null
@@ -31,7 +32,7 @@ class DetailsFragment : Fragment() {
     ): View {
         viewModel = ViewModelProvider(this)[DetailsViewModel::class.java]
         _binding = FragmentDetailsBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root

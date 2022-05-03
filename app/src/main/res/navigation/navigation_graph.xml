@@ -65,6 +65,9 @@
         <action
             android:id="@+id/action_nav_register_to_nav_tutorial"
             app:destination="@id/nav_tutorial" />
+        <action
+            android:id="@+id/action_nav_register_to_nav_home"
+            app:destination="@id/nav_home" />
     </fragment>
     <fragment
         android:id="@+id/nav_home"
@@ -109,6 +112,9 @@
         <action
             android:id="@+id/action_nav_settings_to_nav_home"
             app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_nav_settings_to_nav_login"
+            app:destination="@id/nav_login" />
     </fragment>
     <fragment
         android:id="@+id/nav_solutions"

@@ -1,31 +1,33 @@
 package com.example.vrades.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.vrades.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.vrades.databinding.FragmentForgotPasswordBinding
+import com.example.vrades.model.Response
+import com.example.vrades.utils.Constants
+import com.example.vrades.utils.LoginValidator
+import com.example.vrades.utils.UIUtils.toast
+import com.example.vrades.viewmodels.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ForgotPasswordFragment : Fragment() {
-    // TODO: Rename and change types of parameters
+
     private var _binding: FragmentForgotPasswordBinding? = null
-    private var binding = _binding!!
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private val binding get() = _binding!!
+    private val viewModel: LoginViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentForgotPasswordBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+        _binding = FragmentForgotPasswordBinding.inflate(inflater)
+        binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root
 
@@ -33,9 +35,69 @@ class ForgotPasswordFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        binding.apply {
+            val buttonResetPassword = btnSubmitForgotPassword
+            buttonResetPassword.setOnClickListener {
+                checkEmailAddress()
+            }
+        }
     }
+
+    private fun checkEmailAddress() {
+        binding.apply {
+            val emailReceivePassword = etEmailReceivePassword
+            val validator = LoginValidator(requireContext(), emailReceivePassword)
+            val email = emailReceivePassword.text.toString().trim()
+            val isValid = validator.validateEmailResend()
+            if (isValid) {
+                checkEmailInAuth(email)
+            }
+        }
+    }
+
+    private fun checkEmailInAuth(email: String) {
+        viewModel.isAccountInAuth(email).observe(viewLifecycleOwner) {
+            when (it) {
+                is Response.Success -> {
+                    if (it.data == 1)
+                        resetPassword(email)
+                    else toastInvalid()
+                }
+                is Response.Error -> {
+                    println(Constants.ERROR_REF)
+                }
+                else -> {}
+            }
+
+        }
+    }
+
+    private fun resetPassword(email: String) {
+        viewModel.resetPassword(email).observe(viewLifecycleOwner) {
+            when (it) {
+                is Response.Success -> {
+                    onNavigateToLogin()
+                    toast(requireContext(), "An email has been sent to the e-mail address.")
+                }
+                is Response.Error -> {
+                    println(Constants.ERROR_REF)
+                }
+                else -> {}
+            }
+        }
+
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun toastInvalid() {
+        toast(requireContext(), "This e-mail is not valid!")
+    }
+
+    private fun onNavigateToLogin() {
+        findNavController().navigate(ForgotPasswordFragmentDirections.actionNavForgotToNavLogin())
     }
 }

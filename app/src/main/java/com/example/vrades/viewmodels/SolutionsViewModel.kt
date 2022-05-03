@@ -1,10 +1,8 @@
 package com.example.vrades.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.vrades.R
-import com.example.vrades.models.LifeHack
+import com.example.vrades.model.LifeHack
 
 class SolutionsViewModel : ViewModel() {
     private val lifeHacks = ArrayList<LifeHack>() //

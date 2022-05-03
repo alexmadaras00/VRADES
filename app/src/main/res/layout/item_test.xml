@@ -10,7 +10,7 @@
 
         <variable
             name="item"
-            type="com.example.vrades.models.Test" />
+            type="com.example.vrades.model.Test" />
     </data>
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"

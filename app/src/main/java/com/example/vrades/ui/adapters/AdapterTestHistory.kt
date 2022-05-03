@@ -10,7 +10,7 @@ import com.example.vrades.R
 import com.example.vrades.databinding.ItemTestBinding
 import com.example.vrades.enums.TestState
 import com.example.vrades.interfaces.IOnClickListener
-import com.example.vrades.models.Test
+import com.example.vrades.model.Test
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 

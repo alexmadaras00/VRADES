@@ -16,8 +16,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.vrades.databinding.FragmentWritingTestBinding
 import com.example.vrades.utils.UIUtils
 import com.example.vrades.viewmodels.TestViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class WritingTestFragment : Fragment() {
 
     private var _binding: FragmentWritingTestBinding? = null
@@ -30,7 +31,7 @@ class WritingTestFragment : Fragment() {
     ): View {
         viewModel = ViewModelProvider(this)[TestViewModel::class.java]
         _binding = FragmentWritingTestBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+
         binding.viewModelTest = viewModel
         binding.executePendingBindings()
         return binding.root

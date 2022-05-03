@@ -13,9 +13,10 @@ import com.example.vrades.databinding.FragmentDetailsBinding
 import com.example.vrades.databinding.FragmentSolutionsBinding
 import com.example.vrades.ui.adapters.AdapterLifeHacks
 import com.example.vrades.viewmodels.SolutionsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SolutionsFragment : Fragment() {
-
 
     private lateinit var viewModel: SolutionsViewModel
     private var _binding: FragmentSolutionsBinding? = null
@@ -27,7 +28,7 @@ class SolutionsFragment : Fragment() {
     ): View {
         viewModel = ViewModelProvider(this)[SolutionsViewModel::class.java]
         _binding = FragmentSolutionsBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root

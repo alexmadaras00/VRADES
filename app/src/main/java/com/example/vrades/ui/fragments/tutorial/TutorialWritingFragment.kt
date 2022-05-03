@@ -13,8 +13,9 @@ import androidx.fragment.app.activityViewModels
 import com.example.vrades.databinding.FragmentTutorialWritingBinding
 import com.example.vrades.utils.UIUtils
 import com.example.vrades.viewmodels.TutorialViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class TutorialWritingFragment : Fragment() {
     private val viewModel: TutorialViewModel by activityViewModels()
     private var _binding: FragmentTutorialWritingBinding? = null
@@ -25,7 +26,7 @@ class TutorialWritingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentTutorialWritingBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root

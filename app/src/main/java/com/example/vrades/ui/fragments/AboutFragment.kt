@@ -17,7 +17,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentAboutBinding
 import com.example.vrades.databinding.FragmentAboutBindingImpl
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AboutFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var _binding: FragmentAboutBinding? = null
@@ -28,7 +30,7 @@ class AboutFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAboutBindingImpl.inflate(inflater)
-        binding.lifecycleOwner = this
+
         binding.executePendingBindings()
         return binding.root
     }

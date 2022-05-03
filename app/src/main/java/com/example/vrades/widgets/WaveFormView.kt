@@ -42,7 +42,7 @@ class WaveFormView(context: Context, attrs: AttributeSet) : View(context, attrs)
         invalidate() //Triggers the function call with draw()
     }
     fun clear(): java.util.ArrayList<Float> {
-        var amps = amplitudes.clone() as ArrayList<Float>
+        val amps = amplitudes.clone() as ArrayList<Float>
         amplitudes.clear()
         spikes.clear()
         invalidate()
@@ -51,9 +51,6 @@ class WaveFormView(context: Context, attrs: AttributeSet) : View(context, attrs)
 
     override fun draw(canvas: Canvas?) {
         super.draw(canvas)
-        canvas?.drawRoundRect(RectF(20F, 30F, 20 + 30F, 30F + 60f), 6f, 6f, paint)
-        canvas?.drawRoundRect(RectF(20F, 30F, 20 + 30F, 30F + 60f), 6f, 6f, paint)
-        canvas?.drawRoundRect(RectF(20F, 30F, 20 + 30F, 30F + 60f), 6f, 6f, paint)
         spikes.forEach {
             canvas?.drawRoundRect(it, radius, radius, paint)
         }

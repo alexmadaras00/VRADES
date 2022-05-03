@@ -16,8 +16,9 @@ import com.example.vrades.databinding.FragmentSettingsBinding
 import com.example.vrades.viewmodels.ResultsViewModel
 import com.example.vrades.viewmodels.SettingsViewModel
 import com.example.vrades.viewmodels.SolutionsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ResultsFragment : DialogFragment() {
 
     private lateinit var viewModel: ResultsViewModel
@@ -30,7 +31,7 @@ class ResultsFragment : DialogFragment() {
     ): View {
         viewModel = ViewModelProvider(this)[ResultsViewModel::class.java]
         _binding = FragmentResultsBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root

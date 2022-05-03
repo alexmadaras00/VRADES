@@ -6,6 +6,10 @@
     <data>
 
         <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.example.vrades.viewmodels.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

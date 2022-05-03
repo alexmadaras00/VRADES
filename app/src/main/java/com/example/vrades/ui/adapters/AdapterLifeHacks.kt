@@ -4,9 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vrades.databinding.ItemLifehackBinding
-import com.example.vrades.databinding.ItemQuestionBinding
-import com.example.vrades.models.LifeHack
-import com.example.vrades.models.Question
+import com.example.vrades.model.LifeHack
 
 class AdapterLifeHacks() : RecyclerView.Adapter<AdapterLifeHacks.ViewHolder>() {
 
@@ -26,7 +24,6 @@ class AdapterLifeHacks() : RecyclerView.Adapter<AdapterLifeHacks.ViewHolder>() {
 
     fun setDataSource(items: ArrayList<LifeHack>) {
         this.lifeHacks= items
-        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

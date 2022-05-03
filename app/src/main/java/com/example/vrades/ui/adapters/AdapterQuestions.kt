@@ -2,10 +2,9 @@ package com.example.vrades.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vrades.databinding.ItemQuestionBinding
-import com.example.vrades.models.Question
+import com.example.vrades.model.Question
 
 class AdapterQuestions() : RecyclerView.Adapter<AdapterQuestions.ViewHolder>() {
 
@@ -22,7 +21,6 @@ class AdapterQuestions() : RecyclerView.Adapter<AdapterQuestions.ViewHolder>() {
 
     fun setDataSource(items: ArrayList<Question>) {
         this.questions = items
-        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

@@ -13,17 +13,19 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.vrades.R
 import com.example.vrades.databinding.ActivityMainBinding
+import com.example.vrades.firebase.domain.use_cases.SignInWithEmailAndPassword
+import com.example.vrades.firebase.repositories.auth.AuthRepositoryImpl
 import com.example.vrades.viewmodels.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var job: Job
     private lateinit var binding: ActivityMainBinding
-    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

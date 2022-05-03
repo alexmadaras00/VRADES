@@ -9,7 +9,7 @@
 
         <variable
             name="item"
-            type="com.example.vrades.models.Question" />
+            type="com.example.vrades.model.Question" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

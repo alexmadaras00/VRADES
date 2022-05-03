@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.vrades.viewmodels.RegisterViewModel" />
+            type="com.example.vrades.viewmodels.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,12 +20,48 @@
         tools:context=".ui.fragments.RegisterFragment">
 
         <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlTopRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.05"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlBottomRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent="0.95"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlnProfileTitle9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.27"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdlMiddleRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="0dp"
             app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlMiddleRegister2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdlRight2"
@@ -48,12 +84,19 @@
             layout="@layout/container_auth_layout"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.87"
-            app:layout_constraintWidth_percent="0.9"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/gdlRight2"
-            app:layout_constraintStart_toStartOf="@id/gdlLeft2"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toTopOf="@+id/gdlBottomRegister"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gdlTopRegister"
+            app:layout_constraintWidth_percent="0.9" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlLeftLogin2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdlnProfileTitle6"
@@ -77,27 +120,25 @@
             android:id="@+id/tvFullname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
             android:fontFamily="@font/ibm_plex_sans_light"
             android:text="@string/full_name"
             android:textColor="@color/white"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="@+id/include3"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/include3"
+            app:layout_constraintStart_toStartOf="@+id/gdlLeftLogin2"
             app:layout_constraintTop_toTopOf="@+id/gdlnProfileTitle5" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etFullname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/enter_your_name"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/gdlMiddleRegister2"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tvFullname"
             app:layout_constraintTop_toBottomOf="@+id/tvFullname" />
@@ -106,13 +147,12 @@
             android:id="@+id/etEmail2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/enter_your_e_mail"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/gdlMiddleRegister2"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tvEmail2"
             app:layout_constraintTop_toBottomOf="@+id/tvEmail2" />
@@ -152,7 +192,7 @@
             android:hint="@string/enter_your_password"
             android:inputType="textPassword"
             android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="@+id/etEmail2"
+            app:layout_constraintEnd_toStartOf="@+id/gdlMiddleRegister2"
             app:layout_constraintStart_toStartOf="@+id/tvPassword2"
             app:layout_constraintTop_toBottomOf="@+id/tvPassword2" />
 
@@ -174,13 +214,12 @@
             android:id="@+id/etConfirmPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/re_enter_your_password"
             android:inputType="textPassword"
             android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/gdlMiddleRegister2"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tvConfirmPassword"
             app:layout_constraintTop_toBottomOf="@+id/tvConfirmPassword" />
@@ -208,7 +247,7 @@
             android:fontFamily="@font/ibm_plex_sans_light"
             android:text="@string/already_having_an_account"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/include3"
             app:layout_constraintEnd_toEndOf="@+id/btnRegister"
             app:layout_constraintStart_toStartOf="@+id/btnRegister"

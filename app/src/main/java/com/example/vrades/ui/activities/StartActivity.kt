@@ -6,7 +6,9 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.vrades.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -195,7 +195,7 @@
                 android:id="@+id/clReviewTextContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="0dp"
+                android:layout_marginHorizontal="8dp"
                 android:background="@drawable/review_text_background"
                 android:padding="8dp"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -11,8 +11,9 @@ import androidx.fragment.app.activityViewModels
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentTutorialAudioBinding
 import com.example.vrades.viewmodels.TutorialViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class TutorialAudioFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private val viewModel: TutorialViewModel by activityViewModels()
@@ -24,7 +25,7 @@ class TutorialAudioFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentTutorialAudioBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root

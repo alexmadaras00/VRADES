@@ -9,7 +9,9 @@ import com.example.vrades.databinding.FragmentTutorialHomeBinding
 import com.example.vrades.enums.TutorialState
 import com.example.vrades.ui.fragments.VradesBaseFragment
 import com.example.vrades.viewmodels.TutorialViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TutorialHomeFragment : VradesBaseFragment() {
 
 
@@ -25,7 +27,7 @@ class TutorialHomeFragment : VradesBaseFragment() {
 
         _binding = FragmentTutorialHomeBinding.inflate(inflater)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+
         binding.stateTutorial = TutorialState.START_PAGE.position
         binding.executePendingBindings()
         return binding.root

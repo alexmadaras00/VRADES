@@ -10,8 +10,9 @@ import com.example.vrades.R
 import com.example.vrades.databinding.FragmentTutorialPersonalQuestionsBinding
 import com.example.vrades.ui.adapters.AdapterQuestions
 import com.example.vrades.viewmodels.TutorialViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class TutorialPersonalQuestionsFragment : Fragment(R.layout.fragment_tutorial_personal_questions) {
     // TODO: Rename and change types of parameters
     private val _bindings: FragmentTutorialPersonalQuestionsBinding? =null

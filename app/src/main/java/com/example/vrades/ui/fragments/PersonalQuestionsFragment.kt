@@ -9,8 +9,9 @@ import com.example.vrades.R
 import com.example.vrades.databinding.FragmentFaceDetectionBinding
 import com.example.vrades.databinding.FragmentPersonalQuestionsBinding
 import com.example.vrades.viewmodels.TestViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class PersonalQuestionsFragment : Fragment() {
     private val _bindings: FragmentPersonalQuestionsBinding? = null
     private var bindings = _bindings!!

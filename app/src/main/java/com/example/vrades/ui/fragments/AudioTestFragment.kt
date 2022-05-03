@@ -19,12 +19,13 @@ import com.example.vrades.R
 import com.example.vrades.databinding.FragmentAudioTestBinding
 import com.example.vrades.enums.AudioState
 import com.example.vrades.viewmodels.TestViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.properties.Delegates
 
-
+@AndroidEntryPoint
 class AudioTestFragment : VradesBaseFragment() {
 
     private var _binding: FragmentAudioTestBinding? = null
@@ -40,7 +41,7 @@ class AudioTestFragment : VradesBaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAudioTestBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+
         binding.viewModelTest = viewModel
         binding.executePendingBindings()
         return binding.root

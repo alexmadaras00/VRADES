@@ -27,13 +27,14 @@ import com.example.vrades.databinding.FragmentTutorialFaceDetectionBinding
 import com.example.vrades.ui.fragments.FaceDetectionFragment
 import com.example.vrades.ui.fragments.VradesBaseFragment
 import com.example.vrades.viewmodels.TutorialViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-
+@AndroidEntryPoint
 class TutorialFaceDetectionFragment : VradesBaseFragment() {
     // TODO: Rename and change types of parameters
     private val viewModel: TutorialViewModel by activityViewModels()
@@ -63,7 +64,7 @@ class TutorialFaceDetectionFragment : VradesBaseFragment() {
     ): View {
         _binding = FragmentTutorialFaceDetectionBinding.inflate(inflater)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+
         binding.executePendingBindings()
         return binding.root
     }
@@ -71,7 +72,7 @@ class TutorialFaceDetectionFragment : VradesBaseFragment() {
     override fun onStart() {
         super.onStart()
         val imageViewArrow = binding.ivArrowTutorial
-        val viewModel = viewModel!!
+        val viewModel = viewModel
         startAnimate(imageViewArrow)
         binding.apply {
             val buttonCamera = fbtnCamera
@@ -191,6 +192,7 @@ class TutorialFaceDetectionFragment : VradesBaseFragment() {
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (allPermissionsGranted()) {
                 startCamera()
@@ -203,7 +205,7 @@ class TutorialFaceDetectionFragment : VradesBaseFragment() {
 //                finish()
             }
         }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
     }
 
     private fun getOutputDirectory(): File {

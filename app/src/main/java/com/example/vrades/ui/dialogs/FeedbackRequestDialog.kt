@@ -9,7 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.vrades.R
 import com.example.vrades.databinding.DialogFeedbackRequestBinding
 import com.example.vrades.databinding.FragmentMyProfileBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FeedbackRequestDialog: DialogFragment() {
     private var _binding: DialogFeedbackRequestBinding? = null
     private val binding get() = _binding!!

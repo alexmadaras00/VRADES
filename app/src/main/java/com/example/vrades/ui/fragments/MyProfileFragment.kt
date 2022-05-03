@@ -15,7 +15,9 @@ import com.example.vrades.interfaces.IOnClickListener
 import com.example.vrades.ui.adapters.AdapterTestHistory
 import com.example.vrades.ui.dialogs.FeedbackRequestDialog
 import com.example.vrades.viewmodels.MyProfileViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MyProfileFragment : Fragment() {
 
     companion object {
@@ -35,7 +37,7 @@ class MyProfileFragment : Fragment() {
             ViewModelProvider.NewInstanceFactory()
         )[MyProfileViewModel::class.java]
         _binding = FragmentMyProfileBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root
