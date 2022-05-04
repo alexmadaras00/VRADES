@@ -3,6 +3,7 @@ package com.example.vrades.viewmodels
 import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.Navigation
 import com.example.vrades.firebase.domain.use_cases.AuthUseCases
 import com.example.vrades.ui.fragments.LoginFragment
@@ -38,8 +39,8 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun firebaseCreateRealtimeUser(email: String, password: String) = liveData(Dispatchers.IO) {
-        useCasesAuth.addRealtimeUser(email, password).collect { result ->
+    fun firebaseCreateRealtimeUser(fullName: String) = liveData(Dispatchers.IO) {
+        useCasesAuth.addRealtimeUser(fullName).collect { result ->
             emit(result)
         }
     }
@@ -49,6 +50,13 @@ class LoginViewModel @Inject constructor(
             emit(result)
         }
     }
+
+    fun firebaseSignInWithGoogle(idToken: String) =
+        liveData(Dispatchers.IO + viewModelScope.coroutineContext) {
+            useCasesAuth.signInWithGoogle(idToken).collect { response ->
+                emit(response)
+            }
+        }
 
 
 }

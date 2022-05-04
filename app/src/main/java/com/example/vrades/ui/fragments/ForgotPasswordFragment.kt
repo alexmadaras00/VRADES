@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -11,6 +13,7 @@ import com.example.vrades.databinding.FragmentForgotPasswordBinding
 import com.example.vrades.model.Response
 import com.example.vrades.utils.Constants
 import com.example.vrades.utils.LoginValidator
+import com.example.vrades.utils.UIUtils
 import com.example.vrades.utils.UIUtils.toast
 import com.example.vrades.viewmodels.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -49,6 +52,12 @@ class ForgotPasswordFragment : Fragment() {
             val validator = LoginValidator(requireContext(), emailReceivePassword)
             val email = emailReceivePassword.text.toString().trim()
             val isValid = validator.validateEmailResend()
+            emailReceivePassword.setOnEditorActionListener(TextView.OnEditorActionListener { _, p1, _ ->
+                if (p1 == EditorInfo.IME_ACTION_DONE || p1 == EditorInfo.IME_ACTION_SEND || p1 == EditorInfo.IME_ACTION_NEXT) {
+                    UIUtils.dismissKeyboard(requireActivity())
+                }
+                return@OnEditorActionListener false
+            })
             if (isValid) {
                 checkEmailInAuth(email)
             }
@@ -94,7 +103,7 @@ class ForgotPasswordFragment : Fragment() {
     }
 
     private fun toastInvalid() {
-        toast(requireContext(), "This e-mail is not valid!")
+        toast(requireContext(), "This e-mail is not valid! Please try again.")
     }
 
     private fun onNavigateToLogin() {

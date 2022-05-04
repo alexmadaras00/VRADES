@@ -6,9 +6,12 @@ import com.example.vrades.model.User
 import com.example.vrades.utils.Constants.ERROR_REF
 import com.example.vrades.utils.Constants.USERS_REF
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.DatabaseReference
+import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
@@ -22,6 +25,8 @@ class AuthRepositoryImpl @Inject constructor(
     @Named(USERS_REF) private val usersRef: DatabaseReference
 ) : AuthRepository {
 
+    override fun isUserAuthenticatedInFirebase() = auth.currentUser != null
+
     override suspend fun firebaseSignInWithEmailAndPassword(email: String, password: String) =
         flow {
             try {
@@ -34,11 +39,13 @@ class AuthRepositoryImpl @Inject constructor(
             }
         }
 
-    override suspend fun createUserInRealtime() = flow {
+    override suspend fun createUserInRealtime(fullName: String) = flow {
         try {
             emit(Loading)
             auth.currentUser?.apply {
-                usersRef.child(uid).updateChildren(HashMap<String, Any>()).also {
+//                println("User created: $uid in the field: ${usersRef.key}")
+                val newUser = User(email.toString(), fullName)
+                usersRef.child(uid).setValue(newUser).await().also {
                     emit(Response.Success(true))
                 }
             }
@@ -87,7 +94,17 @@ class AuthRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getUserAuthState(): Boolean = auth.currentUser != null
+    override fun getUserAuthState(): Flow<Boolean> = callbackFlow {
+        val authStateListener = FirebaseAuth.AuthStateListener { auth ->
+            trySend(auth.currentUser == null)
+            println("State: ${auth.currentUser}")
+        }
+        auth.addAuthStateListener(authStateListener)
+        awaitClose {
+            auth.removeAuthStateListener(authStateListener)
+        }
+
+    }
 
     override fun isAccountInAuth(email: String): Flow<Response<Int>> = flow {
         try {
@@ -113,4 +130,16 @@ class AuthRepositoryImpl @Inject constructor(
             emit(Response.Error(e.message ?: ERROR_REF))
         }
     }
+    override suspend fun firebaseSignInWithGoogle(idToken: String) = flow {
+        try {
+            val credential = GoogleAuthProvider.getCredential(idToken, null)
+            val authResult = auth.signInWithCredential(credential).await()
+            authResult.additionalUserInfo?.apply {
+                emit(Response.Success(isNewUser))
+            }
+        } catch (e: Exception) {
+            emit(Response.Error(e.message ?: ERROR_REF))
+        }
+    }
+
 }

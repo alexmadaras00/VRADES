@@ -41,7 +41,6 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavAbout())
             }
             testButton.setOnClickListener {
-
                 findNavController().navigate(HomeFragmentDirections.actionNavHomeToNavFace())
             }
             settingsButton.setOnClickListener {
@@ -57,12 +56,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun checkUserState() {
-        val isLoggedIn = viewModel.authState
-        if (!isLoggedIn) {
+        if (!viewModel.isUserAuthenticated) {
             onNavigateToLogin()
-            println("Not logged in")
-        } else {
-            println("Logged in")
         }
     }
 

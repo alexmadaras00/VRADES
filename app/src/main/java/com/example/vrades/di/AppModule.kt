@@ -5,9 +5,12 @@ import android.content.Context
 import com.example.vrades.firebase.domain.use_cases.*
 import com.example.vrades.firebase.repositories.auth.AuthRepository
 import com.example.vrades.firebase.repositories.auth.AuthRepositoryImpl
+import com.example.vrades.firebase.repositories.data.UserRepositoryImpl
+import com.example.vrades.firebase.repositories.domain.UserRepository
 import com.example.vrades.utils.Constants.USERS_REF
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -40,12 +43,20 @@ object AppModule {
         addRealtimeUser = AddRealtimeUser(repository),
         getAuthState = GetAuthState(repository),
         getUserProfile = GetUserProfile(repository),
-        signInWithGoogle = SignInWithGoogle(),
+        signInWithGoogle = SignInWithGoogle(repository),
         logOut = LogOut(repository),
         resetPassword = ResetPassword(repository),
         signInWithEmailAndPassword = SignInWithEmailAndPassword(repository),
         signUp = SignUp(repository),
-        isAccountInAuth = IsAccountInAuth(repository)
+        isAccountInAuth = IsAccountInAuth(repository),
+        isUserAuthenticated = IsUserAuthenticated(repository)
     )
+
+    @Singleton
+    @Provides
+    fun provideUserRepository(
+        db: FirebaseDatabase,
+        @Named(USERS_REF) usersRef: DatabaseReference
+    ): UserRepository = UserRepositoryImpl(db, usersRef)
 
 }

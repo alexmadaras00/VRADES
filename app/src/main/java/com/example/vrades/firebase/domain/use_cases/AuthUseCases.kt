@@ -9,7 +9,8 @@ data class AuthUseCases(
     val logOut: LogOut,
     val signInWithEmailAndPassword: SignInWithEmailAndPassword,
     val signUp: SignUp,
-    val isAccountInAuth: IsAccountInAuth
+    val isAccountInAuth: IsAccountInAuth,
+    val isUserAuthenticated: IsUserAuthenticated
 ) {
 
 }

@@ -1,11 +1,14 @@
 package com.example.vrades.ui.fragments
 
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.vrades.databinding.FragmentLoginBinding
 import com.example.vrades.model.Response
 import com.example.vrades.utils.Constants.ERROR_REF
 import com.example.vrades.utils.LoginValidator
+import com.example.vrades.utils.UIUtils
 import com.example.vrades.viewmodels.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,6 +23,9 @@ class LoginFragment : VradesBindingFragment<FragmentLoginBinding>(FragmentLoginB
             val loginButton = btnLogIn
             val forgotPasswordTextView = tvForgotPassword
             val noAccountTextView = tvNoAccount
+            val editTextEmail = etEmail
+            val editTextPassword = etPassword
+            val editTexts = arrayOf(editTextEmail, editTextPassword)
             loginButton.setOnClickListener {
                 validateAndLogin()
             }
@@ -28,6 +34,14 @@ class LoginFragment : VradesBindingFragment<FragmentLoginBinding>(FragmentLoginB
             }
             noAccountTextView.setOnClickListener {
                 onNavigateToRegister()
+            }
+            editTexts.forEach {
+                it.setOnEditorActionListener(TextView.OnEditorActionListener { _, p1, _ ->
+                    if (p1 == EditorInfo.IME_ACTION_DONE || p1 == EditorInfo.IME_ACTION_SEND || p1 == EditorInfo.IME_ACTION_NEXT) {
+                        UIUtils.dismissKeyboard(requireActivity())
+                    }
+                    return@OnEditorActionListener false
+                })
             }
         }
     }

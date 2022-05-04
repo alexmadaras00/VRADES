@@ -1,8 +1,5 @@
 package com.example.vrades.utils
 
-import com.example.vrades.firebase.repositories.auth.AuthRepository
-import com.google.firebase.auth.FirebaseAuth
-
 object Constants {
 
     const val ERROR_REF: String = "Unexpected error!"
@@ -16,6 +13,8 @@ object Constants {
     const val EMOTIONS_REF: String = "emotions"
     const val LIFEHACKS_REF = "lifeHacks"
     const val LIFEHACKS_NAME_REF = "lifeHacksName"
+    const val DATA_AUDIO_TEST_REF = "dataAudioTest"
+    const val DATA_WRITING_TEST_REF ="dataWritingTest"
 
     //Fields
     const val NAME = "email"

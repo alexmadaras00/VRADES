@@ -1,6 +1,10 @@
 package com.example.vrades.di
 
+import com.example.vrades.utils.Constants.DATA_AUDIO_TEST_REF
+import com.example.vrades.utils.Constants.DATA_WRITING_TEST_REF
 import com.example.vrades.utils.Constants.EMOTIONS_REF
+import com.example.vrades.utils.Constants.LIFEHACKS_REF
+import com.example.vrades.utils.Constants.TESTS
 import com.example.vrades.utils.Constants.USERS_REF
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -37,4 +41,22 @@ object FirebaseModule {
     @Named(EMOTIONS_REF) // differentiate
     fun provideEmotionsRef(db: FirebaseDatabase): DatabaseReference = db.reference.child(
         EMOTIONS_REF)
+
+    @Singleton
+    @Provides
+    @Named(LIFEHACKS_REF) // differentiate
+    fun provideLifeHacksRef(db: FirebaseDatabase): DatabaseReference = db.reference.child(
+        LIFEHACKS_REF)
+
+    @Singleton
+    @Provides
+    @Named(DATA_AUDIO_TEST_REF) // differentiate
+    fun provideDataAudioTest(db: FirebaseDatabase): DatabaseReference = db.reference.child(
+        DATA_AUDIO_TEST_REF)
+
+    @Singleton
+    @Provides
+    @Named(DATA_WRITING_TEST_REF) // differentiate
+    fun provideDataWritingTest(db: FirebaseDatabase): DatabaseReference = db.reference.child(
+        DATA_WRITING_TEST_REF)
 }

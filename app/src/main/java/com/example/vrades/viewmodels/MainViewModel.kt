@@ -1,19 +1,19 @@
 package com.example.vrades.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
 import com.example.vrades.firebase.domain.use_cases.AuthUseCases
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    useCasesAuth: AuthUseCases
+    private val useCasesAuth: AuthUseCases
 ) : ViewModel() {
-    val authState = useCasesAuth.getAuthState()
+    val authState = useCasesAuth.getAuthState().asLiveData(Dispatchers.IO + viewModelScope.coroutineContext)
+
+    val isUserAuthenticated get() = useCasesAuth.isUserAuthenticated()
 
     private val _onNavigateToTest = SingleLiveEvent<Void>()
     val onNavigateToTest: LiveData<Void>
@@ -22,8 +22,6 @@ class MainViewModel @Inject constructor(
     private fun onNavigateToTestClicked() {
         _onNavigateToTest.call()
     }
-
-
 
 
 }
