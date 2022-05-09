@@ -3,25 +3,28 @@ package com.example.vrades.viewmodels
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
-import com.example.vrades.enums.TestState
-import com.example.vrades.model.Test
-import java.time.LocalDate
-import kotlin.collections.ArrayList
+import androidx.lifecycle.liveData
+import com.example.vrades.firebase.domain.use_cases.profile_repository.ProfileUseCases
+import com.example.vrades.firebase.domain.use_cases.vrades_repository.VradesUseCases
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import javax.inject.Inject
 
-class MyProfileViewModel : ViewModel() {
+@HiltViewModel
+class MyProfileViewModel @Inject constructor(
+    private val profileUseCases: ProfileUseCases,
+    private val vradesUseCases: VradesUseCases
+) : ViewModel() {
 
-    private var tests = ArrayList<Test>()
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun addTests(){
+    private fun addTests() {
 
-        tests.add(Test(LocalDate.of(2022,1,22),TestState.AUDIO_DETECTION_COMPLETED))
-        tests.add(Test(LocalDate.of(2022,2,10),TestState.TEST_STARTED))
-        tests.add(Test(LocalDate.of(2022,2,10),TestState.TEST_STARTED))
-        tests.add(Test(LocalDate.of(2022,2,10),TestState.TEST_STARTED))
     }
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun getTests(): ArrayList<Test>{
-        addTests()
-        return tests
+
+    fun getTests() = liveData(Dispatchers.IO) {
+        profileUseCases.getTestsByUserId().collect {
+            emit(it)
+        }
+
     }
 }

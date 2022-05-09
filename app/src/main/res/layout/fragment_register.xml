@@ -6,6 +6,9 @@
     <data>
 
         <import type="android.view.View" />
+        <variable
+            name="images"
+            type="com.example.vrades.utils.Constants" />
 
         <variable
             name="viewModel"
@@ -16,7 +19,7 @@
         android:id="@+id/clRegister"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_custom"
+        backgroundImageUrl="@{images.BACKGROUND_APP}"
         tools:context=".ui.fragments.RegisterFragment">
 
         <androidx.constraintlayout.widget.Guideline

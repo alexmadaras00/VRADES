@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <import type="android.view.View" />
+
+        <variable
+            name="images"
+            type="com.example.vrades.utils.Constants" />
 
         <variable
             name="item"
@@ -57,7 +59,8 @@
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="@+id/tvTest"
             app:layout_constraintTop_toBottomOf="@+id/tvDate"
-            app:srcCompat="@drawable/face_white" />
+            app:srcCompat="@drawable/face_white"
+            android:contentDescription="@string/face_detection" />
 
         <ImageView
             android:id="@+id/ivAudio"
@@ -68,7 +71,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/ivFace"
             app:layout_constraintStart_toEndOf="@+id/ivFace"
             app:layout_constraintTop_toBottomOf="@+id/tvDate"
-            app:srcCompat="@drawable/ic_baseline_keyboard_voice_24" />
+            app:srcCompat="@drawable/ic_baseline_keyboard_voice_24"
+            android:contentDescription="@string/audio_test" />
 
         <ImageView
             android:id="@+id/ivWriting"
@@ -79,7 +83,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/ivAudio"
             app:layout_constraintStart_toEndOf="@+id/ivAudio"
             app:layout_constraintTop_toBottomOf="@+id/tvDate"
-            app:srcCompat="@drawable/ic_baseline_library_books_24" />
+            app:srcCompat="@drawable/ic_baseline_library_books_24"
+            android:contentDescription="@string/writing_test" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
 </layout>

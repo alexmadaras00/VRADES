@@ -6,6 +6,9 @@
     <data>
 
         <import type="android.view.View" />
+        <variable
+            name="images"
+            type="com.example.vrades.utils.Constants" />
 
         <variable
             name="viewModel"
@@ -94,7 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginHorizontal="24dp"
-            android:background="@drawable/audio_back"
+            backgroundImageUrl="@{images.AUDIO_BACK}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.49"
             app:layout_constraintStart_toStartOf="parent"

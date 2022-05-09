@@ -6,6 +6,9 @@
     <data>
 
         <import type="android.view.View" />
+        <variable
+            name="images"
+            type="com.example.vrades.utils.Constants" />
 
         <variable
             name="viewModelTest"
@@ -103,7 +106,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="24dp"
-            android:background="@drawable/audio_back"
+            backgroundImageUrl="@{images.AUDIO_BACK}"
             android:fontFamily="@font/ibm_plex_sans_bold"
             android:foregroundGravity="top|left"
             android:gravity="top|start"
@@ -119,7 +122,7 @@
                 android:id="@+id/etWritingText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/audio_back"
+                backgroundImageUrl="@{images.AUDIO_BACK}"
                 android:gravity="start|top"
                 android:hint="@string/congrats_writing"
                 android:inputType="text"

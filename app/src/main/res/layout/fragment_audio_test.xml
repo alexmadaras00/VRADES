@@ -6,6 +6,9 @@
     <data>
 
         <import type="android.view.View" />
+        <variable
+            name="images"
+            type="com.example.vrades.utils.Constants" />
 
         <variable
             name="viewModelTest"
@@ -17,7 +20,7 @@
         android:id="@+id/clAudioTest"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_test"
+        backgroundImageUrl="@{images.BACKGROUND_TEST}"
         tools:context=".ui.fragments.tutorial.TutorialAudioFragment">
 
         <com.example.vrades.widgets.WaveFormView
@@ -137,7 +140,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginHorizontal="24dp"
-            android:background="@drawable/audio_back"
+            backgroundImageUrl="@{images.AUDIO_BACK}"
             android:padding="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.5"

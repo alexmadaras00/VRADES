@@ -7,13 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vrades.databinding.FragmentMyProfileBinding
 import com.example.vrades.interfaces.IOnClickListener
+import com.example.vrades.model.Response
+import com.example.vrades.model.Test
 import com.example.vrades.ui.adapters.AdapterTestHistory
 import com.example.vrades.ui.dialogs.FeedbackRequestDialog
+import com.example.vrades.utils.Constants
 import com.example.vrades.viewmodels.MyProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,18 +30,13 @@ class MyProfileFragment : Fragment() {
 
     private var _binding: FragmentMyProfileBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: MyProfileViewModel
+    private val viewModel: MyProfileViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        )[MyProfileViewModel::class.java]
         _binding = FragmentMyProfileBinding.inflate(inflater)
-
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root
@@ -47,25 +46,12 @@ class MyProfileFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onStart() {
         super.onStart()
+        addTestsData()
         binding.apply {
-            val recyclerViewTestHistory = rvTestResults
             val buttonAnalysis = btnDiary
             val buttonBack = btnBackProfile
             val navController = findNavController()
-            val onClickListener = object : IOnClickListener {
-                override fun onItemClick(position: Int) {
-                    navController.navigate(MyProfileFragmentDirections.actionNavProfileToNavSolutions())
-                }
 
-            }
-            val adapterTestHistory = AdapterTestHistory(onClickListener)
-            val tests = viewModel!!.getTests()
-            adapterTestHistory.setDataSource(tests)
-            recyclerViewTestHistory.adapter = adapterTestHistory
-            recyclerViewTestHistory.layoutManager = LinearLayoutManager(context)
-            recyclerViewTestHistory.setHasFixedSize(true)
-            recyclerViewTestHistory.isScrollContainer = true
-            recyclerViewTestHistory.hasNestedScrollingParent()
             buttonAnalysis.setOnClickListener{
                 navController.navigate(MyProfileFragmentDirections.actionNavProfileToNavDialog())
             }
@@ -76,9 +62,42 @@ class MyProfileFragment : Fragment() {
         }
     }
 
-    private fun showDialog(){
-        val dialog = FeedbackRequestDialog()
-        dialog.show(requireActivity().supportFragmentManager,"customDialog")
+    private fun addTestsData() {
+        viewModel.getTests().observe(viewLifecycleOwner) {
+            when (it) {
+                is Response.Success -> {
+                    configureRecyclerView(it.data)
+                    println("LIST: $it.data")
+
+                }
+                is Response.Error -> {
+                    println(Constants.ERROR_REF)
+                }
+                else -> {
+                    println(Constants.ERROR_REF)
+                }
+            }
+        }
+    }
+
+    private fun configureRecyclerView(tests: List<Test>) {
+        binding.apply {
+            val recyclerViewTestHistory = rvTestResults
+
+            val onClickListener = object : IOnClickListener {
+                override fun onItemClick(position: Int) {
+                    findNavController().navigate(MyProfileFragmentDirections.actionNavProfileToNavSolutions())
+                }
+
+            }
+            val adapterTestHistory = AdapterTestHistory(onClickListener)
+            adapterTestHistory.setDataSource(tests as ArrayList<Test>)
+            recyclerViewTestHistory.adapter = adapterTestHistory
+            recyclerViewTestHistory.layoutManager = LinearLayoutManager(context)
+            recyclerViewTestHistory.setHasFixedSize(true)
+            recyclerViewTestHistory.isScrollContainer = true
+            recyclerViewTestHistory.hasNestedScrollingParent()
+        }
     }
     override fun onDestroy() {
         super.onDestroy()

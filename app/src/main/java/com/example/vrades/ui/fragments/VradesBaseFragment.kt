@@ -1,8 +1,9 @@
 package com.example.vrades.ui.fragments
 
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 abstract class VradesBaseFragment : Fragment() {
 
     abstract fun connectViewModelEvents()

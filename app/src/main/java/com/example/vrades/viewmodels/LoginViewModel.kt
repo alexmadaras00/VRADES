@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.Navigation
-import com.example.vrades.firebase.domain.use_cases.AuthUseCases
+import com.example.vrades.firebase.domain.use_cases.auth_repository.AuthUseCases
 import com.example.vrades.ui.fragments.LoginFragment
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

@@ -6,6 +6,9 @@
     <data>
 
         <import type="android.view.View" />
+        <variable
+            name="images"
+            type="com.example.vrades.utils.Constants" />
 
         <variable
             name="item"
@@ -45,7 +48,7 @@
             android:id="@+id/tilAnswerContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/answer_personal_question_back"
+            backgroundImageUrl="@{images.BACKGROUND_ITEM_LIFEHACK}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/clQuestion">
@@ -54,7 +57,7 @@
                 android:id="@+id/etInputAnswer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/answer_personal_question_back"
+                backgroundImageUrl="@{images.BACKGROUND_ITEM_LIFEHACK}"
                 android:inputType="text"
                 android:padding="5dp" />
         </com.google.android.material.textfield.TextInputLayout>

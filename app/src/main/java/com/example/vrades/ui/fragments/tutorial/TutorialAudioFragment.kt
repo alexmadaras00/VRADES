@@ -40,6 +40,8 @@ class TutorialAudioFragment : Fragment() {
             val textViewTap = tvTapToStart
             val imageViewArrow = ivArrowTutorialAudio
             val textViewPressAudio = tvPressAudio
+            val frameLayoutAudio = flAudioTextContainer
+            frameLayoutAudio.background
             startAnimate(imageViewArrow)
 
             buttonRecordAudio.setOnClickListener {

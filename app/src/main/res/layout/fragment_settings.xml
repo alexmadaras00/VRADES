@@ -6,6 +6,9 @@
     <data>
 
         <import type="android.view.View" />
+        <variable
+            name="images"
+            type="com.example.vrades.utils.Constants" />
 
         <variable
             name="viewModel"
@@ -16,7 +19,7 @@
         android:id="@+id/clSettings"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_app"
+        backgroundImageUrl="@{images.BACKGROUND_APP}"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         tools:context=".ui.fragments.SettingsFragment">

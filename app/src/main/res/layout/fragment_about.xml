@@ -6,16 +6,38 @@
     <data>
 
         <import type="android.view.View" />
+
+        <variable
+            name="images"
+            type="com.example.vrades.utils.Constants" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clAbout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_app"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="48dp"
+        backgroundImageUrl="@{images.BACKGROUND_APP}"
         tools:context=".ui.fragments.AboutFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlBottomAbout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_begin="0dp"
+            app:layout_constraintGuide_percent="0.95"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlTopAbout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.1"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdlRight2"
             android:layout_width="wrap_content"
@@ -31,13 +53,18 @@
             android:orientation="vertical"
             app:layout_constraintGuide_begin="0dp"
             app:layout_constraintGuide_percent="0.02" />
+
         <include
             android:id="@+id/include"
             layout="@layout/container_auth_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:paddingHorizontal="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintBottom_toTopOf="@+id/gdlBottomAbout"
+            app:layout_constraintEnd_toStartOf="@+id/gdlRight2"
+            app:layout_constraintStart_toStartOf="@+id/gdlLeft2"
+            app:layout_constraintTop_toTopOf="@+id/gdlAbout"
+            app:layout_constraintWidth_percent="0.9">
 
         </include>
 
@@ -47,7 +74,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintGuide_percent="0.34"
+            app:layout_constraintGuide_percent="0.35"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.39" />
 
@@ -67,7 +94,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintGuide_percent="0.23"
+            app:layout_constraintGuide_percent="0.25"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.39" />
 
@@ -77,7 +104,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintGuide_percent="0.27"
+            app:layout_constraintGuide_percent="0.28"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.39" />
 
@@ -87,7 +114,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintGuide_percent="0.82"
+            app:layout_constraintGuide_percent="0.78"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.39" />
 
@@ -97,7 +124,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintGuide_percent="0.9"
+            app:layout_constraintGuide_percent="0.84"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.39" />
 
@@ -139,12 +166,12 @@
             app:layout_constraintTop_toTopOf="@+id/ivAboutLogo" />
 
         <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:fillViewport="false"
-            app:layout_constraintEnd_toStartOf="@+id/gdlRight2"
+            app:layout_constraintEnd_toEndOf="@+id/include"
             app:layout_constraintHeight_percent="0.4"
-            app:layout_constraintStart_toStartOf="@+id/gdlLeft2"
+            app:layout_constraintStart_toStartOf="@+id/include"
             app:layout_constraintTop_toTopOf="@+id/gdlAbout3">
 
             <TextView
@@ -171,7 +198,7 @@
             android:src="@drawable/line_section_container"
             app:layout_constraintEnd_toEndOf="@+id/include"
             app:layout_constraintStart_toStartOf="@+id/include"
-            app:layout_constraintTop_toTopOf="@+id/gdlBottomAbout" />
+            app:layout_constraintTop_toTopOf="@+id/gdlBottomBarAbout" />
 
         <TextView
             android:id="@+id/tvFollow"
@@ -187,18 +214,21 @@
 
         <ImageView
             android:id="@+id/ivInstagram"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            backgroundImageUrl="@{images.INSTAGRAM}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/follow_on_insta"
             app:layout_constraintEnd_toEndOf="@+id/tvFollow"
+            app:layout_constraintHeight_percent="0.075"
             app:layout_constraintStart_toStartOf="@+id/tvFollow"
             app:layout_constraintTop_toTopOf="@+id/gdlAbout6"
-            app:srcCompat="@drawable/instagram" />
+            app:layout_constraintWidth_percent="0.14" />
 
         <ImageButton
             android:id="@+id/btnBackAbout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="3dp"
             android:background="@drawable/ic_baseline_arrow_back_24"
             android:contentDescription="@string/about"
             android:fontFamily="@font/ibm_plex_sans"
@@ -211,18 +241,18 @@
             app:elevation="0dp"
             app:iconPadding="0dp"
             app:iconTint="#FFFFFF"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/gdlAbout"
+            app:layout_constraintStart_toStartOf="@+id/include"
+            app:layout_constraintTop_toTopOf="@+id/gdlTopAbout"
             app:strokeColor="@color/transparent" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gdlBottomAbout"
+            android:id="@+id/gdlBottomBarAbout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
 
-            app:layout_constraintGuide_percent="0.78"
+            app:layout_constraintGuide_percent="0.73"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

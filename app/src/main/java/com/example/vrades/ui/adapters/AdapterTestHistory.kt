@@ -31,13 +31,13 @@ class AdapterTestHistory(private val onClickListener: IOnClickListener) : Recycl
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(item: Test) {
             binding.item = item
-            binding.tvDate.text = currentTime(item.date).toString()
-            when (item.isCompleted) {
-                TestState.FACE_DETECTION_COMPLETED ->
+            binding.tvDate.text = item.date
+            when (item.state) {
+                TestState.FACE_DETECTION_COMPLETED.position ->
                     binding.ivFace.setColorFilter(R.color.background)
-                TestState.AUDIO_DETECTION_COMPLETED ->
+                TestState.AUDIO_DETECTION_COMPLETED.position ->
                     binding.ivAudio.setColorFilter(R.color.background)
-                TestState.TEST_COMPLETED ->
+                TestState.TEST_COMPLETED.position ->
                     binding.ivWriting.setColorFilter(R.color.background)
                 else -> {
                     binding.ivFace.setColorFilter(R.color.white)
@@ -45,14 +45,18 @@ class AdapterTestHistory(private val onClickListener: IOnClickListener) : Recycl
                     binding.ivWriting.setColorFilter(R.color.white)
                 }
             }
-
             binding.executePendingBindings()
         }
     }
 
     fun setDataSource(items: ArrayList<Test>) {
-        this.test = items
-        notifyDataSetChanged()
+        this.apply {
+            if (test.isNotEmpty()) {
+                test.clear()
+            }
+            test.addAll(items)
+            notifyDataSetChanged()
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

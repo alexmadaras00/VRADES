@@ -1,14 +1,13 @@
 package com.example.vrades.ui.binding
 
 
+import android.graphics.drawable.Drawable
 import android.view.View
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.vrades.R
+import com.bumptech.glide.request.target.CustomTarget
 import com.example.vrades.viewmodels.TutorialViewModel
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
@@ -32,6 +31,25 @@ fun View.customOnClickListener(viewModel: TutorialViewModel) {
         viewModel.onNextPageClicked()
     }
 }
+
+@BindingAdapter("backgroundImageUrl")
+fun loadImageUrl(view: View, name: String) {
+    Glide.with(view.context).load(name).into(object : CustomTarget<Drawable>() {
+        override fun onResourceReady(
+            resource: Drawable,
+            transition: com.bumptech.glide.request.transition.Transition<in Drawable>?
+        ) {
+            view.background = resource
+        }
+
+        override fun onLoadCleared(placeholder: Drawable?) {
+            TODO("Not yet implemented")
+        }
+
+
+    })
+}
+
 
 
 

@@ -7,6 +7,10 @@
 
     <data>
 
+        <variable
+            name="images"
+            type="com.example.vrades.utils.Constants" />
+
         <import type="android.view.View" />
     </data>
 

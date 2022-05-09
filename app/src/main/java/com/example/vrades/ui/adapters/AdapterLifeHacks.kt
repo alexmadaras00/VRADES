@@ -3,6 +3,8 @@ package com.example.vrades.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.request.CachePolicy
 import com.example.vrades.databinding.ItemLifehackBinding
 import com.example.vrades.model.LifeHack
 
@@ -15,7 +17,10 @@ class AdapterLifeHacks() : RecyclerView.Adapter<AdapterLifeHacks.ViewHolder>() {
         fun bind(item: LifeHack) {
             binding.item = item
             binding.tvLifeHackName.text = item.name
-            binding.ivLifeHackIcon.setImageResource(item.icon)
+            binding.ivLifeHackIcon.load(item.icon){
+                crossfade(true)
+                diskCachePolicy(CachePolicy.READ_ONLY)
+            }
             if (item.details != "")
                 binding.tvLifeHackDescription.text = item.details
             binding.executePendingBindings()

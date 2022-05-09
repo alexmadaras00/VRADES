@@ -6,6 +6,9 @@
     <data>
 
         <import type="android.view.View" />
+        <variable
+            name="images"
+            type="com.example.vrades.utils.Constants" />
 
         <variable
             name="item"
@@ -18,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:background="@drawable/background_item_lifehack"
+        backgroundImageUrl="@{images.BACKGROUND_ITEM_LIFEHACK}"
         android:padding="4dp">
 
         <TextView
@@ -40,7 +43,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/meditation_icon_138394" />
+            app:srcCompat="@drawable/meditation_icon_138394"
+            android:contentDescription="@string/image" />
 
         <TextView
             android:id="@+id/tvLifeHackDescription"
