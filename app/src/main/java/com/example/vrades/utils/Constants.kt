@@ -67,5 +67,22 @@ object Constants {
         "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/instagram.png?alt=media&token=ae5c85c8-a5d1-4388-825e-354987f34f47"
     const val MEDITATION_ICON =
         "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/meditation_icon_138394.png?alt=media&token=6eaaf1aa-6275-40d4-bfcd-1760bace1c73"
-
+    const val PROFILE_ICON =
+        "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/profile_icon.png?alt=media&token=148075fe-a8ca-4c83-bbf1-bb1cd36606a6"
+    const val RECYCLER_VIEW_PROFILE_BACKGROUND =
+        "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/recycler_view_profile_background.png?alt=media&token=0e6c16da-988e-44f3-b413-05fab9465fb3"
+    const val REVIEW_TEXT_BACKGROUND =
+        "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/review_text_background.png?alt=media&token=92c5c5b6-7ec7-4f9e-8eca-b3e6f7c387b6"
+    const val SETTINGS_BLACK_BACK =
+        "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/settings_voice_black_48dp.png?alt=media&token=df79d0c3-ac77-4618-9d39-a1fa5a287def"
+    const val SHARE_WHITE =
+        "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/share_white_36dp.png?alt=media&token=45c539ce-91f2-422d-9668-9e9ea6e9e35c"
+    const val TEST_RESULT_CARD_BACKGROUND =
+        "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/test_result_card_background.png?alt=media&token=fab357d3-5e4d-46cf-9cae-74a57a2dd28f"
+    const val TUTORIAL_BACKGROUND =
+        "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/tutorial_background.png?alt=media&token=f1c1854d-edc9-4873-9800-ca7da95f3c5d"
+    const val TUTORIAL_ICON =
+        "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/tutorial_icon.png?alt=media&token=83e2569f-412a-4f2d-8d4d-9abbc84fc90c"
+    const val WRITING_RESULT =
+        "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/writing_result.png?alt=media&token=8533604c-d5e0-4fff-950f-f93a74bf6209"
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
@@ -15,20 +16,31 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class TutorialAudioFragment : Fragment() {
-    // TODO: Rename and change types of parameters
+
     private val viewModel: TutorialViewModel by activityViewModels()
     private var _binding: FragmentTutorialAudioBinding? = null
     private val binding get() = _binding!!
+    private lateinit var animUpDown: Animation
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentTutorialAudioBinding.inflate(inflater)
-
         binding.viewModel = viewModel
+        animUpDown = AnimationUtils.loadAnimation(
+            activity,
+            R.anim.arrow_anim_horizontal
+        )
         binding.executePendingBindings()
+        val imageViewArrow = binding.ivArrowTutorialAudio
+        startAnimate(imageViewArrow)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
     }
 
     override fun onStart() {
@@ -38,12 +50,8 @@ class TutorialAudioFragment : Fragment() {
             val buttonNext = btnNextTutorialAudio
             val textAudioCompleted = tvAudioCompleted
             val textViewTap = tvTapToStart
-            val imageViewArrow = ivArrowTutorialAudio
             val textViewPressAudio = tvPressAudio
-            val frameLayoutAudio = flAudioTextContainer
-            frameLayoutAudio.background
-            startAnimate(imageViewArrow)
-
+            val imageViewArrow = ivArrowTutorialAudio
             buttonRecordAudio.setOnClickListener {
                 textAudioCompleted.visibility = View.VISIBLE
                 buttonNext.isEnabled = true
@@ -56,12 +64,15 @@ class TutorialAudioFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        val imageViewArrow = binding.ivArrowTutorialAudio
+        startAnimate(imageViewArrow)
+    }
+
     private fun startAnimate(imageViewArrow: ImageView) {
-        val animUpDown = AnimationUtils.loadAnimation(
-            context,
-            R.anim.arrow_anim_horizontal
-        );
-        imageViewArrow.startAnimation(animUpDown);
+        imageViewArrow.startAnimation(animUpDown)
+        println("Here")
     }
     private fun stopAnimate(imageViewArrow: ImageView) {
         imageViewArrow.animation.cancel()

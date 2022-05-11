@@ -1,4 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <!-- Base application theme. -->
     <style name="Theme.VRADES" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Primary brand color. -->
@@ -78,9 +79,6 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Tutorial" parent="Theme.AppCompat">
-        <item name="background">@drawable/tutorial_background</item>
-    </style>
     <style name="FloatingButton" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
         <item name="colorPrimary">@color/menu_button</item>
         <item name="colorSecondary">@color/menu_button</item>

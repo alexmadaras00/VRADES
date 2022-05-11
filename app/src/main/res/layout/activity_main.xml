@@ -17,7 +17,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/flMain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        backgroundImageUrl="@{images.BACKGROUND_APP}"
+        >
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bnNavigationTest"

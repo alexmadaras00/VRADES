@@ -10,11 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.vrades.databinding.FragmentAboutBinding
-import com.example.vrades.model.Response
-import com.example.vrades.utils.Constants
 import com.example.vrades.utils.Constants.BACKGROUND_APP
 import com.example.vrades.utils.UIUtils.loadImageUrl
-import com.example.vrades.viewmodels.ImagesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,7 +19,6 @@ class AboutFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var _binding: FragmentAboutBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: ImagesViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,9 +36,6 @@ class AboutFragment : Fragment() {
         binding.apply {
             val buttonBack = btnBackAbout
             val constraintLayoutBackground = clAbout
-            loadImageUrl(requireContext(), constraintLayoutBackground, BACKGROUND_APP)
-
-
             buttonBack.setOnClickListener {
                 findNavController().navigate(AboutFragmentDirections.actionNavAboutToNavHome())
             }

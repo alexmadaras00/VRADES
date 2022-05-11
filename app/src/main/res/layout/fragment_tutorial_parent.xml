@@ -19,7 +19,7 @@
         android:id="@+id/clTutorialParent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/tutorial_background"
+        backgroundImageUrl="@{images.TUTORIAL_BACKGROUND}"
         tools:context=".ui.fragments.tutorial.TutorialParentFragment">
 
         <androidx.constraintlayout.widget.Guideline

@@ -20,12 +20,10 @@ class AdapterTestHistory(private val onClickListener: IOnClickListener) : Recycl
     @SuppressLint("WeekBasedYear")
     @RequiresApi(Build.VERSION_CODES.O)
     private fun currentTime(time: LocalDate): String? {
-
         val dtf: DateTimeFormatter = DateTimeFormatter.ofPattern("DD:MM:YY")
         return dtf.format(time)
     }
 
-    
     inner class ViewHolder(private val binding: ItemTestBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @RequiresApi(Build.VERSION_CODES.O)

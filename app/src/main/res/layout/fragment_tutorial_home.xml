@@ -28,7 +28,7 @@
         android:id="@+id/clTutorialHome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/tutorial_background"
+        backgroundImageUrl="@{images.TUTORIAL_BACKGROUND}"
         tools:context=".ui.fragments.tutorial.TutorialHomeFragment">
 
         <androidx.constraintlayout.widget.Guideline

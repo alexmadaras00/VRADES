@@ -68,7 +68,6 @@ class MyProfileFragment : Fragment() {
                 is Response.Success -> {
                     configureRecyclerView(it.data)
                     println("LIST: $it.data")
-
                 }
                 is Response.Error -> {
                     println(Constants.ERROR_REF)

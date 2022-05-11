@@ -26,7 +26,6 @@ class TutorialWritingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentTutorialWritingBinding.inflate(inflater)
-
         binding.viewModel = viewModel
         binding.executePendingBindings()
         return binding.root

@@ -13,8 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MyProfileViewModel @Inject constructor(
-    private val profileUseCases: ProfileUseCases,
-    private val vradesUseCases: VradesUseCases
+    private val profileUseCases: ProfileUseCases
 ) : ViewModel() {
 
     private fun addTests() {

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <import type="android.view.View" />
         <variable
             name="images"
@@ -19,7 +18,7 @@
         android:id="@+id/clAudioTutorial"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/tutorial_background"
+        backgroundImageUrl="@{images.TUTORIAL_BACKGROUND}"
         tools:context=".ui.fragments.tutorial.TutorialAudioFragment">
 
         <androidx.constraintlayout.widget.Guideline
@@ -68,15 +67,17 @@
             android:id="@+id/ivArrowTutorialAudio"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginEnd="22dp"
+            android:layout_marginEnd="24dp"
             android:rotation="90"
+            android:visibility="visible"
             android:stateListAnimator="@anim/arrow_anim_horizontal"
             app:layout_constraintBottom_toBottomOf="@+id/tvTapToStart"
             app:layout_constraintEnd_toStartOf="@+id/tvTapToStart"
             app:layout_constraintHeight_percent="0.06"
             app:layout_constraintTop_toBottomOf="@+id/fbtnVoiceRecord"
             app:layout_constraintWidth_percent="0.16"
-            app:srcCompat="@drawable/arrow_tutorial" />
+            app:srcCompat="@drawable/arrow_tutorial"
+            android:contentDescription="TODO" />
 
         <TextView
             android:id="@+id/tvPressAudio"

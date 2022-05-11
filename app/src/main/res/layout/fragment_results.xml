@@ -318,7 +318,7 @@
                     android:id="@+id/clFaceResult"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@drawable/test_result_card_background"
+                    backgroundImageUrl="@{images.TEST_RESULT_CARD_BACKGROUND}"
                     android:paddingBottom="8dp"
                     app:flow_horizontalAlign="start"
                     app:layout_constraintBottom_toTopOf="@+id/gdlnResults2"
@@ -419,7 +419,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_margin="0dp"
-                    android:background="@drawable/test_result_card_background"
+                    backgroundImageUrl="@{images.TEST_RESULT_CARD_BACKGROUND}"
                     android:paddingBottom="8dp"
                     app:layout_constraintBottom_toTopOf="@+id/gdlnResults2"
                     app:layout_constraintEnd_toStartOf="@+id/gdlMiddle4"
@@ -518,7 +518,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginHorizontal="16dp"
-                    android:background="@drawable/test_result_card_background"
+                    backgroundImageUrl="@{images.TEST_RESULT_CARD_BACKGROUND}"
                     android:paddingBottom="8dp"
                     app:layout_constraintBottom_toTopOf="@+id/gdlnResults5"
                     app:layout_constraintEnd_toStartOf="@+id/gdlMiddle"
@@ -576,7 +576,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/gdlnResults21"
                         app:layout_constraintWidth_percent="0.35"
-                        app:srcCompat="@drawable/writing_result" />
+                        backgroundImageUrl="@{images.WRITING_RESULT}" />
 
                     <TextView
                         android:id="@+id/tvWritingTest"
@@ -616,7 +616,7 @@
                     android:id="@+id/clFinalResult"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@drawable/test_result_card_background"
+                    backgroundImageUrl="@{images.TEST_RESULT_CARD_BACKGROUND}"
                     android:paddingBottom="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/clWritingResult"
                     app:layout_constraintEnd_toStartOf="@+id/gdlMiddle4"
