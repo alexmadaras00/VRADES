@@ -79,14 +79,13 @@
             android:layout_height="0dp"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="24dp"
-            backgroundImageUrl="@{images.CAMERA_LAYOUT}"
             android:clipChildren="true"
             android:clipToPadding="false"
-
             app:cardCornerRadius="10dp"
             app:cardElevation="10dp"
             app:cardMaxElevation="0dp"
             app:cardPreventCornerOverlap="false"
+            backgroundImageUrl="@{images.CAMERA_LAYOUT}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.52"
             app:layout_constraintStart_toStartOf="parent"
@@ -96,6 +95,7 @@
                 android:id="@+id/vfCameraPreview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                foregroundImageUrl="@{images.CAMERA_LAYOUT}"
                 android:padding="4dp" />
 
             <com.google.android.material.button.MaterialButton
@@ -106,10 +106,9 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="24dp"
-                backgroundImageUrl="@{images.CAMERA_SWITCH}"
-                foregroundImageUrl="@{images.CAMERA_SWITCH}"
                 android:foregroundGravity="bottom"
                 android:insetTop="0dp"
+                backgroundImageUrl="@{images.CAMERA_SWITCH}"
                 android:padding="0dp"
                 android:paddingLeft="0dp"
                 android:paddingTop="10dp"

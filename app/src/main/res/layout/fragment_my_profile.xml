@@ -58,6 +58,21 @@
             app:layout_constraintTop_toTopOf="@+id/gdlTopProfile"
             app:layout_constraintWidth_percent="0.9">
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fbtnEditProfilePicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/background"
+                android:clickable="true"
+                android:contentDescription="@string/change_profile_picture"
+                android:focusable="true"
+                android:tint="@color/background"
+                app:layout_constraintEnd_toEndOf="@+id/civProfilePicture"
+                app:layout_constraintStart_toEndOf="@+id/civProfilePicture"
+                app:layout_constraintTop_toTopOf="@+id/gdlnProfile"
+                app:rippleColor="@color/background"
+                app:srcCompat="@drawable/ic_baseline_edit_24" />
+
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gdlnProfileButton"
                 android:layout_width="wrap_content"
@@ -93,7 +108,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="24dp"
-                android:src="@drawable/me"
+
                 app:civ_border_width="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent="0.13"
@@ -116,27 +131,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/gdlStartProfile" />
 
-            <TextView
-                android:id="@+id/tvAge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/ibm_plex_sans_bold"
-                android:text="@string/age"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/ivLineTopProfile"
-                app:layout_constraintTop_toTopOf="@+id/gdlnProfileTitle" />
-
-            <TextView
-                android:id="@+id/tvCountry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/ibm_plex_sans_bold"
-                android:text="@string/country"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tvAge"
-                app:layout_constraintStart_toStartOf="@+id/gdlMiddle"
-                app:layout_constraintTop_toTopOf="@+id/tvAge" />
-
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gdlMiddle"
                 android:layout_width="wrap_content"
@@ -145,21 +139,12 @@
                 app:layout_constraintGuide_percent="0.5" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gdlnProfileTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintGuide_percent="0.29"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gdlnProfileTitle8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintGuide_percent="0.35"
+                app:layout_constraintGuide_percent="0.3"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.Guideline
@@ -168,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintGuide_percent="0.42"
+                app:layout_constraintGuide_percent="0.37"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -192,7 +177,7 @@
                 android:nestedScrollingEnabled="true"
                 android:paddingBottom="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.43"
+                app:layout_constraintHeight_percent="0.47"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/gdlnProfileTitle7"
                 tools:itemCount="3"

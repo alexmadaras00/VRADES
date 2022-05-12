@@ -45,6 +45,12 @@ class LoginViewModel @Inject constructor(
         }
     }
 
+    fun firebaseCreateRealtimeUserName(fullName: String) = liveData(Dispatchers.IO) {
+        useCasesAuth.addUserNameInRealtime(fullName).collect { result ->
+            emit(result)
+        }
+    }
+
     fun resetPassword(email: String) = liveData(Dispatchers.IO) {
         useCasesAuth.resetPassword(email).collect { result ->
             emit(result)

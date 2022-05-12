@@ -8,10 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.vrades.R
-import com.example.vrades.databinding.FragmentDetailsBinding
 import com.example.vrades.databinding.FragmentSolutionsBinding
+import com.example.vrades.model.Response
 import com.example.vrades.ui.adapters.AdapterLifeHacks
+import com.example.vrades.ui.binding.setImageUrl
+import com.example.vrades.utils.Constants
 import com.example.vrades.viewmodels.SolutionsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,6 +38,7 @@ class SolutionsFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        getUser()
         val lifeHacks = viewModel.getLifeHacks()
         binding.apply {
             val recyclerViewLifeHacks = rvLifeHacks
@@ -52,7 +54,27 @@ class SolutionsFragment : Fragment() {
             }
 
         }
-
+    }
+    private fun getUser() {
+        viewModel.getUser().observe(viewLifecycleOwner) {
+            when (it) {
+                is Response.Success -> {
+                    binding.apply {
+                        val textViewName = tvNameSolutions
+                        val imageViewProfile = civProfilePictureDetails
+                        val user = it.data
+                        textViewName.text = user.username
+                        setImageUrl(imageViewProfile, user.image)
+                    }
+                }
+                is Response.Error -> {
+                    println(Constants.ERROR_REF)
+                }
+                else -> {
+                    println(Constants.ERROR_REF)
+                }
+            }
+        }
     }
 
     override fun onDestroy() {

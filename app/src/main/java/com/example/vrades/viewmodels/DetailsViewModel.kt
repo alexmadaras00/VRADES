@@ -3,13 +3,21 @@ package com.example.vrades.viewmodels
 import android.graphics.Color
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import com.example.vrades.R
 import com.example.vrades.enums.TestState
+import com.example.vrades.firebase.domain.use_cases.profile_repository.ProfileUseCases
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import javax.inject.Inject
 
-class DetailsViewModel : ViewModel() {
+@HiltViewModel
+class DetailsViewModel @Inject constructor(
+    private val profileUseCases: ProfileUseCases
+) : ViewModel() {
 
     private var chartData = ArrayList<PieEntry>()
     private val emotionsPercentage = HashMap<String, Float>()
@@ -18,6 +26,12 @@ class DetailsViewModel : ViewModel() {
     private val label = "Percentage of Emotions"
     private lateinit var pieDataSet: PieDataSet
     private lateinit var pieData: PieData
+
+    fun getName() = liveData(Dispatchers.IO){
+        profileUseCases.getUserNameById().collect{
+            emit(it)
+        }
+    }
 
     fun getState(): TestState? {
         return state.value

@@ -3,8 +3,10 @@ package com.example.vrades.firebase.repositories.auth
 import com.example.vrades.model.Response
 import com.example.vrades.model.Response.Loading
 import com.example.vrades.model.User
+import com.example.vrades.utils.Constants.DEFAULT_PROFILE_PICTURE
 import com.example.vrades.utils.Constants.ERROR_REF
 import com.example.vrades.utils.Constants.USERS_REF
+import com.example.vrades.utils.Constants.USER_NAME_REF
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.userProfileChangeRequest
@@ -22,7 +24,8 @@ import javax.inject.Singleton
 @Singleton
 class AuthRepositoryImpl @Inject constructor(
     private val auth: FirebaseAuth,
-    @Named(USERS_REF) private val usersRef: DatabaseReference
+    @Named(USERS_REF) private val usersRef: DatabaseReference,
+    @Named(USER_NAME_REF) private val usersNameRef: DatabaseReference
 ) : AuthRepository {
 
     override fun isUserAuthenticatedInFirebase() = auth.currentUser != null
@@ -44,7 +47,7 @@ class AuthRepositoryImpl @Inject constructor(
             emit(Loading)
             auth.currentUser?.apply {
 //                println("User created: $uid in the field: ${usersRef.key}")
-                val newUser = User(email.toString(), fullName)
+                val newUser = User(email.toString(), fullName, DEFAULT_PROFILE_PICTURE)
                 usersRef.child(uid).setValue(newUser).await().also {
                     emit(Response.Success(true))
                 }
@@ -53,6 +56,7 @@ class AuthRepositoryImpl @Inject constructor(
             emit(Response.Error(e.message ?: ERROR_REF))
         }
     }
+
 
     override suspend fun signOut(): Flow<Response<Boolean>> = flow {
         try {
@@ -64,6 +68,21 @@ class AuthRepositoryImpl @Inject constructor(
         }
 
     }
+
+    override suspend fun createUserNameInRealtime(fullName: String): Flow<Response<Boolean>> =
+        flow {
+            try {
+                emit(Loading)
+                auth.currentUser?.apply {
+//                println("User created: $uid in the field: ${usersRef.key}")
+                    usersNameRef.child(uid).setValue(fullName).await().also {
+                        emit(Response.Success(true))
+                    }
+                }
+            } catch (e: Exception) {
+                emit(Response.Error(e.message ?: ERROR_REF))
+            }
+        }
 
     override suspend fun sendPasswordResetEmail(email: String): Flow<Response<Boolean>> = flow {
         try {
@@ -123,7 +142,7 @@ class AuthRepositoryImpl @Inject constructor(
             emit(Loading)
             val profile = auth.currentUser
             profile?.apply {
-                val user = User(email!!, displayName!!)
+                val user = User(email!!, displayName!!, DEFAULT_PROFILE_PICTURE)
                 emit(Response.Success(user))
             }
         } catch (e: Exception) {

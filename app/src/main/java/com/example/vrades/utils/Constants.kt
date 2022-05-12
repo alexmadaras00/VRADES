@@ -16,6 +16,7 @@ object Constants {
     const val DATA_AUDIO_TEST_REF = "dataAudioTest"
     const val DATA_WRITING_TEST_REF = "dataWritingTest"
     const val IMAGE_REF = "images"
+    const val USER_NAME_REF = "usersName"
 
     //Fields
     const val NAME = "username"
@@ -31,6 +32,10 @@ object Constants {
     const val RESULT = "result"
     const val IS_COMPLETED = "isCompleted"
     const val STATE = "state"
+
+    // Guest Profile Pic
+    val DEFAULT_PROFILE_PICTURE =
+        "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/Users%2Fguest.png?alt=media&token=73f3ffd6-2ddc-4081-b455-5f9ce0544604"
 
     // Images
     const val ARROW_TUTORIAL =

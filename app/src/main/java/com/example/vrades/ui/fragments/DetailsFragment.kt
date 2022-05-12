@@ -12,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentDetailsBinding
 import com.example.vrades.enums.TestState
+import com.example.vrades.model.Response
+import com.example.vrades.utils.Constants
 import com.example.vrades.viewmodels.DetailsViewModel
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
@@ -62,6 +64,25 @@ class DetailsFragment : Fragment() {
 
         }
 
+    }
+
+    private fun getName() {
+        viewModel.getName().observe(viewLifecycleOwner) {
+            when (it) {
+                is Response.Success -> {
+                    binding.apply {
+                        val textViewName = tvNameResults
+                        textViewName.text = it.data
+                    }
+                }
+                is Response.Error -> {
+                    println(Constants.ERROR_REF)
+                }
+                else -> {
+                    println(Constants.ERROR_REF)
+                }
+            }
+        }
     }
 
     override fun onDestroy() {

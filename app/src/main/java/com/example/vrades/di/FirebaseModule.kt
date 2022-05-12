@@ -6,6 +6,7 @@ import com.example.vrades.utils.Constants.EMOTIONS_REF
 import com.example.vrades.utils.Constants.IMAGE_REF
 import com.example.vrades.utils.Constants.LIFEHACKS_REF
 import com.example.vrades.utils.Constants.USERS_REF
+import com.example.vrades.utils.Constants.USER_NAME_REF
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -40,6 +41,11 @@ object FirebaseModule {
     @Provides
     @Named(USERS_REF)
     fun provideUsersRef(db: FirebaseDatabase): DatabaseReference = db.reference.child(USERS_REF)
+
+    @Singleton
+    @Provides
+    @Named(USER_NAME_REF)
+    fun provideUsersNameRef(db: FirebaseDatabase): DatabaseReference = db.reference.child(USER_NAME_REF)
 
     @Singleton
     @Provides

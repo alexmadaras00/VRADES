@@ -4,10 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.example.vrades.firebase.data.repositories.VradesRepositoryImpl
 import com.example.vrades.firebase.domain.use_cases.auth_repository.*
-import com.example.vrades.firebase.domain.use_cases.profile_repository.GetLifeHacksByUserId
-import com.example.vrades.firebase.domain.use_cases.profile_repository.GetTestsByUserId
-import com.example.vrades.firebase.domain.use_cases.profile_repository.GetUserById
-import com.example.vrades.firebase.domain.use_cases.profile_repository.ProfileUseCases
+import com.example.vrades.firebase.domain.use_cases.profile_repository.*
 import com.example.vrades.firebase.domain.use_cases.vrades_repository.*
 import com.example.vrades.firebase.repositories.auth.AuthRepository
 import com.example.vrades.firebase.repositories.auth.AuthRepositoryImpl
@@ -20,8 +17,10 @@ import com.example.vrades.utils.Constants.EMOTIONS_REF
 import com.example.vrades.utils.Constants.IMAGE_REF
 import com.example.vrades.utils.Constants.LIFEHACKS_REF
 import com.example.vrades.utils.Constants.USERS_REF
+import com.example.vrades.utils.Constants.USER_NAME_REF
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.storage.FirebaseStorage
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -45,8 +44,9 @@ object AppModule {
     @Provides
     fun provideAuthRepository(
         auth: FirebaseAuth,
-        @Named(USERS_REF) usersRef: DatabaseReference
-    ): AuthRepository = AuthRepositoryImpl(auth, usersRef)
+        @Named(USERS_REF) usersRef: DatabaseReference,
+        @Named(USER_NAME_REF) usersNameRef: DatabaseReference
+    ): AuthRepository = AuthRepositoryImpl(auth, usersRef, usersNameRef)
 
     @Singleton
     @Provides
@@ -60,21 +60,28 @@ object AppModule {
         signInWithEmailAndPassword = SignInWithEmailAndPassword(repository),
         signUp = SignUp(repository),
         isAccountInAuth = IsAccountInAuth(repository),
-        isUserAuthenticated = IsUserAuthenticated(repository)
+        isUserAuthenticated = IsUserAuthenticated(repository),
+        addUserNameInRealtime = AddRealtimeUserName(repository)
     )
 
     @Singleton
     @Provides
     fun provideProfileRepository(
         auth: FirebaseAuth,
-        @Named(USERS_REF) usersRef: DatabaseReference
-    ): ProfileRepository = ProfileRepositoryImpl(auth, usersRef)
+        storage: FirebaseStorage,
+        @Named(USERS_REF) usersRef: DatabaseReference,
+        @Named(USER_NAME_REF) usersNameRef: DatabaseReference
+    ): ProfileRepository = ProfileRepositoryImpl(auth, storage, usersRef, usersNameRef)
 
     @Singleton
     @Provides
     fun provideProfileUseCases(repository: ProfileRepository) = ProfileUseCases(
         getLifeHacksByUserId = GetLifeHacksByUserId(repository),
-        getTestsByUserId = GetTestsByUserId(repository), getUserById = GetUserById(repository)
+        getTestsByUserId = GetTestsByUserId(repository),
+        getUserById = GetUserById(repository),
+        getUserNameById = GetUserNameById(repository),
+        setProfilePictureInStorage = SetProfilePictureInStorage(repository),
+        updateProfilePictureInRealtime = UpdateProfilePictureInRealtime(repository)
     )
 
     @Singleton

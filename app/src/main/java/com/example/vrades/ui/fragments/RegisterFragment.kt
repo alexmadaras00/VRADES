@@ -104,6 +104,20 @@ class RegisterFragment :
         viewModel.firebaseCreateRealtimeUser(fullName).observe(viewLifecycleOwner) {
             when (it) {
                 is Response.Success -> {
+                    createUserNameInRealtime(fullName)
+                }
+                is Response.Error -> {
+                    println(Constants.ERROR_REF)
+                }
+                else -> {}
+            }
+        }
+    }
+
+    private fun createUserNameInRealtime(fullName: String) {
+        viewModel.firebaseCreateRealtimeUserName(fullName).observe(viewLifecycleOwner) {
+            when (it) {
+                is Response.Success -> {
                     toast(requireActivity().applicationContext, "Welcome, $fullName !")
                     onNavigateToHome()
                 }
