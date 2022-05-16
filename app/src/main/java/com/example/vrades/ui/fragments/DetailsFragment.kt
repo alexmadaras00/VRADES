@@ -1,10 +1,10 @@
 package com.example.vrades.ui.fragments
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -42,6 +42,7 @@ class DetailsFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        generateAdvicesByTestResult()
         val state = viewModel.getState()
         val pieData = viewModel.getData()
         val maxValueEmotion = viewModel.getMax()
@@ -54,9 +55,7 @@ class DetailsFragment : Fragment() {
             pieChart.data = pieData
             initPieChart(pieChart)
             buttonBack.setOnClickListener {
-                if (state == TestState.TEST_COMPLETED) {
-                    findNavController().navigate(DetailsFragmentDirections.actionNavDetailsToNavHome())
-                } else findNavController().navigate(DetailsFragmentDirections.actionNavDetailsToNavProfile())
+                findNavController().navigate(DetailsFragmentDirections.actionNavDetailsToNavProfile())
             }
             dominantEmotion.text = maxValueEmotion
         }
@@ -66,24 +65,6 @@ class DetailsFragment : Fragment() {
 
     }
 
-    private fun getName() {
-        viewModel.getName().observe(viewLifecycleOwner) {
-            when (it) {
-                is Response.Success -> {
-                    binding.apply {
-                        val textViewName = tvNameResults
-                        textViewName.text = it.data
-                    }
-                }
-                is Response.Error -> {
-                    println(Constants.ERROR_REF)
-                }
-                else -> {
-                    println(Constants.ERROR_REF)
-                }
-            }
-        }
-    }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -105,6 +86,26 @@ class DetailsFragment : Fragment() {
             legend.isEnabled = false
             transparentCircleRadius = 1f
             maxAngle = 360f
+        }
+    }
+
+    private fun generateAdvicesByTestResult() {
+        viewModel.generateAdvicesByTestResult().observe(viewLifecycleOwner) {
+            when (it) {
+                is Response.Success -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Test results generated successfully",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                is Response.Error -> {
+                    println(Constants.ERROR_REF)
+                }
+                else -> {
+                    println(Constants.ERROR_REF)
+                }
+            }
         }
     }
 

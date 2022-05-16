@@ -3,12 +3,20 @@ package com.example.vrades.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.vrades.R
+import androidx.lifecycle.liveData
 import com.example.vrades.enums.AudioState
 import com.example.vrades.enums.TestState
 import com.example.vrades.enums.WritingState
+import com.example.vrades.firebase.domain.use_cases.profile_repository.ProfileUseCases
+import com.example.vrades.model.Test
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import javax.inject.Inject
 
-class TestViewModel : ViewModel() {
+@HiltViewModel
+class TestViewModel @Inject constructor(
+    private val useCasesProfile: ProfileUseCases
+) : ViewModel() {
     private val states = TestState.values()
     private val audioStates = AudioState.values()
     private val writingStates = WritingState.values()
@@ -18,7 +26,7 @@ class TestViewModel : ViewModel() {
         get() = _currentStateCount
 
     private val _currentAudioStateCount = MutableLiveData<Int>()
-     val currentAudioStateCount: LiveData<Int>
+    val currentAudioStateCount: LiveData<Int>
         get() = _currentAudioStateCount
 
     private val _currentWritingStateCount = MutableLiveData<Int>()
@@ -39,6 +47,12 @@ class TestViewModel : ViewModel() {
         _currentWritingStateCount.value = WritingState.WRITING.ordinal
     }
 
+    fun addTestToRealtime(test: Test) = liveData(Dispatchers.IO) {
+        useCasesProfile.addTestInRealtime(test).collect {
+            emit(it)
+        }
+    }
+
     fun setStateCount(state: Int) {
         _currentStateCount.value = state
     }
@@ -46,6 +60,7 @@ class TestViewModel : ViewModel() {
     fun setAudioStateCount(state: Int) {
         _currentStateCount.value = state
     }
+
     fun setWritingStateCount(state: Int) {
         _currentWritingStateCount.value = state
     }

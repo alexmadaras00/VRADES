@@ -12,11 +12,17 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.vrades.databinding.FragmentWritingTestBinding
+import com.example.vrades.model.Response
+import com.example.vrades.model.Test
+import com.example.vrades.ui.binding.setImageUrl
+import com.example.vrades.utils.Constants
 import com.example.vrades.utils.UIUtils
+import com.example.vrades.utils.UIUtils.toast
 import com.example.vrades.viewmodels.TestViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 @AndroidEntryPoint
 class WritingTestFragment : Fragment() {
@@ -83,8 +89,9 @@ class WritingTestFragment : Fragment() {
                 return@OnEditorActionListener false
             })
             buttonProceed.setOnClickListener {
-                navController.navigate(WritingTestFragmentDirections.actionNavWritingToNavDetails())
                 viewModelTest!!.setStateCount(3)
+                addTestToRealtime()
+                navController.navigate(WritingTestFragmentDirections.actionNavWritingToNavDetails())
             }
             buttonRestart.setOnClickListener {
                 navController.navigate(WritingTestFragmentDirections.actionWritingTestFragmentToFaceDetectionFragment())
@@ -96,6 +103,26 @@ class WritingTestFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun addTestToRealtime() {
+        val currentDate = LocalDate.now().toString()
+        val currentState = viewModel.getCurrentState().ordinal
+        val result = "Happy"
+        val test = Test(currentDate, currentState, result, true)
+        viewModel.addTestToRealtime(test).observe(viewLifecycleOwner){
+            when (it) {
+                is Response.Success -> {
+                    toast(requireContext(),"Test completed!")
+                }
+                is Response.Error -> {
+                    println(Constants.ERROR_REF)
+                }
+                else -> {
+                    println(Constants.ERROR_REF)
+                }
+            }
+        }
     }
 
     companion object {

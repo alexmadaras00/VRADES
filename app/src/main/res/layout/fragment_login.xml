@@ -186,7 +186,7 @@
             android:textColor="@color/white"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/gdlMiddleLogin"
-            app:layout_constraintHeight_percent="0.075"
+            app:layout_constraintHeight_percent="0.08"
             app:layout_constraintStart_toStartOf="@+id/gdlMiddleLogin"
             app:layout_constraintTop_toTopOf="@+id/gdlnProfileTitle4"
             app:layout_constraintWidth_percent="0.7" />

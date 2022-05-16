@@ -32,6 +32,17 @@ class DetailsViewModel @Inject constructor(
             emit(it)
         }
     }
+    fun getUser() = liveData(Dispatchers.IO) {
+        profileUseCases.getUserById().collect {
+            emit(it)
+        }
+    }
+
+    fun generateAdvicesByTestResult() = liveData(Dispatchers.IO) {
+        profileUseCases.generateAdvicesByTestResult().collect{
+            emit(it)
+        }
+    }
 
     fun getState(): TestState? {
         return state.value

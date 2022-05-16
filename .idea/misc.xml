@@ -15,6 +15,7 @@
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.142" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/ic_baseline_cancel_24.xml" value="0.128" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/ic_baseline_directions_run_24.xml" value="0.1395" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.128" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/ic_check.xml" value="0.14" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/ic_launcher_background.xml" value="0.142" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/drawable/ic_resource_switch.xml" value="0.14" />
@@ -65,7 +66,7 @@
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/fragment_writing_test.xml" value="0.1" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/item_lifehack.xml" value="0.16666666666666666" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/item_question.xml" value="0.13333333333333333" />
-        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/item_test.xml" value="0.13333333333333333" />
+        <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/item_test.xml" value="0.22" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/item_test_result.xml" value="0.1" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/login_fragment.xml" value="0.12" />
         <entry key="..\:/Android Projects/VRADES/app/src/main/res/layout/nav_header_tutorial.xml" value="0.10666666666666667" />

@@ -92,7 +92,7 @@
             app:iconGravity="end"
             app:iconTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.065"
+            app:layout_constraintHeight_percent="0.08"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline4"
             app:layout_constraintWidth_percent="0.7" />

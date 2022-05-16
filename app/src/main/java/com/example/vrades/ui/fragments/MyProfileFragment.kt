@@ -24,7 +24,6 @@ import com.example.vrades.model.Test
 import com.example.vrades.ui.adapters.AdapterTestHistory
 import com.example.vrades.ui.binding.setImageUrl
 import com.example.vrades.utils.Constants
-import com.example.vrades.utils.Constants.DEFAULT_PROFILE_PICTURE
 import com.example.vrades.viewmodels.MyProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -70,10 +69,16 @@ class MyProfileFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        getUser()
+    }
+
     private fun getUser() {
         viewModel.getUser().observe(viewLifecycleOwner) {
             when (it) {
                 is Response.Success -> {
+                    print("Here")
                     binding.apply {
                         val textViewName = tvName
                         val user = it.data
@@ -99,7 +104,22 @@ class MyProfileFragment : Fragment() {
 
             val onClickListener = object : IOnClickListener {
                 override fun onItemClick(position: Int) {
-                    findNavController().navigate(MyProfileFragmentDirections.actionNavProfileToNavDetails())
+                    if (!tests[position].isCompleted) {
+                        when (tests[position].state) {
+                            0 -> {
+                                findNavController().navigate(MyProfileFragmentDirections.actionNavProfileToNavHome())
+                            }
+                            1 -> {
+                                findNavController().navigate(MyProfileFragmentDirections.actionNavProfileToNavAudio())
+                            }
+                            2 -> {
+                                findNavController().navigate(MyProfileFragmentDirections.actionNavProfileToNavWriting())
+                            }
+                            else -> {
+
+                            }
+                        }
+                    } else findNavController().navigate(MyProfileFragmentDirections.actionNavProfileToNavDetails())
                 }
 
             }
@@ -152,6 +172,7 @@ class MyProfileFragment : Fragment() {
                         "Profile picture successfully updated!",
                         Toast.LENGTH_SHORT
                     ).show()
+                    getUser()
                 }
                 is Response.Error -> {
                     println(Constants.ERROR_REF)

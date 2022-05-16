@@ -7,6 +7,7 @@ import coil.load
 import coil.request.CachePolicy
 import com.example.vrades.databinding.ItemLifehackBinding
 import com.example.vrades.model.LifeHack
+import com.example.vrades.model.Test
 
 class AdapterLifeHacks() : RecyclerView.Adapter<AdapterLifeHacks.ViewHolder>() {
 
@@ -27,8 +28,15 @@ class AdapterLifeHacks() : RecyclerView.Adapter<AdapterLifeHacks.ViewHolder>() {
         }
     }
 
-    fun setDataSource(items: ArrayList<LifeHack>) {
-        this.lifeHacks= items
+    fun setDataSource(items: List<LifeHack>) {
+        this.apply {
+            if (lifeHacks.isNotEmpty()) {
+                lifeHacks.clear()
+            }
+            lifeHacks.addAll(items)
+            notifyDataSetChanged()
+        }
+       
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

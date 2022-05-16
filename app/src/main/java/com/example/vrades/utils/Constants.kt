@@ -18,12 +18,14 @@ object Constants {
     const val IMAGE_REF = "images"
     const val USER_NAME_REF = "usersName"
 
+
     //Fields
     const val NAME = "username"
     const val EMAIL = "email"
     const val OCCUPATION = "occupation"
     const val AGE = "age"
     const val TESTS = "tests"
+    const val TEST = "test"
     const val ADVICES = "advices"
     const val IS_TUTORIAL_ENABLED = "is_tutorial_enabled"
     const val DETAILS = "details"
@@ -32,9 +34,10 @@ object Constants {
     const val RESULT = "result"
     const val IS_COMPLETED = "isCompleted"
     const val STATE = "state"
+    const val TRIGGER_EMOTION = "trigger_emotion"
 
     // Guest Profile Pic
-    val DEFAULT_PROFILE_PICTURE =
+    const val DEFAULT_PROFILE_PICTURE =
         "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/Users%2Fguest.png?alt=media&token=73f3ffd6-2ddc-4081-b455-5f9ce0544604"
 
     // Images

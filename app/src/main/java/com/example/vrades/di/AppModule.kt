@@ -20,6 +20,7 @@ import com.example.vrades.utils.Constants.USERS_REF
 import com.example.vrades.utils.Constants.USER_NAME_REF
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import dagger.Module
 import dagger.Provides
@@ -70,8 +71,10 @@ object AppModule {
         auth: FirebaseAuth,
         storage: FirebaseStorage,
         @Named(USERS_REF) usersRef: DatabaseReference,
-        @Named(USER_NAME_REF) usersNameRef: DatabaseReference
-    ): ProfileRepository = ProfileRepositoryImpl(auth, storage, usersRef, usersNameRef)
+        @Named(USER_NAME_REF) usersNameRef: DatabaseReference,
+        databaseReference: FirebaseDatabase
+    ): ProfileRepository =
+        ProfileRepositoryImpl(auth, storage, usersRef, usersNameRef, databaseReference)
 
     @Singleton
     @Provides
@@ -81,7 +84,9 @@ object AppModule {
         getUserById = GetUserById(repository),
         getUserNameById = GetUserNameById(repository),
         setProfilePictureInStorage = SetProfilePictureInStorage(repository),
-        updateProfilePictureInRealtime = UpdateProfilePictureInRealtime(repository)
+        updateProfilePictureInRealtime = UpdateProfilePictureInRealtime(repository),
+        addTestInRealtime = AddTestInRealtime(repository),
+        generateAdvicesByTestResult = GenerateAdvicesByTestResult(repository)
     )
 
     @Singleton

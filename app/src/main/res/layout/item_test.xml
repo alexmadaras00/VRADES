@@ -47,9 +47,7 @@
             android:text="@string/test"
             android:textColor="@color/menu_text_color"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.4"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/gdlItemTest"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -57,22 +55,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:contentDescription="@string/face_detection"
+            app:layout_constraintEnd_toStartOf="@+id/ivAudio"
             app:layout_constraintStart_toStartOf="@+id/tvTest"
             app:layout_constraintTop_toBottomOf="@+id/tvDate"
-            app:srcCompat="@drawable/face_white"
-            android:contentDescription="@string/face_detection" />
+            app:srcCompat="@drawable/face_white" />
 
         <ImageView
             android:id="@+id/ivAudio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
+            android:contentDescription="@string/audio_test"
             app:layout_constraintBottom_toBottomOf="@+id/ivFace"
-            app:layout_constraintStart_toEndOf="@+id/ivFace"
+            app:layout_constraintEnd_toStartOf="@+id/gdlItemTest2"
+            app:layout_constraintStart_toStartOf="@+id/gdlItemTest2"
             app:layout_constraintTop_toBottomOf="@+id/tvDate"
-            app:srcCompat="@drawable/ic_baseline_keyboard_voice_24"
-            android:contentDescription="@string/audio_test" />
+            app:srcCompat="@drawable/ic_baseline_keyboard_voice_24" />
 
         <ImageView
             android:id="@+id/ivWriting"
@@ -80,11 +79,45 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
+            android:contentDescription="@string/writing_test"
             app:layout_constraintBottom_toBottomOf="@+id/ivAudio"
+            app:layout_constraintEnd_toStartOf="@+id/gdlItemTest3"
             app:layout_constraintStart_toEndOf="@+id/ivAudio"
             app:layout_constraintTop_toBottomOf="@+id/tvDate"
-            app:srcCompat="@drawable/ic_baseline_library_books_24"
-            android:contentDescription="@string/writing_test" />
+            app:srcCompat="@drawable/ic_baseline_library_books_24" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlItemTest"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_begin="76dp"
+            app:layout_constraintGuide_percent="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlItemTest2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_begin="76dp"
+            app:layout_constraintGuide_percent="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlItemTest3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_begin="76dp"
+            app:layout_constraintGuide_percent="0.75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
 </layout>

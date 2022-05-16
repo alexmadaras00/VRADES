@@ -20,12 +20,12 @@ class VradesRepositoryImpl @Inject constructor(
     @Named(Constants.DATA_WRITING_TEST_REF) private val dataWritingTestRef: DatabaseReference,
     @Named(Constants.IMAGE_REF) private val imageRef: DatabaseReference
 ) : VradesRepository {
-    override suspend fun getEmotions(): Flow<Response<List<String>>> = flow {
+    override suspend fun getEmotions(): Flow<Response<Map<String, String>>> = flow {
         try {
             emit(Response.Loading)
-            val emotions = mutableListOf<String>()
+            val emotions = mutableMapOf<String,String>()
             emotionsRef.get().await().children.forEach {
-                emotions.add(it.key.toString())
+                emotions.put(it.key!!,it.getValue(String::class.java)!!)
             }
             emit(Response.Success(emotions))
         } catch (e: Exception) {

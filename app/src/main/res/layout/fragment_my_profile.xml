@@ -67,6 +67,8 @@
                 android:contentDescription="@string/change_profile_picture"
                 android:focusable="true"
                 android:tint="@color/background"
+                android:foregroundTint="@color/white"
+                app:backgroundTint="@color/white"
                 app:layout_constraintEnd_toEndOf="@+id/civProfilePicture"
                 app:layout_constraintStart_toEndOf="@+id/civProfilePicture"
                 app:layout_constraintTop_toTopOf="@+id/gdlnProfile"
@@ -111,11 +113,11 @@
 
                 app:civ_border_width="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.13"
+                app:layout_constraintHeight_percent="0.15"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.26" />
+                app:layout_constraintWidth_percent="0.28" />
 
             <ImageView
                 android:id="@+id/ivLineTopProfile"
@@ -202,23 +204,23 @@
                 app:iconGravity="start"
                 app:iconTint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.07"
+                app:layout_constraintHeight_percent="0.08"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/gdlnProfileButton"
                 app:layout_constraintWidth_percent="0.8"
                 tools:visibility="visible" />
 
             <TextView
-                android:id="@+id/tvName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/ibm_plex_sans_bold"
-                android:text="@string/alex_madaras"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/civProfilePicture" />
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ibm_plex_sans_bold"
+                    android:text="@string/guest"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/civProfilePicture" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gdlnProfile"

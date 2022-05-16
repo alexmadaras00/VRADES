@@ -14,4 +14,6 @@ interface ProfileRepository {
     suspend fun getUserNameById(): Flow<Response<String>>
     suspend fun setProfilePictureInStorage(picture: Uri): Flow<Response<String>>
     suspend fun updateProfilePictureInRealtime(picture: String): Flow<Response<Boolean>>
+    suspend fun addTestInRealtime(test: Test): Flow<Response<Boolean>>
+    suspend fun generateAdvicesByTestResult() : Flow<Response<Boolean>>
 }

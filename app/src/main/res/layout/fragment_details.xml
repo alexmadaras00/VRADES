@@ -106,17 +106,17 @@
                 app:strokeColor="@color/transparent" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/civProfilePictureDetails"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:src="@drawable/me"
-                app:civ_border_width="2dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.13"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/gdlSolutions5"
-                app:layout_constraintWidth_percent="0.26" />
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/me"
+                    app:civ_border_width="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.13"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/gdlSolutions5"
+                    app:layout_constraintWidth_percent="0.26"
+                    android:id="@+id/civProfilePictureDetails" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gdlMiddle"
@@ -132,16 +132,16 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/tvNameResults"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/ibm_plex_sans_bold"
-                android:text="@string/the_boss"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/civProfilePictureDetails" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ibm_plex_sans_bold"
+                    android:text="@string/guest"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/civProfilePictureDetails"
+                    android:id="@+id/tvNameDetails" />
 
             <ImageView
                 android:id="@+id/ivTopLineDetails"
