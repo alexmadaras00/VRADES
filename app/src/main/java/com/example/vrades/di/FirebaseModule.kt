@@ -30,6 +30,7 @@ object FirebaseModule {
     @Singleton
     @Provides
     fun provideFirebaseRealtime(): FirebaseDatabase {
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
         return FirebaseDatabase.getInstance()
     }
 

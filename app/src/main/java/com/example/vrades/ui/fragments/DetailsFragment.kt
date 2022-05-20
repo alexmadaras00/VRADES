@@ -1,25 +1,29 @@
 package com.example.vrades.ui.fragments
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.compose.ui.text.toUpperCase
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.vrades.R
+import com.example.vrades.databinding.DialogLoadingBinding
 import com.example.vrades.databinding.FragmentDetailsBinding
-import com.example.vrades.enums.TestState
 import com.example.vrades.model.Response
+import com.example.vrades.ui.binding.setImageUrl
 import com.example.vrades.utils.Constants
 import com.example.vrades.viewmodels.DetailsViewModel
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.formatter.PercentFormatter
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
@@ -27,6 +31,8 @@ class DetailsFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: DetailsViewModel
+    private var dialog: Dialog? = null
+    private var dialogBinding: DialogLoadingBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,12 +46,17 @@ class DetailsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        openDialog()
+        getUser()
+    }
+
     override fun onStart() {
         super.onStart()
-        generateAdvicesByTestResult()
-        val state = viewModel.getState()
         val pieData = viewModel.getData()
         val maxValueEmotion = viewModel.getMax()
+
         binding.apply {
             val pieChart = Chart
             val buttonBack = btnBackDetails
@@ -59,16 +70,29 @@ class DetailsFragment : Fragment() {
             }
             dominantEmotion.text = maxValueEmotion
         }
+        onHandleBackButton()
+
+    }
+
+    private fun openDialog() {
+        dialog = Dialog(this.requireContext())
+        dialogBinding = DialogLoadingBinding.inflate(LayoutInflater.from(context), null, false)
+        dialog!!.setContentView(dialogBinding!!.root)
+        dialog!!.show()
+        val builder = MaterialAlertDialogBuilder(requireContext())
+        builder.setView(binding.root)
+    }
+
+    private fun dismissDialog() {
+        if (dialog!!.isShowing)
+            dialog!!.dismiss()
+    }
+
+    private fun onHandleBackButton() {
         requireActivity().onBackPressedDispatcher.addCallback(this) {
 
         }
 
-    }
-
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 
     private fun initPieChart(pieChart: PieChart) {
@@ -89,18 +113,24 @@ class DetailsFragment : Fragment() {
         }
     }
 
-    private fun generateAdvicesByTestResult() {
-        viewModel.generateAdvicesByTestResult().observe(viewLifecycleOwner) {
+    private fun getUser() {
+        viewModel.getUser().observe(viewLifecycleOwner) {
             when (it) {
                 is Response.Success -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Test results generated successfully",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    binding.apply {
+                        val textViewName = tvNameDetails
+                        val imageViewProfile = civProfilePictureDetails
+                        val textViewResult = tvFinalResultDetails2
+                        val user = it.data
+                        val tests = user.tests
+                        textViewResult.text = tests?.last()?.result?.uppercase()
+                        textViewName.text = user.username
+                        setImageUrl(imageViewProfile, user.image)
+                        dismissDialog() // closing the dialog
+                    }
                 }
                 is Response.Error -> {
-                    println(Constants.ERROR_REF)
+                    println(it.message)
                 }
                 else -> {
                     println(Constants.ERROR_REF)
@@ -108,6 +138,13 @@ class DetailsFragment : Fragment() {
             }
         }
     }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
 
 
 }

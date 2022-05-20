@@ -35,11 +35,13 @@ object Constants {
     const val IS_COMPLETED = "isCompleted"
     const val STATE = "state"
     const val TRIGGER_EMOTION = "trigger_emotion"
+    const val REVIEW = "review"
 
     // Guest Profile Pic
     const val DEFAULT_PROFILE_PICTURE =
         "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/Users%2Fguest.png?alt=media&token=73f3ffd6-2ddc-4081-b455-5f9ce0544604"
-
+    //Storage Ref
+    const val USERS_STORAGE_REF: String = "Users"
     // Images
     const val ARROW_TUTORIAL =
         "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/arrow_tutorial.png?alt=media&token=185df4e8-9a00-4e8f-9f01-1d8963a53e10"

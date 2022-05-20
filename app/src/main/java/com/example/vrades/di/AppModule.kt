@@ -61,8 +61,7 @@ object AppModule {
         signInWithEmailAndPassword = SignInWithEmailAndPassword(repository),
         signUp = SignUp(repository),
         isAccountInAuth = IsAccountInAuth(repository),
-        isUserAuthenticated = IsUserAuthenticated(repository),
-        addUserNameInRealtime = AddRealtimeUserName(repository)
+        isUserAuthenticated = IsUserAuthenticated(repository)
     )
 
     @Singleton
@@ -82,7 +81,6 @@ object AppModule {
         getLifeHacksByUserId = GetLifeHacksByUserId(repository),
         getTestsByUserId = GetTestsByUserId(repository),
         getUserById = GetUserById(repository),
-        getUserNameById = GetUserNameById(repository),
         setProfilePictureInStorage = SetProfilePictureInStorage(repository),
         updateProfilePictureInRealtime = UpdateProfilePictureInRealtime(repository),
         addTestInRealtime = AddTestInRealtime(repository),
@@ -115,6 +113,7 @@ object AppModule {
         getPictureByName = GetPictureByName(repository),
         getPictures = GetPictures(repository)
     )
+
 
 
 }

@@ -5,7 +5,7 @@ import java.time.LocalDate
 
 data class Test(
     val date: String?,
-    val state: Int,
+    val state: Int? = 0,
     val result: String,
-    val isCompleted: Boolean
+    val isCompleted: Boolean?
 )

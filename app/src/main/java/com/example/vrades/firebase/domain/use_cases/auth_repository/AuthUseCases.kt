@@ -1,7 +1,6 @@
 package com.example.vrades.firebase.domain.use_cases.auth_repository
 
 data class AuthUseCases(
-    val addUserNameInRealtime: AddRealtimeUserName,
     val resetPassword: ResetPassword,
     val addRealtimeUser: AddRealtimeUser,
     val getUserProfile: GetUserProfile,

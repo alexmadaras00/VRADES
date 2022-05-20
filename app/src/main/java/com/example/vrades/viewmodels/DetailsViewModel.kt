@@ -12,6 +12,7 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,22 +28,14 @@ class DetailsViewModel @Inject constructor(
     private lateinit var pieDataSet: PieDataSet
     private lateinit var pieData: PieData
 
-    fun getName() = liveData(Dispatchers.IO){
-        profileUseCases.getUserNameById().collect{
-            emit(it)
-        }
-    }
     fun getUser() = liveData(Dispatchers.IO) {
-        profileUseCases.getUserById().collect {
-            emit(it)
-        }
+
+            profileUseCases.getUserById().collect {
+                emit(it)
+            }
+
     }
 
-    fun generateAdvicesByTestResult() = liveData(Dispatchers.IO) {
-        profileUseCases.generateAdvicesByTestResult().collect{
-            emit(it)
-        }
-    }
 
     fun getState(): TestState? {
         return state.value

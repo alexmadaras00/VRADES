@@ -57,16 +57,6 @@
                 app:layout_constraintVertical_bias="0.39" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gdlSolutions7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintGuide_percent="0.37"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.39" />
-
-            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gdlSolutions4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -193,24 +183,27 @@
                 app:layout_constraintTop_toBottomOf="@+id/civProfilePictureSolutions" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/clReviewTextContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                backgroundImageUrl="@{images.REVIEW_TEXT_BACKGROUND}"
-                android:padding="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/gdlSolutions7">
-
-                <TextView
-                    android:id="@+id/tvReviewText"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/clReviewTextContainer"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/you_seem_to_be_satisfied_with_your_own_life_so_you_are_less_tempted_to_change_its_way_yet_by_analyzing_each_of_the_results_we_found_a_lack_of_stability_as_you_tend_to_change_your_mind_easily"
+                    android:layout_marginHorizontal="8dp"
+                    backgroundImageUrl="@{images.REVIEW_TEXT_BACKGROUND}"
+                    android:padding="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvReview"
+                    app:layout_constraintBottom_toTopOf="@+id/ivBottomLineSolutions">
+
+                <TextView
+                        android:id="@+id/tvReviewText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/you_seem_to_be_satisfied_with_your_own_life_so_you_are_less_tempted_to_change_its_way_yet_by_analyzing_each_of_the_results_we_found_a_lack_of_stability_as_you_tend_to_change_your_mind_easily"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/ibm_plex_sans" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView

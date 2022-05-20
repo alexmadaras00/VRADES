@@ -18,6 +18,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentAudioTestBinding
 import com.example.vrades.enums.AudioState
+import com.example.vrades.model.Response
+import com.example.vrades.utils.Constants
 import com.example.vrades.viewmodels.TestViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
@@ -50,6 +52,7 @@ class AudioTestFragment : VradesBaseFragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onStart() {
         super.onStart()
+        getDataAudioTest()
         isPermissionGranted = ActivityCompat.checkSelfPermission(
             requireContext(),
             permission
@@ -187,6 +190,23 @@ class AudioTestFragment : VradesBaseFragment() {
     override fun disconnectViewModelEvents() {
         viewModel.currentAudioStateCount.removeObserver(currentAudioStateCount)
         viewModelStore.clear()
+    }
+
+    private fun getDataAudioTest() {
+        viewModel.getDataAudioTest().observe(viewLifecycleOwner) {
+            when (it) {
+                is Response.Success -> {
+                    val data = it.data
+                    val randomQuestion = data.random()
+                    binding.tvAudioTest.text = randomQuestion
+                }
+                is Response.Error -> {
+                    println(Constants.ERROR_REF)
+                }
+                else -> {
+                }
+            }
+        }
     }
 
 

@@ -41,35 +41,39 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnNext2"
-            style="@style/MenuButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:enabled="true"
-            android:padding="5dp"
-            android:text="@string/next"
-            android:onClick="@{()->viewModelTest.onNavigateToDetailsScreenClicked()}"
-            android:visibility="invisible"
-            app:cornerRadius="10dp"
-            app:icon="@drawable/ic_baseline_play_arrow_24"
-            app:layout_constraintEnd_toStartOf="@+id/guideline6"
-            app:layout_constraintTop_toTopOf="@+id/btnRestart2"
-            app:layout_constraintWidth_percent="0.4" />
+                android:id="@+id/btnNext2"
+                style="@style/MenuButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:padding="5dp"
+                android:text="@string/next"
+                android:onClick="@{()->viewModelTest.onNavigateToDetailsScreenClicked()}"
+                android:visibility="invisible"
+                app:cornerRadius="10dp"
+                app:icon="@drawable/ic_baseline_play_arrow_24"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6"
+                app:layout_constraintWidth_percent="0.4"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/etWritingInputLayout"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnRestart2"
-            style="@style/MenuButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:enabled="true"
-            android:padding="5dp"
-            android:text="@string/restart"
-            android:visibility="invisible"
-            app:cornerRadius="10dp"
-            app:icon="@drawable/ic_baseline_refresh_24"
-            app:layout_constraintStart_toStartOf="@+id/etWritingInputLayout"
-            app:layout_constraintTop_toTopOf="@+id/gdlWriting3"
-            app:layout_constraintWidth_percent="0.4" />
+                android:id="@+id/btnRestart2"
+                style="@style/MenuButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:padding="5dp"
+                android:text="@string/restart"
+                android:visibility="invisible"
+                app:cornerRadius="10dp"
+                app:icon="@drawable/ic_baseline_refresh_24"
+                app:layout_constraintStart_toStartOf="@+id/etWritingInputLayout"
+                app:layout_constraintWidth_percent="0.4"
+                android:layout_marginTop="3dp"
+                app:layout_constraintTop_toBottomOf="@+id/etWritingInputLayout"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdlWriting"
@@ -78,15 +82,6 @@
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintGuide_percent="0.2"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gdlWriting3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintGuide_percent="0.87"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -102,34 +97,34 @@
             android:contentDescription="@string/logo" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etWritingInputLayout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="24dp"
-            backgroundImageUrl="@{images.AUDIO_BACK}"
-            android:fontFamily="@font/ibm_plex_sans_bold"
-            android:foregroundGravity="top|left"
-            android:gravity="top|start"
-            app:counterEnabled="true"
-            app:endIconMode="clear_text"
-            app:helperTextEnabled="false"
-            app:layout_constraintEnd_toEndOf="@id/guideline6"
-            app:layout_constraintHeight_percent="0.48"
-            app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintTop_toBottomOf="@+id/lLTextContainer">
+                android:id="@+id/etWritingInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="24dp"
+                backgroundImageUrl="@{images.AUDIO_BACK}"
+                android:fontFamily="@font/ibm_plex_sans_bold"
+                android:foregroundGravity="top|left"
+                android:gravity="top|start"
+                app:counterEnabled="true"
+                app:endIconMode="clear_text"
+                app:helperTextEnabled="false"
+                app:layout_constraintEnd_toEndOf="@id/guideline6"
+                app:layout_constraintHeight_percent="0.48"
+                app:layout_constraintStart_toStartOf="@+id/guideline7"
+                app:layout_constraintTop_toBottomOf="@+id/lLTextContainer">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etWritingText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                backgroundImageUrl="@{images.AUDIO_BACK}"
-                android:gravity="start|top"
-                android:hint="@string/congrats_writing"
-                android:inputType="text"
-                android:maxEms="20"
-                android:maxLength="400"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+                    android:id="@+id/etWritingText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    backgroundImageUrl="@{images.AUDIO_BACK}"
+                    android:gravity="start|top"
+                    android:hint="@string/congrats_writing"
+                    android:inputType="text"
+                    android:maxEms="20"
+                    android:maxLength="400"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -173,7 +168,7 @@
             app:layout_constraintTop_toTopOf="@+id/gdlWriting">
 
             <TextView
-                android:id="@+id/tvPressAudio"
+                android:id="@+id/tvWriting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"

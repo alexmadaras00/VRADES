@@ -104,22 +104,8 @@ class RegisterFragment :
         viewModel.firebaseCreateRealtimeUser(fullName).observe(viewLifecycleOwner) {
             when (it) {
                 is Response.Success -> {
-                    createUserNameInRealtime(fullName)
-                }
-                is Response.Error -> {
-                    println(Constants.ERROR_REF)
-                }
-                else -> {}
-            }
-        }
-    }
-
-    private fun createUserNameInRealtime(fullName: String) {
-        viewModel.firebaseCreateRealtimeUserName(fullName).observe(viewLifecycleOwner) {
-            when (it) {
-                is Response.Success -> {
                     toast(requireActivity().applicationContext, "Welcome, $fullName !")
-                    onNavigateToHome()
+                    onNavigateToTutorial()
                 }
                 is Response.Error -> {
                     println(Constants.ERROR_REF)
@@ -129,9 +115,11 @@ class RegisterFragment :
         }
     }
 
-    private fun onNavigateToHome() {
-        val actionHome = RegisterFragmentDirections.actionNavRegisterToNavHome()
-        findNavController().navigate(actionHome)
+
+
+    private fun onNavigateToTutorial() {
+        val actionTutorial = RegisterFragmentDirections.actionNavRegisterToNavTutorial()
+        findNavController().navigate(actionTutorial)
     }
 
     private fun onNavigateToLogin() {

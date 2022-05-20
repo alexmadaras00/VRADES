@@ -6,23 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.vrades.databinding.FragmentWritingTestBinding
 import com.example.vrades.model.Response
 import com.example.vrades.model.Test
-import com.example.vrades.ui.binding.setImageUrl
 import com.example.vrades.utils.Constants
 import com.example.vrades.utils.UIUtils
 import com.example.vrades.utils.UIUtils.toast
 import com.example.vrades.viewmodels.TestViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
-import java.time.LocalDateTime
 
 @AndroidEntryPoint
 class WritingTestFragment : Fragment() {
@@ -41,6 +41,24 @@ class WritingTestFragment : Fragment() {
         binding.viewModelTest = viewModel
         binding.executePendingBindings()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        getDataWritingTest()
+        val navController = requireView().findNavController()
+        binding.apply {
+            val buttonProceed = btnNext2
+            val buttonRestart = btnRestart2
+            buttonProceed.setOnClickListener {
+                viewModelTest!!.setStateCount(3)
+                addTestToRealtime()
+            }
+            buttonRestart.setOnClickListener {
+                navController.navigate(WritingTestFragmentDirections.actionWritingTestFragmentToFaceDetectionFragment())
+                viewModelTest!!.setStateCount(0)
+            }
+        }
     }
 
     override fun onResume() {
@@ -88,15 +106,6 @@ class WritingTestFragment : Fragment() {
                 }
                 return@OnEditorActionListener false
             })
-            buttonProceed.setOnClickListener {
-                viewModelTest!!.setStateCount(3)
-                addTestToRealtime()
-                navController.navigate(WritingTestFragmentDirections.actionNavWritingToNavDetails())
-            }
-            buttonRestart.setOnClickListener {
-                navController.navigate(WritingTestFragmentDirections.actionWritingTestFragmentToFaceDetectionFragment())
-                viewModelTest!!.setStateCount(0)
-            }
         }
     }
 
@@ -104,16 +113,34 @@ class WritingTestFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
+    private fun getDataWritingTest() {
+        viewModel.getDataWritingTest().observe(viewLifecycleOwner) {
+            when (it) {
+                is Response.Success -> {
+                        val data = it.data
+                        val randomQuestion = data.random()
+                        binding.tvWriting.text = randomQuestion
+
+                }
+                is Response.Error -> {
+                    println(it.message)
+                }
+                else -> {
+                }
+            }
+        }
+    }
 
     private fun addTestToRealtime() {
         val currentDate = LocalDate.now().toString()
         val currentState = viewModel.getCurrentState().ordinal
-        val result = "Happy"
+        val result = "happy"
         val test = Test(currentDate, currentState, result, true)
         viewModel.addTestToRealtime(test).observe(viewLifecycleOwner){
             when (it) {
                 is Response.Success -> {
                     toast(requireContext(),"Test completed!")
+                    generateAdvicesByTestResult()
                 }
                 is Response.Error -> {
                     println(Constants.ERROR_REF)
@@ -124,6 +151,29 @@ class WritingTestFragment : Fragment() {
             }
         }
     }
+    private fun generateAdvicesByTestResult() {
+        viewModel.generateAdvicesByTestResult().observe(viewLifecycleOwner) {
+            when (it) {
+                is Response.Success -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Test results generated successfully",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    findNavController().navigate(WritingTestFragmentDirections.actionNavWritingToNavDetails())
+                }
+
+                is Response.Error -> {
+                    println(it.message)
+                }
+                else -> {
+                    println(Constants.ERROR_REF)
+                }
+
+            }
+        }
+    }
+
 
     companion object {
         const val MINIMUM_WORDS = 1

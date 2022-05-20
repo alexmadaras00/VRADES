@@ -129,4 +129,6 @@
     <string name="image">image</string>
     <string name="change_profile_picture">Change Profile Picture</string>
     <string name="guest">Guest</string>
+    <string name="go_detect_it">Start detecting!</string>
+    <string name="retrieving_data">Retrieving data...</string>
 </resources>

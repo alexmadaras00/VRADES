@@ -47,7 +47,10 @@ class AuthRepositoryImpl @Inject constructor(
             emit(Loading)
             auth.currentUser?.apply {
 //                println("User created: $uid in the field: ${usersRef.key}")
-                val newUser = User(email.toString(), fullName, DEFAULT_PROFILE_PICTURE)
+                val newUser = User(
+                    email.toString(), fullName, DEFAULT_PROFILE_PICTURE, false,
+                    listOf(), listOf()
+                )
                 usersRef.child(uid).setValue(newUser).await().also {
                     emit(Response.Success(true))
                 }
@@ -69,20 +72,6 @@ class AuthRepositoryImpl @Inject constructor(
 
     }
 
-    override suspend fun createUserNameInRealtime(fullName: String): Flow<Response<Boolean>> =
-        flow {
-            try {
-                emit(Loading)
-                auth.currentUser?.apply {
-//                println("User created: $uid in the field: ${usersRef.key}")
-                    usersNameRef.child(uid).setValue(fullName).await().also {
-                        emit(Response.Success(true))
-                    }
-                }
-            } catch (e: Exception) {
-                emit(Response.Error(e.message ?: ERROR_REF))
-            }
-        }
 
     override suspend fun sendPasswordResetEmail(email: String): Flow<Response<Boolean>> = flow {
         try {

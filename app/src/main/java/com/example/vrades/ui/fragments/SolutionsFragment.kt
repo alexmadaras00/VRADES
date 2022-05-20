@@ -1,5 +1,6 @@
 package com.example.vrades.ui.fragments
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.vrades.databinding.DialogLoadingBinding
 import com.example.vrades.databinding.FragmentSolutionsBinding
 import com.example.vrades.model.LifeHack
 import com.example.vrades.model.Response
@@ -15,14 +17,19 @@ import com.example.vrades.ui.adapters.AdapterLifeHacks
 import com.example.vrades.ui.binding.setImageUrl
 import com.example.vrades.utils.Constants
 import com.example.vrades.viewmodels.MyProfileViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @AndroidEntryPoint
+@ExperimentalCoroutinesApi
 class SolutionsFragment : Fragment() {
 
     private val viewModel: MyProfileViewModel by activityViewModels()
     private var _binding: FragmentSolutionsBinding? = null
     private val binding get() = _binding!!
+    private var dialog: Dialog? = null
+    private var dialogBinding: DialogLoadingBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,36 +41,46 @@ class SolutionsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        openDialog()
+        getUser()
+    }
+
 
     override fun onStart() {
         super.onStart()
-        getUser()
+
         val buttonBack = binding.btnBackSolutions
         buttonBack.setOnClickListener {
             findNavController().navigate(SolutionsFragmentDirections.actionNavSolutionsToNavProfile())
         }
     }
     private fun getUser() {
-        viewModel.getUser().observe(viewLifecycleOwner) {
-            when (it) {
+        viewModel.getUser().observe(viewLifecycleOwner) { response ->
+            when (response) {
                 is Response.Success -> {
                     binding.apply {
                         val textViewName = tvNameSolutions
                         val imageViewProfile = civProfilePictureSolutions
                         val textViewLastResult = tvResultSolutions
-                        val textViewReview = tvReviewText
-                        val user = it.data
+                        val user = response.data
                         val tests = user.tests
-                        val advices = user.advices
-                        textViewLastResult.text = "Latest result " + tests!!.last().toString()
+                        val lifeHacks = user.advices
+                        ("Latest result: " + tests!!.last().result.uppercase()).also {
+                            textViewLastResult.text = it
+                        }
                         textViewName.text = user.username
                         setImageUrl(imageViewProfile, user.image)
                         getEmotions(tests.last().result)
-                        configureRecyclerView(user.advices!!)
+                        if (lifeHacks?.isNotEmpty() == true) {
+                            configureRecyclerView(user.advices!!)
+
+                        }
                     }
                 }
                 is Response.Error -> {
-                    println(Constants.ERROR_REF)
+                    println(response.message)
                 }
                 else -> {
                     println(Constants.ERROR_REF)
@@ -81,7 +98,7 @@ class SolutionsFragment : Fragment() {
             recyclerViewLifeHacks.layoutManager = LinearLayoutManager(context)
             recyclerViewLifeHacks.setHasFixedSize(true)
             recyclerViewLifeHacks.hasNestedScrollingParent()
-
+            dismissDialog() // closing the dialog
         }
     }
 
@@ -102,6 +119,20 @@ class SolutionsFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun openDialog() {
+        dialog = Dialog(this.requireContext())
+        dialogBinding = DialogLoadingBinding.inflate(LayoutInflater.from(context), null, false)
+        dialog!!.setContentView(dialogBinding!!.root)
+        dialog!!.show()
+        val builder = MaterialAlertDialogBuilder(requireContext())
+        builder.setView(binding.root)
+    }
+
+    private fun dismissDialog() {
+        if (dialog!!.isShowing)
+            dialog!!.dismiss()
     }
 
     override fun onDestroy() {

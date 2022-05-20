@@ -6,8 +6,9 @@ import androidx.lifecycle.liveData
 import com.example.vrades.firebase.domain.use_cases.profile_repository.ProfileUseCases
 import com.example.vrades.firebase.domain.use_cases.vrades_repository.VradesUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -16,16 +17,18 @@ class MyProfileViewModel @Inject constructor(
     private val vradesUseCases: VradesUseCases
 ) : ViewModel() {
 
-    fun getName() = liveData(Dispatchers.IO) {
-        profileUseCases.getUserNameById().collect {
-            emit(it)
-        }
+    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        throwable.printStackTrace()
     }
+
 
     fun getUser() = liveData(Dispatchers.IO) {
         profileUseCases.getUserById().collect {
-            emit(it)
+            withContext(Dispatchers.Main) {
+                emit(it)
+            }
         }
+
     }
 
     fun getTests() = liveData(Dispatchers.IO) {
@@ -33,8 +36,10 @@ class MyProfileViewModel @Inject constructor(
             emit(it)
         }
     }
-    fun getEmotions() = liveData(Dispatchers.IO) {
-        vradesUseCases.getEmotions().collect{
+
+
+    fun getEmotions() = liveData(Dispatchers.IO + coroutineExceptionHandler) {
+        vradesUseCases.getEmotions().collect {
             emit(it)
         }
     }

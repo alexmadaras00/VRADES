@@ -10,7 +10,6 @@ interface AuthRepository {
     suspend fun firebaseSignInWithGoogle(idToken: String):Flow<Response<Boolean>>
     suspend fun createUserInRealtime(fullName: String): Flow<Response<Boolean>>
     suspend fun signOut(): Flow<Response<Boolean>>
-    suspend fun createUserNameInRealtime(fullName: String): Flow<Response<Boolean>>
     suspend fun sendPasswordResetEmail(email: String): Flow<Response<Boolean>>
     suspend fun register(email: String, password: String): Flow<Response<Boolean>>
     fun getUserAuthState(): Flow<Boolean>

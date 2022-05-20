@@ -123,6 +123,9 @@
         <action
             android:id="@+id/action_nav_solutions_to_nav_profile"
             app:destination="@id/nav_profile" />
+        <action
+                android:id="@+id/action_nav_solutions_to_nav_loading"
+                app:destination="@id/nav_loading" />
     </fragment>
     <fragment
         android:id="@+id/nav_details"
@@ -166,6 +169,15 @@
         <action
                 android:id="@+id/action_nav_profile_to_nav_writing"
                 app:destination="@id/nav_writing" />
+        <action
+                android:id="@+id/action_nav_profile_to_nav_loading"
+                app:destination="@id/nav_loading"
+                app:enterAnim="@animator/nav_default_pop_enter_anim"
+                app:exitAnim="@anim/nav_default_pop_exit_anim" />
+        <argument
+                android:name="isLoaded"
+                app:argType="boolean"
+                android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/nav_results"
@@ -177,6 +189,9 @@
         <action
             android:id="@+id/action_nav_results_to_nav_details"
             app:destination="@id/nav_details" />
+        <action
+                android:id="@+id/action_nav_results_to_nav_loading"
+                app:destination="@id/nav_loading" />
     </fragment>
     <fragment
         android:id="@+id/nav_forgot"
@@ -205,6 +220,17 @@
         <action
             android:id="@+id/action_nav_dialog_to_nav_solutions"
             app:destination="@id/nav_solutions" />
+    </dialog>
+    <dialog
+            android:id="@+id/nav_loading"
+            android:name="com.example.vrades.ui.dialogs.LoadingDialog"
+            android:label="LoadingDialog" >
+        <action
+                android:id="@+id/action_nav_loading_to_nav_solutions"
+                app:destination="@id/nav_solutions" />
+        <action
+                android:id="@+id/action_nav_loading_to_nav_profile"
+                app:destination="@id/nav_profile" />
     </dialog>
 
 </navigation>

@@ -4,7 +4,6 @@ data class ProfileUseCases(
     val getUserById: GetUserById,
     val getLifeHacksByUserId: GetLifeHacksByUserId,
     val getTestsByUserId: GetTestsByUserId,
-    val getUserNameById: GetUserNameById,
     val setProfilePictureInStorage: SetProfilePictureInStorage,
     val updateProfilePictureInRealtime: UpdateProfilePictureInRealtime,
     val addTestInRealtime : AddTestInRealtime,

@@ -25,13 +25,12 @@ class VradesRepositoryImpl @Inject constructor(
             emit(Response.Loading)
             val emotions = mutableMapOf<String,String>()
             emotionsRef.get().await().children.forEach {
-                emotions.put(it.key!!,it.getValue(String::class.java)!!)
+                emotions[it.key.toString()] = it.getValue(String::class.java).toString()
             }
             emit(Response.Success(emotions))
         } catch (e: Exception) {
             emit(Response.Error(e.message ?: Constants.ERROR_REF))
         }
-
     }
 
     override suspend fun getLifeHacks(): Flow<Response<List<LifeHack>>> = flow {
