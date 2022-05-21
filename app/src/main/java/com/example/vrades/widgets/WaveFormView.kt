@@ -41,8 +41,8 @@ class WaveFormView(context: Context, attrs: AttributeSet) : View(context, attrs)
         }
         invalidate() //Triggers the function call with draw()
     }
-    fun clear(): java.util.ArrayList<Float> {
-        val amps = amplitudes.clone() as ArrayList<Float>
+    fun clear(): ArrayList<*> {
+        val amps = amplitudes.clone() as ArrayList<*>
         amplitudes.clear()
         spikes.clear()
         invalidate()

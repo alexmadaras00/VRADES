@@ -37,7 +37,6 @@ class WritingTestFragment : Fragment() {
     ): View {
         viewModel = ViewModelProvider(this)[TestViewModel::class.java]
         _binding = FragmentWritingTestBinding.inflate(inflater)
-
         binding.viewModelTest = viewModel
         binding.executePendingBindings()
         return binding.root
@@ -134,7 +133,7 @@ class WritingTestFragment : Fragment() {
     private fun addTestToRealtime() {
         val currentDate = LocalDate.now().toString()
         val currentState = viewModel.getCurrentState().ordinal
-        val result = "happy"
+        val result = "content"
         val test = Test(currentDate, currentState, result, true)
         viewModel.addTestToRealtime(test).observe(viewLifecycleOwner){
             when (it) {

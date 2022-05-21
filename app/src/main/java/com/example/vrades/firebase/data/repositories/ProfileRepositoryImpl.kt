@@ -15,13 +15,13 @@ import com.example.vrades.utils.Constants.DATE
 import com.example.vrades.utils.Constants.DETAILS
 import com.example.vrades.utils.Constants.EMAIL
 import com.example.vrades.utils.Constants.ERROR_REF
+import com.example.vrades.utils.Constants.ICON
 import com.example.vrades.utils.Constants.IMAGE
 import com.example.vrades.utils.Constants.IS_COMPLETED
 import com.example.vrades.utils.Constants.IS_TUTORIAL_ENABLED
 import com.example.vrades.utils.Constants.LIFEHACKS_REF
 import com.example.vrades.utils.Constants.NAME
 import com.example.vrades.utils.Constants.RESULT
-import com.example.vrades.utils.Constants.REVIEW
 import com.example.vrades.utils.Constants.STATE
 import com.example.vrades.utils.Constants.TEST
 import com.example.vrades.utils.Constants.TESTS
@@ -60,7 +60,7 @@ class ProfileRepositoryImpl @Inject constructor(
                             lifeHacks.add(
                                 LifeHack(
                                     lifeHack.key.toString(),
-                                    lifeHack.child(IMAGE).getValue(String::class.java).toString(),
+                                    lifeHack.child(ICON).getValue(String::class.java).toString(),
                                     lifeHack.child(DETAILS).getValue(String::class.java).toString()
                                 )
                             )
@@ -77,9 +77,9 @@ class ProfileRepositoryImpl @Inject constructor(
                                         test.child(STATE).getValue(Int::class.java),
                                         test.child(RESULT).getValue(String::class.java)
                                             .toString(),
-                                        test.child(IS_COMPLETED).getValue(Boolean::class.java)
+                                        test.child(IS_COMPLETED).getValue(Boolean::class.java)!!
+                                        )
                                     )
-                                )
                                 println("SIZE?: ${tests.size}, ${lifeHacks.size}")
                             }
 

@@ -7,11 +7,15 @@ import android.view.View
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.databinding.BindingAdapter
+import coil.ImageLoader
+import coil.decode.SvgDecoder
+import coil.request.ImageRequest
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
+import com.example.vrades.R
 import com.example.vrades.viewmodels.TutorialViewModel
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
@@ -89,6 +93,24 @@ fun loadForegroundImageUrl(view: View, name: String) {
 
 
     })
+}
+@BindingAdapter("imageUrl")
+fun ImageView.loadUrl(url: String) {
+
+    val imageLoader = ImageLoader.Builder(this.context)
+        .componentRegistry { add(SvgDecoder(this@loadUrl.context)) }
+        .build()
+
+    val request = ImageRequest.Builder(this.context)
+        .crossfade(true)
+        .crossfade(500)
+        .placeholder(R.drawable.ic_baseline_assessment_24)
+        .error(R.drawable.ic_baseline_cancel_24)
+        .data(url)
+        .target(this)
+        .build()
+
+    imageLoader.enqueue(request)
 }
 
 

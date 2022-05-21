@@ -1,13 +1,23 @@
 package com.example.vrades.ui.adapters
 
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.Nullable
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import coil.request.CachePolicy
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
+import com.bumptech.glide.request.target.Target.SIZE_ORIGINAL
+import com.example.vrades.R
 import com.example.vrades.databinding.ItemLifehackBinding
 import com.example.vrades.model.LifeHack
-import com.example.vrades.model.Test
+import com.example.vrades.ui.binding.loadForegroundImageUrl
+import com.example.vrades.ui.binding.loadIconImageUrl
+import com.example.vrades.ui.binding.loadImageUrl
+import javax.sql.DataSource
+
 
 class AdapterLifeHacks() : RecyclerView.Adapter<AdapterLifeHacks.ViewHolder>() {
 
@@ -16,15 +26,15 @@ class AdapterLifeHacks() : RecyclerView.Adapter<AdapterLifeHacks.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemLifehackBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: LifeHack) {
-            binding.item = item
-            binding.tvLifeHackName.text = item.name
-            binding.ivLifeHackIcon.load(item.icon){
-                crossfade(true)
-                diskCachePolicy(CachePolicy.READ_ONLY)
+            binding.apply {
+                binding.item = item
+                tvLifeHackName.text = item.name
+                loadForegroundImageUrl(ivLifeHackIcon, item.icon)
+                loadImageUrl(ivLifeHackIcon, item.icon)
+                if (item.details != "")
+                    tvLifeHackDescription.text = item.details
+                binding.executePendingBindings()
             }
-            if (item.details != "")
-                binding.tvLifeHackDescription.text = item.details
-            binding.executePendingBindings()
         }
     }
 

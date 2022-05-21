@@ -32,10 +32,11 @@ object Constants {
     const val IMAGE = "image"
     const val DATE = "date"
     const val RESULT = "result"
-    const val IS_COMPLETED = "isCompleted"
+    const val IS_COMPLETED = "completed"
     const val STATE = "state"
     const val TRIGGER_EMOTION = "trigger_emotion"
     const val REVIEW = "review"
+    const val ICON = "icon"
 
     // Guest Profile Pic
     const val DEFAULT_PROFILE_PICTURE =

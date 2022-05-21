@@ -90,7 +90,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
 
     // Coil
-    implementation "io.coil-kt:coil:1.1.1"
+    implementation "io.coil-kt:coil:1.4.0"
+    implementation "io.coil-kt:coil-svg:1.4.0"
 
     //Dependency Injection
     implementation 'javax.inject:javax.inject:1'
