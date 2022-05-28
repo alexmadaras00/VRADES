@@ -73,7 +73,7 @@ class WritingTestFragment : Fragment() {
                 val wordsText = text.toString().split(" ")
                 val length = wordsText.size
                 val words: String = if (length == 1) "word" else "words"
-                val finalString = length.toString() + words
+                val finalString = "$length $words"
                 if (length >= MINIMUM_WORDS) {
                     textViewWords.visibility = View.VISIBLE
                     imageViewWords.visibility = View.VISIBLE
@@ -88,7 +88,7 @@ class WritingTestFragment : Fragment() {
                 val text = it.toString().split(" ")
                 val length = text.size
                 val words: String = if (length == 1) "word" else "words"
-                val finalString = length.toString() + words
+                val finalString = "$length $words"
                 if (length >= MINIMUM_WORDS) {
                     textViewWords.visibility = View.VISIBLE
                     imageViewWords.visibility = View.VISIBLE

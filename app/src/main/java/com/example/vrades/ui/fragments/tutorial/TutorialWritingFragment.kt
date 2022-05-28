@@ -44,8 +44,8 @@ class TutorialWritingFragment : Fragment() {
             editTextWriting.doOnTextChanged { text, _, _, _ ->
                 val wordsText = text.toString().split(" ")
                 val length = wordsText.size
-                val words = "words"
-                val finalString = length.toString() + words
+                val words: String = if (length == 1) "word" else "words"
+                val finalString = "$length $words"
                 if (length >= MINIMUM_WORDS) {
                     textViewWords.visibility = View.VISIBLE
                     imageViewWords.visibility = View.VISIBLE
@@ -59,8 +59,8 @@ class TutorialWritingFragment : Fragment() {
             editTextWriting.doAfterTextChanged {
                 val text = it.toString().split(" ")
                 val length = text.size
-                val words = "words"
-                val finalString = length.toString() + words
+                val words: String = if (length == 1) "word" else "words"
+                val finalString = "$length $words"
                 if (length >= MINIMUM_WORDS) {
                     textViewWords.visibility = View.VISIBLE
                     imageViewWords.visibility = View.VISIBLE

@@ -17,66 +17,75 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clAudioTest"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        backgroundImageUrl="@{images.BACKGROUND_TEST}"
-        tools:context=".ui.fragments.tutorial.TutorialAudioFragment">
-
-        <com.example.vrades.widgets.WaveFormView
-            android:id="@+id/wave_from_view"
+            android:id="@+id/clAudioTest"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/gdlAudioTest3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/gdlAudioTest2" />
+            android:layout_height="match_parent"
+            backgroundImageUrl="@{images.BACKGROUND_TEST}"
+            tools:context=".ui.fragments.tutorial.TutorialAudioFragment">
+
+        <com.airbnb.lottie.LottieAnimationView
+
+                app:lottie_rawRes="@raw/playing_animation"
+                app:lottie_loop="true"
+                android:id="@+id/visualizer"
+                app:lottie_autoPlay="true"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintWidth_percent="0.6"
+                app:layout_constraintHeight_percent="0.1"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="@+id/fbtnStopRecording"
+                app:layout_constraintEnd_toStartOf="@+id/fbtnStopRecording"
+                app:layout_constraintStart_toEndOf="@+id/fbtnRestartRecording"
+                app:layout_constraintBottom_toBottomOf="@+id/fbtnRestartRecording" />
+
+
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnProceed"
-            style="@style/MenuButton"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:padding="4dp"
-            android:text="@string/next"
-            android:visibility="invisible"
-            app:cornerRadius="10dp"
-            app:icon="@drawable/ic_baseline_play_arrow_24"
-            app:iconSize="32dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.08"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flAudioTextContainer"
-            app:layout_constraintWidth_percent="0.7" />
+                android:id="@+id/btnProceed"
+                style="@style/MenuButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:padding="4dp"
+                android:text="@string/next"
+                android:visibility="invisible"
+                app:cornerRadius="10dp"
+                app:icon="@drawable/ic_baseline_play_arrow_24"
+                app:iconSize="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.08"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/flAudioTextContainer"
+                app:layout_constraintWidth_percent="0.7" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fbtnStopRecording"
-            style="@style/FloatingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/dark_green"
-            android:clickable="true"
-            android:contentDescription="@string/start_recording_audio"
-            android:focusable="true"
-            android:visibility="invisible"
-            app:backgroundTint="@color/form_gradient_end"
-            app:layout_constraintBottom_toBottomOf="@+id/fbtnVoiceRecord"
-            app:layout_constraintEnd_toEndOf="@+id/flAudioTextContainer"
-            app:layout_constraintStart_toEndOf="@+id/fbtnVoiceRecord"
-            app:layout_constraintTop_toTopOf="@+id/fbtnVoiceRecord"
-            app:srcCompat="@drawable/ic_baseline_stop_24" />
+                android:id="@+id/fbtnStopRecording"
+                style="@style/FloatingButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/dark_green"
+                android:clickable="true"
+                android:contentDescription="@string/start_recording_audio"
+                android:focusable="true"
+                android:visibility="invisible"
+                app:backgroundTint="@color/form_gradient_end"
+                app:layout_constraintBottom_toBottomOf="@+id/fbtnVoiceRecord"
+                app:layout_constraintEnd_toEndOf="@+id/flAudioTextContainer"
+                app:layout_constraintStart_toEndOf="@+id/fbtnVoiceRecord"
+                app:layout_constraintTop_toTopOf="@+id/gdlAudioTest3"
+                app:srcCompat="@drawable/ic_baseline_stop_24" />
 
         <ImageView
-            android:id="@+id/ivLogoAudioTest"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.5"
-            app:srcCompat="@drawable/logo" />
+                android:id="@+id/ivLogoAudioTest"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.5"
+                app:srcCompat="@drawable/logo"
+                android:contentDescription="@string/logo" />
 
         <LinearLayout
             android:id="@+id/lLTextContainer"
@@ -89,92 +98,85 @@
             app:layout_constraintTop_toBottomOf="@+id/ivLogoAudioTest">
 
             <TextView
-                android:id="@+id/tvPressAudio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_marginHorizontal="24dp"
-                android:fontFamily="@font/ibm_plex_sans_bold"
-                android:text="@string/start_recording_audio"
-                android:textColor="@color/menu_text_color"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                    android:id="@+id/tvPressAudio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginHorizontal="24dp"
+                    android:fontFamily="@font/ibm_plex_sans_bold"
+                    android:text="@string/start_recording_audio"
+                    android:textColor="@color/menu_text_color"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:foregroundGravity="center" />
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fbtnVoiceRecord"
-            style="@style/FloatingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/menu_button"
-            android:clickable="true"
-            android:contentDescription="@string/start_recording_audio"
-            android:focusable="true"
-            app:backgroundTint="@color/menu_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/gdlAudioTest3"
-            app:srcCompat="@drawable/ic_baseline_keyboard_voice_24" />
+                android:id="@+id/fbtnVoiceRecord"
+                style="@style/FloatingButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/menu_button"
+                android:clickable="true"
+                android:contentDescription="@string/start_recording_audio"
+                android:focusable="true"
+                app:backgroundTint="@color/menu_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_baseline_keyboard_voice_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/flAudioTextContainer" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fbtnRestartRecording"
-            style="@style/FloatingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/menu_text_color"
-            android:clickable="true"
-            android:contentDescription="@string/start_recording_audio"
-            android:focusable="true"
-            android:visibility="invisible"
-            app:backgroundTint="@color/form_gradient_end"
-            app:layout_constraintBottom_toBottomOf="@+id/fbtnStopRecording"
-            app:layout_constraintEnd_toStartOf="@+id/fbtnVoiceRecord"
-            app:layout_constraintStart_toStartOf="@+id/flAudioTextContainer"
-            app:layout_constraintTop_toTopOf="@+id/fbtnStopRecording"
-            app:srcCompat="@drawable/ic_baseline_refresh_24" />
+                android:id="@+id/fbtnRestartRecording"
+                style="@style/FloatingButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/menu_text_color"
+                android:clickable="true"
+                android:contentDescription="@string/start_recording_audio"
+                android:focusable="true"
+                android:visibility="invisible"
+                app:backgroundTint="@color/form_gradient_end"
+                app:layout_constraintBottom_toBottomOf="@+id/fbtnStopRecording"
+                app:layout_constraintEnd_toStartOf="@+id/fbtnVoiceRecord"
+                app:layout_constraintStart_toStartOf="@+id/flAudioTextContainer"
+                app:layout_constraintTop_toTopOf="@+id/fbtnStopRecording"
+                app:srcCompat="@drawable/ic_baseline_refresh_24" />
 
         <FrameLayout
-            android:id="@+id/flAudioTextContainer"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="24dp"
-            backgroundImageUrl="@{images.AUDIO_BACK}"
-            android:padding="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/gdlAudioTest"
-            app:layout_constraintWidth_percent="0.9">
+                android:id="@+id/flAudioTextContainer"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="24dp"
+                backgroundImageUrl="@{images.AUDIO_BACK}"
+                android:padding="0dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.9"
+                app:layout_constraintTop_toBottomOf="@+id/lLTextContainer">
 
             <androidx.core.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fillViewport="true">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fillViewport="true">
 
                 <TextView
-                    android:id="@+id/tvAudioTest"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/ibm_plex_sans"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="30dp"
-                    android:text="@string/lorem"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                        android:id="@+id/tvAudioTest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/ibm_plex_sans"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="30dp"
+                        android:text="@string/lorem"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
             </androidx.core.widget.NestedScrollView>
         </FrameLayout>
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gdlAudioTest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintGuide_begin="0dp"
-            app:layout_constraintGuide_percent="0.3"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdlAudioTest2"
@@ -186,13 +188,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gdlAudioTest3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintGuide_percent="0.89"
-            app:layout_constraintTop_toTopOf="parent" />
+                android:id="@+id/gdlAudioTest3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintGuide_percent="0.9"
+                app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -99,23 +99,24 @@
                 android:padding="4dp" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnChangeCamera"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="bottom|end"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="24dp"
-                android:foregroundGravity="bottom"
-                android:insetTop="0dp"
-                backgroundImageUrl="@{images.CAMERA_SWITCH}"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="10dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="10dp"
-                app:backgroundTint="#000000"
-                app:iconPadding="24dp" />
+                    android:id="@+id/btnChangeCamera"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:foregroundGravity="bottom"
+                    android:insetTop="0dp"
+                    backgroundImageUrl="@{images.CAMERA_SWITCH}"
+                    android:padding="0dp"
+                    android:paddingLeft="0dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="0dp"
+                    android:paddingBottom="10dp"
+                    app:backgroundTint="#000000"
+                    app:iconPadding="24dp"
+                    android:contentDescription="@string/change_camera" />
         </androidx.cardview.widget.CardView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -139,34 +140,36 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fbtnCamera"
-            style="@style/FloatingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:background="@color/menu_button"
-            android:clickable="true"
-            android:contentDescription="@string/camera"
-            android:focusable="true"
-            android:foregroundGravity="center"
-            app:backgroundTint="@color/menu_button"
-            app:fabSize="normal"
-            app:layout_constraintEnd_toStartOf="@+id/gdlMiddleTutorial3"
-            app:layout_constraintStart_toStartOf="@+id/cvCameraPreviewLayout"
-            app:layout_constraintTop_toBottomOf="@+id/cvCameraPreviewLayout"
-            app:srcCompat="@drawable/ic_baseline_photo_camera_24_outline" />
+                android:id="@+id/fbtnCamera"
+                style="@style/FloatingButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/menu_button"
+                android:clickable="true"
+                android:contentDescription="@string/camera"
+                android:focusable="true"
+                android:foregroundGravity="center"
+                app:backgroundTint="@color/menu_button"
+                app:fabSize="normal"
+                app:layout_constraintEnd_toStartOf="@+id/gdlMiddleTutorial3"
+                app:layout_constraintStart_toStartOf="@+id/cvCameraPreviewLayout"
+                app:layout_constraintTop_toBottomOf="@+id/cvCameraPreviewLayout"
+                app:srcCompat="@drawable/ic_baseline_photo_camera_24_outline"
+                tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageView
-            android:id="@+id/ivLogoFaceDetection"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.5"
-            app:srcCompat="@drawable/logo" />
+                android:id="@+id/ivLogoFaceDetection"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.5"
+                app:srcCompat="@drawable/logo"
+                android:contentDescription="@string/face_detection" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -100,7 +100,7 @@
                 android:id="@+id/etWritingInputLayout"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="18dp"
                 backgroundImageUrl="@{images.AUDIO_BACK}"
                 android:fontFamily="@font/ibm_plex_sans_bold"
                 android:foregroundGravity="top|left"
@@ -109,7 +109,7 @@
                 app:endIconMode="clear_text"
                 app:helperTextEnabled="false"
                 app:layout_constraintEnd_toEndOf="@id/guideline6"
-                app:layout_constraintHeight_percent="0.48"
+                app:layout_constraintHeight_percent="0.45"
                 app:layout_constraintStart_toStartOf="@+id/guideline7"
                 app:layout_constraintTop_toBottomOf="@+id/lLTextContainer">
 

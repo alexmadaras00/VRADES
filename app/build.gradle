@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
     id "dagger.hilt.android.plugin"
+
 }
 
 android {
@@ -88,6 +89,11 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:29.3.1')
     implementation 'com.google.firebase:firebase-database-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
+    //ML Kit
+    implementation 'com.google.firebase:firebase-ml-vision:'
+    // If you want to detect face contours (landmark detection and classification
+    // don't require this additional model):
+    implementation 'com.google.firebase:firebase-ml-vision-face-model:20.0.2'
 
     // Coil
     implementation "io.coil-kt:coil:1.4.0"
@@ -128,6 +134,10 @@ dependencies {
 
     //Desugaring -
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5") // <- this dependency is required
+
+    //Visualizer
+    implementation 'com.airbnb.android:lottie:4.2.2'
+
 
 
 

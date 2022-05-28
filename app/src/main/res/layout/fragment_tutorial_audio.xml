@@ -67,17 +67,17 @@
             android:id="@+id/ivArrowTutorialAudio"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginEnd="24dp"
-            android:rotation="90"
-            android:visibility="visible"
-            android:stateListAnimator="@anim/arrow_anim_horizontal"
-            app:layout_constraintBottom_toBottomOf="@+id/tvTapToStart"
-            app:layout_constraintEnd_toStartOf="@+id/tvTapToStart"
-            app:layout_constraintHeight_percent="0.06"
-            app:layout_constraintTop_toBottomOf="@+id/fbtnVoiceRecord"
-            app:layout_constraintWidth_percent="0.16"
-            app:srcCompat="@drawable/arrow_tutorial"
-            android:contentDescription="TODO" />
+                android:layout_marginEnd="24dp"
+                android:rotation="90"
+                android:visibility="visible"
+                android:stateListAnimator="@anim/arrow_anim_horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTapToStart"
+                app:layout_constraintEnd_toStartOf="@+id/tvTapToStart"
+                app:layout_constraintHeight_percent="0.06"
+                app:layout_constraintTop_toBottomOf="@+id/fbtnVoiceRecord"
+                app:layout_constraintWidth_percent="0.16"
+                app:srcCompat="@drawable/arrow_tutorial"
+                android:contentDescription="@string/arrow" />
 
         <TextView
             android:id="@+id/tvPressAudio"
