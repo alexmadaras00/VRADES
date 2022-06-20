@@ -2,6 +2,10 @@ package com.example.vrades.di
 
 import android.app.Application
 import android.content.Context
+import com.example.vrades.api.text_detection.DetectTextRepository
+import com.example.vrades.api.text_detection.DetectTextRepositoryImpl
+import com.example.vrades.api.text_detection.TextDetectionAPI
+import com.example.vrades.domain.use_cases.profile_repository.SetDetectedPictureInStorage
 import com.example.vrades.firebase.data.repositories.VradesRepositoryImpl
 import com.example.vrades.firebase.domain.use_cases.auth_repository.*
 import com.example.vrades.firebase.domain.use_cases.profile_repository.*
@@ -84,7 +88,8 @@ object AppModule {
         setProfilePictureInStorage = SetProfilePictureInStorage(repository),
         updateProfilePictureInRealtime = UpdateProfilePictureInRealtime(repository),
         addTestInRealtime = AddTestInRealtime(repository),
-        generateAdvicesByTestResult = GenerateAdvicesByTestResult(repository)
+        generateAdvicesByTestResult = GenerateAdvicesByTestResult(repository),
+        setDetectedPictureInStorage = SetDetectedPictureInStorage(repository)
     )
 
     @Singleton
@@ -113,6 +118,16 @@ object AppModule {
         getPictureByName = GetPictureByName(repository),
         getPictures = GetPictures(repository)
     )
+    @Singleton
+    @Provides
+    fun provideDetectTextRepository(): DetectTextRepository = DetectTextRepositoryImpl()
+
+//    @Singleton
+//    @Provides
+//    fun provideTextDetectionRepository(repository: DetectTextRepository
+//    ) = TextDetectionAPI(
+//        repository
+//    )
 
 
 

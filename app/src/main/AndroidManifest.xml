@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.vrades">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:installLocation="preferExternal"
+        package="com.example.vrades">
 
     <uses-feature android:name="android.hardware.camera.any" />
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="28" />
+            android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+            android:maxSdkVersion="29"
+            tools:ignore="ScopedStorage"/>
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+            android:maxSdkVersion="29"
+            tools:ignore="ScopedStorage" />
 
     <application
             android:name=".VradesApplication"
@@ -31,9 +37,14 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.VRADES"
             tools:targetApi="m">
+        <meta-data
+                android:name="com.google.mlkit.vision.DEPENDENCIES"
+                android:value="face" />
 
         <activity
                 android:name=".ui.activities.StartActivity"
+                android:screenOrientation="fullSensor"
+                android:windowSoftInputMode="adjustPan"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,10 +54,11 @@
         </activity>
 
         <activity
-            android:name=".ui.activities.MainActivity"
-            android:exported="true"
-
-            android:windowSoftInputMode="adjustPan">
+                android:name=".ui.activities.MainActivity"
+                android:exported="true"
+                android:requestLegacyExternalStorage="true"
+                android:screenOrientation="fullSensor"
+                android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -54,8 +66,8 @@
         </activity>
 
         <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+                android:name="preloaded_fonts"
+                android:resource="@array/preloaded_fonts" />
 
     </application>
 
