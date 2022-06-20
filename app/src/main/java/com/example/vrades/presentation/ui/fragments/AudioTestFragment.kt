@@ -78,6 +78,7 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
         ) == PackageManager.PERMISSION_GRANTED
         val navController = findNavController()
 
+
         stateAudio = viewModel.getCurrentAudioState().ordinal
         timer = Timer(this)
         binding.apply {
@@ -121,7 +122,7 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
                         println(path)
                     }
 //                    audioDetectionAPI.detectEmotion(path)
-                    empathDetectionAPI.detect(path)
+                   // empathDetectionAPI.detect(path)
                 }
                 buttonRestart.setOnClickListener {
                     stopRecording()

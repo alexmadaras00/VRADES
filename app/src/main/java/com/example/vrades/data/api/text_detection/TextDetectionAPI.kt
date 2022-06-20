@@ -3,8 +3,6 @@ package com.example.vrades.api.text_detection
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import okhttp3.*
-import org.json.JSONException
-import org.json.JSONObject
 import java.io.IOException
 
 
@@ -25,31 +23,27 @@ class TextDetectionAPI {
                 .url("https://api.apilayer.com/text_to_emotion")
                 .addHeader("apikey", "GUqc6Wq6hDj7u5bLCCjU9JHT6Uc6oflt")
                 .method("POST", body).build()
-            val response = client.newCall(request).execute()
-            if ((response.code()) == 200) {
-                // Get response
-                println(response.message())
-                val jsonData = response.message()
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    e.printStackTrace()
+                }
 
-                // Transform reponse to JSon Object
-                val json = JSONObject(jsonData);
+                override fun onResponse(call: Call, response: Response) {
+                    if (response.isSuccessful) {
+                        // Get response
+                        println(response.body().toString())
 
-                // Use the JSon Object
-                println("code: ${response.code()}, and ${response.request()}, format: $jsonData");
+                    } else {
+                        println(response.message())
+                    }
+                }
 
-                return json.keys().next()
+            })
 
-            } else {
-                println(response.body())
-            }
         } catch (e: IOException) {
-            println(e.toString());
-        } catch (e: JSONException) {
-            println(e)
+            e.printStackTrace()
         }
-
-
-        return "Nothing"
+        return "None"
     }
 
 }
