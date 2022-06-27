@@ -1,8 +1,9 @@
-package com.example.vrades.firebase.repositories.auth
+package com.example.vrades.domain.repositories
 
-import com.example.vrades.model.Response
-import com.example.vrades.model.User
+import com.example.vrades.domain.model.Response
+import com.example.vrades.domain.model.User
 import kotlinx.coroutines.flow.Flow
+
 
 interface AuthRepository {
 

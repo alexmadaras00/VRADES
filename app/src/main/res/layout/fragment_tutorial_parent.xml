@@ -8,11 +8,11 @@
         <import type="android.view.View" />
         <variable
             name="images"
-            type="com.example.vrades.utils.Constants" />
+            type="com.example.vrades.presentation.utils.Constants" />
 
         <variable
             name="viewModel"
-            type="com.example.vrades.viewmodels.TutorialViewModel" />
+            type="com.example.vrades.presentation.viewmodels.TutorialViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         backgroundImageUrl="@{images.TUTORIAL_BACKGROUND}"
-        tools:context=".ui.fragments.tutorial.TutorialParentFragment">
+        tools:context=".presentation.ui.fragments.tutorial.TutorialParentFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdlTutorialParent"

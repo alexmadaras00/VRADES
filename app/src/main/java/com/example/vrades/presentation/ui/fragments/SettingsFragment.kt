@@ -1,4 +1,4 @@
-package com.example.vrades.ui.fragments
+package com.example.vrades.presentation.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.vrades.databinding.FragmentSettingsBinding
-import com.example.vrades.model.Response
-import com.example.vrades.utils.Constants.ERROR_REF
-import com.example.vrades.viewmodels.SettingsViewModel
+import com.example.vrades.domain.model.Response
+import com.example.vrades.presentation.utils.Constants.ERROR_REF
+import com.example.vrades.presentation.viewmodels.SettingsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

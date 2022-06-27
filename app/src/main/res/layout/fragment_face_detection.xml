@@ -8,11 +8,11 @@
         <import type="android.view.View" />
         <variable
             name="images"
-            type="com.example.vrades.utils.Constants" />
+            type="com.example.vrades.presentation.utils.Constants" />
 
         <variable
             name="viewModelTest"
-            type="com.example.vrades.viewmodels.TestViewModel" />
+            type="com.example.vrades.presentation.viewmodels.TestViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +21,7 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="0dp"
         backgroundImageUrl="@{images.BACKGROUND_TEST}"
-        tools:context=".ui.fragments.FaceDetectionFragment">
+        tools:context=".presentation.ui.fragments.FaceDetectionFragment">
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -95,7 +95,6 @@
                 android:id="@+id/vfCameraPreview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                foregroundImageUrl="@{images.CAMERA_LAYOUT}"
                 android:padding="4dp" />
 
             <com.google.android.material.button.MaterialButton

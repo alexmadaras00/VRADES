@@ -1,41 +1,47 @@
-package com.example.vrades.firebase.repositories.data
+package com.example.vrades.data.repositories
 
+import android.content.ContentValues.TAG
 import android.net.Uri
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
-import com.example.vrades.firebase.repositories.domain.ProfileRepository
-import com.example.vrades.model.LifeHack
-import com.example.vrades.model.Response
-import com.example.vrades.model.Response.Success
-import com.example.vrades.model.Test
-import com.example.vrades.model.User
-import com.example.vrades.utils.Constants
-import com.example.vrades.utils.Constants.ADVICES
-import com.example.vrades.utils.Constants.DATE
-import com.example.vrades.utils.Constants.DETAILS
-import com.example.vrades.utils.Constants.EMAIL
-import com.example.vrades.utils.Constants.ERROR_REF
-import com.example.vrades.utils.Constants.ICON
-import com.example.vrades.utils.Constants.IMAGE
-import com.example.vrades.utils.Constants.IS_COMPLETED
-import com.example.vrades.utils.Constants.IS_TUTORIAL_ENABLED
-import com.example.vrades.utils.Constants.LIFEHACKS_REF
-import com.example.vrades.utils.Constants.NAME
-import com.example.vrades.utils.Constants.RESULT
-import com.example.vrades.utils.Constants.STATE
-import com.example.vrades.utils.Constants.TEST
-import com.example.vrades.utils.Constants.TESTS
-import com.example.vrades.utils.Constants.TRIGGER_EMOTION
+import com.example.vrades.domain.model.LifeHack
+import com.example.vrades.domain.model.Response
+import com.example.vrades.domain.model.Response.Success
+import com.example.vrades.domain.model.Test
+import com.example.vrades.domain.model.User
+import com.example.vrades.domain.repositories.ProfileRepository
+import com.example.vrades.presentation.utils.Constants
+import com.example.vrades.presentation.utils.Constants.ADVICES
+import com.example.vrades.presentation.utils.Constants.DATE
+import com.example.vrades.presentation.utils.Constants.DETAILS
+import com.example.vrades.presentation.utils.Constants.EMAIL
+import com.example.vrades.presentation.utils.Constants.ERROR_REF
+import com.example.vrades.presentation.utils.Constants.ICON
+import com.example.vrades.presentation.utils.Constants.IMAGE
+import com.example.vrades.presentation.utils.Constants.IS_COMPLETED
+import com.example.vrades.presentation.utils.Constants.IS_TUTORIAL_ENABLED
+import com.example.vrades.presentation.utils.Constants.LIFEHACKS_REF
+import com.example.vrades.presentation.utils.Constants.NAME
+import com.example.vrades.presentation.utils.Constants.RESULT
+import com.example.vrades.presentation.utils.Constants.STATE
+import com.example.vrades.presentation.utils.Constants.TEST
+import com.example.vrades.presentation.utils.Constants.TESTS
+import com.example.vrades.presentation.utils.Constants.TRIGGER_EMOTION
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storageMetadata
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 import javax.inject.Named
+import javax.inject.Singleton
 
+@Singleton
 class ProfileRepositoryImpl @Inject constructor(
     private val auth: FirebaseAuth,
     private val storage: FirebaseStorage,
@@ -46,13 +52,11 @@ class ProfileRepositoryImpl @Inject constructor(
 
     override suspend fun getUserById(): Flow<Response<User>> = flow {
         try {
-            println("HERE")
             emit(Response.Loading)
             val lifeHacks = mutableListOf<LifeHack>()
             val tests = mutableListOf<Test>()
 
             if (auth.currentUser != null) {
-
                 usersRef.child(auth.currentUser!!.uid).get().await().apply {
                     println("currentUser: ${usersRef.child(auth.currentUser!!.uid).get()}")
                     child(ADVICES).children.forEach { lifeHack ->
@@ -78,15 +82,12 @@ class ProfileRepositoryImpl @Inject constructor(
                                         test.child(RESULT).getValue(String::class.java)
                                             .toString(),
                                         test.child(IS_COMPLETED).getValue(Boolean::class.java)!!
-                                        )
                                     )
-                                println("SIZE?: ${tests.size}, ${lifeHacks.size}")
+                                )
                             }
 
                         }
                     }
-                    println("Tests: $tests")
-                    println("Advices: $lifeHacks")
                     if (this.exists()) {
                         val user = User(
                             child(EMAIL).getValue(String::class.java).toString(),
@@ -138,12 +139,10 @@ class ProfileRepositoryImpl @Inject constructor(
         try {
             emit(Response.Loading)
             var k = 0
-            val index =
-                usersRef.child(auth.currentUser!!.uid).child(TESTS).get()
+            usersRef.child(auth.currentUser!!.uid).child(TESTS).get()
                     .await().children.forEach { _ ->
                         k++
                     }
-            print(index)
             usersRef.child(auth.currentUser!!.uid).child(TESTS).child(TEST + (k + 1).toString())
                 .setValue(test).await().also {
                     emit(Success(true))
@@ -155,7 +154,7 @@ class ProfileRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun generateAdvicesByTestResult(): Flow<Response<Boolean>> =flow{
+    override suspend fun generateAdvicesByTestResult(): Flow<Response<Boolean>> = flow {
         try {
             emit(Response.Loading)
             lateinit var lastResult: String
@@ -163,7 +162,6 @@ class ProfileRepositoryImpl @Inject constructor(
             usersRef.child(auth.currentUser!!.uid).child(TESTS).get().await().children.forEach {
                 lastResult = it.child(RESULT).getValue(String::class.java).toString()
             }
-            println("Last result: $lastResult")
             database.reference.child(LIFEHACKS_REF).get().await().children.forEach {
                 if (it.child(TRIGGER_EMOTION).getValue(String::class.java) == lastResult) {
                     advice = LifeHack(
@@ -173,7 +171,6 @@ class ProfileRepositoryImpl @Inject constructor(
                     )
                 }
             }
-            println("Advice: $advice")
             usersRef.child(auth.currentUser!!.uid).child(ADVICES).child(advice.name)
                 .setValue(advice).await().also {
                     emit(Success(true))
@@ -183,18 +180,35 @@ class ProfileRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun setDetectedPictureInStorage(picture: Uri): Flow<Response<String>> = flow {
-        try {
-            emit(Response.Loading)
-            val filePath = storage.getReference("/Faces/"+ auth.currentUser!!.uid + ".png")
-            filePath.putFile(picture).await().also {
-                val location =
-                    filePath.putFile(picture).await().storage.downloadUrl.await().toString()
-                emit(Success(location))
-            }
-        } catch (e: Exception) {
-            emit(Response.Error(e.message ?: e.message!!))
+    override suspend fun setDetectedMediaInStorage(picture: Uri): Flow<Response<String>> = flow {
+        emit(Response.Loading)
+        val filePath = storage.getReference("/Media/" + auth.currentUser!!.uid)
+        Log.i(TAG, "URI: $filePath")
+        filePath.putFile(picture).await().also {
+            val location =
+                filePath.putFile(picture).await().storage.downloadUrl.await().toString()
+
+            emit(Success(location))
         }
+    }.catch {
+        emit(Response.Error(it.message.toString()))
+    }
+
+    override suspend fun setDetectedAudioInStorage(audio: Uri): Flow<Response<String>> = flow {
+        emit(Response.Loading)
+        val filePath = storage.getReference("/Media/" + auth.currentUser!!.uid + ".mp3")
+        Log.i(TAG, "URI: $filePath")
+        val metadata = storageMetadata {
+            contentType = "audio/mpeg"
+        }
+        filePath.putFile(audio).await().also {
+            val location =
+                filePath.putFile(audio, metadata).await().storage.downloadUrl.await().toString()
+            println("Location: $location")
+            emit(Success(location))
+        }
+    }.catch {
+        emit(Response.Error(it.message.toString()))
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

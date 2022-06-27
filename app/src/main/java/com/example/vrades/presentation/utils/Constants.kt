@@ -1,4 +1,4 @@
-package com.example.vrades.utils
+package com.example.vrades.presentation.utils
 
 object Constants {
 
@@ -96,4 +96,5 @@ object Constants {
         "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/tutorial_icon.png?alt=media&token=83e2569f-412a-4f2d-8d4d-9abbc84fc90c"
     const val WRITING_RESULT =
         "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/writing_result.png?alt=media&token=8533604c-d5e0-4fff-950f-f93a74bf6209"
+
 }

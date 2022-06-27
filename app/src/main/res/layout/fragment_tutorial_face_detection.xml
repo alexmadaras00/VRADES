@@ -8,14 +8,14 @@
         <import type="android.view.View" />
         <variable
             name="images"
-            type="com.example.vrades.utils.Constants" />
+            type="com.example.vrades.presentation.utils.Constants" />
 
         <variable
             name="viewModel"
-            type="com.example.vrades.viewmodels.TutorialViewModel" />
+            type="com.example.vrades.presentation.viewmodels.TutorialViewModel" />
         <variable
             name="currentState2"
-            type="com.example.vrades.enums.TutorialState" />
+            type="com.example.vrades.presentation.enums.TutorialState" />
 
         <variable
             name="stateTutorial2"
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         backgroundImageUrl="@{images.TUTORIAL_BACKGROUND}"
-        tools:context=".ui.fragments.tutorial.TutorialFaceDetectionFragment">
+        tools:context=".presentation.ui.fragments.tutorial.TutorialFaceDetectionFragment">
 
 
         <androidx.constraintlayout.widget.Guideline

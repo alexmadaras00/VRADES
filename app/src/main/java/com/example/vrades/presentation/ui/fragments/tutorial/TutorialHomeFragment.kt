@@ -1,4 +1,4 @@
-package com.example.vrades.ui.fragments.tutorial
+package com.example.vrades.presentation.ui.fragments.tutorial
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.vrades.databinding.FragmentTutorialHomeBinding
-import com.example.vrades.enums.TutorialState
-import com.example.vrades.ui.fragments.VradesBaseFragment
-import com.example.vrades.viewmodels.TutorialViewModel
+import com.example.vrades.presentation.enums.TutorialState
+import com.example.vrades.presentation.ui.fragments.VradesBaseFragment
+import com.example.vrades.presentation.viewmodels.TutorialViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

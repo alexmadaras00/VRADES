@@ -1,8 +1,8 @@
-package com.example.vrades.widgets
+package com.example.vrades.presentation.widgets
 
 import android.os.Handler
 import android.os.Looper
-import com.example.vrades.interfaces.IOnTimerTickListener
+import com.example.vrades.presentation.interfaces.IOnTimerTickListener
 
 
 class Timer(listener: IOnTimerTickListener) {

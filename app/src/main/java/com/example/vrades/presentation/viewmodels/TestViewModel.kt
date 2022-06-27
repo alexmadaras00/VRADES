@@ -1,18 +1,21 @@
-package com.example.vrades.viewmodels
+package com.example.vrades.presentation.viewmodels
 
+import android.content.Intent
 import android.net.Uri
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import com.example.vrades.enums.AudioState
-import com.example.vrades.enums.TestState
-import com.example.vrades.enums.WritingState
-import com.example.vrades.firebase.domain.use_cases.profile_repository.ProfileUseCases
-import com.example.vrades.firebase.domain.use_cases.vrades_repository.VradesUseCases
-import com.example.vrades.model.Test
+import android.speech.RecognizerIntent
+import android.speech.tts.TextToSpeech
+import androidx.activity.result.ActivityResultLauncher
+import androidx.lifecycle.*
+import com.example.vrades.domain.model.Test
+import com.example.vrades.domain.use_cases.profile_repository.ProfileUseCases
+import com.example.vrades.domain.use_cases.vrades_repository.VradesUseCases
+import com.example.vrades.presentation.enums.AudioState
+import com.example.vrades.presentation.enums.TestState
+import com.example.vrades.presentation.enums.WritingState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,6 +27,8 @@ class TestViewModel @Inject constructor(
     private var audioDetectionResult = mapOf<String, Float>()
     private var digitalWritingDetectionResult = mapOf<String, Float>()
     private var averageDetectionResult = mapOf<String, Float>()
+    private lateinit var startForResult: ActivityResultLauncher<Intent>
+    private lateinit var textToSpeechEngine: TextToSpeech
 
     private val states = TestState.values()
     private val audioStates = AudioState.values()
@@ -49,10 +54,17 @@ class TestViewModel @Inject constructor(
     val onNavigateToDetails: LiveData<Void>
         get() = _onNavigateToDetails
 
+    fun initial(
+       launcher: ActivityResultLauncher<Intent>
+    ) = viewModelScope.launch {
+        startForResult = launcher
+    }
+
     init {
         _currentStateCount.value = TestState.TEST_STARTED.position
         _currentAudioStateCount.value = AudioState.IDLE.ordinal
         _currentWritingStateCount.value = WritingState.WRITING.ordinal
+
     }
 
     //    fun getDigitalWritingDetectionResult(text: String) = liveData(Dispatchers.IO){
@@ -85,7 +97,13 @@ class TestViewModel @Inject constructor(
     }
 
     fun setPictureInStorage(picture: Uri) = liveData(Dispatchers.IO) {
-        useCasesProfile.setProfilePictureInStorage(picture).collect {
+        useCasesProfile.setDetectedMediaInStorage(picture).collect {
+            emit(it)
+        }
+    }
+
+    fun setAudioInStorage(picture: Uri) = liveData(Dispatchers.IO) {
+        useCasesProfile.setDetectedAudioInStorage(picture).collect {
             emit(it)
         }
     }
@@ -95,6 +113,7 @@ class TestViewModel @Inject constructor(
         var result = ""
         averageDetectionResult =
             faceDetectionResult + audioDetectionResult + digitalWritingDetectionResult
+        println(averageDetectionResult)
         averageDetectionResult.forEach {
             if (it.value > max)
                 max = it.value
@@ -170,6 +189,18 @@ class TestViewModel @Inject constructor(
     override fun onCleared() {
         _currentStateCount.value = 0
     }
+
+    fun displaySpeechRecognizer() {
+        startForResult.launch(Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+            putExtra(
+                RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
+            )
+            putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+            putExtra(RecognizerIntent.EXTRA_PROMPT, Locale.getDefault())
+        })
+    }
+
 
 
 }

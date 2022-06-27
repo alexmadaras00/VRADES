@@ -1,11 +1,11 @@
-package com.example.vrades.firebase.repositories.domain
+package com.example.vrades.domain.repositories
 
 import android.net.Uri
-import com.example.vrades.model.LifeHack
-import com.example.vrades.model.Response
-import com.example.vrades.model.Test
-import com.example.vrades.model.User
-import com.google.android.gms.tasks.Task
+import com.example.vrades.domain.model.LifeHack
+import com.example.vrades.domain.model.Response
+import com.example.vrades.domain.model.Test
+import com.example.vrades.domain.model.User
+import dagger.Provides
 import kotlinx.coroutines.flow.Flow
 
 interface ProfileRepository {
@@ -16,5 +16,6 @@ interface ProfileRepository {
     suspend fun updateProfilePictureInRealtime(picture: String): Flow<Response<Boolean>>
     suspend fun addTestInRealtime(test: Test): Flow<Response<Boolean>>
     suspend fun generateAdvicesByTestResult() : Flow<Response<Boolean>>
-    suspend fun setDetectedPictureInStorage(picture: Uri): Flow<Response<String>>
+    suspend fun setDetectedMediaInStorage(picture: Uri): Flow<Response<String>>
+    suspend fun setDetectedAudioInStorage(audio: Uri): Flow<Response<String>>
 }

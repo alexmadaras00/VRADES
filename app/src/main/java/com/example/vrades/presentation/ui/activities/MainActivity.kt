@@ -1,4 +1,4 @@
-package com.example.vrades.ui.activities
+package com.example.vrades.presentation.ui.activities
 
 import android.content.pm.ActivityInfo
 import android.os.Bundle
@@ -15,12 +15,10 @@ import com.example.vrades.R
 import com.example.vrades.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-@ExperimentalCoroutinesApi
 class MainActivity : AppCompatActivity() {
 
     private lateinit var job: Job

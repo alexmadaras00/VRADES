@@ -1,4 +1,4 @@
-package com.example.vrades.ui.fragments.tutorial
+package com.example.vrades.presentation.ui.fragments.tutorial
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,9 +9,9 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentTutorialParentBinding
-import com.example.vrades.ui.adapters.AdapterViewPagerTutorial
-import com.example.vrades.ui.fragments.VradesBaseFragment
-import com.example.vrades.viewmodels.TutorialViewModel
+import com.example.vrades.presentation.ui.adapters.AdapterViewPagerTutorial
+import com.example.vrades.presentation.ui.fragments.VradesBaseFragment
+import com.example.vrades.presentation.viewmodels.TutorialViewModel
 import com.zhpan.indicator.enums.IndicatorSlideMode
 import com.zhpan.indicator.enums.IndicatorStyle
 import dagger.hilt.android.AndroidEntryPoint

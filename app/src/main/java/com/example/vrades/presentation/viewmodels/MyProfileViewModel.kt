@@ -1,10 +1,10 @@
-package com.example.vrades.viewmodels
+package com.example.vrades.presentation.viewmodels
 
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.example.vrades.firebase.domain.use_cases.profile_repository.ProfileUseCases
-import com.example.vrades.firebase.domain.use_cases.vrades_repository.VradesUseCases
+import com.example.vrades.domain.use_cases.profile_repository.ProfileUseCases
+import com.example.vrades.domain.use_cases.vrades_repository.VradesUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers

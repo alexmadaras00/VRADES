@@ -1,4 +1,4 @@
-package com.example.vrades.enums
+package com.example.vrades.presentation.enums
 
 enum class TutorialState(var position: Int) {
     START_PAGE(0),

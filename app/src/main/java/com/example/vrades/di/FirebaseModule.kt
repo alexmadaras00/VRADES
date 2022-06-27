@@ -1,12 +1,12 @@
 package com.example.vrades.di
 
-import com.example.vrades.utils.Constants.DATA_AUDIO_TEST_REF
-import com.example.vrades.utils.Constants.DATA_WRITING_TEST_REF
-import com.example.vrades.utils.Constants.EMOTIONS_REF
-import com.example.vrades.utils.Constants.IMAGE_REF
-import com.example.vrades.utils.Constants.LIFEHACKS_REF
-import com.example.vrades.utils.Constants.USERS_REF
-import com.example.vrades.utils.Constants.USER_NAME_REF
+import com.example.vrades.presentation.utils.Constants.DATA_AUDIO_TEST_REF
+import com.example.vrades.presentation.utils.Constants.DATA_WRITING_TEST_REF
+import com.example.vrades.presentation.utils.Constants.EMOTIONS_REF
+import com.example.vrades.presentation.utils.Constants.IMAGE_REF
+import com.example.vrades.presentation.utils.Constants.LIFEHACKS_REF
+import com.example.vrades.presentation.utils.Constants.USERS_REF
+import com.example.vrades.presentation.utils.Constants.USER_NAME_REF
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -46,19 +46,22 @@ object FirebaseModule {
     @Singleton
     @Provides
     @Named(USER_NAME_REF)
-    fun provideUsersNameRef(db: FirebaseDatabase): DatabaseReference = db.reference.child(USER_NAME_REF)
+    fun provideUsersNameRef(db: FirebaseDatabase): DatabaseReference =
+        db.reference.child(USER_NAME_REF)
 
     @Singleton
     @Provides
     @Named(EMOTIONS_REF) // differentiate
     fun provideEmotionsRef(db: FirebaseDatabase): DatabaseReference = db.reference.child(
-        EMOTIONS_REF)
+        EMOTIONS_REF
+    )
 
     @Singleton
     @Provides
     @Named(LIFEHACKS_REF) // differentiate
     fun provideLifeHacksRef(db: FirebaseDatabase): DatabaseReference = db.reference.child(
-        LIFEHACKS_REF)
+        LIFEHACKS_REF
+    )
 
     @Singleton
     @Provides

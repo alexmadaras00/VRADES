@@ -1,4 +1,4 @@
-package com.example.vrades.ui.binding
+package com.example.vrades.presentation.ui.binding
 
 
 import android.graphics.drawable.Drawable
@@ -12,11 +12,9 @@ import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.example.vrades.R
-import com.example.vrades.viewmodels.TutorialViewModel
+import com.example.vrades.presentation.viewmodels.TutorialViewModel
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.google.android.material.button.MaterialButton

@@ -1,14 +1,11 @@
-package com.example.vrades.ui.dialogs
+package com.example.vrades.presentation.ui.dialogs
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
-import com.example.vrades.R
 import com.example.vrades.databinding.DialogFeedbackRequestBinding
-import com.example.vrades.databinding.FragmentMyProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

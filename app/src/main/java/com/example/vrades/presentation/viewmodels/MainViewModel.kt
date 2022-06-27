@@ -1,7 +1,7 @@
-package com.example.vrades.viewmodels
+package com.example.vrades.presentation.viewmodels
 
 import androidx.lifecycle.*
-import com.example.vrades.firebase.domain.use_cases.auth_repository.AuthUseCases
+import com.example.vrades.domain.use_cases.auth_repository.AuthUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject

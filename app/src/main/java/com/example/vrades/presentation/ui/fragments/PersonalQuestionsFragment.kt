@@ -5,10 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.vrades.R
-import com.example.vrades.databinding.FragmentFaceDetectionBinding
 import com.example.vrades.databinding.FragmentPersonalQuestionsBinding
-import com.example.vrades.viewmodels.TestViewModel
+import com.example.vrades.presentation.ui.fragments.FaceDetectionFragment
+import com.example.vrades.presentation.viewmodels.TestViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

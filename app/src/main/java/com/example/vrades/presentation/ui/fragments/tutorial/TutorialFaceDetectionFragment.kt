@@ -1,4 +1,4 @@
-package com.example.vrades.ui.fragments.tutorial
+package com.example.vrades.presentation.ui.fragments.tutorial
 
 import android.Manifest
 import android.content.Context
@@ -13,16 +13,15 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import com.example.vrades.R
-import com.example.vrades.api.camerax.CameraManager
-import com.example.vrades.api.camerax.CameraManager.Companion.isReadyCamera
+import com.example.vrades.presentation.utils.camerax.CameraManager
+import com.example.vrades.presentation.utils.camerax.CameraManager.Companion.isReadyCamera
 import com.example.vrades.databinding.FragmentTutorialFaceDetectionBinding
-import com.example.vrades.ui.fragments.FaceDetectionFragment
-import com.example.vrades.ui.fragments.VradesBaseFragment
-import com.example.vrades.viewmodels.TutorialViewModel
+import com.example.vrades.presentation.ui.fragments.FaceDetectionFragment
+import com.example.vrades.presentation.ui.fragments.VradesBaseFragment
+import com.example.vrades.presentation.viewmodels.TutorialViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.util.concurrent.ExecutorService
@@ -64,6 +63,7 @@ class TutorialFaceDetectionFragment : VradesBaseFragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onStart() {
         super.onStart()
 

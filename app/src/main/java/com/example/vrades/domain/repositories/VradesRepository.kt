@@ -1,7 +1,7 @@
-package com.example.vrades.firebase.repositories.domain
+package com.example.vrades.domain.repositories
 
-import com.example.vrades.model.LifeHack
-import com.example.vrades.model.Response
+import com.example.vrades.domain.model.LifeHack
+import com.example.vrades.domain.model.Response
 import kotlinx.coroutines.flow.Flow
 
 interface VradesRepository  {

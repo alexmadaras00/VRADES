@@ -161,15 +161,15 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.9.0'
     //Unirest
     implementation 'com.konghq:unirest-java:3.11.09:standalone'
+
     //Room
     implementation "androidx.room:room-ktx:$rootProject.roomVersion"
     kapt "androidx.room:room-compiler:$rootProject.roomVersion"
     androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
-    //WebEmpath
-    implementation ("org.apache.httpcomponents:httpclient:4.3.6")
-    implementation("org.apache.httpcomponents:httpcore:4.4.15")
-    implementation("commons-logging:commons-logging:1.2")
-    implementation("commons-codec:commons-codec:1.15")
+
+    //Jackson
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.3")
+
 
 
 

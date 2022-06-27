@@ -1,4 +1,4 @@
-package com.example.vrades.model
+package com.example.vrades.domain.model
 
 sealed class Response<out T> {
     object Loading : Response<Nothing>()

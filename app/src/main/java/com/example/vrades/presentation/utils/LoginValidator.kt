@@ -1,9 +1,9 @@
-package com.example.vrades.utils
+package com.example.vrades.presentation.utils
 
 import android.content.Context
 import android.util.Patterns
 import android.widget.Toast
-import com.example.vrades.utils.UIUtils.toast
+import com.example.vrades.presentation.utils.UIUtils.toast
 import com.google.android.material.textfield.TextInputEditText
 
 data class LoginValidator(

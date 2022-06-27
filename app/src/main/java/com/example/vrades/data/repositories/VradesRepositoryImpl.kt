@@ -1,18 +1,20 @@
-package com.example.vrades.firebase.data.repositories
+package com.example.vrades.data.repositories
 
-import com.example.vrades.firebase.repositories.domain.VradesRepository
-import com.example.vrades.model.LifeHack
-import com.example.vrades.model.Response
-import com.example.vrades.utils.Constants
-import com.example.vrades.utils.Constants.DETAILS
-import com.example.vrades.utils.Constants.IMAGE
+import com.example.vrades.domain.repositories.VradesRepository
+import com.example.vrades.domain.model.LifeHack
+import com.example.vrades.domain.model.Response
+import com.example.vrades.presentation.utils.Constants
+import com.example.vrades.presentation.utils.Constants.DETAILS
+import com.example.vrades.presentation.utils.Constants.IMAGE
 import com.google.firebase.database.DatabaseReference
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 import javax.inject.Named
+import javax.inject.Singleton
 
+@Singleton
 class VradesRepositoryImpl @Inject constructor(
     @Named(Constants.EMOTIONS_REF) private val emotionsRef: DatabaseReference,
     @Named(Constants.LIFEHACKS_REF) private val lifeHacksRef: DatabaseReference,
@@ -92,7 +94,7 @@ class VradesRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getPictures(): Flow<Response<Map<String,String>>> = flow {
+    override suspend fun getPictures(): Flow<Response<Map<String, String>>> = flow {
         try {
             emit(Response.Loading)
             val images = mutableMapOf<String,String>()

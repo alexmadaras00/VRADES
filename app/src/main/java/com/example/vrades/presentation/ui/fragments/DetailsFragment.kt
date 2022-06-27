@@ -1,4 +1,4 @@
-package com.example.vrades.ui.fragments
+package com.example.vrades.presentation.ui.fragments
 
 import android.app.Dialog
 import android.os.Bundle
@@ -6,24 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
-import androidx.compose.ui.text.toUpperCase
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.vrades.R
 import com.example.vrades.databinding.DialogLoadingBinding
 import com.example.vrades.databinding.FragmentDetailsBinding
-import com.example.vrades.model.Response
-import com.example.vrades.ui.binding.setImageUrl
-import com.example.vrades.utils.Constants
-import com.example.vrades.viewmodels.DetailsViewModel
+import com.example.vrades.domain.model.Response
+import com.example.vrades.presentation.ui.binding.setImageUrl
+import com.example.vrades.presentation.utils.Constants
+import com.example.vrades.presentation.viewmodels.DetailsViewModel
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
@@ -125,6 +123,7 @@ class DetailsFragment : Fragment() {
                         val user = it.data
                         val tests = user.tests
                         textViewResult.text = tests?.last()?.result?.uppercase()
+                        println(tests?.last())
                         textViewName.text = user.username
                         setImageUrl(imageViewProfile, user.image)
                         dismissDialog() // closing the dialog

@@ -1,7 +1,4 @@
-package com.example.vrades.model
-
-import com.example.vrades.enums.TestState
-import java.time.LocalDate
+package com.example.vrades.domain.model
 
 data class Test(
     val date: String?,

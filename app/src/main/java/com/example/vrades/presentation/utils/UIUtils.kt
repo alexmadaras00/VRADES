@@ -1,4 +1,4 @@
-package com.example.vrades.utils
+package com.example.vrades.presentation.utils
 
 import android.Manifest
 import android.app.Activity

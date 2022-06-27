@@ -1,11 +1,11 @@
-package com.example.vrades.ui.adapters
+package com.example.vrades.presentation.ui.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.vrades.enums.TutorialState
-import com.example.vrades.ui.fragments.tutorial.*
+import com.example.vrades.presentation.enums.TutorialState
+import com.example.vrades.presentation.ui.fragments.tutorial.*
 
 class AdapterViewPagerTutorial(fragment: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragment,lifecycle) {
 

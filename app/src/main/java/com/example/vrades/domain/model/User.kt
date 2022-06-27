@@ -1,4 +1,7 @@
-package com.example.vrades.model
+package com.example.vrades.domain.model
+
+import com.example.vrades.domain.model.LifeHack
+import com.example.vrades.domain.model.Test
 
 data class User(
     var email: String,

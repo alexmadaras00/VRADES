@@ -1,4 +1,4 @@
-package com.example.vrades.model
+package com.example.vrades.domain.model
 
 data class LifeHack(
     val name: String,

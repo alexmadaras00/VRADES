@@ -1,4 +1,4 @@
-package com.example.vrades.ui.fragments
+package com.example.vrades.presentation.ui.fragments
 
 import android.app.Activity
 import android.app.Dialog
@@ -20,13 +20,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vrades.databinding.DialogLoadingBinding
 import com.example.vrades.databinding.FragmentMyProfileBinding
-import com.example.vrades.interfaces.IOnClickListener
-import com.example.vrades.model.Response
-import com.example.vrades.model.Test
-import com.example.vrades.ui.adapters.AdapterTestHistory
-import com.example.vrades.ui.binding.setImageUrl
-import com.example.vrades.utils.Constants.ERROR_REF
-import com.example.vrades.viewmodels.MyProfileViewModel
+import com.example.vrades.presentation.interfaces.IOnClickListener
+import com.example.vrades.domain.model.Response
+import com.example.vrades.domain.model.Test
+import com.example.vrades.presentation.ui.adapters.AdapterTestHistory
+import com.example.vrades.presentation.ui.binding.setImageUrl
+import com.example.vrades.presentation.utils.Constants.ERROR_REF
+import com.example.vrades.presentation.viewmodels.MyProfileViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -1,9 +1,10 @@
-package com.example.vrades.viewmodels
+package com.example.vrades.presentation.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.vrades.enums.TutorialState
+import com.example.vrades.presentation.enums.TutorialState
+import com.example.vrades.presentation.viewmodels.SingleLiveEvent
 
 class TutorialViewModel : ViewModel() {
     private val states = TutorialState.values()

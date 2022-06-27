@@ -1,9 +1,8 @@
-package com.example.vrades.api.camerax
+package com.example.vrades.presentation.utils.camerax
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
-import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import android.util.Log
@@ -17,9 +16,7 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
-import com.example.vrades.model.Response
-import com.example.vrades.ui.fragments.FaceDetectionFragment
-import com.example.vrades.utils.Constants
+import com.example.vrades.presentation.ui.fragments.FaceDetectionFragment
 import com.google.android.material.internal.ContextUtils.getActivity
 import java.io.File
 import java.text.SimpleDateFormat
@@ -122,8 +119,6 @@ class CameraManager(
                     override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                         val msg = "Photo capture succeeded: ${output.savedUri}"
                         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
-                        FaceDetectionFragment.getInstance()?.setFacePictureOnStorage(output.savedUri!!)
-
                     }
                 })
 
@@ -173,7 +168,6 @@ class CameraManager(
                     override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                         try {
                             val uri = output.savedUri
-                            FaceDetectionFragment().setFacePictureOnStorage(uri!!)
 
                             Log.d(TAG, "CameraView: Photo capture succeeded: ${output.savedUri}")
 

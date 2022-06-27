@@ -1,15 +1,15 @@
-package com.example.vrades.ui.fragments
+package com.example.vrades.presentation.ui.fragments
 
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.vrades.databinding.FragmentLoginBinding
-import com.example.vrades.model.Response
-import com.example.vrades.utils.Constants.ERROR_REF
-import com.example.vrades.utils.LoginValidator
-import com.example.vrades.utils.UIUtils
-import com.example.vrades.viewmodels.LoginViewModel
+import com.example.vrades.domain.model.Response
+import com.example.vrades.presentation.utils.Constants.ERROR_REF
+import com.example.vrades.presentation.utils.LoginValidator
+import com.example.vrades.presentation.utils.UIUtils
+import com.example.vrades.presentation.viewmodels.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

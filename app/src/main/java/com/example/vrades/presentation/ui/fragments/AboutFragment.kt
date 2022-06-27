@@ -1,4 +1,4 @@
-package com.example.vrades.ui.fragments
+package com.example.vrades.presentation.ui.fragments
 
 import android.os.Build
 import android.os.Bundle
@@ -7,11 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.vrades.databinding.FragmentAboutBinding
-import com.example.vrades.utils.Constants.BACKGROUND_APP
-import com.example.vrades.utils.UIUtils.loadImageUrl
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

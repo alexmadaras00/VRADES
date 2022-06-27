@@ -2,26 +2,22 @@ package com.example.vrades.di
 
 import android.app.Application
 import android.content.Context
-import com.example.vrades.api.text_detection.DetectTextRepository
-import com.example.vrades.api.text_detection.DetectTextRepositoryImpl
-import com.example.vrades.api.text_detection.TextDetectionAPI
-import com.example.vrades.domain.use_cases.profile_repository.SetDetectedPictureInStorage
-import com.example.vrades.firebase.data.repositories.VradesRepositoryImpl
-import com.example.vrades.firebase.domain.use_cases.auth_repository.*
-import com.example.vrades.firebase.domain.use_cases.profile_repository.*
-import com.example.vrades.firebase.domain.use_cases.vrades_repository.*
-import com.example.vrades.firebase.repositories.auth.AuthRepository
-import com.example.vrades.firebase.repositories.auth.AuthRepositoryImpl
-import com.example.vrades.firebase.repositories.data.ProfileRepositoryImpl
-import com.example.vrades.firebase.repositories.domain.ProfileRepository
-import com.example.vrades.firebase.repositories.domain.VradesRepository
-import com.example.vrades.utils.Constants.DATA_AUDIO_TEST_REF
-import com.example.vrades.utils.Constants.DATA_WRITING_TEST_REF
-import com.example.vrades.utils.Constants.EMOTIONS_REF
-import com.example.vrades.utils.Constants.IMAGE_REF
-import com.example.vrades.utils.Constants.LIFEHACKS_REF
-import com.example.vrades.utils.Constants.USERS_REF
-import com.example.vrades.utils.Constants.USER_NAME_REF
+import com.example.vrades.data.repositories.AuthRepositoryImpl
+import com.example.vrades.data.repositories.ProfileRepositoryImpl
+import com.example.vrades.data.repositories.VradesRepositoryImpl
+import com.example.vrades.domain.repositories.AuthRepository
+import com.example.vrades.domain.repositories.ProfileRepository
+import com.example.vrades.domain.repositories.VradesRepository
+import com.example.vrades.domain.use_cases.auth_repository.*
+import com.example.vrades.domain.use_cases.profile_repository.*
+import com.example.vrades.domain.use_cases.vrades_repository.*
+import com.example.vrades.presentation.utils.Constants.DATA_AUDIO_TEST_REF
+import com.example.vrades.presentation.utils.Constants.DATA_WRITING_TEST_REF
+import com.example.vrades.presentation.utils.Constants.EMOTIONS_REF
+import com.example.vrades.presentation.utils.Constants.IMAGE_REF
+import com.example.vrades.presentation.utils.Constants.LIFEHACKS_REF
+import com.example.vrades.presentation.utils.Constants.USERS_REF
+import com.example.vrades.presentation.utils.Constants.USER_NAME_REF
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -89,7 +85,8 @@ object AppModule {
         updateProfilePictureInRealtime = UpdateProfilePictureInRealtime(repository),
         addTestInRealtime = AddTestInRealtime(repository),
         generateAdvicesByTestResult = GenerateAdvicesByTestResult(repository),
-        setDetectedPictureInStorage = SetDetectedPictureInStorage(repository)
+        setDetectedMediaInStorage = SetDetectedMediaInStorage(repository),
+        setDetectedAudioInStorage = SetDetectedAudioInStorage(repository)
     )
 
     @Singleton
@@ -118,17 +115,6 @@ object AppModule {
         getPictureByName = GetPictureByName(repository),
         getPictures = GetPictures(repository)
     )
-    @Singleton
-    @Provides
-    fun provideDetectTextRepository(): DetectTextRepository = DetectTextRepositoryImpl()
-
-//    @Singleton
-//    @Provides
-//    fun provideTextDetectionRepository(repository: DetectTextRepository
-//    ) = TextDetectionAPI(
-//        repository
-//    )
-
 
 
 }

@@ -6,7 +6,7 @@
     app:startDestination="@id/tutorialParentFragment">
     <fragment
         android:id="@+id/tutorialParentFragment"
-        android:name="com.example.vrades.ui.fragments.tutorial.TutorialParentFragment"
+        android:name="com.example.vrades.presentation.ui.fragments.tutorial.TutorialParentFragment"
         android:label="TutorialParentFragment" >
         <action
             android:id="@+id/action_tutorialParentFragment_to_navigation_graph"

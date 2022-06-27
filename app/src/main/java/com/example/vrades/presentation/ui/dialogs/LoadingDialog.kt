@@ -1,4 +1,4 @@
-package com.example.vrades.ui.dialogs
+package com.example.vrades.presentation.ui.dialogs
 
 import android.app.AlertDialog
 import android.app.Dialog

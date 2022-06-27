@@ -1,41 +1,47 @@
-package com.example.vrades.ui.fragments
+package com.example.vrades.presentation.ui.fragments
 
 import android.Manifest
+import android.app.Dialog
 import android.content.Context
-import android.content.ContextWrapper
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaRecorder
 import android.os.Build
 import android.os.Bundle
-import android.os.Environment
+import android.speech.RecognitionListener
+import android.speech.RecognizerIntent
+import android.speech.SpeechRecognizer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResultLauncher
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.vrades.R
-import com.example.vrades.api.audio_detection.AudioDetectionAPI
-import com.example.vrades.data.api.audio_detection.WebEmpath
+import com.example.vrades.data.api.text_detection.TextDetectionAPI
+import com.example.vrades.databinding.DialogLoadingBinding
 import com.example.vrades.databinding.FragmentAudioTestBinding
-import com.example.vrades.enums.AudioState
-import com.example.vrades.interfaces.IOnTimerTickListener
-import com.example.vrades.model.Response
-import com.example.vrades.utils.Constants
-import com.example.vrades.utils.UIUtils.toast
-import com.example.vrades.viewmodels.TestViewModel
-import com.example.vrades.widgets.Timer
+import com.example.vrades.domain.model.Response
+import com.example.vrades.presentation.enums.AudioState
+import com.example.vrades.presentation.interfaces.IOnTimerTickListener
+import com.example.vrades.presentation.utils.Constants
+import com.example.vrades.presentation.utils.UIUtils.toast
+import com.example.vrades.presentation.viewmodels.TestViewModel
+import com.example.vrades.presentation.widgets.Timer
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.File
-import java.io.IOException
-import java.text.SimpleDateFormat
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.json.JSONObject
 import java.util.*
 import kotlin.properties.Delegates
-
 
 @AndroidEntryPoint
 class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
@@ -43,44 +49,109 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
     private var _binding: FragmentAudioTestBinding? = null
     private val binding get() = _binding!!
     private val viewModel: TestViewModel by activityViewModels()
-    private var mediaRecorder: MediaRecorder? = null
-    private lateinit var timer: Timer
-    private var isPermissionGranted = false
     private var stateAudio by Delegates.notNull<Int>()
     private var contextNullSafe: Context? = null
-    private lateinit var path: String
-    private lateinit var recordPath: File
-    private lateinit var recordFile: String
-
-        override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentAudioTestBinding.inflate(inflater)
-        binding.viewModelTest = viewModel
-        binding.executePendingBindings()
-        return binding.root
-    }
+    private var dialog: Dialog? = null
+    private lateinit var timer: Timer
+    private var isRecordingPermissionGranted = false
+    private var mediaRecorder: MediaRecorder? = null
+    private var dialogBinding: DialogLoadingBinding? = null
+    private lateinit var speechRecognizer: SpeechRecognizer
+    private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         contextNullSafe = context
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentAudioTestBinding.inflate(inflater)
+        binding.viewModelTest = viewModel
+        binding.executePendingBindings()
+
+        if (ContextCompat.checkSelfPermission(
+                requireActivity(),
+                Manifest.permission.RECORD_AUDIO
+            ) != PackageManager.PERMISSION_GRANTED
+            && ContextCompat.checkSelfPermission(
+                requireActivity(),
+                Manifest.permission.MODIFY_AUDIO_SETTINGS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            checkPermissions()
+        }
+
+        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(context)
+        println("SPEECH INITITALIZER: $speechRecognizer")
+
+
+        return binding.root
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onStart() {
         super.onStart()
         getDataAudioTest()
-        isPermissionGranted = ActivityCompat.checkSelfPermission(
-            requireContext(),
-            permission
-        ) == PackageManager.PERMISSION_GRANTED
         val navController = findNavController()
-
-
-        stateAudio = viewModel.getCurrentAudioState().ordinal
         timer = Timer(this)
+        speechRecognizer.setRecognitionListener(object : RecognitionListener {
+            override fun onReadyForSpeech(params: Bundle?) {
+                println("Ready")
+            }
+
+            override fun onBeginningOfSpeech() {
+                println("Start")
+
+            }
+
+            override fun onRmsChanged(rmsdB: Float) {
+                // Do nothing
+            }
+
+            override fun onBufferReceived(buffer: ByteArray?) {
+                // Do nothing
+            }
+
+            override fun onEndOfSpeech() {
+                println("Speech done")
+            }
+
+            override fun onError(error: Int) {
+                println("THE ERROR IS: $error ")
+            }
+
+            override fun onResults(results: Bundle?) {
+                val test: ArrayList<String> =
+                    results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION) as ArrayList<String>
+                println("Results")
+                println(test)
+                Log.i("TAG", "The array size is : $test");
+                lifecycleScope.launch(Dispatchers.IO) {
+                    val resultText = detectEmotionFromAudio(test[0])
+                    val emotionsMap = configJsonToMap(resultText)
+                    val finalResult = calculateMaximumValue(emotionsMap)
+                    println(resultText)
+                    lifecycleScope.launch(Dispatchers.Main) {
+                        toast(requireContext(), "Result on Audio Detection: $finalResult")
+                    }
+                    viewModel.setAudioDetectedResult(emotionsMap)
+                    dismissDialog()
+                }
+            }
+
+            override fun onPartialResults(partialResults: Bundle?) {
+
+            }
+
+            override fun onEvent(eventType: Int, params: Bundle?) {
+                TODO("Not yet implemented")
+            }
+
+        })
+        stateAudio = viewModel.getCurrentAudioState().ordinal
         binding.apply {
             val buttonRecord = fbtnVoiceRecord
             val buttonRestart = fbtnRestartRecording
@@ -89,134 +160,108 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
             val visualizer = visualizer
             buttonRecord.setOnClickListener {
                 println(stateAudio)
-                if (checkPermissions()) {
-                    when (stateAudio) {
-                        0 -> {
-                            path = startRecording()
-                            buttonRestart.isVisible = true
-                            buttonStop.isVisible = true
-                            visualizer.isVisible = true
-                            buttonRecord.isVisible = false
-                        }
-                        1 -> {
-                            pauseRecording()
-                            visualizer.isGone = true
-                            visualizer.isVisible = false
-                        }
-                        2 -> {
-                            resumeRecording()
-                            visualizer.isGone = false
-                            visualizer.isVisible = true
-                        }
+                when (stateAudio) {
+                    0 -> {
+                        println("STARTED RECORDING...")
+                        startRecording()
+                        buttonRestart.isVisible = true
+                        buttonStop.isVisible = true
+                        visualizer.isVisible = true
+                        buttonRecord.isVisible = false
                     }
+
                 }
-                buttonStop.setOnClickListener {
-                    viewModel.setAudioStateCount(2)
-                    buttonStop.isVisible = false
-                    buttonRestart.isVisible = false
-                    buttonNext.isVisible = true
-                    buttonRecord.isVisible = false
-                    visualizer.isGone = true
-                    if (stateAudio != AudioState.DONE_RECORDING.ordinal) {
-                        stopRecording()
-                        println(path)
-                    }
-//                    audioDetectionAPI.detectEmotion(path)
-                   // empathDetectionAPI.detect(path)
-                }
-                buttonRestart.setOnClickListener {
+            }
+            buttonStop.setOnClickListener {
+                viewModel.setAudioStateCount(2)
+                buttonStop.isVisible = false
+                buttonRestart.isVisible = false
+                buttonNext.isVisible = true
+                buttonRecord.isVisible = false
+                visualizer.isGone = true
+                if (stateAudio != AudioState.DONE_RECORDING.ordinal) {
                     stopRecording()
-                    path = startRecording()
-                }
-                buttonNext.setOnClickListener {
-                    navController.navigate(AudioTestFragmentDirections.actionAudioTestFragmentToWritingTestFragment())
-
                 }
             }
-        }
-    }
-
-    private fun startRecording(): String {
-        mediaRecorder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            MediaRecorder(this.requireActivity())
-        } else MediaRecorder()
-       recordPath = ContextWrapper(activity).getExternalFilesDir(Environment.DIRECTORY_MUSIC)!!
-       recordFile =
-            "Recording - " + SimpleDateFormat(
-                FILENAME_FORMAT,
-                Locale.getDefault()
-            ).format((Date())) + ".wav"
-        val file = File(recordPath, recordFile)
-
-        mediaRecorder!!.apply {
-            setAudioSource(MediaRecorder.AudioSource.MIC)
-            setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
-            setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
-            setOutputFile(file.path)
-            try {
-                prepare()
-                start()
-                toast(requireContext(), "Recording started...")
-            } catch (e: IOException) {
-                e.printStackTrace()
+            buttonRestart.setOnClickListener {
+                stopRecording()
+                startRecording()
             }
-            timer.start()
-            viewModel.setAudioStateCount(1)
-            stateAudio = AudioState.START_RECORDING.ordinal
-        }
+            buttonNext.setOnClickListener {
+                navController.navigate(AudioTestFragmentDirections.actionAudioTestFragmentToWritingTestFragment())
 
-        return "$recordPath/$recordFile"
+            }
+
+        }
+    }
+
+    private fun configJsonToMap(resultText: String): MutableMap<String, Float> {
+        val emotionsMap = mutableMapOf<String, Float>()
+        val pathJson = JSONObject(resultText).getJSONObject("sentence")
+        emotionsMap["angry"] = pathJson.getDouble("anger").toFloat()
+        emotionsMap["disgust"] = pathJson.getDouble("disgust").toFloat()
+        emotionsMap["fear"] = pathJson.getDouble("fear").toFloat()
+        emotionsMap["happy"] = pathJson.getDouble("joy").toFloat()
+        emotionsMap["neutral"] = pathJson.getDouble("noemo").toFloat()
+        emotionsMap["sad"] = pathJson.getDouble("sadness").toFloat()
+        emotionsMap["surprise"] = pathJson.getDouble("surprise").toFloat()
+        emotionsMap["love"] = pathJson.getDouble("love").toFloat()
+        return emotionsMap
+    }
+
+    private fun calculateMaximumValue(emotionsMap: Map<String, Float>): String {
+        val maxValue = emotionsMap.maxOf {
+            it.value
+        }
+        val maxValueKeys: MutableList<String> = mutableListOf()
+        var finalResult = ""
+        for ((key, value) in emotionsMap) {
+            if (value == maxValue) {
+                maxValueKeys.add(key)
+            }
+        }
+        if (maxValueKeys.size > 1)
+            maxValueKeys.indices.forEach {
+                if (it > 0)
+                    finalResult += ", $it"
+                else finalResult += it
+            }
+        else finalResult = maxValueKeys[0]
+        return finalResult
+    }
+
+    private suspend fun detectEmotionFromAudio(text: String?): String {
+        return TextDetectionAPI.detectText(text.toString())
 
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
-    private fun pauseRecording() {
-        mediaRecorder!!.pause()
-        binding.fbtnVoiceRecord.setImageResource(R.drawable.ic_baseline_keyboard_voice_24)
-        viewModel.setAudioStateCount(2)
-        stateAudio = AudioState.PAUSE_RECORDING.ordinal
-        timer.pause()
-        toast(requireContext(), "Recording paused...")
-    }
+    private fun startRecording() {
 
-    @RequiresApi(Build.VERSION_CODES.N)
-    private fun resumeRecording() {
-        mediaRecorder!!.resume()
-        binding.apply {
-            fbtnVoiceRecord.setImageResource(R.drawable.ic_baseline_pause_24)
-        }
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        intent.putExtra(
+            RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, "RO-ro"
+        )
+        intent.putExtra(
+            RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+            RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
+        )
+        intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale("ro_RO"))
+        speechRecognizer.startListening(intent)
         viewModel.setAudioStateCount(1)
         stateAudio = AudioState.START_RECORDING.ordinal
-//        audioDetectionAPI.start(this.activity)
-        timer.start()
-        toast(requireContext(), "Recording resumed...")
 
     }
 
     private fun stopRecording() {
-        mediaRecorder!!.apply {
-            stop()
-            release()
-        }
+
         viewModel.setAudioStateCount(3)
         stateAudio = AudioState.DONE_RECORDING.ordinal
-        mediaRecorder = null
-        timer.stop()
+        speechRecognizer.stopListening()
+        openDialog()
         toast(requireContext(), "Recording saved!")
     }
 
-
-    private fun checkPermissions(): Boolean {
-        return if (isPermissionGranted) {
-            true
-        } else {
-            ActivityCompat.requestPermissions(
-                requireActivity(), arrayOf(permission),
-                PERMISSION_CODE
-            )
-            false
-        }
-    }
 
     private val currentAudioStateCount = Observer<Int> {
         stateAudio = it
@@ -248,26 +293,65 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
         }
     }
 
+    private fun openDialog() {
+        dialog = Dialog(this.requireContext())
+        dialogBinding = DialogLoadingBinding.inflate(LayoutInflater.from(context), null, false)
+        dialog!!.setContentView(dialogBinding!!.root)
+        dialog!!.show()
+        val builder = MaterialAlertDialogBuilder(requireContext())
+        builder.setView(binding.root)
+    }
+
+    private fun dismissDialog() {
+        if (dialog!!.isShowing)
+            dialog!!.dismiss()
+    }
+
+    private fun checkPermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(
+                    Manifest.permission.RECORD_AUDIO,
+                    Manifest.permission.MODIFY_AUDIO_SETTINGS
+                ),
+                REQUEST_RECORD_AUDIO_PERMISSION
+            )
+        }
+
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_RECORD_AUDIO_PERMISSION && grantResults.isNotEmpty()) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                toast(requireContext(), "Permission granted!")
+            }
+        }
+    }
 
     override fun onDestroy() {
         super.onDestroy()
+        speechRecognizer.destroy()
+        if (dialog != null && dialog!!.isShowing) {
+            dismissDialog()
+        }
         _binding = null
     }
 
     companion object {
         fun newInstance() = FaceDetectionFragment()
-        private const val LOG_TAG = "AudioRecordTest"
-        private const val REQUEST_RECORD_AUDIO_PERMISSION = 200
-        private var permission = Manifest.permission.RECORD_AUDIO
-        private const val PERMISSION_CODE = 21
+        private const val REQUEST_RECORD_AUDIO_PERMISSION = 1
         private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
-        private var audioDetectionAPI = AudioDetectionAPI()
-        private var empathDetectionAPI = WebEmpath()
+
     }
 
     override fun onTimerTick(duration: String) {
         println(duration)
-
     }
 
 

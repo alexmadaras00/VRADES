@@ -1,4 +1,4 @@
-package com.example.vrades.ui.fragments
+package com.example.vrades.presentation.ui.fragments
 
 import android.app.Dialog
 import android.os.Bundle
@@ -10,10 +10,10 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.vrades.databinding.FragmentResultsBinding
-import com.example.vrades.model.Response
-import com.example.vrades.ui.binding.setImageUrl
-import com.example.vrades.utils.Constants
-import com.example.vrades.viewmodels.ResultsViewModel
+import com.example.vrades.domain.model.Response
+import com.example.vrades.presentation.ui.binding.setImageUrl
+import com.example.vrades.presentation.utils.Constants
+import com.example.vrades.presentation.viewmodels.ResultsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

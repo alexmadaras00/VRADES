@@ -8,11 +8,11 @@
         <import type="android.view.View" />
         <variable
             name="images"
-            type="com.example.vrades.utils.Constants" />
+            type="com.example.vrades.presentation.utils.Constants" />
 
         <variable
             name="viewModelTest"
-            type="com.example.vrades.viewmodels.TestViewModel" />
+            type="com.example.vrades.presentation.viewmodels.TestViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         backgroundImageUrl="@{images.BACKGROUND_TEST}"
-        tools:context=".ui.fragments.WritingTestFragment">
+        tools:context=".presentation.ui.fragments.WritingTestFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline7"
@@ -49,7 +49,7 @@
                 android:padding="5dp"
                 android:text="@string/next"
                 android:onClick="@{()->viewModelTest.onNavigateToDetailsScreenClicked()}"
-                android:visibility="invisible"
+                android:visibility="gone"
                 app:cornerRadius="10dp"
                 app:icon="@drawable/ic_baseline_play_arrow_24"
                 app:layout_constraintEnd_toStartOf="@+id/guideline6"
@@ -66,7 +66,7 @@
                 android:enabled="true"
                 android:padding="5dp"
                 android:text="@string/restart"
-                android:visibility="invisible"
+                android:visibility="gone"
                 app:cornerRadius="10dp"
                 app:icon="@drawable/ic_baseline_refresh_24"
                 app:layout_constraintStart_toStartOf="@+id/etWritingInputLayout"
@@ -140,7 +140,7 @@
             android:text="@string/_70_words"
             android:textColor="@color/background"
             android:textSize="16sp"
-            android:visibility="invisible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/etWritingInputLayout"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
             app:layout_constraintHeight_percent="0.03"
@@ -152,7 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:contentDescription="@string/done"
-            android:visibility="invisible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/tvCheckedWords2"
             app:layout_constraintEnd_toStartOf="@+id/tvCheckedWords2"
             app:layout_constraintTop_toTopOf="@+id/tvCheckedWords2"

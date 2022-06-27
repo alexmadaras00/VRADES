@@ -1,4 +1,4 @@
-package com.example.vrades.firebase.domain.use_cases.vrades_repository
+package com.example.vrades.domain.use_cases.vrades_repository
 
 data class VradesUseCases(
     val getEmotions: GetEmotions,

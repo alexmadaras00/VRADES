@@ -1,15 +1,14 @@
-package com.example.vrades.ui.fragments.tutorial
+package com.example.vrades.presentation.ui.fragments.tutorial
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vrades.R
 import com.example.vrades.databinding.FragmentTutorialPersonalQuestionsBinding
-import com.example.vrades.ui.adapters.AdapterQuestions
-import com.example.vrades.viewmodels.TutorialViewModel
+import com.example.vrades.presentation.ui.adapters.AdapterQuestions
+import com.example.vrades.presentation.viewmodels.TutorialViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

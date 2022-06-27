@@ -8,11 +8,11 @@
         <import type="android.view.View" />
         <variable
             name="images"
-            type="com.example.vrades.utils.Constants" />
+            type="com.example.vrades.presentation.utils.Constants" />
 
         <variable
             name="viewModel"
-            type="com.example.vrades.viewmodels.SettingsViewModel" />
+            type="com.example.vrades.presentation.viewmodels.SettingsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,7 +22,7 @@
         backgroundImageUrl="@{images.BACKGROUND_APP}"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
-        tools:context=".ui.fragments.SettingsFragment">
+        tools:context=".presentation.ui.fragments.SettingsFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdlMiddleSettings"

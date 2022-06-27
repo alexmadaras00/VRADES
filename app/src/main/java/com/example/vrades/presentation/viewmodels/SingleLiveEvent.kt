@@ -1,4 +1,4 @@
-package com.example.vrades.viewmodels
+package com.example.vrades.presentation.viewmodels
 
 import android.util.Log
 import androidx.annotation.MainThread

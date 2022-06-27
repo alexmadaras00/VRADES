@@ -1,12 +1,13 @@
-package com.example.vrades.firebase.repositories.auth
+package com.example.vrades.data.repositories
 
-import com.example.vrades.model.Response
-import com.example.vrades.model.Response.Loading
-import com.example.vrades.model.User
-import com.example.vrades.utils.Constants.DEFAULT_PROFILE_PICTURE
-import com.example.vrades.utils.Constants.ERROR_REF
-import com.example.vrades.utils.Constants.USERS_REF
-import com.example.vrades.utils.Constants.USER_NAME_REF
+import com.example.vrades.domain.repositories.AuthRepository
+import com.example.vrades.domain.model.Response
+import com.example.vrades.domain.model.Response.Loading
+import com.example.vrades.domain.model.User
+import com.example.vrades.presentation.utils.Constants.DEFAULT_PROFILE_PICTURE
+import com.example.vrades.presentation.utils.Constants.ERROR_REF
+import com.example.vrades.presentation.utils.Constants.USERS_REF
+import com.example.vrades.presentation.utils.Constants.USER_NAME_REF
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.userProfileChangeRequest

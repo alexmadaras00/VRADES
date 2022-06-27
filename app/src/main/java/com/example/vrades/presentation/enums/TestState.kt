@@ -1,4 +1,4 @@
-package com.example.vrades.enums
+package com.example.vrades.presentation.enums
 
 enum class TestState(val position: Int) {
     TEST_STARTED(0),

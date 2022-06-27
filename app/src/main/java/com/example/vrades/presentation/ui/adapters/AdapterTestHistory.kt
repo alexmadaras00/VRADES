@@ -1,4 +1,4 @@
-package com.example.vrades.ui.adapters
+package com.example.vrades.presentation.ui.adapters
 
 import android.annotation.SuppressLint
 import android.os.Build
@@ -8,9 +8,9 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vrades.R
 import com.example.vrades.databinding.ItemTestBinding
-import com.example.vrades.enums.TestState
-import com.example.vrades.interfaces.IOnClickListener
-import com.example.vrades.model.Test
+import com.example.vrades.presentation.enums.TestState
+import com.example.vrades.presentation.interfaces.IOnClickListener
+import com.example.vrades.domain.model.Test
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -64,7 +64,7 @@ class AdapterTestHistory(private val onClickListener: IOnClickListener) : Recycl
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun onBindViewHolder(holder: AdapterTestHistory.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(test[position])
         holder.itemView.setOnClickListener{
             onClickListener.onItemClick(position)

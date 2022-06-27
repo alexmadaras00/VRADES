@@ -1,4 +1,4 @@
-package com.example.vrades.ui.fragments
+package com.example.vrades.presentation.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.vrades.databinding.FragmentForgotPasswordBinding
-import com.example.vrades.model.Response
-import com.example.vrades.utils.Constants
-import com.example.vrades.utils.LoginValidator
-import com.example.vrades.utils.UIUtils
-import com.example.vrades.utils.UIUtils.toast
-import com.example.vrades.viewmodels.LoginViewModel
+import com.example.vrades.domain.model.Response
+import com.example.vrades.presentation.utils.Constants
+import com.example.vrades.presentation.utils.LoginValidator
+import com.example.vrades.presentation.utils.UIUtils
+import com.example.vrades.presentation.utils.UIUtils.toast
+import com.example.vrades.presentation.viewmodels.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

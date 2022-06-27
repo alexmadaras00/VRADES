@@ -1,4 +1,4 @@
-package com.example.vrades.firebase.domain.use_cases.auth_repository
+package com.example.vrades.domain.use_cases.auth_repository
 
 data class AuthUseCases(
     val resetPassword: ResetPassword,

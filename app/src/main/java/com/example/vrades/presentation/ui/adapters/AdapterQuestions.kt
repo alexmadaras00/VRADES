@@ -1,10 +1,10 @@
-package com.example.vrades.ui.adapters
+package com.example.vrades.presentation.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vrades.databinding.ItemQuestionBinding
-import com.example.vrades.model.Question
+import com.example.vrades.domain.model.Question
 
 class AdapterQuestions() : RecyclerView.Adapter<AdapterQuestions.ViewHolder>() {
 
@@ -29,7 +29,7 @@ class AdapterQuestions() : RecyclerView.Adapter<AdapterQuestions.ViewHolder>() {
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: AdapterQuestions.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(questions[position])
     }
 

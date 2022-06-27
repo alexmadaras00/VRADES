@@ -8,11 +8,11 @@
         <import type="android.view.View" />
         <variable
             name="images"
-            type="com.example.vrades.utils.Constants" />
+            type="com.example.vrades.presentation.utils.Constants" />
 
         <variable
             name="item"
-            type="com.example.vrades.model.Question" />
+            type="com.example.vrades.domain.model.Question" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

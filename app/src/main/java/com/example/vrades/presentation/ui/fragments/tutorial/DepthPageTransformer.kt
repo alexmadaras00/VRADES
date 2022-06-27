@@ -1,4 +1,4 @@
-package com.example.vrades.ui.fragments.tutorial
+package com.example.vrades.presentation.ui.fragments.tutorial
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2

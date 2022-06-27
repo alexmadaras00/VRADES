@@ -8,11 +8,11 @@
         <import type="android.view.View" />
         <variable
             name="images"
-            type="com.example.vrades.utils.Constants" />
+            type="com.example.vrades.presentation.utils.Constants" />
 
         <variable
             name="viewModel"
-            type="com.example.vrades.viewmodels.MainViewModel" />
+            type="com.example.vrades.presentation.viewmodels.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +21,7 @@
         android:layout_height="match_parent"
         backgroundImageUrl="@{images.BACKGROUND_APP}"
         android:tag="layout/fragment_home"
-        tools:context=".ui.fragments.HomeFragment">
+        tools:context=".presentation.ui.fragments.HomeFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdGuideline5"
