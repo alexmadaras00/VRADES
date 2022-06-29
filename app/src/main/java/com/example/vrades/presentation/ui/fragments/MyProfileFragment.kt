@@ -61,20 +61,16 @@ class MyProfileFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onStart() {
         super.onStart()
-
         binding.apply {
-
             val buttonBack = btnBackProfile
             val buttonEdit = fbtnEditProfilePicture
             val navController = findNavController()
-
             buttonEdit.setOnClickListener{
                 openGallery()
             }
             buttonBack.setOnClickListener {
                 navController.navigate(MyProfileFragmentDirections.actionNavProfileToNavHome())
             }
-
         }
     }
 
@@ -92,7 +88,6 @@ class MyProfileFragment : Fragment() {
                         setImageUrl(imageViewProfile, user.image)
                         textViewName.text = user.username
                         configureRecyclerView(user.tests!!)
-
                         if (user.advices!!.isNotEmpty()) {
                             buttonAnalysis.visibility = View.VISIBLE
                             buttonFirstTest.visibility = View.GONE

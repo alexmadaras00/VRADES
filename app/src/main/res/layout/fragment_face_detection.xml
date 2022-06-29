@@ -119,32 +119,10 @@
         </androidx.cardview.widget.CardView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fbtnGallery"
-            style="@style/FloatingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="52dp"
-            android:background="@color/menu_button"
-            android:clickable="true"
-            android:contentDescription="@string/camera"
-            android:focusable="true"
-            android:foregroundGravity="center"
-            app:backgroundTint="@color/menu_button"
-            app:layout_constraintBottom_toBottomOf="@+id/fbtnCamera"
-            app:layout_constraintEnd_toEndOf="@+id/cvCameraPreviewLayout"
-            app:layout_constraintStart_toStartOf="@+id/gdlMiddleTutorial3"
-            app:layout_constraintTop_toBottomOf="@+id/cvCameraPreviewLayout"
-            app:srcCompat="@drawable/ic_baseline_collections_24"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fbtnCamera"
                 style="@style/FloatingButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
                 android:background="@color/menu_button"
                 android:clickable="true"
                 android:contentDescription="@string/camera"
@@ -153,10 +131,12 @@
                 app:backgroundTint="@color/menu_button"
                 app:fabSize="normal"
                 app:layout_constraintEnd_toStartOf="@+id/gdlMiddleTutorial3"
-                app:layout_constraintStart_toStartOf="@+id/cvCameraPreviewLayout"
+                app:layout_constraintStart_toStartOf="@+id/gdlMiddleTutorial3"
                 app:layout_constraintTop_toBottomOf="@+id/cvCameraPreviewLayout"
                 app:srcCompat="@drawable/ic_baseline_photo_camera_24_outline"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                app:layout_constraintHorizontal_bias="0.517"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         <ImageView
                 android:id="@+id/ivLogoFaceDetection"

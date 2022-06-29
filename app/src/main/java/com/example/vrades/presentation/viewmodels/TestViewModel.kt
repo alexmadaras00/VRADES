@@ -1,21 +1,24 @@
 package com.example.vrades.presentation.viewmodels
 
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
-import android.speech.RecognizerIntent
 import android.speech.tts.TextToSpeech
 import androidx.activity.result.ActivityResultLauncher
 import androidx.lifecycle.*
+import com.example.vrades.R
 import com.example.vrades.domain.model.Test
 import com.example.vrades.domain.use_cases.profile_repository.ProfileUseCases
 import com.example.vrades.domain.use_cases.vrades_repository.VradesUseCases
 import com.example.vrades.presentation.enums.AudioState
 import com.example.vrades.presentation.enums.TestState
 import com.example.vrades.presentation.enums.WritingState
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -23,12 +26,17 @@ class TestViewModel @Inject constructor(
     private val useCasesProfile: ProfileUseCases,
     private val useCasesVrades: VradesUseCases,
 ) : ViewModel() {
-    private var faceDetectionResult = mapOf<String, Float>()
-    private var audioDetectionResult = mapOf<String, Float>()
-    private var digitalWritingDetectionResult = mapOf<String, Float>()
-    private var averageDetectionResult = mapOf<String, Float>()
+    private var faceDetectionResult = mutableMapOf<String, Float>()
+    private var audioDetectionResult = mutableMapOf<String, Float>()
+    private var digitalWritingDetectionResult = mutableMapOf<String, Float>()
+    private var averageDetectionResult = mutableMapOf<String, Float>()
     private lateinit var startForResult: ActivityResultLauncher<Intent>
-    private lateinit var textToSpeechEngine: TextToSpeech
+    private var chartData = ArrayList<PieEntry>()
+    private val colors = ArrayList<Int>()
+    private val state = MutableLiveData<TestState>()
+    private val label = "Percentage of Emotions"
+    private lateinit var pieDataSet: PieDataSet
+    private lateinit var pieData: PieData
 
     private val states = TestState.values()
     private val audioStates = AudioState.values()
@@ -55,7 +63,7 @@ class TestViewModel @Inject constructor(
         get() = _onNavigateToDetails
 
     fun initial(
-       launcher: ActivityResultLauncher<Intent>
+        launcher: ActivityResultLauncher<Intent>
     ) = viewModelScope.launch {
         startForResult = launcher
     }
@@ -111,8 +119,6 @@ class TestViewModel @Inject constructor(
     fun getFinalDetectionResult(): String {
         var max = 0.0f
         var result = ""
-        averageDetectionResult =
-            faceDetectionResult + audioDetectionResult + digitalWritingDetectionResult
         println(averageDetectionResult)
         averageDetectionResult.forEach {
             if (it.value > max)
@@ -130,11 +136,20 @@ class TestViewModel @Inject constructor(
         return result
     }
 
-    fun getPercentageOfResults(): Map<String, Float> {
-        averageDetectionResult =
-            faceDetectionResult + audioDetectionResult + digitalWritingDetectionResult
+    fun getPercentageOfResults(): MutableMap<String, Float> {
+        println("DEBUG:")
+        for (el in audioDetectionResult.entries) {
+            println("${faceDetectionResult[el.key]} ")
+            val average:Float = if (el.key != "love") {
+                (faceDetectionResult[el.key]!! + audioDetectionResult[el.key]!! + digitalWritingDetectionResult[el.key]!!) / 3
+            } else {
+                0f
+            }
+            averageDetectionResult[el.key] = average
+        }
         return averageDetectionResult
     }
+
 
     fun setStateCount(state: Int) {
         _currentStateCount.value = state
@@ -164,6 +179,11 @@ class TestViewModel @Inject constructor(
         return _currentStateCount.value
     }
 
+    fun getFaceDetectionResults(): MutableMap<String, Float> = faceDetectionResult
+    fun getAudioDetectionResults(): MutableMap<String, Float> = audioDetectionResult
+    fun getDigitalWritingDetectionResults(): MutableMap<String, Float> =
+        digitalWritingDetectionResult
+
     fun getCurrentState(): TestState {
         return states[_currentStateCount.value!!]
     }
@@ -190,17 +210,49 @@ class TestViewModel @Inject constructor(
         _currentStateCount.value = 0
     }
 
-    fun displaySpeechRecognizer() {
-        startForResult.launch(Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
-            putExtra(
-                RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
-            )
-            putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
-            putExtra(RecognizerIntent.EXTRA_PROMPT, Locale.getDefault())
-        })
+    fun getState(): TestState? {
+        return state.value
     }
 
+    private fun configPieData() {
+        for (el in averageDetectionResult.keys)
+            if (averageDetectionResult.keys.isNotEmpty()) {
+                chartData.add(PieEntry(averageDetectionResult[el]!!.toFloat(), el))
+            }
+        colors.add(Color.parseColor("#04C3CB"))
+        colors.add(R.color.black)
+        colors.add(Color.parseColor("#FFBB86FC"))
+        colors.add(Color.parseColor("#FF6200EE"))
+        colors.add(R.color.purple_700)
+        colors.add(Color.parseColor("#FF5733"))
+        colors.add(Color.parseColor("#7982C1"))
+        colors.add(Color.parseColor("#4E5151"))
+
+        pieDataSet = PieDataSet(chartData, label)
+        pieDataSet.valueTextSize = 18f
+        pieDataSet.colors = colors
+        pieData = PieData(pieDataSet)
+        pieData.setDrawValues(true)
+        pieData.setValueTextColor(Color.parseColor("#FFFFFFFF"))
+    }
+
+
+    fun getData(): PieData {
+        configPieData()
+        return pieData
+    }
+
+    fun getMax(): String {
+        return averageDetectionResult.maxByOrNull { it.value }!!.key
+    }
+
+    fun getUser() = liveData(Dispatchers.IO) {
+
+        useCasesProfile.getUserById().collect {
+            emit(it)
+        }
+
+    }
 
 
 }

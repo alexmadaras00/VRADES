@@ -15,7 +15,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.ActivityResultLauncher
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -57,7 +56,8 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
     private var mediaRecorder: MediaRecorder? = null
     private var dialogBinding: DialogLoadingBinding? = null
     private lateinit var speechRecognizer: SpeechRecognizer
-    private lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
+    private var isSpeechStarted = false
+    private var isSpeechFinished = false
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -83,11 +83,8 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
         ) {
             checkPermissions()
         }
-
+        dialog = Dialog(this.requireContext())
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(context)
-        println("SPEECH INITITALIZER: $speechRecognizer")
-
-
         return binding.root
     }
 
@@ -98,13 +95,14 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
         val navController = findNavController()
         timer = Timer(this)
         speechRecognizer.setRecognitionListener(object : RecognitionListener {
+
             override fun onReadyForSpeech(params: Bundle?) {
                 println("Ready")
             }
 
             override fun onBeginningOfSpeech() {
                 println("Start")
-
+                isSpeechStarted = true
             }
 
             override fun onRmsChanged(rmsdB: Float) {
@@ -116,7 +114,12 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
             }
 
             override fun onEndOfSpeech() {
+                openDialog()
                 println("Speech done")
+                isSpeechFinished = true
+                if (stateAudio != AudioState.DONE_RECORDING.ordinal)
+                    stopRecording()
+
             }
 
             override fun onError(error: Int) {
@@ -124,26 +127,50 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
             }
 
             override fun onResults(results: Bundle?) {
+
                 val test: ArrayList<String> =
                     results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION) as ArrayList<String>
                 println("Results")
                 println(test)
+                println("LENGTH: ${test[0].length}")
+                viewModel.setAudioStateCount(3)
+                updateUI()
+                stateAudio = AudioState.DONE_RECORDING.ordinal
+                if (test[0].length > 100) {
+                    stopRecording()
+                }
+                if (timer.getDelay() > 59000L)
+                    stopRecording()
+                if (stateAudio != AudioState.DONE_RECORDING.ordinal)
+                    stopRecording()
                 Log.i("TAG", "The array size is : $test");
                 lifecycleScope.launch(Dispatchers.IO) {
                     val resultText = detectEmotionFromAudio(test[0])
+                    println("RESULT: $resultText")
                     val emotionsMap = configJsonToMap(resultText)
                     val finalResult = calculateMaximumValue(emotionsMap)
-                    println(resultText)
                     lifecycleScope.launch(Dispatchers.Main) {
                         toast(requireContext(), "Result on Audio Detection: $finalResult")
                     }
                     viewModel.setAudioDetectedResult(emotionsMap)
-                    dismissDialog()
+
                 }
+                dismissDialog()
             }
 
             override fun onPartialResults(partialResults: Bundle?) {
-
+                val partial =
+                    partialResults?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION) as ArrayList<String>
+                if (partial[0].length > 100) {
+                    stopRecording()
+                    onResults(partialResults)
+                }
+                if (timer.getDelay() > 30000L)
+                    stopRecording()
+                if (partial[0].isEmpty()) {
+                    toast(requireContext(), "Unclear speech. Please try again!")
+                    updateUIFail()
+                }
             }
 
             override fun onEvent(eventType: Int, params: Bundle?) {
@@ -167,20 +194,23 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
                         buttonRestart.isVisible = true
                         buttonStop.isVisible = true
                         visualizer.isVisible = true
-                        buttonRecord.isVisible = false
+                        buttonRecord.isGone = true
                     }
 
                 }
             }
             buttonStop.setOnClickListener {
+
                 viewModel.setAudioStateCount(2)
-                buttonStop.isVisible = false
-                buttonRestart.isVisible = false
-                buttonNext.isVisible = true
-                buttonRecord.isVisible = false
-                visualizer.isGone = true
                 if (stateAudio != AudioState.DONE_RECORDING.ordinal) {
-                    stopRecording()
+                    if (!isSpeechStarted) {
+                        toast(requireContext(), "No sound detected. Please start speaking!")
+                    }
+                    if (!isSpeechFinished)
+                        toast(requireContext(), "Unclear speech. Please try to get closer to the microphone!")
+                    else {
+                        stopRecording()
+                    }
                 }
             }
             buttonRestart.setOnClickListener {
@@ -189,8 +219,41 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
             }
             buttonNext.setOnClickListener {
                 navController.navigate(AudioTestFragmentDirections.actionAudioTestFragmentToWritingTestFragment())
-
             }
+        }
+
+        print("TIMER: ${timer.getDelay()}")
+        if (timer.getDelay() > 30000L)
+            stopRecording()
+
+    }
+
+    private fun updateUI() {
+        binding.apply {
+            val buttonRecord = fbtnVoiceRecord
+            val buttonRestart = fbtnRestartRecording
+            val buttonStop = fbtnStopRecording
+            val buttonNext = btnProceed
+            val visualizer = visualizer
+            buttonStop.isVisible = false
+            buttonRestart.isVisible = false
+            buttonNext.isVisible = true
+            buttonRecord.isVisible = false
+            visualizer.isGone = true
+        }
+    }
+
+    private fun updateUIFail() {
+        viewModel.setAudioStateCount(0)
+        binding.apply {
+            val buttonRecord = fbtnVoiceRecord
+            val buttonRestart = fbtnRestartRecording
+            val buttonStop = fbtnStopRecording
+            val visualizer = visualizer
+            buttonRestart.isGone = true
+            buttonStop.isGone = true
+            visualizer.isGone = true
+            buttonRecord.isVisible = true
 
         }
     }
@@ -236,7 +299,6 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
     }
 
     private fun startRecording() {
-
         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
         intent.putExtra(
             RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, "RO-ro"
@@ -245,9 +307,14 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
             RecognizerIntent.EXTRA_LANGUAGE_MODEL,
             RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
         )
+        intent.putExtra(
+            RecognizerIntent.EXTRA_PREFER_OFFLINE,
+            true
+        )
         intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3)
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale("ro_RO"))
         speechRecognizer.startListening(intent)
+        timer.start()
         viewModel.setAudioStateCount(1)
         stateAudio = AudioState.START_RECORDING.ordinal
 
@@ -255,13 +322,10 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
 
     private fun stopRecording() {
 
-        viewModel.setAudioStateCount(3)
-        stateAudio = AudioState.DONE_RECORDING.ordinal
         speechRecognizer.stopListening()
-        openDialog()
+        timer.stop()
         toast(requireContext(), "Recording saved!")
     }
-
 
     private val currentAudioStateCount = Observer<Int> {
         stateAudio = it
@@ -294,7 +358,7 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
     }
 
     private fun openDialog() {
-        dialog = Dialog(this.requireContext())
+
         dialogBinding = DialogLoadingBinding.inflate(LayoutInflater.from(context), null, false)
         dialog!!.setContentView(dialogBinding!!.root)
         dialog!!.show()
@@ -337,9 +401,7 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
     override fun onDestroy() {
         super.onDestroy()
         speechRecognizer.destroy()
-        if (dialog != null && dialog!!.isShowing) {
-            dismissDialog()
-        }
+        dismissDialog()
         _binding = null
     }
 
@@ -351,8 +413,12 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
     }
 
     override fun onTimerTick(duration: String) {
-        println(duration)
+        println("DURATION: $duration")
+        if (timer.getDelay() > 30000L)
+            stopRecording()
+
     }
+
 
 
 }

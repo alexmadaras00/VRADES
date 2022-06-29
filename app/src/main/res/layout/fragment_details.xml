@@ -12,7 +12,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.vrades.presentation.viewmodels.DetailsViewModel" />
+            type="com.example.vrades.presentation.viewmodels.TestViewModel" />
 
     </data>
 

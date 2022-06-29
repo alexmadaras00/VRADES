@@ -24,10 +24,6 @@ class Timer(listener: IOnTimerTickListener) {
         handler.postDelayed(runnable, delay)
     }
 
-    fun pause() {
-        handler.removeCallbacks(runnable)
-    }
-
     fun stop() {
         handler.removeCallbacks(runnable)
         duration = 0L
@@ -45,6 +41,7 @@ class Timer(listener: IOnTimerTickListener) {
             "%02d:%02d.%02d".format(minutes, seconds, millis/10)
         return formatted
     }
+    fun getDelay() = delay
 
 
 }

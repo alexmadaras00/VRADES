@@ -23,6 +23,7 @@ import com.example.vrades.databinding.FragmentWritingTestBinding
 import com.example.vrades.domain.model.Response
 import com.example.vrades.domain.model.Test
 import com.example.vrades.presentation.utils.Constants
+import com.example.vrades.presentation.utils.Constants.MINIMUM_WORDS
 import com.example.vrades.presentation.utils.UIUtils
 import com.example.vrades.presentation.utils.UIUtils.toast
 import com.example.vrades.presentation.viewmodels.TestViewModel
@@ -42,6 +43,7 @@ class WritingTestFragment : Fragment() {
     private val viewModel: TestViewModel by activityViewModels()
     private var dialog: Dialog? = null
     private var dialogBinding: DialogLoadingBinding? = null
+    private var isUserInput = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +52,7 @@ class WritingTestFragment : Fragment() {
         _binding = FragmentWritingTestBinding.inflate(inflater)
         binding.viewModelTest = viewModel
         binding.executePendingBindings()
+        dialog = Dialog(this.requireContext())
         return binding.root
     }
 
@@ -62,10 +65,13 @@ class WritingTestFragment : Fragment() {
         binding.apply {
             val buttonProceed = btnNext2
             val buttonRestart = btnRestart2
-            val editText = etWritingText
-            editText.setText("Let's go and grab some tomatoes, and bring them home. I am now heading home. Yeaaaaah!")
+            val editTextWriting = etWritingText
+            val textViewWords = tvCheckedWords2
+            val imageViewWords = ivCheckedWords2
+            editTextWriting.setText("Let's go and grab some tomatoes, and bring them home. I am now heading home. Yeaaaaah!")
             buttonProceed.setOnClickListener {
                 viewModelTest!!.setStateCount(3)
+                Thread.sleep(12)
                 openDialog()
                 lifecycleScope.launch(Dispatchers.IO) {
                     addTestToRealtime(etWritingText.text.toString())
@@ -75,6 +81,46 @@ class WritingTestFragment : Fragment() {
                 navController.navigate(WritingTestFragmentDirections.actionWritingTestFragmentToFaceDetectionFragment())
                 viewModelTest!!.setStateCount(0)
             }
+            lifecycleScope.launchWhenCreated {
+                editTextWriting.doOnTextChanged { text, _, _, _ ->
+                    val words: String =
+                        if (text.toString().split(" ").size == 1) "word" else "words"
+                    val finalString = "${text.toString().split(" ").size} $words"
+                    if (text.toString().split(" ").size >= MINIMUM_WORDS) {
+                        textViewWords.visibility = View.VISIBLE
+                        imageViewWords.visibility = View.VISIBLE
+                        textViewWords.text = finalString
+                        buttonProceed.isVisible = true
+                        buttonRestart.isVisible = true
+                        viewModelTest!!.setWritingStateCount(3)
+                    } else {
+                        viewModelTest!!.setWritingStateCount(2)
+                        buttonProceed.visibility = View.GONE
+                        buttonRestart.visibility = View.GONE
+                        textViewWords.visibility = View.GONE
+                        imageViewWords.visibility = View.GONE
+                    }
+                }
+                editTextWriting.doAfterTextChanged {
+                    val words: String = if (it.toString().split(" ").size == 1) "word" else "words"
+                    val finalString = "${it.toString().split(" ").size} $words"
+                    println("WORDS: ${it.toString().split(" ").size}")
+                    if (it.toString().split(" ").size >= MINIMUM_WORDS) {
+                        textViewWords.visibility = View.VISIBLE
+                        imageViewWords.visibility = View.VISIBLE
+                        textViewWords.text = finalString
+                        buttonProceed.isVisible = true
+                        buttonRestart.isVisible = true
+                        viewModelTest!!.setWritingStateCount(3)
+                    } else {
+                        viewModelTest!!.setWritingStateCount(2)
+                        buttonProceed.visibility = View.GONE
+                        buttonRestart.visibility = View.GONE
+                        textViewWords.visibility = View.GONE
+                        imageViewWords.visibility = View.GONE
+                    }
+                }
+            }
         }
 
     }
@@ -82,51 +128,48 @@ class WritingTestFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         binding.apply {
-            val textViewWords = tvCheckedWords2
-            val imageViewWords = ivCheckedWords2
             val editTextWriting = etWritingText
             val buttonProceed = btnNext2
             val buttonRestart = btnRestart2
-            val lengthOfText = binding.etWritingText.length()
-            if (lengthOfText >= MINIMUM_WORDS) {
-                textViewWords.visibility = View.VISIBLE
-                imageViewWords.visibility = View.VISIBLE
-                val words: String = if (lengthOfText == 1) "word" else "words"
-                val finalString = "$lengthOfText $words"
-                textViewWords.text = finalString
-                buttonProceed.isVisible = true
-                buttonRestart.isVisible = true
-                viewModelTest!!.setStateCount(3)
-                viewModelTest!!.setWritingStateCount(3)
-            }
-            editTextWriting.doOnTextChanged { text, _, _, _ ->
-                val wordsText = text.toString().split(" ")
-                val length = wordsText.size
-                val words: String = if (length == 1) "word" else "words"
-                val finalString = "$length $words"
-                if (length >= MINIMUM_WORDS) {
-                    textViewWords.visibility = View.VISIBLE
-                    imageViewWords.visibility = View.VISIBLE
-                    textViewWords.text = finalString
-                    buttonProceed.isVisible = true
-                    buttonRestart.isVisible = true
-                    viewModelTest!!.setStateCount(3)
-                    viewModelTest!!.setWritingStateCount(3)
+            val textViewWords = tvCheckedWords2
+            val imageViewWords = ivCheckedWords2
+            lifecycleScope.launchWhenCreated {
+                editTextWriting.doOnTextChanged { text, _, _, _ ->
+                    val words: String =
+                        if (text.toString().split(" ").size== 1) "word" else "words"
+                    val finalString = "${text.toString().split(" ").size} $words"
+                    if (text.toString().split(" ").size >= MINIMUM_WORDS) {
+                        textViewWords.visibility = View.VISIBLE
+                        imageViewWords.visibility = View.VISIBLE
+                        textViewWords.text = finalString
+                        buttonProceed.isVisible = true
+                        buttonRestart.isVisible = true
+                        viewModelTest!!.setWritingStateCount(3)
+                    } else {
+                        viewModelTest!!.setWritingStateCount(2)
+                        buttonProceed.visibility = View.GONE
+                        buttonRestart.visibility = View.GONE
+                        textViewWords.visibility = View.GONE
+                        imageViewWords.visibility = View.GONE
+                    }
                 }
-            }
-            editTextWriting.doAfterTextChanged {
-                val text = it.toString().split(" ")
-                val length = text.size
-                val words: String = if (length == 1) "word" else "words"
-                val finalString = "$length $words"
-                if (length >= MINIMUM_WORDS) {
-                    textViewWords.visibility = View.VISIBLE
-                    imageViewWords.visibility = View.VISIBLE
-                    textViewWords.text = finalString
-                    buttonProceed.isVisible = true
-                    buttonRestart.isVisible = true
-                    viewModelTest!!.setStateCount(3)
-                    viewModelTest!!.setWritingStateCount(3)
+                editTextWriting.doAfterTextChanged {
+                    val words: String = if (it.toString().split(" ").size == 1) "word" else "words"
+                    val finalString = "${it.toString().split(" ").size} $words"
+                    if (it.toString().split(" ").size >= MINIMUM_WORDS) {
+                        textViewWords.visibility = View.VISIBLE
+                        imageViewWords.visibility = View.VISIBLE
+                        textViewWords.text = finalString
+                        buttonProceed.isVisible = true
+                        buttonRestart.isVisible = true
+                        viewModelTest!!.setWritingStateCount(3)
+                    } else {
+                        viewModelTest!!.setWritingStateCount(2)
+                        buttonProceed.visibility = View.GONE
+                        buttonRestart.visibility = View.GONE
+                        textViewWords.visibility = View.GONE
+                        imageViewWords.visibility = View.GONE
+                    }
                 }
             }
             editTextWriting.setOnEditorActionListener(TextView.OnEditorActionListener { _, p1, _ ->
@@ -138,8 +181,14 @@ class WritingTestFragment : Fragment() {
         }
     }
 
+    private fun countWords(s: String): Int {
+        val trim = s.trim { it <= ' ' }
+        return if (trim.isEmpty()) 0 else trim.split("\\s+").toTypedArray().size
+        // separate string around spaces
+    }
     override fun onDestroy() {
         super.onDestroy()
+        dialog!!.dismiss();
         _binding = null
     }
 
@@ -162,12 +211,21 @@ class WritingTestFragment : Fragment() {
 
     private suspend fun addTestToRealtime(text: String) {
         val currentDate = LocalDate.now().toString()
+        lifecycleScope.launch(Dispatchers.Main) {
+            viewModel.setStateCount(3)
+        }
         val currentState = viewModel.getCurrentState().ordinal
         val result = TextDetectionAPI.detectText(text)
         val emotionsMap = configJsonToMap(result)
         val maxEmotion = calculateMaxEmotion(emotionsMap)
+        withContext(Dispatchers.Main) {
+            toast(requireContext(), "Writing Detection Result: $maxEmotion")
+        }
         viewModel.setDigitalWritingDetectedResult(emotionsMap)
+        displayPartialResults()
+        val percentages = viewModel.getPercentageOfResults()
         val testResults = viewModel.getFinalDetectionResult()
+        println("FINAL PERCENTAGES: $percentages")
         val test = Test(currentDate, currentState, testResults, true)
         println("test: $test")
         withContext(Dispatchers.Main) {
@@ -185,8 +243,18 @@ class WritingTestFragment : Fragment() {
                     }
                 }
             }
-            dismissDialog()
+
         }
+        dismissDialog()
+    }
+
+    private fun displayPartialResults() {
+        val faceDetectionPercentages = viewModel.getFaceDetectionResults()
+        val digitalWritingDetectionPercentages = viewModel.getDigitalWritingDetectionResults()
+        val audioPercentages = viewModel.getAudioDetectionResults()
+        println("FACE: $faceDetectionPercentages")
+        println("AUDIO: $audioPercentages")
+        println("WRITING: $digitalWritingDetectionPercentages")
     }
 
     private fun calculateMaxEmotion(emotionsMap: MutableMap<String, Float>): String {
@@ -249,7 +317,6 @@ class WritingTestFragment : Fragment() {
     }
 
     private fun openDialog() {
-        dialog = Dialog(this.requireContext())
         dialogBinding = DialogLoadingBinding.inflate(LayoutInflater.from(context), null, false)
         dialog!!.setContentView(dialogBinding!!.root)
         dialog!!.show()
@@ -262,25 +329,7 @@ class WritingTestFragment : Fragment() {
             dialog!!.dismiss()
     }
 
-    private fun calculateWritingResult(text: String) {
-//        viewModel.getDigitalWritingDetectionResult(text).observe(viewLifecycleOwner) {
-//            when (it) {
-//                is Response.Success -> {
-//                    val data = it.data
-//                    addTestToRealtime(data.toString())
-//                }
-//                is Response.Error -> {
-//                    println(it.message)
-//                }
-//                else -> {
-//                    println(Constants.ERROR_REF)
-//                }
-//            }
-//        }
-    }
-
     companion object {
-        const val MINIMUM_WORDS = 1
         fun newInstance() = FaceDetectionFragment()
     }
 

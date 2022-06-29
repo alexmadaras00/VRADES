@@ -29,18 +29,6 @@ object UIUtils {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
     }
 
-    fun glideTo(c: Context, s: String, v: View) {
-        Glide.with(c).load(s).into(object : CustomTarget<Drawable>() {
-            override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
-                v.background = resource
-            }
-
-            override fun onLoadCleared(placeholder: Drawable?) {
-                TODO("Not yet implemented")
-            }
-        })
-    }
-
     fun loadImageUrl(context: Context, view: View, name: String) {
         Glide.with(context).load(name).into(object : CustomTarget<Drawable>() {
             override fun onResourceReady(

@@ -11,6 +11,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.vrades.databinding.FragmentTutorialWritingBinding
+import com.example.vrades.presentation.utils.Constants.MINIMUM_WORDS
 import com.example.vrades.presentation.utils.UIUtils
 import com.example.vrades.presentation.viewmodels.TutorialViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -86,7 +87,6 @@ class TutorialWritingFragment : Fragment() {
     }
 
     companion object {
-        const val MINIMUM_WORDS = 1
     }
 
 }

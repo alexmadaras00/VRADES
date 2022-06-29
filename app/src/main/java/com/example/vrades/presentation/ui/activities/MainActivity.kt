@@ -31,31 +31,29 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
     }
 
     override fun onStart() {
         super.onStart()
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         binding.apply {
             val bottomNavigationView = bnNavigationTest
             val navHostFragment = navHostFragment.getFragment<NavHostFragment>()
             val navController = navHostFragment.navController
-            navController.addOnDestinationChangedListener {
-                    navC: NavController, _: NavDestination, _: Bundle? ->
+            navController.addOnDestinationChangedListener { navC: NavController, _: NavDestination, _: Bundle? ->
                 if (navC.currentDestination!!.id != R.id.nav_face
                     && navC.currentDestination!!.id != R.id.nav_audio
                     && navC.currentDestination!!.id != R.id.nav_writing
                 ) {
                     val set = ConstraintSet()
                     set.clone(flMain)
-                    set.constrainPercentHeight(R.id.nav_host_fragment,1F)
+                    set.constrainPercentHeight(R.id.nav_host_fragment, 1F)
                     set.applyTo(flMain)
                     bnNavigationTest.visibility = View.INVISIBLE
                 } else {
                     val set = ConstraintSet()
                     set.clone(flMain)
-                    set.constrainPercentHeight(R.id.nav_host_fragment,0.92F)
+                    set.constrainPercentHeight(R.id.nav_host_fragment, 0.92F)
                     set.applyTo(flMain)
                     bottomNavigationView.visibility = View.VISIBLE
                     bottomNavigationView.menu.forEach { item ->
@@ -74,6 +72,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        val navHostFragment = binding.navHostFragment.getFragment<NavHostFragment>()
+        val currentFragment = navHostFragment.navController.currentDestination?.id
+        if (currentFragment == R.id.nav_audio || currentFragment == R.id.nav_face || currentFragment == R.id.nav_writing) {
+            return
+        }
         super.onBackPressed()
     }
 

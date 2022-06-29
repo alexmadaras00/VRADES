@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.vrades.R
 import com.example.vrades.databinding.DialogLoadingBinding
@@ -15,7 +15,7 @@ import com.example.vrades.databinding.FragmentDetailsBinding
 import com.example.vrades.domain.model.Response
 import com.example.vrades.presentation.ui.binding.setImageUrl
 import com.example.vrades.presentation.utils.Constants
-import com.example.vrades.presentation.viewmodels.DetailsViewModel
+import com.example.vrades.presentation.viewmodels.TestViewModel
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Legend
@@ -28,7 +28,7 @@ class DetailsFragment : Fragment() {
 
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: DetailsViewModel
+    private val viewModel: TestViewModel by activityViewModels()
     private var dialog: Dialog? = null
     private var dialogBinding: DialogLoadingBinding? = null
 
@@ -36,11 +36,11 @@ class DetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this)[DetailsViewModel::class.java]
         _binding = FragmentDetailsBinding.inflate(inflater)
 
         binding.viewModel = viewModel
         binding.executePendingBindings()
+        dialog = Dialog(this.requireContext())
         return binding.root
     }
 
@@ -48,22 +48,23 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         openDialog()
         getUser()
+        binding.apply{
+            val pieChart = Chart
+            val pieData = viewModel?.getData()
+            pieData?.setValueFormatter(PercentFormatter(pieChart))
+            pieChart.invalidate()
+            pieChart.data = pieData
+            initPieChart(pieChart)
+        }
 
     }
 
     override fun onStart() {
         super.onStart()
-        val pieData = viewModel.getData()
         val maxValueEmotion = viewModel.getMax()
-
         binding.apply {
-            val pieChart = Chart
             val buttonBack = btnBackDetails
             val dominantEmotion = tvFinalResultDetails2
-            pieData.setValueFormatter(PercentFormatter(pieChart))
-            pieChart.invalidate()
-            pieChart.data = pieData
-            initPieChart(pieChart)
             buttonBack.setOnClickListener {
                 findNavController().navigate(DetailsFragmentDirections.actionNavDetailsToNavProfile())
             }
@@ -74,7 +75,6 @@ class DetailsFragment : Fragment() {
     }
 
     private fun openDialog() {
-        dialog = Dialog(this.requireContext())
         dialogBinding = DialogLoadingBinding.inflate(LayoutInflater.from(context), null, false)
         dialog!!.setContentView(dialogBinding!!.root)
         dialog!!.show()
@@ -119,14 +119,10 @@ class DetailsFragment : Fragment() {
                     binding.apply {
                         val textViewName = tvNameDetails
                         val imageViewProfile = civProfilePictureDetails
-                        val textViewResult = tvFinalResultDetails2
                         val user = it.data
-                        val tests = user.tests
-                        textViewResult.text = tests?.last()?.result?.uppercase()
-                        println(tests?.last())
                         textViewName.text = user.username
                         setImageUrl(imageViewProfile, user.image)
-                        dismissDialog() // closing the dialog
+                        // closing the dialog
                     }
                 }
                 is Response.Error -> {
@@ -136,7 +132,12 @@ class DetailsFragment : Fragment() {
                     println(Constants.ERROR_REF)
                 }
             }
+
         }
+        dismissDialog()
+        val finalResult = viewModel.getFinalDetectionResult()
+        val textViewResult = binding.tvFinalResultDetails2
+        textViewResult.text = finalResult.uppercase()
     }
 
 
@@ -144,7 +145,6 @@ class DetailsFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
-
 
 
 }

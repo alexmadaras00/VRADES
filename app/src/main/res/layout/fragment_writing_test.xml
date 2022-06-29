@@ -122,9 +122,10 @@
                     backgroundImageUrl="@{images.AUDIO_BACK}"
                     android:gravity="start|top"
                     android:inputType="textMultiLine"
+                    android:minEms="30"
                     android:lines="20"
                     android:hint="@string/congrats_writing"
-                    android:maxEms="20"
+                    android:maxEms="100"
                     android:maxLength="400"
                     android:textColor="@color/black"
                     android:textSize="18sp" />

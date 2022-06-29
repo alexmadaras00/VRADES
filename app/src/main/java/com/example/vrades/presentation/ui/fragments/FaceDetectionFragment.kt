@@ -119,6 +119,7 @@ class FaceDetectionFragment : Fragment() {
         requestAllPermissions()
         val policy = ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
+        dialog = Dialog(this.requireContext())
         return binding.root
     }
 
@@ -169,7 +170,6 @@ class FaceDetectionFragment : Fragment() {
         val navController = findNavController()
         binding.apply {
             val buttonCamera = fbtnCamera
-            val buttonGallery = fbtnGallery
             val buttonNext = btnNextFace
             val buttonSwitch = binding.btnChangeCamera
             buttonCamera.setOnClickListener {
@@ -179,7 +179,6 @@ class FaceDetectionFragment : Fragment() {
                 takePhoto()
                 openDialog()
                 buttonCamera.visibility = View.GONE
-                buttonGallery.visibility = View.GONE
                 buttonNext.visibility = View.VISIBLE
                 viewModel.setStateCount(1)
             }
@@ -193,6 +192,16 @@ class FaceDetectionFragment : Fragment() {
                 navController.navigate(FaceDetectionFragmentDirections.actionFaceDetectionFragmentToAudioTestFragment())
             }
             createNewExecutor()
+        }
+    }
+
+    private fun updateUI() {
+        binding.apply {
+            val buttonCamera = fbtnCamera
+            val buttonNext = btnNextFace
+            buttonCamera.visibility = View.VISIBLE
+            buttonNext.visibility = View.GONE
+
         }
     }
 
@@ -235,29 +244,46 @@ class FaceDetectionFragment : Fragment() {
                             println("RESULTS ARRAY: $result")
                             val jsonArray = JSONArray(result)
                             if (jsonArray.length() > 0) {
-                                println("FIRST ELEMENT: ${jsonArray.getJSONObject(0)}")
                                 val emotionsMap = configJsonToMap(jsonArray)
                                 val testResult = calculateMaxValue(emotionsMap)
                                 lifecycleScope.launch(Dispatchers.Main) {
                                     toast(requireContext(), "Result on Face Detection: $testResult")
+                                    dismissDialog()
                                 }
                                 println("Values emotions: $emotionsMap")
                                 viewModel.setFaceDetectedResult(emotionsMap)
 
-                            } else restartPhoto()
+                            } else {
+                                lifecycleScope.launch(Dispatchers.Main) {
+                                    toast(
+                                        requireContext(),
+                                        "The picture is not clear enough. Please try again!"
+                                    )
+                                    dismissDialog()
+                                    updateUI()
+                                }
+                            }
                         }
 
                     }
                     is Response.Error -> {
                         println(it.message)
+                        lifecycleScope.launch(Dispatchers.Main) {
+                            toast(
+                                requireContext(),
+                                "There was an error while analyzing the picture. Please try again!"
+                            )
+                        }
+                        updateUI()
+                        dismissDialog()
                     }
                     else -> {
-                        println(Constants.ERROR_REF)
+
                     }
 
                 }
 
-                dismissDialog()
+
             }
 
     }
@@ -288,8 +314,6 @@ class FaceDetectionFragment : Fragment() {
         val jsonObject = jsonArray.getJSONObject(0)
         val testResultsMapped =
             jsonObject.getJSONObject("emotion").getJSONObject("sentiments")
-        val testResult =
-            jsonObject.getJSONObject("emotion").getString("value")
         emotionsMap["angry"] =
             roundTheNumber(BigDecimal(testResultsMapped.getDouble("angry"))).toFloat()
         emotionsMap["disgust"] = roundTheNumber(
@@ -301,21 +325,19 @@ class FaceDetectionFragment : Fragment() {
         emotionsMap["happy"] = roundTheNumber(
             testResultsMapped.getDouble("happy").toBigDecimal()
         ).toFloat()
+        emotionsMap["neutral"] = roundTheNumber(
+            testResultsMapped.getDouble("neutral").toBigDecimal()
+        ).toFloat()
         emotionsMap["sad"] = roundTheNumber(
             testResultsMapped.getDouble("sad").toBigDecimal()
         ).toFloat()
         emotionsMap["surprise"] = roundTheNumber(
             testResultsMapped.getDouble("surprise").toBigDecimal()
         ).toFloat()
-        emotionsMap["neutral"] = roundTheNumber(
-            testResultsMapped.getDouble("neutral").toBigDecimal()
-        ).toFloat()
+
         return emotionsMap
     }
 
-    private fun restartPhoto() {
-        TODO("Not yet implemented")
-    }
 
     private fun createNewExecutor() {
         cameraExecutor = Executors.newSingleThreadExecutor()
@@ -476,7 +498,6 @@ class FaceDetectionFragment : Fragment() {
     }
 
     private fun openDialog() {
-        dialog = Dialog(this.requireContext())
         dialogBinding = DialogLoadingBinding.inflate(LayoutInflater.from(context), null, false)
         dialog!!.setContentView(dialogBinding!!.root)
         dialog!!.show()

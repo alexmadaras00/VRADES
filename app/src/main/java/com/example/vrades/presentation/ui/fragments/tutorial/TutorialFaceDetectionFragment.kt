@@ -98,16 +98,6 @@ class TutorialFaceDetectionFragment : VradesBaseFragment() {
         );
         imageViewArrow.startAnimation(animUpDown);
     }
-    @RequiresApi(Build.VERSION_CODES.M)
-    private fun animateFlash() {
-        binding.root.postDelayed({
-            binding.root.foreground = ColorDrawable(Color.WHITE)
-            binding.root.postDelayed({
-                binding.root.foreground = null
-            }, 50)
-        }, 100)
-    }
-
 
     private fun getOutputDirectory(): File {
         val mediaDir = activity?.externalMediaDirs?.firstOrNull()?.let {
@@ -122,7 +112,6 @@ class TutorialFaceDetectionFragment : VradesBaseFragment() {
 
     companion object {
         fun newInstance() = FaceDetectionFragment()
-        private const val TAG = "CameraXApp"
         private val REQUIRED_PERMISSIONS =
             mutableListOf(
                 Manifest.permission.CAMERA,
