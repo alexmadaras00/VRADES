@@ -86,7 +86,8 @@ object AppModule {
         addTestInRealtime = AddTestInRealtime(repository),
         generateAdvicesByTestResult = GenerateAdvicesByTestResult(repository),
         setDetectedMediaInStorage = SetDetectedMediaInStorage(repository),
-        setDetectedAudioInStorage = SetDetectedAudioInStorage(repository)
+        setDetectedAudioInStorage = SetDetectedAudioInStorage(repository),
+        getTestByDate = GetTestByDate(repository)
     )
 
     @Singleton

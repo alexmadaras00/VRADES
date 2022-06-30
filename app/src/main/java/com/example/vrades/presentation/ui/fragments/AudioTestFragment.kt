@@ -136,7 +136,7 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
                 viewModel.setAudioStateCount(3)
                 updateUI()
                 stateAudio = AudioState.DONE_RECORDING.ordinal
-                if (test[0].length > 100) {
+                if (test[0].length > 150) {
                     stopRecording()
                 }
                 if (timer.getDelay() > 59000L)
@@ -149,13 +149,14 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
                     println("RESULT: $resultText")
                     val emotionsMap = configJsonToMap(resultText)
                     val finalResult = calculateMaximumValue(emotionsMap)
+                    dismissDialog()
                     lifecycleScope.launch(Dispatchers.Main) {
                         toast(requireContext(), "Result on Audio Detection: $finalResult")
                     }
                     viewModel.setAudioDetectedResult(emotionsMap)
 
                 }
-                dismissDialog()
+
             }
 
             override fun onPartialResults(partialResults: Bundle?) {

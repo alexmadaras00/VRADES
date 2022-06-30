@@ -4,27 +4,20 @@ object Constants {
 
     const val ERROR_REF: String = "Unexpected error!"
 
-    const val REALTIME_DATABASE = "Realtime Database"
-
-    const val APP = "CONTEXT"
-
     //References
     const val USERS_REF: String = "users"
     const val EMOTIONS_REF: String = "emotions"
     const val LIFEHACKS_REF = "lifeHacks"
-    const val LIFEHACKS_NAME_REF = "lifeHacksName"
     const val DATA_AUDIO_TEST_REF = "dataAudioTest"
     const val DATA_WRITING_TEST_REF = "dataWritingTest"
     const val IMAGE_REF = "images"
     const val USER_NAME_REF = "usersName"
 
-
     //Fields
     const val NAME = "username"
     const val EMAIL = "email"
-    const val OCCUPATION = "occupation"
-    const val AGE = "age"
     const val TESTS = "tests"
+    const val EMOTIONS_SCORE = "emotionsScore"
     const val TEST = "test"
     const val ADVICES = "advices"
     const val IS_TUTORIAL_ENABLED = "is_tutorial_enabled"
@@ -41,8 +34,10 @@ object Constants {
     // Guest Profile Pic
     const val DEFAULT_PROFILE_PICTURE =
         "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/Users%2Fguest.png?alt=media&token=73f3ffd6-2ddc-4081-b455-5f9ce0544604"
+
     //Storage Ref
     const val USERS_STORAGE_REF: String = "Users"
+
     // Images
     const val ARROW_TUTORIAL =
         "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/arrow_tutorial.png?alt=media&token=185df4e8-9a00-4e8f-9f01-1d8963a53e10"
@@ -96,6 +91,7 @@ object Constants {
         "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/tutorial_icon.png?alt=media&token=83e2569f-412a-4f2d-8d4d-9abbc84fc90c"
     const val WRITING_RESULT =
         "https://firebasestorage.googleapis.com/v0/b/vrades-d5b47.appspot.com/o/writing_result.png?alt=media&token=8533604c-d5e0-4fff-950f-f93a74bf6209"
+
     //Writing Test
-    const val MINIMUM_WORDS = 40
+    const val MINIMUM_WORDS = 20
 }

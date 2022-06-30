@@ -33,7 +33,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
-import java.time.LocalDate
+import java.time.LocalDateTime
 
 @AndroidEntryPoint
 class WritingTestFragment : Fragment() {
@@ -68,7 +68,22 @@ class WritingTestFragment : Fragment() {
             val editTextWriting = etWritingText
             val textViewWords = tvCheckedWords2
             val imageViewWords = ivCheckedWords2
-            editTextWriting.setText("Let's go and grab some tomatoes, and bring them home. I am now heading home. Yeaaaaah!")
+            editTextWriting.setText(
+                "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\n" +
+                        "\n" +
+                        "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
+            )
+            if (editTextWriting.text?.split(" ")?.size!! >= MINIMUM_WORDS &&
+                editTextWriting.text.toString().length <= 149
+            ) {
+                val finalString = "${editTextWriting.text?.split(" ")?.size!!} words"
+                textViewWords.visibility = View.VISIBLE
+                imageViewWords.visibility = View.VISIBLE
+                textViewWords.text = finalString
+                buttonProceed.isVisible = true
+                buttonRestart.isVisible = true
+                viewModelTest!!.setWritingStateCount(3)
+            }
             buttonProceed.setOnClickListener {
                 viewModelTest!!.setStateCount(3)
                 Thread.sleep(12)
@@ -80,46 +95,6 @@ class WritingTestFragment : Fragment() {
             buttonRestart.setOnClickListener {
                 navController.navigate(WritingTestFragmentDirections.actionWritingTestFragmentToFaceDetectionFragment())
                 viewModelTest!!.setStateCount(0)
-            }
-            lifecycleScope.launchWhenCreated {
-                editTextWriting.doOnTextChanged { text, _, _, _ ->
-                    val words: String =
-                        if (text.toString().split(" ").size == 1) "word" else "words"
-                    val finalString = "${text.toString().split(" ").size} $words"
-                    if (text.toString().split(" ").size >= MINIMUM_WORDS) {
-                        textViewWords.visibility = View.VISIBLE
-                        imageViewWords.visibility = View.VISIBLE
-                        textViewWords.text = finalString
-                        buttonProceed.isVisible = true
-                        buttonRestart.isVisible = true
-                        viewModelTest!!.setWritingStateCount(3)
-                    } else {
-                        viewModelTest!!.setWritingStateCount(2)
-                        buttonProceed.visibility = View.GONE
-                        buttonRestart.visibility = View.GONE
-                        textViewWords.visibility = View.GONE
-                        imageViewWords.visibility = View.GONE
-                    }
-                }
-                editTextWriting.doAfterTextChanged {
-                    val words: String = if (it.toString().split(" ").size == 1) "word" else "words"
-                    val finalString = "${it.toString().split(" ").size} $words"
-                    println("WORDS: ${it.toString().split(" ").size}")
-                    if (it.toString().split(" ").size >= MINIMUM_WORDS) {
-                        textViewWords.visibility = View.VISIBLE
-                        imageViewWords.visibility = View.VISIBLE
-                        textViewWords.text = finalString
-                        buttonProceed.isVisible = true
-                        buttonRestart.isVisible = true
-                        viewModelTest!!.setWritingStateCount(3)
-                    } else {
-                        viewModelTest!!.setWritingStateCount(2)
-                        buttonProceed.visibility = View.GONE
-                        buttonRestart.visibility = View.GONE
-                        textViewWords.visibility = View.GONE
-                        imageViewWords.visibility = View.GONE
-                    }
-                }
             }
         }
 
@@ -135,10 +110,10 @@ class WritingTestFragment : Fragment() {
             val imageViewWords = ivCheckedWords2
             lifecycleScope.launchWhenCreated {
                 editTextWriting.doOnTextChanged { text, _, _, _ ->
-                    val words: String =
-                        if (text.toString().split(" ").size== 1) "word" else "words"
-                    val finalString = "${text.toString().split(" ").size} $words"
-                    if (text.toString().split(" ").size >= MINIMUM_WORDS) {
+                    val finalString = "${text.toString().split(" ").size} words"
+                    if (text.toString().split(" ").size >= MINIMUM_WORDS &&
+                        text.toString().length <= 149
+                    ) {
                         textViewWords.visibility = View.VISIBLE
                         imageViewWords.visibility = View.VISIBLE
                         textViewWords.text = finalString
@@ -151,12 +126,14 @@ class WritingTestFragment : Fragment() {
                         buttonRestart.visibility = View.GONE
                         textViewWords.visibility = View.GONE
                         imageViewWords.visibility = View.GONE
+                        editTextWriting.hint = ""
                     }
                 }
                 editTextWriting.doAfterTextChanged {
-                    val words: String = if (it.toString().split(" ").size == 1) "word" else "words"
-                    val finalString = "${it.toString().split(" ").size} $words"
-                    if (it.toString().split(" ").size >= MINIMUM_WORDS) {
+                    val finalString = "${it.toString().split(" ").size} words"
+                    if (it.toString()
+                            .split(" ").size >= MINIMUM_WORDS && it.toString().length <= 149
+                    ) {
                         textViewWords.visibility = View.VISIBLE
                         imageViewWords.visibility = View.VISIBLE
                         textViewWords.text = finalString
@@ -169,6 +146,7 @@ class WritingTestFragment : Fragment() {
                         buttonRestart.visibility = View.GONE
                         textViewWords.visibility = View.GONE
                         imageViewWords.visibility = View.GONE
+                        editTextWriting.hint = ""
                     }
                 }
             }
@@ -181,11 +159,6 @@ class WritingTestFragment : Fragment() {
         }
     }
 
-    private fun countWords(s: String): Int {
-        val trim = s.trim { it <= ' ' }
-        return if (trim.isEmpty()) 0 else trim.split("\\s+").toTypedArray().size
-        // separate string around spaces
-    }
     override fun onDestroy() {
         super.onDestroy()
         dialog!!.dismiss();
@@ -210,42 +183,48 @@ class WritingTestFragment : Fragment() {
     }
 
     private suspend fun addTestToRealtime(text: String) {
-        val currentDate = LocalDate.now().toString()
+        val currentDate = LocalDateTime.now().toString()
         lifecycleScope.launch(Dispatchers.Main) {
             viewModel.setStateCount(3)
         }
         val currentState = viewModel.getCurrentState().ordinal
         val result = TextDetectionAPI.detectText(text)
-        val emotionsMap = configJsonToMap(result)
-        val maxEmotion = calculateMaxEmotion(emotionsMap)
-        withContext(Dispatchers.Main) {
-            toast(requireContext(), "Writing Detection Result: $maxEmotion")
-        }
-        viewModel.setDigitalWritingDetectedResult(emotionsMap)
-        displayPartialResults()
-        val percentages = viewModel.getPercentageOfResults()
-        val testResults = viewModel.getFinalDetectionResult()
-        println("FINAL PERCENTAGES: $percentages")
-        val test = Test(currentDate, currentState, testResults, true)
-        println("test: $test")
-        withContext(Dispatchers.Main) {
-            viewModel.addTestToRealtime(test).observe(viewLifecycleOwner) {
-                when (it) {
-                    is Response.Success -> {
-                        toast(requireContext(), "Test completed!")
-                        generateAdvicesByTestResult()
-                    }
-                    is Response.Error -> {
-                        println(Constants.ERROR_REF)
-                    }
-                    else -> {
-                        println(Constants.ERROR_REF)
+        if (result == "Invalid JSON format") {
+            toast(requireContext(), "The text is not clear enough. Please try again!")
+        } else {
+            println("INPUT: $text")
+            println("RESULT WRITING: $result")
+            val emotionsMap = configJsonToMap(result)
+            val maxEmotion = calculateMaxEmotion(emotionsMap)
+            withContext(Dispatchers.Main) {
+                toast(requireContext(), "Writing Detection Result: $maxEmotion")
+            }
+            viewModel.setDigitalWritingDetectedResult(emotionsMap)
+            displayPartialResults()
+            val percentages = viewModel.getPercentageOfResults()
+            val testResults = viewModel.getFinalDetectionResult()
+            println("FINAL PERCENTAGES: $percentages")
+            val test = Test(currentDate, currentState, testResults, percentages, true)
+            println("test: $test")
+            withContext(Dispatchers.Main) {
+                viewModel.addTestToRealtime(test).observe(viewLifecycleOwner) {
+                    when (it) {
+                        is Response.Success -> {
+                            toast(requireContext(), "Test completed!")
+                            generateAdvicesByTestResult(currentDate)
+                        }
+                        is Response.Error -> {
+                            println(Constants.ERROR_REF)
+                        }
+                        else -> {
+                            println(Constants.ERROR_REF)
+                        }
                     }
                 }
-            }
 
+            }
+            dismissDialog()
         }
-        dismissDialog()
     }
 
     private fun displayPartialResults() {
@@ -293,7 +272,7 @@ class WritingTestFragment : Fragment() {
 
     }
 
-    private fun generateAdvicesByTestResult() {
+    private fun generateAdvicesByTestResult(currentDate: String) {
         viewModel.generateAdvicesByTestResult().observe(viewLifecycleOwner) {
             when (it) {
                 is Response.Success -> {
@@ -313,7 +292,8 @@ class WritingTestFragment : Fragment() {
             }
 
         }
-        findNavController().navigate(WritingTestFragmentDirections.actionNavWritingToNavDetails())
+        val actionDetails = WritingTestFragmentDirections.actionNavWritingToNavDetails(currentDate)
+        findNavController().navigate(actionDetails)
     }
 
     private fun openDialog() {

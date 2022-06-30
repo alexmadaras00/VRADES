@@ -18,4 +18,5 @@ interface ProfileRepository {
     suspend fun generateAdvicesByTestResult() : Flow<Response<Boolean>>
     suspend fun setDetectedMediaInStorage(picture: Uri): Flow<Response<String>>
     suspend fun setDetectedAudioInStorage(audio: Uri): Flow<Response<String>>
+    suspend fun getTestByDate(date: String): Flow<Response<MutableMap<String, Float>>>
 }

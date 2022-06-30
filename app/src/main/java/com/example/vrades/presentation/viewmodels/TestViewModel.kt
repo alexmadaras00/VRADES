@@ -18,6 +18,7 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -72,7 +73,10 @@ class TestViewModel @Inject constructor(
         _currentStateCount.value = TestState.TEST_STARTED.position
         _currentAudioStateCount.value = AudioState.IDLE.ordinal
         _currentWritingStateCount.value = WritingState.WRITING.ordinal
-
+        faceDetectionResult.clear()
+        audioDetectionResult.clear()
+        digitalWritingDetectionResult.clear()
+        averageDetectionResult.clear()
     }
 
     //    fun getDigitalWritingDetectionResult(text: String) = liveData(Dispatchers.IO){
@@ -91,6 +95,11 @@ class TestViewModel @Inject constructor(
             emit(it)
         }
     }
+    fun getTestByDate(date: String) = liveData(Dispatchers.IO) {
+        useCasesProfile.getTestByDate(date).collect{
+            emit(it)
+        }
+    }
 
     fun generateAdvicesByTestResult() = liveData(Dispatchers.IO) {
         useCasesProfile.generateAdvicesByTestResult().collect {
@@ -106,12 +115,6 @@ class TestViewModel @Inject constructor(
 
     fun setPictureInStorage(picture: Uri) = liveData(Dispatchers.IO) {
         useCasesProfile.setDetectedMediaInStorage(picture).collect {
-            emit(it)
-        }
-    }
-
-    fun setAudioInStorage(picture: Uri) = liveData(Dispatchers.IO) {
-        useCasesProfile.setDetectedAudioInStorage(picture).collect {
             emit(it)
         }
     }
@@ -138,6 +141,7 @@ class TestViewModel @Inject constructor(
 
     fun getPercentageOfResults(): MutableMap<String, Float> {
         println("DEBUG:")
+        averageDetectionResult.clear()
         for (el in audioDetectionResult.entries) {
             println("${faceDetectionResult[el.key]} ")
             val average:Float = if (el.key != "love") {
@@ -164,14 +168,17 @@ class TestViewModel @Inject constructor(
     }
 
     fun setFaceDetectedResult(result: MutableMap<String, Float>) {
+        faceDetectionResult.clear()
         faceDetectionResult = result
     }
 
     fun setAudioDetectedResult(result: MutableMap<String, Float>) {
+        audioDetectionResult.clear()
         audioDetectionResult = result
     }
 
     fun setDigitalWritingDetectedResult(result: MutableMap<String, Float>) {
+        digitalWritingDetectionResult.clear()
         digitalWritingDetectionResult = result
     }
 
@@ -214,10 +221,12 @@ class TestViewModel @Inject constructor(
         return state.value
     }
 
-    private fun configPieData() {
-        for (el in averageDetectionResult.keys)
-            if (averageDetectionResult.keys.isNotEmpty()) {
-                chartData.add(PieEntry(averageDetectionResult[el]!!.toFloat(), el))
+    private fun configPieData(array: MutableMap<String, Float>) {
+        println("VIEW MODEL MAP: $array")
+        chartData.clear()
+        for (el in array.keys)
+            if (array.keys.isNotEmpty()) {
+                chartData.add(PieEntry(array[el]!!.toFloat(), el))
             }
         colors.add(Color.parseColor("#04C3CB"))
         colors.add(R.color.black)
@@ -237,8 +246,8 @@ class TestViewModel @Inject constructor(
     }
 
 
-    fun getData(): PieData {
-        configPieData()
+    fun getData(array: MutableMap<String, Float>): PieData {
+        configPieData(array)
         return pieData
     }
 

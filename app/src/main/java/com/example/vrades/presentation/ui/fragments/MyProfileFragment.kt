@@ -20,9 +20,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vrades.databinding.DialogLoadingBinding
 import com.example.vrades.databinding.FragmentMyProfileBinding
-import com.example.vrades.presentation.interfaces.IOnClickListener
 import com.example.vrades.domain.model.Response
 import com.example.vrades.domain.model.Test
+import com.example.vrades.presentation.interfaces.IOnClickListener
 import com.example.vrades.presentation.ui.adapters.AdapterTestHistory
 import com.example.vrades.presentation.ui.binding.setImageUrl
 import com.example.vrades.presentation.utils.Constants.ERROR_REF
@@ -65,7 +65,7 @@ class MyProfileFragment : Fragment() {
             val buttonBack = btnBackProfile
             val buttonEdit = fbtnEditProfilePicture
             val navController = findNavController()
-            buttonEdit.setOnClickListener{
+            buttonEdit.setOnClickListener {
                 openGallery()
             }
             buttonBack.setOnClickListener {
@@ -133,7 +133,15 @@ class MyProfileFragment : Fragment() {
 
                             }
                         }
-                    } else findNavController().navigate(MyProfileFragmentDirections.actionNavProfileToNavDetails())
+
+                    } else {
+                        val actionDetails =
+                            MyProfileFragmentDirections.actionNavProfileToNavDetails(
+                                tests[position].date.toString()
+                            )
+                        findNavController().navigate(actionDetails)
+                    }
+
                 }
 
             }

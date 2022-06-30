@@ -9,6 +9,7 @@ import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.vrades.R
 import com.example.vrades.databinding.DialogLoadingBinding
 import com.example.vrades.databinding.FragmentDetailsBinding
@@ -31,13 +32,13 @@ class DetailsFragment : Fragment() {
     private val viewModel: TestViewModel by activityViewModels()
     private var dialog: Dialog? = null
     private var dialogBinding: DialogLoadingBinding? = null
+    private val args: DetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDetailsBinding.inflate(inflater)
-
         binding.viewModel = viewModel
         binding.executePendingBindings()
         dialog = Dialog(this.requireContext())
@@ -48,15 +49,32 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         openDialog()
         getUser()
-        binding.apply{
-            val pieChart = Chart
-            val pieData = viewModel?.getData()
-            pieData?.setValueFormatter(PercentFormatter(pieChart))
-            pieChart.invalidate()
-            pieChart.data = pieData
-            initPieChart(pieChart)
-        }
+        getTestResults()
+    }
 
+    private fun getTestResults() {
+        val date = args.dateTest
+        viewModel.getTestByDate(date).observe(viewLifecycleOwner) {
+            when (it) {
+                is Response.Success -> {
+                    binding.apply {
+                        println("FOUND TEST: ${it.data}")
+                        val pieChart = Chart
+                        val pieData = viewModel?.getData(it.data)
+                        pieData?.setValueFormatter(PercentFormatter(pieChart))
+                        pieChart.invalidate()
+                        pieChart.data = pieData
+                        initPieChart(pieChart)
+                    }
+                }
+                is Error -> {
+
+                }
+                else -> {
+
+                }
+            }
+        }
     }
 
     override fun onStart() {

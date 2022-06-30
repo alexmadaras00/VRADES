@@ -246,9 +246,10 @@ class FaceDetectionFragment : Fragment() {
                             if (jsonArray.length() > 0) {
                                 val emotionsMap = configJsonToMap(jsonArray)
                                 val testResult = calculateMaxValue(emotionsMap)
+                                dismissDialog()
                                 lifecycleScope.launch(Dispatchers.Main) {
                                     toast(requireContext(), "Result on Face Detection: $testResult")
-                                    dismissDialog()
+
                                 }
                                 println("Values emotions: $emotionsMap")
                                 viewModel.setFaceDetectedResult(emotionsMap)

@@ -16,6 +16,7 @@ import com.example.vrades.presentation.utils.Constants.ADVICES
 import com.example.vrades.presentation.utils.Constants.DATE
 import com.example.vrades.presentation.utils.Constants.DETAILS
 import com.example.vrades.presentation.utils.Constants.EMAIL
+import com.example.vrades.presentation.utils.Constants.EMOTIONS_SCORE
 import com.example.vrades.presentation.utils.Constants.ERROR_REF
 import com.example.vrades.presentation.utils.Constants.ICON
 import com.example.vrades.presentation.utils.Constants.IMAGE
@@ -31,6 +32,7 @@ import com.example.vrades.presentation.utils.Constants.TRIGGER_EMOTION
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ServerValue
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storageMetadata
 import kotlinx.coroutines.flow.Flow
@@ -75,13 +77,20 @@ class ProfileRepositoryImpl @Inject constructor(
                     child(TESTS).children.forEach { test ->
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                             if (test.exists()) {
+                                val emotions = mutableMapOf<String,Float>()
+                                test.child(EMOTIONS_SCORE).children.forEach {
+                                    val value = it.getValue(Float::class.java)
+                                    emotions[it.key.toString()] = value as Float
+                                }
                                 tests.add(
                                     Test(
                                         test.child(DATE).getValue(String::class.java),
                                         test.child(STATE).getValue(Int::class.java),
                                         test.child(RESULT).getValue(String::class.java)
                                             .toString(),
-                                        test.child(IS_COMPLETED).getValue(Boolean::class.java)!!
+                                        emotions,
+                                        test.child(IS_COMPLETED).getValue(Boolean::class.java)
+
                                     )
                                 )
                             }
@@ -144,7 +153,7 @@ class ProfileRepositoryImpl @Inject constructor(
                         k++
                     }
             usersRef.child(auth.currentUser!!.uid).child(TESTS).child(TEST + (k + 1).toString())
-                .setValue(test).await().also {
+                .setValue(test,ServerValue.TIMESTAMP).await().also {
                     emit(Success(true))
                 }
 
@@ -219,16 +228,54 @@ class ProfileRepositoryImpl @Inject constructor(
 
             usersRef.child(auth.currentUser!!.uid).child(TESTS).get()
                 .await().children.forEach { test ->
+                    val emotionsList = mutableMapOf<String,Float>()
+                    test.child(EMOTIONS_SCORE).children.forEach {
+                        val value = it.getValue(Float::class.java)
+                        emotionsList[it.key.toString()] = value as Float
+                    }
                     tests.add(
                         Test(
                             test.child(DATE).getValue(String::class.java),
                             test.child(STATE).getValue(Int::class.java)!!,
                             test.child(RESULT).getValue(String::class.java)!!,
+                            emotionsList,
                             test.child(IS_COMPLETED).getValue(Boolean::class.java)!!
                         )
                     )
                     emit(Success(tests))
                 }
+        } catch (e: Exception) {
+            emit(Response.Error(e.message ?: ERROR_REF))
+        }
+    }
+
+    override suspend fun getTestByDate(date: String): Flow<Response<MutableMap<String, Float>>> = flow{
+        try {
+            emit(Response.Loading)
+            val tests = mutableListOf<Test>()
+            usersRef.child(auth.currentUser!!.uid).child(TESTS).get()
+                .await().children.forEach { test ->
+                    val emotionsList = mutableMapOf<String, Float>()
+                    test.child(EMOTIONS_SCORE).children.forEach {
+                        val value = it.getValue(Float::class.java)
+                        emotionsList[it.key.toString()] = value as Float
+                    }
+                    tests.add(
+                        Test(
+                            test.child(DATE).getValue(String::class.java),
+                            test.child(STATE).getValue(Int::class.java)!!,
+                            test.child(RESULT).getValue(String::class.java)!!,
+                            emotionsList,
+                            test.child(IS_COMPLETED).getValue(Boolean::class.java)!!
+                        )
+                    )
+                }
+            tests.forEach {
+                if(it.date == date){
+                    println("FOUND TEST: $it")
+                    emit(Success(it.emotionsScore))
+                }
+            }
         } catch (e: Exception) {
             emit(Response.Error(e.message ?: ERROR_REF))
         }

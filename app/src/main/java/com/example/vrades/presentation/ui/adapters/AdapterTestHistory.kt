@@ -8,18 +8,20 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vrades.R
 import com.example.vrades.databinding.ItemTestBinding
+import com.example.vrades.domain.model.Test
 import com.example.vrades.presentation.enums.TestState
 import com.example.vrades.presentation.interfaces.IOnClickListener
-import com.example.vrades.domain.model.Test
-import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 
-class AdapterTestHistory(private val onClickListener: IOnClickListener) : RecyclerView.Adapter<AdapterTestHistory.ViewHolder>() {
+class AdapterTestHistory(private val onClickListener: IOnClickListener) :
+    RecyclerView.Adapter<AdapterTestHistory.ViewHolder>() {
     private var test = ArrayList<Test>()
 
     @SuppressLint("WeekBasedYear")
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun currentTime(time: LocalDate): String? {
+    private fun currentTime(time: LocalDateTime): String? {
         val dtf: DateTimeFormatter = DateTimeFormatter.ofPattern("DD:MM:YY")
         return dtf.format(time)
     }
@@ -29,7 +31,7 @@ class AdapterTestHistory(private val onClickListener: IOnClickListener) : Recycl
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(item: Test) {
             binding.item = item
-            binding.tvDate.text = item.date
+            binding.tvDate.text = item.date?.slice(0..9).toString()
             when (item.state) {
                 TestState.FACE_DETECTION_COMPLETED.position ->
                     binding.ivFace.setColorFilter(R.color.background)
@@ -66,7 +68,7 @@ class AdapterTestHistory(private val onClickListener: IOnClickListener) : Recycl
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(test[position])
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             onClickListener.onItemClick(position)
         }
     }

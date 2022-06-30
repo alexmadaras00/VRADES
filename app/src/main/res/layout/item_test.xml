@@ -40,26 +40,25 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvTest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/ibm_plex_sans"
-            android:text="@string/test"
-            android:textColor="@color/menu_text_color"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="@+id/gdlItemTest"
-            app:layout_constraintTop_toTopOf="parent" />
+                android:id="@+id/tvTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ibm_plex_sans"
+                android:text="@string/test"
+                android:textColor="@color/menu_text_color"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="@+id/gdlItemTest"
+                app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/ivFace"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:contentDescription="@string/face_detection"
-            app:layout_constraintEnd_toStartOf="@+id/ivAudio"
-            app:layout_constraintStart_toStartOf="@+id/tvTest"
-            app:layout_constraintTop_toBottomOf="@+id/tvDate"
-            app:srcCompat="@drawable/face_white" />
+                android:id="@+id/ivFace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/face_detection"
+                app:layout_constraintStart_toStartOf="@+id/gdlItemTest4"
+                app:layout_constraintTop_toBottomOf="@+id/tvDate"
+                app:srcCompat="@drawable/face_white" />
 
         <ImageView
             android:id="@+id/ivAudio"
@@ -93,7 +92,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintGuide_begin="76dp"
-            app:layout_constraintGuide_percent="0.25"
+            app:layout_constraintGuide_percent="0.05"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -107,6 +106,17 @@
             app:layout_constraintGuide_percent="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gdlItemTest4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_begin="76dp"
+                app:layout_constraintGuide_percent="0.25"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdlItemTest3"
