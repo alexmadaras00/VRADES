@@ -151,7 +151,6 @@
                 backgroundImageUrl="@{images.AUDIO_BACK}"
                 android:fontFamily="@font/ibm_plex_sans_bold"
                 android:gravity="top|start"
-                android:hint="@string/congrats_writing"
                 android:inputType="text"
                 android:maxEms="20"
                 android:maxLength="400"

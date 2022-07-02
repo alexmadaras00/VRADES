@@ -3,9 +3,11 @@ package com.example.vrades.di
 import android.app.Application
 import android.content.Context
 import com.example.vrades.data.repositories.AuthRepositoryImpl
+import com.example.vrades.data.repositories.PreferencesRepositoryImpl
 import com.example.vrades.data.repositories.ProfileRepositoryImpl
 import com.example.vrades.data.repositories.VradesRepositoryImpl
 import com.example.vrades.domain.repositories.AuthRepository
+import com.example.vrades.domain.repositories.PreferencesRepository
 import com.example.vrades.domain.repositories.ProfileRepository
 import com.example.vrades.domain.repositories.VradesRepository
 import com.example.vrades.domain.use_cases.auth_repository.*
@@ -55,7 +57,6 @@ object AppModule {
         addRealtimeUser = AddRealtimeUser(repository),
         getAuthState = GetAuthState(repository),
         getUserProfile = GetUserProfile(repository),
-        signInWithGoogle = SignInWithGoogle(repository),
         logOut = LogOut(repository),
         resetPassword = ResetPassword(repository),
         signInWithEmailAndPassword = SignInWithEmailAndPassword(repository),
@@ -116,6 +117,11 @@ object AppModule {
         getPictureByName = GetPictureByName(repository),
         getPictures = GetPictures(repository)
     )
+
+    @Singleton
+    @Provides
+    fun providePreferencesRepository(context: Context): PreferencesRepository =
+        PreferencesRepositoryImpl(context)
 
 
 }

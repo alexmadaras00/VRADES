@@ -96,7 +96,8 @@ class MyProfileFragment : Fragment() {
                             buttonAnalysis.visibility = View.GONE
                         }
                         buttonAnalysis.setOnClickListener {
-                            findNavController().navigate(MyProfileFragmentDirections.actionNavProfileToNavDialog())
+                            extractPreferences()
+
                         }
                         buttonFirstTest.setOnClickListener {
                             findNavController().navigate(MyProfileFragmentDirections.actionNavProfileToNavFace())
@@ -111,6 +112,18 @@ class MyProfileFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun extractPreferences() {
+        viewModel.extractPreferences().observe(viewLifecycleOwner) {
+            if (it!!.displaySuggestions == "OFF") {
+                findNavController().navigate(MyProfileFragmentDirections.actionNavProfileToNavDialog())
+            } else {
+                findNavController().navigate(MyProfileFragmentDirections.actionNavProfileToNavSolutions())
+            }
+            println(it)
+        }
+
     }
 
     private fun configureRecyclerView(tests: List<Test>) {

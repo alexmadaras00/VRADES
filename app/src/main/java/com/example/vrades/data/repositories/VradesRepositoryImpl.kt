@@ -1,8 +1,8 @@
 package com.example.vrades.data.repositories
 
-import com.example.vrades.domain.repositories.VradesRepository
 import com.example.vrades.domain.model.LifeHack
 import com.example.vrades.domain.model.Response
+import com.example.vrades.domain.repositories.VradesRepository
 import com.example.vrades.presentation.utils.Constants
 import com.example.vrades.presentation.utils.Constants.DETAILS
 import com.example.vrades.presentation.utils.Constants.IMAGE
@@ -25,7 +25,7 @@ class VradesRepositoryImpl @Inject constructor(
     override suspend fun getEmotions(): Flow<Response<Map<String, String>>> = flow {
         try {
             emit(Response.Loading)
-            val emotions = mutableMapOf<String,String>()
+            val emotions = mutableMapOf<String, String>()
             emotionsRef.get().await().children.forEach {
                 emotions[it.key.toString()] = it.getValue(String::class.java).toString()
             }

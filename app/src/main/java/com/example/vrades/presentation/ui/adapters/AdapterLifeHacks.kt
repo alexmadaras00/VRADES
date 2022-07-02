@@ -36,7 +36,7 @@ class AdapterLifeHacks() : RecyclerView.Adapter<AdapterLifeHacks.ViewHolder>() {
             lifeHacks.addAll(items)
             notifyDataSetChanged()
         }
-       
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

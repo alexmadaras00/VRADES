@@ -7,7 +7,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.vrades.presentation.enums.TutorialState
 import com.example.vrades.presentation.ui.fragments.tutorial.*
 
-class AdapterViewPagerTutorial(fragment: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragment,lifecycle) {
+class AdapterViewPagerTutorial(fragment: FragmentManager, lifecycle: Lifecycle) :
+    FragmentStateAdapter(fragment, lifecycle) {
 
     private val tutorialHomeFragment = TutorialHomeFragment()
     private val tutorialFaceDetectionFragment = TutorialFaceDetectionFragment()

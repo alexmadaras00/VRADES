@@ -65,6 +65,17 @@ class DetailsFragment : Fragment() {
                         pieChart.invalidate()
                         pieChart.data = pieData
                         initPieChart(pieChart)
+                        var finalResult = ""
+                        val maxValue = it.data.maxOf { result ->
+                            result.value
+                        }
+                        it.data.forEach { item ->
+                            if (item.value == maxValue) {
+                                finalResult = item.key
+                            }
+                        }
+                        val textViewResult = binding.tvFinalResultDetails2
+                        textViewResult.text = finalResult.uppercase()
                     }
                 }
                 is Error -> {
@@ -79,14 +90,13 @@ class DetailsFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        val maxValueEmotion = viewModel.getMax()
+
         binding.apply {
             val buttonBack = btnBackDetails
-            val dominantEmotion = tvFinalResultDetails2
             buttonBack.setOnClickListener {
                 findNavController().navigate(DetailsFragmentDirections.actionNavDetailsToNavProfile())
             }
-            dominantEmotion.text = maxValueEmotion
+
         }
         onHandleBackButton()
 
@@ -140,6 +150,7 @@ class DetailsFragment : Fragment() {
                         val user = it.data
                         textViewName.text = user.username
                         setImageUrl(imageViewProfile, user.image)
+
                         // closing the dialog
                     }
                 }
@@ -153,9 +164,7 @@ class DetailsFragment : Fragment() {
 
         }
         dismissDialog()
-        val finalResult = viewModel.getFinalDetectionResult()
-        val textViewResult = binding.tvFinalResultDetails2
-        textViewResult.text = finalResult.uppercase()
+
     }
 
 

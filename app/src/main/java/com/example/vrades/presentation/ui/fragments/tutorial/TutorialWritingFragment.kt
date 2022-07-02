@@ -54,7 +54,15 @@ class TutorialWritingFragment : Fragment() {
                     buttonNext.isEnabled = true
                     textViewCongrats.visibility = View.VISIBLE
                     textViewDone.visibility = View.VISIBLE
-                    textViewInfo.visibility = View.INVISIBLE
+                    textViewInfo.visibility = View.GONE
+                }
+                else {
+                    textViewWords.visibility = View.GONE
+                    imageViewWords.visibility = View.GONE
+                    textViewCongrats.visibility = View.GONE
+                    textViewDone.visibility = View.GONE
+                    buttonNext.isEnabled = false
+
                 }
             }
             editTextWriting.doAfterTextChanged {
@@ -69,7 +77,14 @@ class TutorialWritingFragment : Fragment() {
                     buttonNext.isEnabled = true
                     textViewCongrats.visibility = View.VISIBLE
                     textViewDone.visibility = View.VISIBLE
-                    textViewInfo.visibility = View.INVISIBLE
+                    textViewInfo.visibility = View.GONE
+                } else {
+                    textViewWords.visibility = View.GONE
+                    imageViewWords.visibility = View.GONE
+                    textViewCongrats.visibility = View.GONE
+                    textViewDone.visibility = View.GONE
+                    buttonNext.isEnabled = false
+
                 }
             }
             editTextWriting.setOnEditorActionListener(TextView.OnEditorActionListener { _, p1, _ ->

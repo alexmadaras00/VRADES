@@ -52,6 +52,9 @@
         <action
                 android:id="@+id/action_nav_login_to_nav_forgot"
                 app:destination="@id/nav_forgot" />
+        <action
+                android:id="@+id/action_nav_login_to_nav_tutorial"
+                app:destination="@id/nav_tutorial" />
     </fragment>
     <fragment
             android:id="@+id/nav_register"

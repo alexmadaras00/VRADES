@@ -17,7 +17,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.example.vrades.data.api.text_detection.TextDetectionAPI
+import com.example.vrades.R
+import com.example.vrades.data.api.detections.TextDetectionAPI
 import com.example.vrades.databinding.DialogLoadingBinding
 import com.example.vrades.databinding.FragmentWritingTestBinding
 import com.example.vrades.domain.model.Response
@@ -126,7 +127,6 @@ class WritingTestFragment : Fragment() {
                         buttonRestart.visibility = View.GONE
                         textViewWords.visibility = View.GONE
                         imageViewWords.visibility = View.GONE
-                        editTextWriting.hint = ""
                     }
                 }
                 editTextWriting.doAfterTextChanged {
@@ -139,6 +139,7 @@ class WritingTestFragment : Fragment() {
                         textViewWords.text = finalString
                         buttonProceed.isVisible = true
                         buttonRestart.isVisible = true
+                        editTextWriting.hint = getString(R.string.congrats_writing)
                         viewModelTest!!.setWritingStateCount(3)
                     } else {
                         viewModelTest!!.setWritingStateCount(2)

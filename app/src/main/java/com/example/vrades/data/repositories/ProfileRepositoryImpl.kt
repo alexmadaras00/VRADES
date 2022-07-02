@@ -102,7 +102,6 @@ class ProfileRepositoryImpl @Inject constructor(
                             child(EMAIL).getValue(String::class.java).toString(),
                             child(NAME).getValue(String::class.java).toString(),
                             child(IMAGE).getValue(String::class.java).toString(),
-                            child(IS_TUTORIAL_ENABLED).getValue(Boolean::class.java),
                             lifeHacks,
                             tests
                         )
@@ -152,8 +151,8 @@ class ProfileRepositoryImpl @Inject constructor(
                     .await().children.forEach { _ ->
                         k++
                     }
-            usersRef.child(auth.currentUser!!.uid).child(TESTS).child(TEST + (k + 1).toString())
-                .setValue(test,ServerValue.TIMESTAMP).await().also {
+            usersRef.child(auth.currentUser!!.uid).child(TESTS).child(TEST + (System.currentTimeMillis().toString()))
+                .setValue(test).await().also {
                     emit(Success(true))
                 }
 

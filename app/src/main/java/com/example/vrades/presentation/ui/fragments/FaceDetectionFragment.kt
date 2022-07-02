@@ -32,11 +32,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.vrades.data.api.face_detection.FaceDetectionAPI
+import com.example.vrades.data.api.detections.FaceDetectionAPI
 import com.example.vrades.databinding.DialogLoadingBinding
 import com.example.vrades.databinding.FragmentFaceDetectionBinding
 import com.example.vrades.domain.model.Response
-import com.example.vrades.presentation.utils.Constants
 import com.example.vrades.presentation.utils.UIUtils.toast
 import com.example.vrades.presentation.utils.camerax.CameraManager
 import com.example.vrades.presentation.utils.camerax.CameraManager.Companion.isReadyCamera
@@ -178,9 +177,6 @@ class FaceDetectionFragment : Fragment() {
                 }
                 takePhoto()
                 openDialog()
-                buttonCamera.visibility = View.GONE
-                buttonNext.visibility = View.VISIBLE
-                viewModel.setStateCount(1)
             }
 
             buttonSwitch.setOnClickListener {
@@ -201,7 +197,6 @@ class FaceDetectionFragment : Fragment() {
             val buttonNext = btnNextFace
             buttonCamera.visibility = View.VISIBLE
             buttonNext.visibility = View.GONE
-
         }
     }
 
@@ -226,12 +221,6 @@ class FaceDetectionFragment : Fragment() {
         }, 100)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-        shutdownExecutor()
-    }
-
     private fun setFacePictureOnStorage(picture: Uri) {
         viewModel.setPictureInStorage(picture)
             .observe(viewLifecycleOwner) {
@@ -249,7 +238,7 @@ class FaceDetectionFragment : Fragment() {
                                 dismissDialog()
                                 lifecycleScope.launch(Dispatchers.Main) {
                                     toast(requireContext(), "Result on Face Detection: $testResult")
-
+                                    updateSuccessUI()
                                 }
                                 println("Values emotions: $emotionsMap")
                                 viewModel.setFaceDetectedResult(emotionsMap)
@@ -265,7 +254,6 @@ class FaceDetectionFragment : Fragment() {
                                 }
                             }
                         }
-
                     }
                     is Response.Error -> {
                         println(it.message)
@@ -279,14 +267,19 @@ class FaceDetectionFragment : Fragment() {
                         dismissDialog()
                     }
                     else -> {
-
                     }
-
                 }
-
-
             }
+    }
 
+    private fun updateSuccessUI() {
+        binding.apply {
+            val buttonCamera = fbtnCamera
+            val buttonNext = btnNextFace
+            buttonCamera.visibility = View.GONE
+            buttonNext.visibility = View.VISIBLE
+        }
+        viewModel.setStateCount(1)
     }
 
     private fun calculateMaxValue(emotionsMap: MutableMap<String, Float>): String {
@@ -527,20 +520,20 @@ class FaceDetectionFragment : Fragment() {
         return "%.35f".format(numInDouble)
 
     }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+        shutdownExecutor()
+    }
 
     companion object {
         fun newInstance() = FaceDetectionFragment()
 
         @SuppressLint("StaticFieldLeak")
         private lateinit var instance: FaceDetectionFragment
-        fun getInstance(): FaceDetectionFragment {
-            return instance
-        }
-
-        private const val TAG = "CameraXApp"
         var isOffline = false
         const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
-        const val REQUEST_CODE_PERMISSIONS = 10
+
 
     }
 

@@ -3,7 +3,6 @@ package com.example.vrades.presentation.viewmodels
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
-import android.speech.tts.TextToSpeech
 import androidx.activity.result.ActivityResultLauncher
 import androidx.lifecycle.*
 import com.example.vrades.R
@@ -18,7 +17,6 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -79,11 +77,6 @@ class TestViewModel @Inject constructor(
         averageDetectionResult.clear()
     }
 
-    //    fun getDigitalWritingDetectionResult(text: String) = liveData(Dispatchers.IO){
-//        useCaseTextDetectionAPI.invoke(text).collect{
-//            emit(it)
-//        }
-//    }
     fun getDataAudioTest() = liveData(Dispatchers.IO) {
         useCasesVrades.getDataAudioTest().collect {
             emit(it)
@@ -95,8 +88,9 @@ class TestViewModel @Inject constructor(
             emit(it)
         }
     }
+
     fun getTestByDate(date: String) = liveData(Dispatchers.IO) {
-        useCasesProfile.getTestByDate(date).collect{
+        useCasesProfile.getTestByDate(date).collect {
             emit(it)
         }
     }
@@ -142,14 +136,15 @@ class TestViewModel @Inject constructor(
     fun getPercentageOfResults(): MutableMap<String, Float> {
         println("DEBUG:")
         averageDetectionResult.clear()
+        var average: Float
         for (el in audioDetectionResult.entries) {
             println("${faceDetectionResult[el.key]} ")
-            val average:Float = if (el.key != "love") {
-                (faceDetectionResult[el.key]!! + audioDetectionResult[el.key]!! + digitalWritingDetectionResult[el.key]!!) / 3
-            } else {
-                0f
+            if (el.key != "love") {
+                average =
+                    (faceDetectionResult[el.key]!! + audioDetectionResult[el.key]!! + digitalWritingDetectionResult[el.key]!!) / 3
+                averageDetectionResult[el.key] = average
             }
-            averageDetectionResult[el.key] = average
+
         }
         return averageDetectionResult
     }

@@ -1,186 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <import type="android.view.View" />
-        <variable
-            name="images"
-            type="com.example.vrades.presentation.utils.Constants" />
 
         <variable
-            name="viewModel"
-            type="com.example.vrades.presentation.viewmodels.MyProfileViewModel" />
+                name="images"
+                type="com.example.vrades.presentation.utils.Constants" />
+
+        <variable
+                name="viewModel"
+                type="com.example.vrades.presentation.viewmodels.MyProfileViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clSolutions"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        backgroundImageUrl="@{images.BACKGROUND_APP}"
-        tools:context=".presentation.ui.fragments.SolutionsFragment">
+            android:id="@+id/clSolutions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            backgroundImageUrl="@{images.BACKGROUND_APP}"
+            tools:context=".presentation.ui.fragments.SolutionsFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clDetailsContainer"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="50dp"
-            android:background="@drawable/container_form"
-            android:paddingBottom="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.9"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+                android:id="@+id/clDetailsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="50dp"
+                android:background="@drawable/container_form"
+                android:paddingBottom="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gdlSolutions9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintGuide_percent="0.55"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.39" />
+                    android:id="@+id/gdlSolutions9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.55"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gdlSolutions8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintGuide_percent="0.6"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.39" />
+                    android:id="@+id/gdlSolutions8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.6"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gdlSolutions4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintGuide_percent="0.31"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.39" />
+                    android:id="@+id/gdlSolutions4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.31"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gdlSolutions2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintGuide_percent="0.23"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.39" />
+                    android:id="@+id/gdlSolutions2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.23"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gdlSolutions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintGuide_percent="0.03"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.39" />
+                    android:id="@+id/gdlSolutions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.03"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/civProfilePictureSolutions"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:src="@drawable/me"
-                app:civ_border_width="2dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.13"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/gdlSolutions"
-                app:layout_constraintWidth_percent="0.26" />
+                    android:id="@+id/civProfilePictureSolutions"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/me"
+                    app:civ_border_width="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.13"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/gdlSolutions"
+                    app:layout_constraintWidth_percent="0.26" />
 
             <TextView
-                android:id="@+id/tvReview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/ibm_plex_sans_bold"
-                android:text="@string/review"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/gdlSolutions4" />
+                    android:id="@+id/tvReview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ibm_plex_sans_bold"
+                    android:text="@string/review"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/gdlSolutions4" />
 
             <TextView
-                android:id="@+id/tvResultSolutions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/ibm_plex_sans_bold"
-                android:text="@string/latest_result_content"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/gdlSolutions2" />
+                    android:id="@+id/tvResultSolutions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ibm_plex_sans_bold"
+                    android:text="@string/latest_result_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/gdlSolutions2" />
 
             <ImageView
-                android:id="@+id/ivTopLineSolutions"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:background="@color/white"
-                android:backgroundTint="@color/white"
-                android:contentDescription="@string/line"
-                android:src="@drawable/line_section_container"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/gdlSolutions3" />
+                    android:id="@+id/ivTopLineSolutions"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/white"
+                    android:contentDescription="@string/line"
+                    android:src="@drawable/line_section_container"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/gdlSolutions3" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gdlSolutions3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintGuide_percent="0.285"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.39" />
+                    android:id="@+id/gdlSolutions3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.285"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
 
             <ImageButton
-                android:id="@+id/btnBackSolutions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:background="@drawable/ic_baseline_arrow_back_24"
-                android:contentDescription="@string/about"
-                android:fontFamily="@font/ibm_plex_sans"
-                android:insetRight="0dp"
-                android:insetBottom="0dp"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:text=""
-                app:backgroundTint="@color/white"
-                app:elevation="0dp"
-                app:iconPadding="0dp"
-                app:iconTint="#FFFFFF"
-                app:layout_constraintHeight_percent="0.06"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/gdlSolutions"
-                app:layout_constraintWidth_percent="0.13"
-                app:strokeColor="@color/transparent"
-                tools:ignore="TouchTargetSizeCheck" />
+                    android:id="@+id/btnBackSolutions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:background="@drawable/ic_baseline_arrow_back_24"
+                    android:contentDescription="@string/about"
+                    android:fontFamily="@font/ibm_plex_sans"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    android:text=""
+                    app:backgroundTint="@color/white"
+                    app:elevation="0dp"
+                    app:iconPadding="0dp"
+                    app:iconTint="#FFFFFF"
+                    app:layout_constraintHeight_percent="0.06"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/gdlSolutions"
+                    app:layout_constraintWidth_percent="0.13"
+                    app:strokeColor="@color/transparent"
+                    tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
-                android:id="@+id/tvNameSolutions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/ibm_plex_sans_bold"
+                    android:id="@+id/tvNameSolutions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ibm_plex_sans_bold"
                     android:text="@string/guest"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/civProfilePictureSolutions" />
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/civProfilePictureSolutions" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/clReviewTextContainer"
@@ -207,41 +208,41 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
-                android:id="@+id/ivBottomLineSolutions"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:background="@color/white"
-                android:backgroundTint="@color/white"
-                android:contentDescription="@string/line"
-                android:src="@drawable/line_section_container"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/gdlSolutions9" />
+                    android:id="@+id/ivBottomLineSolutions"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/white"
+                    android:contentDescription="@string/line"
+                    android:src="@drawable/line_section_container"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/gdlSolutions9" />
 
             <TextView
-                android:id="@+id/tvLifeHacks"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/ibm_plex_sans_bold"
-                android:text="Life Hacks"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/gdlSolutions8" />
+                    android:id="@+id/tvLifeHacks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ibm_plex_sans_bold"
+                    android:text="Life Hacks"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/gdlSolutions8" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvLifeHacks"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:layout_constraintHeight_percent="0.4"
-                android:layout_marginHorizontal="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvLifeHacks"
-                tools:itemCount="3"
-                tools:listitem="@layout/item_lifehack" />
+                    android:id="@+id/rvLifeHacks"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintHeight_percent="0.4"
+                    android:layout_marginHorizontal="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLifeHacks"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_lifehack" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -65,21 +65,38 @@ class LoginFragment : VradesBindingFragment<FragmentLoginBinding>(FragmentLoginB
             .observe(viewLifecycleOwner) {
                 when (it) {
                     is Response.Success -> {
-                        onNavigateToHome()
+                        checkPreferences()
                         println("Success")
                     }
                     is Response.Error -> {
                         println(ERROR_REF)
                     }
-                    else -> {}
+                    else -> {
+                    }
                 }
             }
+    }
 
+    private fun checkPreferences() {
+
+        viewModel.extractPreferences().observe(viewLifecycleOwner) {
+            if (it!!.tutorialEnabled == "OFF") {
+                onNavigateToHome()
+            } else {
+                onNavigateToTutorial()
+            }
+            println(it)
+        }
     }
 
     private fun onNavigateToHome() {
         val actionHome = LoginFragmentDirections.actionNavLoginToNavHome()
         findNavController().navigate(actionHome)
+    }
+
+    private fun onNavigateToTutorial() {
+        val actionTutorial = LoginFragmentDirections.actionNavLoginToNavTutorial()
+        findNavController().navigate(actionTutorial)
     }
 
     private fun onNavigateToForgot() {

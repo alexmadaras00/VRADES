@@ -10,17 +10,8 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val useCasesAuth: AuthUseCases
 ) : ViewModel() {
-    val authState = useCasesAuth.getAuthState().asLiveData(Dispatchers.IO + viewModelScope.coroutineContext)
 
     val isUserAuthenticated get() = useCasesAuth.isUserAuthenticated()
-
-    private val _onNavigateToTest = SingleLiveEvent<Void>()
-    val onNavigateToTest: LiveData<Void>
-        get() = _onNavigateToTest
-
-    private fun onNavigateToTestClicked() {
-        _onNavigateToTest.call()
-    }
 
 
 }

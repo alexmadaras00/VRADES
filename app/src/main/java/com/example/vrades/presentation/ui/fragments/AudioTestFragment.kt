@@ -24,7 +24,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.vrades.data.api.text_detection.TextDetectionAPI
+import com.example.vrades.data.api.detections.TextDetectionAPI
 import com.example.vrades.databinding.DialogLoadingBinding
 import com.example.vrades.databinding.FragmentAudioTestBinding
 import com.example.vrades.domain.model.Response
@@ -52,8 +52,6 @@ class AudioTestFragment : VradesBaseFragment(), IOnTimerTickListener {
     private var contextNullSafe: Context? = null
     private var dialog: Dialog? = null
     private lateinit var timer: Timer
-    private var isRecordingPermissionGranted = false
-    private var mediaRecorder: MediaRecorder? = null
     private var dialogBinding: DialogLoadingBinding? = null
     private lateinit var speechRecognizer: SpeechRecognizer
     private var isSpeechStarted = false

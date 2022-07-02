@@ -13,7 +13,6 @@ import com.example.vrades.presentation.enums.TestState
 import com.example.vrades.presentation.interfaces.IOnClickListener
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 
 class AdapterTestHistory(private val onClickListener: IOnClickListener) :
     RecyclerView.Adapter<AdapterTestHistory.ViewHolder>() {
@@ -31,7 +30,7 @@ class AdapterTestHistory(private val onClickListener: IOnClickListener) :
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(item: Test) {
             binding.item = item
-            binding.tvDate.text = item.date?.slice(0..9).toString()
+            binding.tvDate.text = item.date?.slice(0..15).toString()
             when (item.state) {
                 TestState.FACE_DETECTION_COMPLETED.position ->
                     binding.ivFace.setColorFilter(R.color.background)

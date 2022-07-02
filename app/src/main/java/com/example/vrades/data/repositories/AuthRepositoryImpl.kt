@@ -1,9 +1,9 @@
 package com.example.vrades.data.repositories
 
-import com.example.vrades.domain.repositories.AuthRepository
 import com.example.vrades.domain.model.Response
 import com.example.vrades.domain.model.Response.Loading
 import com.example.vrades.domain.model.User
+import com.example.vrades.domain.repositories.AuthRepository
 import com.example.vrades.presentation.utils.Constants.DEFAULT_PROFILE_PICTURE
 import com.example.vrades.presentation.utils.Constants.ERROR_REF
 import com.example.vrades.presentation.utils.Constants.USERS_REF
@@ -47,9 +47,8 @@ class AuthRepositoryImpl @Inject constructor(
         try {
             emit(Loading)
             auth.currentUser?.apply {
-//                println("User created: $uid in the field: ${usersRef.key}")
                 val newUser = User(
-                    email.toString(), fullName, DEFAULT_PROFILE_PICTURE, false,
+                    email.toString(), fullName, DEFAULT_PROFILE_PICTURE,
                     listOf(), listOf()
                 )
                 usersRef.child(uid).setValue(newUser).await().also {
@@ -134,17 +133,6 @@ class AuthRepositoryImpl @Inject constructor(
             profile?.apply {
                 val user = User(email!!, displayName!!, DEFAULT_PROFILE_PICTURE)
                 emit(Response.Success(user))
-            }
-        } catch (e: Exception) {
-            emit(Response.Error(e.message ?: ERROR_REF))
-        }
-    }
-    override suspend fun firebaseSignInWithGoogle(idToken: String) = flow {
-        try {
-            val credential = GoogleAuthProvider.getCredential(idToken, null)
-            val authResult = auth.signInWithCredential(credential).await()
-            authResult.additionalUserInfo?.apply {
-                emit(Response.Success(isNewUser))
             }
         } catch (e: Exception) {
             emit(Response.Error(e.message ?: ERROR_REF))
