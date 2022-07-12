@@ -234,6 +234,7 @@
             android:background="@drawable/button_background"
             android:fontFamily="@font/ibm_plex_sans"
             android:text="@string/register"
+                app:rippleColor="@color/white"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="24sp"

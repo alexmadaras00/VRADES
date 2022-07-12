@@ -1,109 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <import type="android.view.View" />
-        <variable
-            name="images"
-            type="com.example.vrades.presentation.utils.Constants" />
 
         <variable
-            name="viewModel"
-            type="com.example.vrades.presentation.viewmodels.TestViewModel" />
+                name="images"
+                type="com.example.vrades.presentation.utils.Constants" />
+
+        <variable
+                name="viewModel"
+                type="com.example.vrades.presentation.viewmodels.TestViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clDetails"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        backgroundImageUrl="@{images.BACKGROUND_APP}"
-        tools:context=".presentation.ui.fragments.DetailsFragment">
+            android:id="@+id/clDetails"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            backgroundImageUrl="@{images.BACKGROUND_APP}"
+            tools:context=".presentation.ui.fragments.DetailsFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clDetailsContainer"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="50dp"
-            android:background="@drawable/container_form"
-            android:paddingBottom="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.9"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+                android:id="@+id/clDetailsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="50dp"
+                android:background="@drawable/container_form"
+                android:paddingBottom="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gdlSolutions17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintGuide_percent="0.9"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.39" />
+                    android:id="@+id/gdlSolutions17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.9"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gdlSolutions16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintGuide_percent="0.84"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.39" />
+                    android:id="@+id/gdlSolutions16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.84"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gdlSolutions13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintGuide_percent="0.32"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.39" />
+                    android:id="@+id/gdlSolutions13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.32"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gdlSolutions10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintGuide_percent="0.25"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.39" />
+                    android:id="@+id/gdlSolutions10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.25"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gdlSolutions5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintGuide_percent="0.03"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.39" />
+                    android:id="@+id/gdlSolutions5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.03"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
 
             <ImageButton
-                android:id="@+id/btnBackDetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:background="@drawable/ic_baseline_assessment_24"
-                android:contentDescription="@string/about"
-                android:fontFamily="@font/ibm_plex_sans"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:text=""
-                app:backgroundTint="@color/menu_text_color"
-                app:iconTint="@color/menu_text_color"
-                app:layout_constraintHeight_percent="0.06"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/gdlSolutions5"
-                app:layout_constraintWidth_percent="0.13"
-                app:strokeColor="@color/transparent" />
+                    android:id="@+id/btnBackDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:background="@drawable/ic_baseline_assessment_24"
+                    android:contentDescription="@string/about"
+                    android:fontFamily="@font/ibm_plex_sans"
+                    android:minWidth="48dp"
+                    app:rippleColor="@color/white"
+                    android:minHeight="48dp"
+                    android:text=""
+                    app:backgroundTint="@color/menu_text_color"
+                    app:iconTint="@color/menu_text_color"
+                    app:layout_constraintHeight_percent="0.06"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/gdlSolutions5"
+                    app:layout_constraintWidth_percent="0.13"
+                    app:strokeColor="@color/transparent" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="0dp"
@@ -119,17 +121,17 @@
                     android:id="@+id/civProfilePictureDetails" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gdlMiddle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:flow_firstHorizontalBias="0.5"
-                app:flow_horizontalAlign="center"
-                app:flow_horizontalBias="0.5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintGuide_percent="0.5"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent" />
+                    android:id="@+id/gdlMiddle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:flow_firstHorizontalBias="0.5"
+                    app:flow_horizontalAlign="center"
+                    app:flow_horizontalBias="0.5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintGuide_percent="0.5"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                     android:layout_width="wrap_content"
@@ -144,97 +146,97 @@
                     android:id="@+id/tvNameDetails" />
 
             <ImageView
-                android:id="@+id/ivTopLineDetails"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:background="@color/white"
-                android:backgroundTint="@color/white"
-                android:contentDescription="@string/line"
-                android:src="@drawable/line_section_container"
-                app:layout_constraintBottom_toTopOf="@+id/gdlSolutions6"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/gdlSolutions6" />
+                    android:id="@+id/ivTopLineDetails"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/white"
+                    android:contentDescription="@string/line"
+                    android:src="@drawable/line_section_container"
+                    app:layout_constraintBottom_toTopOf="@+id/gdlSolutions6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/gdlSolutions6" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gdlSolutions6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintGuide_percent="0.23"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.39" />
+                    android:id="@+id/gdlSolutions6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintGuide_percent="0.23"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.39" />
 
             <TextView
-                android:id="@+id/tvChartDetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/ibm_plex_sans_bold"
-                android:text="@string/chart_results"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.477"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/gdlSolutions10" />
+                    android:id="@+id/tvChartDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ibm_plex_sans_bold"
+                    android:text="@string/chart_results"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.477"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/gdlSolutions10" />
 
             <com.github.mikephil.charting.charts.PieChart
-                android:id="@+id/Chart"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.5"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/gdlSolutions13">
+                    android:id="@+id/Chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.5"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/gdlSolutions13">
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/gdlSolutions12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintGuide_percent="0.25"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.39" />
+                        android:id="@+id/gdlSolutions12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.25"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.39" />
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/gdlSolutions11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintGuide_percent="0.03"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.39" />
+                        android:id="@+id/gdlSolutions11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintGuide_percent="0.03"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.39" />
             </com.github.mikephil.charting.charts.PieChart>
 
             <TextView
-                android:id="@+id/tvFinalResultDetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/ibm_plex_sans_bold"
-                android:text="@string/dominant_emotion"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/gdlSolutions16" />
+                    android:id="@+id/tvFinalResultDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/ibm_plex_sans_bold"
+                    android:text="@string/dominant_emotion"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/gdlSolutions16" />
 
             <TextView
-                android:id="@+id/tvFinalResultDetails2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/ibm_plex_sans"
-                android:text="@string/about"
-                android:textAllCaps="true"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvFinalResultDetails" />
+                    android:id="@+id/tvFinalResultDetails2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/ibm_plex_sans"
+                    android:text="@string/about"
+                    android:textAllCaps="true"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvFinalResultDetails" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -21,7 +21,6 @@ import com.example.vrades.presentation.utils.Constants.ERROR_REF
 import com.example.vrades.presentation.utils.Constants.ICON
 import com.example.vrades.presentation.utils.Constants.IMAGE
 import com.example.vrades.presentation.utils.Constants.IS_COMPLETED
-import com.example.vrades.presentation.utils.Constants.IS_TUTORIAL_ENABLED
 import com.example.vrades.presentation.utils.Constants.LIFEHACKS_REF
 import com.example.vrades.presentation.utils.Constants.NAME
 import com.example.vrades.presentation.utils.Constants.RESULT
@@ -32,13 +31,14 @@ import com.example.vrades.presentation.utils.Constants.TRIGGER_EMOTION
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ServerValue
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storageMetadata
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Named
 import javax.inject.Singleton
@@ -77,7 +77,7 @@ class ProfileRepositoryImpl @Inject constructor(
                     child(TESTS).children.forEach { test ->
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                             if (test.exists()) {
-                                val emotions = mutableMapOf<String,Float>()
+                                val emotions = mutableMapOf<String, Float>()
                                 test.child(EMOTIONS_SCORE).children.forEach {
                                     val value = it.getValue(Float::class.java)
                                     emotions[it.key.toString()] = value as Float
@@ -148,10 +148,14 @@ class ProfileRepositoryImpl @Inject constructor(
             emit(Response.Loading)
             var k = 0
             usersRef.child(auth.currentUser!!.uid).child(TESTS).get()
-                    .await().children.forEach { _ ->
-                        k++
-                    }
-            usersRef.child(auth.currentUser!!.uid).child(TESTS).child(TEST + (System.currentTimeMillis().toString()))
+                .await().children.forEach { _ ->
+                    k++
+                }
+            usersRef.child(auth.currentUser!!.uid).child(TESTS).child(
+                TEST + (SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(
+                    Date()
+                ).toString())
+            )
                 .setValue(test).await().also {
                     emit(Success(true))
                 }
@@ -227,7 +231,7 @@ class ProfileRepositoryImpl @Inject constructor(
 
             usersRef.child(auth.currentUser!!.uid).child(TESTS).get()
                 .await().children.forEach { test ->
-                    val emotionsList = mutableMapOf<String,Float>()
+                    val emotionsList = mutableMapOf<String, Float>()
                     test.child(EMOTIONS_SCORE).children.forEach {
                         val value = it.getValue(Float::class.java)
                         emotionsList[it.key.toString()] = value as Float
@@ -248,37 +252,38 @@ class ProfileRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getTestByDate(date: String): Flow<Response<MutableMap<String, Float>>> = flow{
-        try {
-            emit(Response.Loading)
-            val tests = mutableListOf<Test>()
-            usersRef.child(auth.currentUser!!.uid).child(TESTS).get()
-                .await().children.forEach { test ->
-                    val emotionsList = mutableMapOf<String, Float>()
-                    test.child(EMOTIONS_SCORE).children.forEach {
-                        val value = it.getValue(Float::class.java)
-                        emotionsList[it.key.toString()] = value as Float
-                    }
-                    tests.add(
-                        Test(
-                            test.child(DATE).getValue(String::class.java),
-                            test.child(STATE).getValue(Int::class.java)!!,
-                            test.child(RESULT).getValue(String::class.java)!!,
-                            emotionsList,
-                            test.child(IS_COMPLETED).getValue(Boolean::class.java)!!
+    override suspend fun getTestByDate(date: String): Flow<Response<MutableMap<String, Float>>> =
+        flow {
+            try {
+                emit(Response.Loading)
+                val tests = mutableListOf<Test>()
+                usersRef.child(auth.currentUser!!.uid).child(TESTS).get()
+                    .await().children.forEach { test ->
+                        val emotionsList = mutableMapOf<String, Float>()
+                        test.child(EMOTIONS_SCORE).children.forEach {
+                            val value = it.getValue(Float::class.java)
+                            emotionsList[it.key.toString()] = value as Float
+                        }
+                        tests.add(
+                            Test(
+                                test.child(DATE).getValue(String::class.java),
+                                test.child(STATE).getValue(Int::class.java)!!,
+                                test.child(RESULT).getValue(String::class.java)!!,
+                                emotionsList,
+                                test.child(IS_COMPLETED).getValue(Boolean::class.java)!!
+                            )
                         )
-                    )
+                    }
+                tests.forEach {
+                    if (it.date == date) {
+                        println("FOUND TEST: $it")
+                        emit(Success(it.emotionsScore))
+                    }
                 }
-            tests.forEach {
-                if(it.date == date){
-                    println("FOUND TEST: $it")
-                    emit(Success(it.emotionsScore))
-                }
+            } catch (e: Exception) {
+                emit(Response.Error(e.message ?: ERROR_REF))
             }
-        } catch (e: Exception) {
-            emit(Response.Error(e.message ?: ERROR_REF))
         }
-    }
 
     override suspend fun getAdvicesByUserId(): Flow<Response<List<LifeHack>>> = flow {
         try {

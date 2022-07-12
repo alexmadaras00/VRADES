@@ -38,16 +38,6 @@
                 app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/gdlSolutions9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintGuide_percent="0.55"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.39" />
-
-            <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/gdlSolutions8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -193,7 +183,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvReview"
-                    app:layout_constraintBottom_toTopOf="@+id/ivBottomLineSolutions">
+                    app:layout_constraintBottom_toTopOf="@+id/gdlSolutions8">
 
                 <TextView
                         android:id="@+id/tvReviewText"
@@ -206,19 +196,6 @@
                         android:textSize="14sp"
                         android:fontFamily="@font/ibm_plex_sans" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <ImageView
-                    android:id="@+id/ivBottomLineSolutions"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="24dp"
-                    android:background="@color/white"
-                    android:backgroundTint="@color/white"
-                    android:contentDescription="@string/line"
-                    android:src="@drawable/line_section_container"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/gdlSolutions9" />
 
             <TextView
                     android:id="@+id/tvLifeHacks"

@@ -218,6 +218,7 @@
                     android:fontFamily="@font/ibm_plex_sans_bold"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
+                    app:rippleColor="@color/white"
                     android:text="@string/go_detect_it"
                     app:iconSize="36dp"
                     android:textAllCaps="false"

@@ -82,6 +82,7 @@
             android:textAlignment="center"
                 app:iconSize="36dp"
             iconImageUrl="@{images.INFO_WHITE}"
+                app:rippleColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/gdlRight"
             app:layout_constraintStart_toStartOf="@+id/gdlLeft"
             app:layout_constraintTop_toTopOf="@+id/gdGuideline" />
@@ -92,6 +93,7 @@
             android:text="@string/detect_it"
             iconImageUrl="@{images.DETECT_ICON}"
                 app:iconSize="36dp"
+                app:rippleColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/gdlRight"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="@+id/gdlLeft"
@@ -105,6 +107,7 @@
             app:iconSize="36dp"
             app:layout_constraintEnd_toEndOf="@+id/btnDetect"
             app:layout_constraintHorizontal_bias="0.498"
+                app:rippleColor="@color/white"
             app:layout_constraintStart_toStartOf="@+id/btnDetect"
             app:layout_constraintTop_toTopOf="@+id/gdGuideline3" />
 
@@ -114,6 +117,8 @@
             android:text="@string/my_profile"
             iconImageUrl="@{images.PROFILE_ICON}"
             app:iconSize="36dp"
+                android:clickable="true"
+                app:rippleColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/btnTutorial"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="@+id/btnDetect"

@@ -148,6 +148,7 @@
                 android:layout_height="0dp"
                 android:background="@drawable/button_background"
                 android:insetTop="0dp"
+                app:rippleColor="@color/white"
                 android:insetBottom="0dp"
                 android:text="@string/log_out"
                 android:textAllCaps="false"

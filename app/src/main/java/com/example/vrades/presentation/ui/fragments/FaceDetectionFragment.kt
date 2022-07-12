@@ -28,6 +28,7 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -276,8 +277,12 @@ class FaceDetectionFragment : Fragment() {
         binding.apply {
             val buttonCamera = fbtnCamera
             val buttonNext = btnNextFace
+            val previewView = vfCameraPreview
+            val switchButton = btnChangeCamera
             buttonCamera.visibility = View.GONE
             buttonNext.visibility = View.VISIBLE
+            previewView.isVisible = false
+            switchButton.isVisible = false
         }
         viewModel.setStateCount(1)
     }

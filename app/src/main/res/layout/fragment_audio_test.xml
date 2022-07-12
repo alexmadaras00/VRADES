@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <import type="android.view.View" />
-        <variable
-            name="images"
-            type="com.example.vrades.presentation.utils.Constants" />
 
         <variable
-            name="viewModelTest"
-            type="com.example.vrades.presentation.viewmodels.TestViewModel" />
+                name="images"
+                type="com.example.vrades.presentation.utils.Constants" />
+
+        <variable
+                name="viewModelTest"
+                type="com.example.vrades.presentation.viewmodels.TestViewModel" />
 
     </data>
 
@@ -44,6 +45,7 @@
                 android:id="@+id/btnProceed"
                 style="@style/MenuButton"
                 android:layout_width="0dp"
+                app:rippleColor="@color/white"
                 android:layout_height="0dp"
                 android:padding="4dp"
                 android:text="@string/next"
@@ -63,6 +65,7 @@
                 style="@style/FloatingButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:rippleColor="@color/white"
                 android:background="@color/dark_green"
                 android:clickable="true"
                 android:contentDescription="@string/start_recording_audio"
@@ -88,14 +91,14 @@
                 android:contentDescription="@string/logo" />
 
         <LinearLayout
-            android:id="@+id/lLTextContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivLogoAudioTest">
+                android:id="@+id/lLTextContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivLogoAudioTest">
 
             <TextView
                     android:id="@+id/tvPressAudio"
@@ -120,6 +123,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/menu_button"
                 android:clickable="true"
+                app:rippleColor="@color/white"
                 android:contentDescription="@string/start_recording_audio"
                 android:focusable="true"
                 app:backgroundTint="@color/menu_button"
@@ -139,6 +143,7 @@
                 android:contentDescription="@string/start_recording_audio"
                 android:focusable="true"
                 android:visibility="gone"
+                app:rippleColor="@color/white"
                 app:backgroundTint="@color/form_gradient_end"
                 app:layout_constraintBottom_toBottomOf="@+id/fbtnStopRecording"
                 app:layout_constraintEnd_toStartOf="@+id/fbtnVoiceRecord"
@@ -179,13 +184,13 @@
         </FrameLayout>
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gdlAudioTest2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintGuide_percent="0.82"
-            app:layout_constraintTop_toTopOf="parent" />
+                android:id="@+id/gdlAudioTest2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintGuide_percent="0.82"
+                app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gdlAudioTest3"

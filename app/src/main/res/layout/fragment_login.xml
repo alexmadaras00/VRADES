@@ -182,6 +182,7 @@
             android:background="@drawable/button_background"
             android:fontFamily="@font/ibm_plex_sans_bold"
             android:text="@string/log_in"
+                app:rippleColor="@color/white"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="24sp"
