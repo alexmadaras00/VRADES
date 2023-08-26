@@ -2,6 +2,7 @@ package com.example.vrades.presentation.ui.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.vrades.databinding.FragmentSettingsBinding
-import com.example.vrades.domain.model.Preferences
+import com.example.vrades.domain.model.Settings
 import com.example.vrades.domain.model.Response
 import com.example.vrades.presentation.utils.Constants.ERROR_REF
 import com.example.vrades.presentation.viewmodels.SettingsViewModel
@@ -22,14 +23,14 @@ class SettingsFragment : Fragment() {
     private val viewModel by viewModels<SettingsViewModel>()
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
-    private var defaultTutorial = "OFF"
-    private var defaultSuggestions = "OFF"
-
+    private var defaultTutorial = false
+    private var defaultSuggestions = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSettingsBinding.inflate(inflater)
+        binding.viewModel = viewModel
         binding.apply {
             executePendingBindings()
         }
@@ -54,25 +55,22 @@ class SettingsFragment : Fragment() {
             }
             switchTutorial.apply {
                 setOnCheckedChangeListener { _, isChecked ->
-                    defaultTutorial = if (isChecked) {
-                        textOn.toString()
-                    } else {
-                        textOff.toString()
-                    }
-                    viewModel?.savePreferences(Preferences(tutorialEnabled = defaultTutorial))
-                    println("TUTORIAL: $defaultTutorial, ${Preferences(tutorialEnabled = defaultTutorial)}")
-                }
+                    // Update ViewModel's LiveData
 
+                    viewModel?.tutorialEnabled?.value = isChecked
+                    viewModel?.savePreferences()
+
+                }
             }
-            switchDisplaySuggestions.apply{
+            switchDisplaySuggestions.apply {
                 setOnCheckedChangeListener { _, isChecked ->
-                    defaultSuggestions = if (isChecked) {
-                        textOn.toString()
-                    } else {
-                        textOff.toString()
-                    }
-                    viewModel?.savePreferences(Preferences(displaySuggestions = defaultSuggestions))
-                    println("SUGG: ${Preferences(displaySuggestions = defaultSuggestions)}")
+                    Log.d("PREF FRAGMENT","PREF: ${viewModel?.displaySuggestion?.value}")
+                    Log.d("VIEW MODEL:","VM:${viewModel}")
+                    // Update ViewModel's LiveData
+                    viewModel?.displaySuggestion?.value = isChecked
+                    viewModel?.savePreferences()
+
+                    Log.d("PREF FRAGMENT","PREF: ${viewModel?.displaySuggestion?.value}")
                 }
             }
         }
@@ -84,9 +82,11 @@ class SettingsFragment : Fragment() {
                 is Response.Success -> {
                     onNavigateToLogin()
                 }
+
                 is Response.Error -> {
                     println(ERROR_REF)
                 }
+
                 else -> {
 
                 }
@@ -103,28 +103,14 @@ class SettingsFragment : Fragment() {
     }
 
     private fun extractPreferences() {
-
-        viewModel.extractPreferences().observe(viewLifecycleOwner) {
+        viewModel.extractPreferences()
+        viewModel.settings.observe(viewLifecycleOwner) { settings ->
             binding.apply {
-                val switchTutorial = swTutorial
-                val switchDisplaySuggestions = swDisplaySuggestions
-
-                if (it.tutorialEnabled != defaultTutorial) {
-                    switchTutorial.apply {
-                        isChecked = true
-                        requestFocus()
-                    }
-                }
-                if (it.displaySuggestions != defaultSuggestions) {
-                    switchDisplaySuggestions.apply {
-                        isChecked = true
-                        requestFocus()
-                    }
-                }
+                swTutorial.isChecked = settings.tutorialEnabled
+                swDisplaySuggestions.isChecked = settings.displaySuggestions
             }
-            println("TUTORIAL PREFERENCE: ${it.tutorialEnabled},${it.displaySuggestions}")
-
         }
+
     }
 
     override fun onDestroy() {

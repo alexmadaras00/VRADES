@@ -107,6 +107,7 @@
                 android:enabled="true"
                 android:textOn="@string/on"
                 android:textOff="@string/off"
+                android:checked="@{viewModel.settings.tutorialEnabled}"
                 app:layout_constraintBottom_toBottomOf="@+id/tvDisplaySuggestions"
                 app:layout_constraintEnd_toEndOf="@+id/ivLineTop"
                 app:layout_constraintTop_toTopOf="@+id/tvDisplaySuggestions" />

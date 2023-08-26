@@ -80,7 +80,7 @@ class LoginFragment : VradesBindingFragment<FragmentLoginBinding>(FragmentLoginB
     private fun checkPreferences() {
 
         viewModel.extractPreferences().observe(viewLifecycleOwner) {
-            if (it!!.tutorialEnabled == "OFF") {
+            if (!it!!.tutorialEnabled) {
                 onNavigateToHome()
             } else {
                 onNavigateToTutorial()

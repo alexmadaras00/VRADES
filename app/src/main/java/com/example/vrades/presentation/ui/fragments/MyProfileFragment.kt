@@ -116,7 +116,7 @@ class MyProfileFragment : Fragment() {
 
     private fun extractPreferences() {
         viewModel.extractPreferences().observe(viewLifecycleOwner) {
-            if (it!!.displaySuggestions == "OFF") {
+            if (!it!!.displaySuggestions) {
                 findNavController().navigate(MyProfileFragmentDirections.actionNavProfileToNavDialog())
             } else {
                 findNavController().navigate(MyProfileFragmentDirections.actionNavProfileToNavSolutions())
